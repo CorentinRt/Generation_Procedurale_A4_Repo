@@ -1,25 +1,21 @@
 extends Control
 
-const Tracery = preload("res://scripts/tracery.gd")
+const TraceryScript = preload("res://scripts/tracery.gd")
 
+@export var json: JSON
 @export var text_label: RichTextLabel
+@export var name_label: RichTextLabel
 
-var grammar: Tracery.Grammar
+var grammar: TraceryScript.Grammar
 
 func _ready():
-	# test rules, todo: load json
-	var rules := {
-		"origin": [
-			"Bonjour, je suis #adj# #animal#.",
-            "Aujourd’hui, j’ai vu #a.animal# dans #place#."
-		],
-		"adj": ["petit", "grand", "joli", "effrayant"],
-		"animal": ["chat", "chien", "hibou", "renard"],
-		"place": ["la forêt", "le jardin", "la rue", "le studio"]
-	}
+	var rules = json.data
 
-	grammar = Tracery.Grammar.new(rules)
-	grammar.add_modifiers(Tracery.UniversalModifiers.get_modifiers())
+	grammar = TraceryScript.Grammar.new(rules)
+	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 
 	var sentence = grammar.flatten("#origin#")
 	text_label.text = sentence
+	
+	#var selected_name = grammar.get_variable("selected")
+	#name_label.text = selected_name

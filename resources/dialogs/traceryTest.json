@@ -1,15 +1,15 @@
 {
 	"name": [
-		"Bertram",
-		"Arabella",
-		"Cecil"
+		"Skuizi",
+		"Squouizie",
+		"Skuikak"
 	],
 	"occupation": [
-		"baker",
-		"wizard",
-		"soldier"
+		"beau gosse",
+		"ciao kombucha",
+		"feur"
 	],
 	"origin": [
-		"#name# the #occupation#"
+		"Salut c'est #name# le #occupation#"
 	]
 }

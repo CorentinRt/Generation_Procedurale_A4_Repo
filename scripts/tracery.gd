@@ -235,6 +235,10 @@ class Grammar extends RefCounted:
 		# Done
 		return rule
 		
+	func get_variable(name: String) -> String:
+		if _save_data.has(name):
+			return _save_data[name]
+		return ""
 		
 	func _resolve_save_symbols( rule : String ) -> void:
 		var save_matches = _save_symbol_regex.search_all( rule )
