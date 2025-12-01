@@ -21,12 +21,14 @@ attack_scene = ExtResource("2_mf8py")
 attack_spawn_point = NodePath("BodySprite/NoseSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_p1d5c")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 z_index = 2
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("5_lxxh3")
 
 [node name="NoseSprite" type="Sprite2D" parent="BodySprite"]
