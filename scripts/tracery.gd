@@ -183,10 +183,9 @@ class Grammar extends RefCounted:
 		
 		
 	func flatten( rule : String ) -> String:
-		var expansion_matches = _expansion_regex.search_all( rule )
+		rule = _resolve_save_symbols(rule)
 		
-		if expansion_matches.is_empty():
-			_resolve_save_symbols( rule )
+		var expansion_matches = _expansion_regex.search_all(rule)
 			
 		for match_result in expansion_matches:
 			# Get hold of the match value
@@ -236,27 +235,34 @@ class Grammar extends RefCounted:
 		return rule
 		
 	func get_variable(name: String) -> String:
+		for key in _save_data:
+			var value = _save_data[key]
+			print("saved variable : ", key, " = ", value)
 		if _save_data.has(name):
 			return _save_data[name]
 		return ""
 		
-	func _resolve_save_symbols( rule : String ) -> void:
-		var save_matches = _save_symbol_regex.search_all( rule )
-		for match_result in save_matches:
-			var match_value = match_result.strings[0]
+	func _resolve_save_symbols(rule: String) -> String:
+		var result = rule
+		var matches = _save_symbol_regex.search_all(rule)
+		
+		for m in matches:
+			var block = m.strings[0]            # ex: "[selected:#name#]"
+			var content = block.substr(1, block.length() - 2)  # selected:#name#
 			
-			var save = match_value.replace( "[", "" ).replace( "]", "" )
+			var parts = content.split(":")
 			
-			var save_split = save.split(":")
+			if parts.size() == 2:
+				var name = parts[0]             # "selected"
+				var symbol = parts[1]           # "#name#"
+				var data = flatten(symbol)      # Résolution correcte
+				_save_data[name] = data
 				
-			if save_split.size() == 2:
-				var name = save_split[0]
-				var data = flatten( save_split[1] )
-				_save_data[ name ] = data
-			else:
-				var name = save
-				var data = flatten( "#" + save + "#" )
-				_save_data[ name ] = data
+			# enlever le bloc de sauvegarde du texte final
+			result = result.replace(block, "")
+			
+		return result
+		
 				
 				
 	func _get_modifiers( symbol : String ) -> Array:

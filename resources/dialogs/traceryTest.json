@@ -10,6 +10,6 @@
 		"feur"
 	],
 	"origin": [
-		"Salut c'est #name# le #occupation#"
+		"[selected:#name#]Salut c'est #selected# le #occupation#"
 	]
 }

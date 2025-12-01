@@ -17,5 +17,5 @@ func _ready():
 	var sentence = grammar.flatten("#origin#")
 	text_label.text = sentence
 	
-	#var selected_name = grammar.get_variable("selected")
-	#name_label.text = selected_name
+	var selected_name = grammar.get_variable("selected")
+	name_label.text = selected_name
