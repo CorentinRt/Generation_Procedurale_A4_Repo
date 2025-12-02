@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ilvyxagbmtm"]
+
+[ext_resource type="Script" uid="uid://dhordui5ouqh1" path="res://scripts/room_generation/random_room.gd" id="1_tyftb"]
+[ext_resource type="PackedScene" uid="uid://cpsyx0go5ucvu" path="res://scenes/room_generation/rooms_interiors/interior_test_1.tscn" id="2_ta1ug"]
+[ext_resource type="PackedScene" uid="uid://cxgc6uao76c46" path="res://scenes/room_generation/rooms_interiors/interior_test_2.tscn" id="3_nqs1k"]
+[ext_resource type="PackedScene" uid="uid://cdult7ivh2o31" path="res://scenes/room_generation/rooms_interiors/interior_test_3.tscn" id="4_06ke4"]
+[ext_resource type="PackedScene" uid="uid://brgffxi2v7hof" path="res://scenes/room_generation/rooms_exteriors/exterior_test_1.tscn" id="5_8xq4e"]
+[ext_resource type="PackedScene" uid="uid://cdinihw0qacbl" path="res://scenes/room_generation/rooms_exteriors/exterior_test_2.tscn" id="6_672r8"]
+[ext_resource type="PackedScene" uid="uid://c8sgnkkrxlkf0" path="res://scenes/room_generation/rooms_exteriors/exterior_test_3.tscn" id="7_u4j3m"]
+
+[node name="RandomRoom" type="Node2D"]
+position = Vector2(100, 100)
+script = ExtResource("1_tyftb")
+_roomsInteriorsDict = {
+ExtResource("2_ta1ug"): 10,
+ExtResource("3_nqs1k"): 1,
+ExtResource("4_06ke4"): 1
+}
+_roomsExteriorsDict = {
+ExtResource("5_8xq4e"): 1,
+ExtResource("6_672r8"): 1,
+ExtResource("7_u4j3m"): 10
+}
