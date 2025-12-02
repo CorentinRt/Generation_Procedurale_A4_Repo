@@ -1,0 +1,27 @@
+{
+	"name": [
+		"Pascal",
+		"Jean-Eude",
+		"Nicolas"
+	],
+	"occupation": [
+		"président",
+		"boulanger",
+		"commerçant"
+	],
+	"setupSaves": [
+		"[savedName:#name#]"
+	],
+	"firstInteraction": [
+		"Salut c'est #savedName# le #occupation#.<next>Super !"
+	],
+	"questInProgress": [
+		"Quête en progrès"
+	],
+	"questJustCompleted": [
+		"Quête qui vient d'être finie"
+	],
+	"completed": [
+		"Finito pepito le #savedName#"
+	]
+}

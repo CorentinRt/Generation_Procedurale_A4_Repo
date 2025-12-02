@@ -1,0 +1,21 @@
+{
+	"name": [
+		"Pascal",
+		"Jean-Eude",
+		"Nicolas"
+	],
+	"occupation": [
+		"président",
+		"boulanger",
+		"commerçant"
+	],
+	"setupSaves": [
+		"[savedName:#name#]"
+	],
+	"firstInteraction": [
+		"Salut c'est #savedName# le #occupation#.<next>Super !"
+	],
+	"completed": [
+		"Finito pepito le #savedName#"
+	]
+}
