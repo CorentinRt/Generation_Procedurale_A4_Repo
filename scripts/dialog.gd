@@ -26,18 +26,25 @@ var sentences_cut : PackedStringArray
 var current_sentence_id: int = 0
 
 func _ready():
-	var rules = json.data
-
-	grammar = TraceryScript.Grammar.new(rules)
-	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	_setup_dialog()
 
 	if (debug_at_start):
 		_show_dialog()
 		_get_current_state_text()
 	else:
 		_hide_dialog()
+	
+func _setup_dialog():
+	var rules = json.data
+
+	grammar = TraceryScript.Grammar.new(rules)
+	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Save
+	grammar.flatten("#setupSaves#")
 
 func _get_current_state_text():
+	print("Show current state text")
 	_get_current_state()
 	
 	# Get origin
@@ -58,7 +65,7 @@ func _get_current_state_text():
 	
 	_show_current_sentence_text()
 	
-	var selected_name = grammar.get_variable("selected")
+	var selected_name = grammar.get_variable("savedName")
 	name_label.text = selected_name
 	
 	pass

@@ -237,7 +237,7 @@ class Grammar extends RefCounted:
 	func get_variable(name: String) -> String:
 		for key in _save_data:
 			var value = _save_data[key]
-			print("saved variable : ", key, " = ", value)
+			print("Found saved variable : ", key, " = ", value)
 		if _save_data.has(name):
 			return _save_data[name]
 		return ""
@@ -255,16 +255,17 @@ class Grammar extends RefCounted:
 			if parts.size() == 2:
 				var name = parts[0]             # "selected"
 				var symbol = parts[1]           # "#name#"
-				var data = flatten(symbol)      # Résolution correcte
-				_save_data[name] = data
-				
+
+				# 🔹 Only set if not already in _save_data
+				if not _save_data.has(name):
+					var data = flatten(symbol)  # Résolution correcte
+					_save_data[name] = data
+					
 			# enlever le bloc de sauvegarde du texte final
 			result = result.replace(block, "")
 			
 		return result
 		
-				
-				
 	func _get_modifiers( symbol : String ) -> Array:
 		var modifiers = symbol.replace( "#", "" ).split( "." )
 		modifiers.remove_at( 0 )

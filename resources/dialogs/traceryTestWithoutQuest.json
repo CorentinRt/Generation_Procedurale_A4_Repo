@@ -9,10 +9,13 @@
 		"boulanger",
 		"commerçant"
 	],
+	"setupSaves": [
+		"[savedName:#name#]"
+	],
 	"firstInteraction": [
-		"[selected:#name#]Salut c'est #selected# le #occupation#. Super !"
+		"Salut c'est #savedName# le #occupation#.<next>Super !"
 	],
 	"completed": [
-		"[selected:#name#]Salut c'est #selected# le #occupation#. Super !"
+		"Finito pepito le #savedName#"
 	]
 }
