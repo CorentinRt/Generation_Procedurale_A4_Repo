@@ -2,23 +2,11 @@ extends Control
 
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 
-var json: JSON
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
 @export var dialog_btn: Button
 
-var grammar: TraceryScript.Grammar
-
-enum DialogState {
-	NONE,
-	FIRST_INTERACTION,
-	QUEST_PROGRESS,
-	QUESTION_COMPLETED,
-	COMPLETED,
-}
-
-var current_dialog_state = DialogState.NONE
-@export var has_quest: bool = true
+var current_npc : Node
 
 var sentences_cut : PackedStringArray
 var current_sentence_id: int = 0
@@ -26,52 +14,38 @@ var current_sentence_id: int = 0
 func _ready():
 	hide_dialog()
 	
-func _setup_dialog():
-	var rules = json.data
-	
-	grammar = TraceryScript.Grammar.new(rules)
-	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
-	
-	# Save
-	grammar.flatten("#setupSaves#")
-	
-	# States & cut text
-	_get_current_state_text()
-	
-func _get_current_state_text():
-	print("Show current state text")
+func _get_and_show_current_state_text():
 	_get_current_state()
 	
 	# Get origin
 	var origin : String = ""
-	match current_dialog_state:
-		DialogState.FIRST_INTERACTION:
+	match current_npc.current_dialog_state:
+		current_npc.DialogState.FIRST_INTERACTION:
 			origin = "#firstInteraction#"
-		DialogState.QUEST_PROGRESS:
+		current_npc.DialogState.QUEST_PROGRESS:
 			origin = "#questInProgress#"
-		DialogState.QUESTION_COMPLETED:
+		current_npc.DialogState.QUESTION_COMPLETED:
 			origin = "#questJustCompleted#"
-		DialogState.COMPLETED:
+		current_npc.DialogState.COMPLETED:
 			origin = "#completed#"
 			
+	print("Current state origin : ", origin)
+	
 	# Get sentences
-	var sentences = grammar.flatten(origin)
+	var sentences = current_npc.grammar.flatten(origin)
 	_get_array_sentences(sentences)
 	
 	_show_current_sentence_text()
 	
-	var selected_name = grammar.get_variable("savedName")
+	var selected_name = current_npc.grammar.get_variable("savedName")
 	name_label.text = selected_name
 	
 func _get_array_sentences(sentences : String):
 	# Cut at next
 	sentences_cut = sentences.split("<next>", false)
 	
-	print("Senteces cut size : ", sentences_cut.size())
-	
 	for i in range(sentences_cut.size()):
 		sentences_cut[i] = sentences_cut[i].strip_edges()
-		print("Cut sentence :", sentences_cut[i])
 	
 func _show_current_sentence_text():
 	var current_sentence = sentences_cut[current_sentence_id]
@@ -83,18 +57,19 @@ func _next_sentence():
 	if (current_sentence_id <= sentences_cut.size() - 1):
 		_show_current_sentence_text()
 	else:
+		current_sentence_id = 0
 		hide_dialog()
 	
 func _get_current_state():
-	match current_dialog_state:
-		DialogState.NONE:
-			current_dialog_state = DialogState.FIRST_INTERACTION
+	match current_npc.current_dialog_state:
+		current_npc.DialogState.NONE:
+			current_npc.current_dialog_state = current_npc.DialogState.FIRST_INTERACTION
 		
-		DialogState.FIRST_INTERACTION:
-			if (has_quest):
-				current_dialog_state = DialogState.QUEST_PROGRESS
+		current_npc.DialogState.FIRST_INTERACTION:
+			if (current_npc.has_quest):
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
 			else:
-				current_dialog_state = DialogState.COMPLETED
+				current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
 
 		# voir pour check quest progress et potentiellement mettre completed direct
 		
@@ -104,15 +79,12 @@ func _check_quest_progress():
 	pass
 	
 func _on_dialog_pressed() -> void:
-	print("Dialog button pressed")
 	_next_sentence()
 	
-func show_dialog(dialog : JSON) -> void:
-	json = dialog
-	print(json.data)
-	_setup_dialog()
+func show_dialog(npc : Node) -> void:
+	current_npc = npc
+	_get_and_show_current_state_text()
 	dialog_btn.show()
-	_show_current_sentence_text()
 	
 func hide_dialog() -> void:
 	dialog_btn.hide()

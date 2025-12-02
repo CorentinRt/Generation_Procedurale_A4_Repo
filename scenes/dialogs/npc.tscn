@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
 [ext_resource type="Texture2D" uid="uid://b7ef7glppoqoh" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0090.png" id="2_bw1ec"]
-[ext_resource type="JSON" path="res://resources/dialogs/traceryTestWithoutQuest.json" id="2_c01eb"]
+[ext_resource type="JSON" path="res://resources/dialogs/traceryTestWithQuest.json" id="2_c01eb"]
 
 [node name="Npc" type="Node2D" groups=["NPC"]]
 script = ExtResource("1_yk1oq")
-dialog_data = ExtResource("2_c01eb")
+json = ExtResource("2_c01eb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bw1ec")
