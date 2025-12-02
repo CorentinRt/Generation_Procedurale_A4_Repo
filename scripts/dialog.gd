@@ -5,6 +5,7 @@ const TraceryScript = preload("res://scripts/tracery.gd")
 @export var json: JSON
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
+@export var dialog_btn: Button
 
 var grammar: TraceryScript.Grammar
 
@@ -19,6 +20,8 @@ enum DialogState {
 var current_dialog_state = DialogState.NONE
 @export var has_quest: bool = true
 
+@export var debug_at_start: bool = false
+
 var sentences_cut : PackedStringArray
 var current_sentence_id: int = 0
 
@@ -28,7 +31,11 @@ func _ready():
 	grammar = TraceryScript.Grammar.new(rules)
 	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 
-	_get_current_state_text()
+	if (debug_at_start):
+		_show_dialog()
+		_get_current_state_text()
+	else:
+		_hide_dialog()
 
 func _get_current_state_text():
 	_get_current_state()
@@ -76,9 +83,7 @@ func _next_sentence():
 	if (current_sentence_id <= sentences_cut.size() - 1):
 		_show_current_sentence_text()
 	else:
-		# hide dialog
-		pass
-	pass
+		_hide_dialog()
 	
 func _get_current_state():
 	match current_dialog_state:
@@ -102,3 +107,10 @@ func _check_quest_progress():
 func _on_dialog_pressed() -> void:
 	print("Dialog button pressed")
 	_next_sentence()
+	
+func _show_dialog() -> void:
+	dialog_btn.show()
+	
+func _hide_dialog() -> void:
+	dialog_btn.hide()
+	

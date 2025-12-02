@@ -4,7 +4,7 @@
 [ext_resource type="JSON" path="res://resources/dialogs/traceryTestWithQuest.json" id="2_36pgd"]
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_tmfn4"]
 
-[node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label")]
+[node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label", "dialog_btn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,10 +13,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pkx4w")
 json = ExtResource("2_36pgd")
-text_label = NodePath("TextButton/Text")
-name_label = NodePath("NamePanel/Name")
+text_label = NodePath("Dialog/Text")
+name_label = NodePath("Dialog/NamePanel/Name")
+dialog_btn = NodePath("Dialog")
+debug_at_start = true
 
-[node name="TextButton" type="Button" parent="."]
+[node name="Dialog" type="Button" parent="."]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 500.0
@@ -28,7 +30,7 @@ theme_override_styles/hover = ExtResource("3_tmfn4")
 theme_override_styles/disabled = ExtResource("3_tmfn4")
 theme_override_styles/focus = ExtResource("3_tmfn4")
 
-[node name="Text" type="RichTextLabel" parent="TextButton"]
+[node name="Text" type="RichTextLabel" parent="Dialog"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -44,16 +46,16 @@ text = "Sentence text"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="NamePanel" type="Panel" parent="."]
+[node name="NamePanel" type="Panel" parent="Dialog"]
 layout_mode = 0
-offset_left = 134.0
-offset_top = 474.0
-offset_right = 384.0
-offset_bottom = 524.0
+offset_left = 34.0
+offset_top = -26.0
+offset_right = 284.0
+offset_bottom = 24.0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_tmfn4")
 
-[node name="Name" type="RichTextLabel" parent="NamePanel"]
+[node name="Name" type="RichTextLabel" parent="Dialog/NamePanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -71,4 +73,4 @@ scroll_following_visible_characters = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[connection signal="pressed" from="TextButton" to="." method="_on_dialog_pressed"]
+[connection signal="pressed" from="Dialog" to="." method="_on_dialog_pressed"]
