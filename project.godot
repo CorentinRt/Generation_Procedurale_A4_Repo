@@ -35,6 +35,10 @@ folder_colors={
 "res://scripts/score/": "yellow"
 }
 
+[global_group]
+
+dialog_manager=""
+
 [input]
 
 Left={

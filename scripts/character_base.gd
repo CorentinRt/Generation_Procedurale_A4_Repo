@@ -183,8 +183,8 @@ func _interact() -> void:
 	for npc in npcs:
 		if npc.global_position.distance_to(player_pos) <= interact_radius:
 			if npc.has_method("show_dialog"):
-				npc.show_dialog()
 				print("Dialog shown for ", npc.name)
+				npc.show_dialog()
 				return 
 	
 	print("Didn't find npc around player")

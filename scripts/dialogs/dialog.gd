@@ -2,7 +2,7 @@ extends Control
 
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 
-@export var json: JSON
+var json: JSON
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
 @export var dialog_btn: Button
@@ -20,19 +20,11 @@ enum DialogState {
 var current_dialog_state = DialogState.NONE
 @export var has_quest: bool = true
 
-@export var debug_at_start: bool = false
-
 var sentences_cut : PackedStringArray
 var current_sentence_id: int = 0
 
 func _ready():
-	_setup_dialog()
-
-	if (debug_at_start):
-		show_dialog()
-		_get_current_state_text()
-	else:
-		hide_dialog()
+	hide_dialog()
 	
 func _setup_dialog():
 	var rules = json.data
@@ -42,6 +34,9 @@ func _setup_dialog():
 	
 	# Save
 	grammar.flatten("#setupSaves#")
+	
+	# States & cut text
+	_get_current_state_text()
 	
 func _get_current_state_text():
 	print("Show current state text")
@@ -112,8 +107,12 @@ func _on_dialog_pressed() -> void:
 	print("Dialog button pressed")
 	_next_sentence()
 	
-func show_dialog() -> void:
+func show_dialog(dialog : JSON) -> void:
+	json = dialog
+	print(json.data)
+	_setup_dialog()
 	dialog_btn.show()
+	_show_current_sentence_text()
 	
 func hide_dialog() -> void:
 	dialog_btn.hide()
