@@ -14,6 +14,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	super()
 	_set_state(STATE.IDLE)
 
 
@@ -55,6 +56,10 @@ func _update_inputs() -> void:
 
 		if Input.is_action_pressed("Attack"):
 			_attack()
+			
+		if Input.is_action_just_pressed("Interact"):
+			_interact()
+		
 	else:
 		_direction = Vector2.ZERO
 
