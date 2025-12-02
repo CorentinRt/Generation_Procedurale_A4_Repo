@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=4 uid="uid://brgffxi2v7hof"]
+[gd_scene load_steps=3 format=4 uid="uid://brgffxi2v7hof"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_levwr"]
+[ext_resource type="Script" uid="uid://dnup6xw8yf8w" path="res://scripts/level_generation/room_exterior.gd" id="2_uhg4l"]
 
 [node name="ExteriorTest1" type="TileMapLayer"]
 tile_map_data = PackedByteArray("AAD8//z/AQADAAAAAAD8//3/AQADAAEAAAD8//7/AQADAAEAAAD8////AQADAAEAAAD8/wAAAQADAAEAAAD8/wEAAQADAAEAAAD8/wIAAQADAAEAAAD8/wMAAQADAAIAAAD9/wMAAQAEAAIAAAD+/wMAAQAEAAIAAAD//wMAAQAEAAIAAAAAAAMAAQAEAAIAAAABAAMAAQAEAAIAAAACAAMAAQAEAAIAAAADAAMAAQAFAAIAAAD9//z/AQAEAAAAAAD+//z/AQAEAAAAAAD///z/AQAEAAAAAAAAAPz/AQAEAAAAAAABAPz/AQAEAAAAAAACAPz/AQAEAAAAAAADAPz/AQAFAAAAAAADAP3/AQAFAAEAAAADAP7/AQAFAAEAAAADAP//AQAFAAEAAAADAAAAAQAIAAQAAAADAAEAAQAFAAEAAAADAAIAAQAFAAEAAAA=")
 tile_set = ExtResource("1_levwr")
+script = ExtResource("2_uhg4l")
+doorsCount = 1
+metadata/doorsCount = 7

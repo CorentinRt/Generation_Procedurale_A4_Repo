@@ -1,7 +1,15 @@
-class_name RoomGeneration extends Node2D
+class_name RandomRoom extends Node2D
+
+@export var coordinates:Vector2i
+@export var doorsCount:int 
 
 @export var _roomsInteriorsDict:Dictionary[PackedScene, int] = {}
 @export var _roomsExteriorsDict:Dictionary[PackedScene, int] = {}
+
+var _north:RandomRoom
+var _south:RandomRoom
+var _east:RandomRoom
+var _west:RandomRoom
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +21,7 @@ func _ready() -> void:
 	add_child(interiorInstance)
 	add_child(exteriorInstance)
 	
-
+	doorsCount = exteriorInstance.get_meta("doorsCount")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

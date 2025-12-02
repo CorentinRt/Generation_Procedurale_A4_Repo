@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cktu31engex65"]
+
+[node name="LevelGeneration" type="Node2D"]
