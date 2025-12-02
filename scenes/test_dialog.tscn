@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d2bd4nrdruls4" path="res://scenes/rooms/room_4.tscn" id="4_3tym6"]
 [ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="5_ibm8x"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="6_6xyqb"]
-[ext_resource type="PackedScene" uid="uid://bwrb4to2yfdrg" path="res://scenes/dialog.tscn" id="8_ihiv6"]
+[ext_resource type="PackedScene" uid="uid://bwrb4to2yfdrg" path="res://scenes/dialogs/dialog.tscn" id="8_ihiv6"]
 
 [node name="TestDialog" type="Node2D"]
 
