@@ -10,6 +10,7 @@ func _change_score(value:int) -> void:
 
 func _add_score(value:int) -> void:
 	_change_score(_score + value)
+	print("add score " + str(value))
 	
 func _remove_score(value:int) -> void:
 	_change_score(_score - value)

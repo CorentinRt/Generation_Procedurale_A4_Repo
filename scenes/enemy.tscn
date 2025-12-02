@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ahenmxn2ain"]
+[gd_scene load_steps=8 format=3 uid="uid://b0ahenmxn2ain"]
 
 [ext_resource type="Script" uid="uid://b5df80s50tpg6" path="res://scripts/enemy.gd" id="1_nd4pc"]
 [ext_resource type="PackedScene" uid="uid://imvv20oldcd0" path="res://scenes/enemy_attack.tscn" id="2_mf8py"]
 [ext_resource type="Resource" uid="uid://4wrtqv1kgm5c" path="res://resources/enemy_default_movement.tres" id="2_nnsly"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_xwavj"]
 [ext_resource type="Resource" uid="uid://cxk1f1srqi8ot" path="res://resources/enemy_stunned_movement.tres" id="3_vw1dg"]
 [ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="5_lxxh3"]
 
@@ -14,6 +15,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nd4pc")
 attack_distance = 30.0
+_scores_datas = ExtResource("2_xwavj")
 sprites = [NodePath("BodySprite"), NodePath("BodySprite/NoseSprite")]
 default_movement = ExtResource("2_nnsly")
 stunned_movemement = ExtResource("3_vw1dg")

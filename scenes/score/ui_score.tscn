@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3wiadcor1x1w"]
 
-[ext_resource type="Script" uid="uid://n4ivtfj0u0vp" path="res://scripts/scores/ui_score.gd" id="1_frnc1"]
+[ext_resource type="Script" uid="uid://n4ivtfj0u0vp" path="res://scripts/score/ui_score.gd" id="1_frnc1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_frnc1"]
 font_size = 60

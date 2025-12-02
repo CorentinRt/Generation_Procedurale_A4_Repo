@@ -81,7 +81,7 @@ func apply_hit(attack : Attack) -> void:
 	_last_hit_time = Time.get_unix_time_from_system()
 
 	life -= attack.damages if attack != null else 1
-	if life <= 0:
+	if life <= 0 and _state != STATE.DEAD:
 		_set_state(STATE.DEAD)
 	else:
 		if attack != null && attack.knockback_duration > 0.0:

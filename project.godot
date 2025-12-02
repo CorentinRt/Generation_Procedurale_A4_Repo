@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ScoreManager="*res://scripts/scores/ScoreManager.gd"
+ScoreManager="*res://scripts/score/ScoreManager.gd"
 
 [dotnet]
 
@@ -26,8 +26,9 @@ project/assembly_name="Procedural"
 [file_customization]
 
 folder_colors={
+"res://resources/score/": "yellow",
 "res://scenes/score/": "yellow",
-"res://scripts/scores/": "yellow"
+"res://scripts/score/": "yellow"
 }
 
 [input]
