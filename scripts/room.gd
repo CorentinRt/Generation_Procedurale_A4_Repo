@@ -9,6 +9,8 @@ class_name Room extends Node2D
 
 static var all_rooms : Array[Room]
 
+signal on_enter_room_event()
+
 var doors : Array[Door]
 
 @onready var _cam : CameraFollow = $/root/MainScene/Camera2D

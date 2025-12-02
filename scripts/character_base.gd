@@ -124,7 +124,9 @@ func blink() -> void:
 		var isVisible : bool = (int)(invincibility_timer/ invincibility_blink_period) % 2 == 1
 		for sprite in sprites:
 			sprite.visible = isVisible
-		await get_tree().process_frame
+		
+		if get_tree() != null:
+			await get_tree().process_frame
 
 	_end_blink()
 
