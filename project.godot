@@ -27,6 +27,7 @@ project/assembly_name="Procedural"
 
 folder_colors={
 "res://resources/score/": "yellow",
+"res://scenes/minigame/": "orange",
 "res://scenes/score/": "yellow",
 "res://scripts/score/": "yellow"
 }
