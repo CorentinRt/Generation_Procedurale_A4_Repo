@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3wiadcor1x1w"]
+
+[ext_resource type="Script" uid="uid://n4ivtfj0u0vp" path="res://scripts/scores/ui_score.gd" id="1_frnc1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_frnc1"]
+font_size = 60
+
+[node name="UiScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frnc1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 126.0
+offset_right = 340.0
+offset_bottom = 209.0
+rotation = -0.30543262
+text = "1 000 000 !!!"
+label_settings = SubResource("LabelSettings_frnc1")
+horizontal_alignment = 1
+vertical_alignment = 1

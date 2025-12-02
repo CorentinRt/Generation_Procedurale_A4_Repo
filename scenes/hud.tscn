@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b20085rng87fk"]
+[gd_scene load_steps=5 format=3 uid="uid://b20085rng87fk"]
 
 [ext_resource type="Script" uid="uid://bet45gulqsrwk" path="res://scripts/hud.gd" id="1_ftoh2"]
 [ext_resource type="PackedScene" uid="uid://bxb3sh2rsgn4j" path="res://scenes/heart.tscn" id="2_fymyw"]
 [ext_resource type="PackedScene" uid="uid://bwrb4to2yfdrg" path="res://scenes/dialog.tscn" id="3_5ysmq"]
+[ext_resource type="PackedScene" uid="uid://c3wiadcor1x1w" path="res://scenes/score/ui_score.tscn" id="4_6fi6k"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_ftoh2")
@@ -14,3 +15,5 @@ offset_bottom = 50.0
 theme_override_constants/separation = 10
 
 [node name="Dialog" parent="." instance=ExtResource("3_5ysmq")]
+
+[node name="UiScore" parent="." instance=ExtResource("4_6fi6k")]
