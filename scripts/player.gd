@@ -14,6 +14,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	super()
 	_set_state(STATE.IDLE)
 
 
@@ -55,11 +56,17 @@ func _update_inputs() -> void:
 
 		if Input.is_action_pressed("Attack"):
 			_attack()
+			
+		if Input.is_action_just_pressed("Interact"):
+			_interact()
+		
 	else:
 		_direction = Vector2.ZERO
 
 
 func _set_state(state : STATE) -> void:
+	if state == STATE.DEAD and _state == STATE.DEAD:
+		return
 	super(state)
 	match _state:
 		STATE.STUNNED:
@@ -67,6 +74,7 @@ func _set_state(state : STATE) -> void:
 		STATE.DEAD:
 			_end_blink()
 			_set_color(dead_color)
+			GameManager._reload_game_scene(1.5)
 		_:
 			_current_movement = default_movement
 

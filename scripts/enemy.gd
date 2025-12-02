@@ -5,6 +5,8 @@ static var all_enemies : Array[Enemy]
 @export var attack_warm_up : float = 0.5
 @export var attack_distance : float = 0.5
 
+@export var _scores_datas : Scores_Datas
+
 var _state_timer : float = 0.0
 
 
@@ -47,12 +49,15 @@ func _set_state(state : STATE) -> void:
 		STATE.DEAD:
 			_end_blink()
 			queue_free()
+			_give_score()
 		_:
 			_current_movement = default_movement
 
 	if !_can_move():
 		_direction = Vector2.ZERO
 
+func _give_score() -> void:
+	ScoreManager._add_score(_scores_datas._enemy_death)
 
 func _update_state(delta : float) -> void:
 	_state_timer += delta

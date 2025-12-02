@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bib07te5reau7"]
+[gd_scene load_steps=8 format=3 uid="uid://bib07te5reau7"]
 
 [ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="1_4grqu"]
 [ext_resource type="Script" uid="uid://c0tc77spyevjo" path="res://scripts/player.gd" id="1_ups2j"]
 [ext_resource type="Resource" uid="uid://b3nexs1nbtrff" path="res://resources/player_default_movement.tres" id="2_ay78m"]
 [ext_resource type="Resource" uid="uid://132vux808d1f" path="res://resources/player_stunned_movement.tres" id="3_8ktro"]
 [ext_resource type="PackedScene" uid="uid://dtdfaefxq5nnw" path="res://scenes/player_attack.tscn" id="4_u74pk"]
+[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="5_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidcf"]
 
@@ -28,11 +29,13 @@ shape = SubResource("CircleShape2D_eidcf")
 [node name="BodySprite" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 1)
 z_index = 2
-scale = Vector2(3, 3)
-texture = ExtResource("1_4grqu")
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(96, 112, 16, 16)
 
 [node name="NoseSprite" type="Sprite2D" parent="BodySprite"]
+visible = false
 z_index = 2
-position = Vector2(2, 2.98023e-08)
-scale = Vector2(0.5, 0.5)
+position = Vector2(6, 0)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_4grqu")

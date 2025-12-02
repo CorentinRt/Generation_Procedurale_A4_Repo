@@ -25,6 +25,10 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var attack_cooldown : float = 0.3
 @export var orientation : ORIENTATION = ORIENTATION.FREE
 
+@export_group("Interact")
+@export var interact_radius: float = 50.0
+var npcs : Array[Node]
+
 # Life
 var _last_hit_time : float
 
@@ -46,6 +50,10 @@ var _room #: Room
 
 @onready var main_sprite : Sprite2D = $"BodySprite"
 
+func _ready() -> void:
+	# Get npcs
+	npcs = get_tree().get_nodes_in_group("NPC")
+	print("Found npcs : ", npcs.size())
 
 func _process(delta: float) -> void:
 	_update_state(delta)
@@ -81,7 +89,7 @@ func apply_hit(attack : Attack) -> void:
 	_last_hit_time = Time.get_unix_time_from_system()
 
 	life -= attack.damages if attack != null else 1
-	if life <= 0:
+	if life <= 0 and _state != STATE.DEAD:
 		_set_state(STATE.DEAD)
 	else:
 		if attack != null && attack.knockback_duration > 0.0:
@@ -165,6 +173,19 @@ func _spawn_attack_scene() -> void:
 	spawned_attack.global_position = spawn_position
 	spawned_attack.global_rotation = spawn_rotation
 	spawned_attack.attack_owner = self
+
+func _interact() -> void:
+	print("Interact")
+	var player_pos: Vector2 = global_position
+	
+	for npc in npcs:
+		if npc.global_position.distance_to(player_pos) <= interact_radius:
+			if npc.has_method("show_dialog"):
+				npc.show_dialog()
+				print("Dialog shown for ", npc.name)
+				return 
+	
+	print("Didn't find npc around player")
 
 func _can_move() -> bool:
 	return _state == STATE.IDLE

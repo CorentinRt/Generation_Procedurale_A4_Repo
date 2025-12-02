@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dov4nkfsf27hs"]
+[gd_scene load_steps=5 format=3 uid="uid://dov4nkfsf27hs"]
 
 [ext_resource type="Script" uid="uid://x6f0xsm6civi" path="res://scripts/heart_collectible.gd" id="1_r6bx7"]
 [ext_resource type="Texture2D" uid="uid://b05sq5d5ukqij" path="res://sprites/heart.png" id="2_i6ggl"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_jf4dt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxpyt"]
 
 [node name="HeartCollectible" type="Area2D"]
 script = ExtResource("1_r6bx7")
+_scores_datas = ExtResource("2_jf4dt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.6, 0.6)

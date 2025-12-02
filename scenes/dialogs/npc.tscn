@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctjhhqfodba6g"]
+
+[ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
+[ext_resource type="Texture2D" uid="uid://b7ef7glppoqoh" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0090.png" id="2_bw1ec"]
+
+[node name="Npc" type="Node2D" groups=["NPC"]]
+script = ExtResource("1_yk1oq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bw1ec")
