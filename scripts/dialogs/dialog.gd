@@ -7,6 +7,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var name_label: RichTextLabel
 @export var dialog_btn: Button
 @export var type_speed:float = 0.02
+@export var button_style: StyleBoxFlat
 
 # NPC
 var current_npc : Node
@@ -47,15 +48,52 @@ func _get_and_show_current_state_text():
 	
 	_show_current_sentence_text()
 	
-	var selected_name = current_npc.grammar.get_variable("savedName")
-	name_label.text = selected_name
-	
+	# Get name
+	var saved_name = current_npc.grammar.get_variable("savedName")
+	name_label.text = saved_name
+
 func _get_array_sentences(sentences : String):
 	# Cut at next
 	sentences_cut = sentences.split("<next>", false)
 	
 	for i in range(sentences_cut.size()):
 		sentences_cut[i] = sentences_cut[i].strip_edges()
+#endregion
+
+#region Color
+func _get_color_from_string(colorStr : String) -> Color:
+	match(colorStr):
+		"white":
+			return Color(1.0, 1.0, 1.0, 1.0)
+		"gray":
+			return Color(0.501, 0.501, 0.501, 1.0)
+		"black":
+			return Color(0.0, 0.0, 0.0, 1.0)
+		"pink":
+			return Color(0.931, 0.352, 1.0, 1.0)
+		"cyan":
+			return Color(0.0, 0.945, 0.867, 1.0)
+		"red":
+			return Color(1.0, 0.0, 0.0, 1.0)
+	
+	return Color(1,1,1)
+	
+func set_button_color(btn: Button, color: Color) -> void:
+	for state in ["normal", "hover", "pressed", "disabled"]:
+		var style = btn.get_theme_stylebox(state)
+		if style == null:
+			style = StyleBoxFlat.new()
+		# Ici on modifie directement
+		style.bg_color = color
+		btn.add_theme_stylebox_override(state, style)
+
+func set_saved_color():
+	print("Set saved color")
+	
+	var saved_color = current_npc.grammar.get_variable("savedColor")
+	var color : Color = _get_color_from_string(saved_color)
+	set_button_color(dialog_btn, color)
+
 #endregion
 
 #region Show text
@@ -124,6 +162,7 @@ func show_dialog(npc : Node) -> void:
 	current_npc = npc
 	_get_and_show_current_state_text()
 	dialog_btn.show()
+	set_saved_color()
 	
 func hide_dialog() -> void:
 	dialog_btn.hide()

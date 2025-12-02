@@ -9,8 +9,12 @@
 		"boulanger",
 		"commerçant"
 	],
+	"color":[
+		"gray",
+		"black"
+	],
 	"setupSaves": [
-		"[savedName:#name#]"
+		"[savedName:#name#][savedColor:#color#]"
 	],
 	"firstInteraction": [
 		"Salut c'est #savedName# le #occupation#.<next>Super !"

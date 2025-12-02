@@ -14,6 +14,7 @@ script = ExtResource("1_7uu03")
 text_label = NodePath("Dialog/Text")
 name_label = NodePath("Dialog/NamePanel/Name")
 dialog_btn = NodePath("Dialog")
+button_style = ExtResource("3_pr53c")
 
 [node name="Dialog" type="Button" parent="."]
 layout_mode = 0
