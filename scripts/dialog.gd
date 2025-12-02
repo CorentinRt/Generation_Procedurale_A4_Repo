@@ -97,3 +97,8 @@ func _get_current_state():
 		
 func _check_quest_progress():
 	pass
+
+
+func _on_dialog_pressed() -> void:
+	print("Dialog button pressed")
+	_next_sentence()
