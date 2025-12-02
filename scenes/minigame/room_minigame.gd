@@ -2,8 +2,17 @@
 
 var _is_completed : bool = false
 
+var _doors : Array[Door]
+
+func _ready() -> void:
+	call_deferred("_setup_minigame")
+
 func _setup_minigame() -> void:
-	pass
+	for child in get_node("../Props").get_children():
+		if child is Door:
+			_doors.append(child)
+			
+	_unlock_doors()
 	
 	
 func _minigame_completed() -> void:
@@ -14,9 +23,11 @@ func _minigame_completed() -> void:
 	
 	
 func _unlock_doors() -> void:
-	pass
+	for door in _doors:
+		door.force_unlock()
 	
 
 func _lock_doors() -> void:
-	pass
+	for door in _doors:
+		door.force_lock()
 	

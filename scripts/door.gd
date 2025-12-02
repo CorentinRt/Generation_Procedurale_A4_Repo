@@ -60,6 +60,25 @@ func try_unlock() -> void:
 		if next_door != null:
 			next_door.set_state(STATE.OPEN)
 
+func force_unlock() -> void:
+	if state != STATE.CLOSED:
+		return
+	set_state(STATE.OPEN)
+	var next_room = _room.get_adjacent_room(orientation, position)
+	if next_room:
+		var next_door = next_room.get_door(Utils.OppositeOrientation(orientation), position)
+		if next_door != null:
+			next_door.set_state(STATE.OPEN)
+
+func force_lock() -> void:
+	if state != STATE.OPEN:
+		return
+	set_state(STATE.CLOSED)
+	var next_room = _room.get_adjacent_room(orientation, position)
+	if next_room:
+		var next_door = next_room.get_door(Utils.OppositeOrientation(orientation), position)
+		if next_door != null:
+			next_door.set_state(STATE.CLOSED)
 
 func set_state(new_state : STATE) -> void:
 	closedNode.visible = false
