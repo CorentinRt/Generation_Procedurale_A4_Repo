@@ -65,6 +65,8 @@ func _update_inputs() -> void:
 
 
 func _set_state(state : STATE) -> void:
+	if state == STATE.DEAD and _state == STATE.DEAD:
+		return
 	super(state)
 	match _state:
 		STATE.STUNNED:
@@ -72,6 +74,7 @@ func _set_state(state : STATE) -> void:
 		STATE.DEAD:
 			_end_blink()
 			_set_color(dead_color)
+			GameManager._reload_game_scene(1.5)
 		_:
 			_current_movement = default_movement
 
