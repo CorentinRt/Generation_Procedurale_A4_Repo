@@ -31,5 +31,6 @@ func _bobbing_scale() -> void:
 
 func _set_score_text(score: int) -> void:
 	score_label.text = prefix + str(score) + suffix
-	_bobbing_position()
-	_bobbing_scale()
+	if (score > 0):
+		_bobbing_position()
+		_bobbing_scale()
