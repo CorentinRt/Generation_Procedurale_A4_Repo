@@ -1,0 +1,24 @@
+{
+	"name": [
+		"Pascal",
+		"Jean-Eude",
+		"Nicolas"
+	],
+	"occupation": [
+		"président",
+		"boulanger",
+		"commerçant"
+	],
+	"firstInteraction": [
+		"[selected:#name#]Salut c'est #selected# le #occupation#.<next>Super !"
+	],
+	"questInProgress": [
+		"[selected:#name#]Quête en progrès"
+	],
+	"questJustCompleted": [
+		"[selected:#name#]Quête qui vient d'être finie"
+	],
+	"completed": [
+		"[selected:#name#]Finito pepito"
+	]
+}
