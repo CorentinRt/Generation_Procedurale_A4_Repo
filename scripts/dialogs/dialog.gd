@@ -26,8 +26,6 @@ func _ready():
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
-	_get_current_state()
-	
 	# Get origin
 	var origin : String = ""
 	match current_npc.current_dialog_state:
@@ -35,7 +33,7 @@ func _get_and_show_current_state_text():
 			origin = "#firstInteraction#"
 		current_npc.DialogState.QUEST_PROGRESS:
 			origin = "#questInProgress#"
-		current_npc.DialogState.QUESTION_COMPLETED:
+		current_npc.DialogState.QUEST_COMPLETED:
 			origin = "#questJustCompleted#"
 		current_npc.DialogState.COMPLETED:
 			origin = "#completed#"
@@ -53,6 +51,7 @@ func _get_and_show_current_state_text():
 	name_label.text = saved_name
 
 func _get_array_sentences(sentences : String):
+	print("Get array sentences")
 	# Cut at next
 	sentences_cut = sentences.split("<next>", false)
 	
@@ -144,6 +143,8 @@ func _get_current_state():
 		# voir pour check quest progress et potentiellement mettre completed direct
 		
 		# Completed : don't change
+	
+	current_npc.on_state_changed()
 		
 func _check_quest_progress():
 	pass
@@ -166,4 +167,6 @@ func show_dialog(npc : Node) -> void:
 	
 func hide_dialog() -> void:
 	dialog_btn.hide()
+	if current_npc:
+		_get_current_state()
 #endregion

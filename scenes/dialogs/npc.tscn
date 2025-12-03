@@ -66,11 +66,11 @@ marker_animation = NodePath("AnimatedSprite2D")
 texture = ExtResource("2_bw1ec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(2.454227, 2.2490304, 0, 1)
+modulate = Color(0.6820939, 0.6868486, 0.7343954, 1)
 position = Vector2(0, -12.000003)
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_rd3wa")
-frame_progress = 0.77873963
+frame_progress = 0.46362346
 
 [node name="InteractionIcon" type="Sprite2D" parent="."]
 position = Vector2(3.3881318e-21, 2.9999998)

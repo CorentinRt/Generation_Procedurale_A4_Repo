@@ -4,7 +4,7 @@ enum DialogState {
 	NONE,
 	FIRST_INTERACTION,
 	QUEST_PROGRESS,
-	QUESTION_COMPLETED,
+	QUEST_COMPLETED,
 	COMPLETED,
 }
 
@@ -14,13 +14,14 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 var grammar: TraceryScript.Grammar
 
 @export var has_quest: bool = true
-var current_dialog_state = DialogState.NONE
+var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 
 @export var interact_icon : Sprite2D = null
 @export var marker_animation : AnimatedSprite2D = null
 
 func _ready():
 	_setup_dialog()
+	_set_marker_color()
 	marker_animation.play()
 
 func _process(delta: float) -> void:
@@ -35,7 +36,7 @@ func _setup_dialog():
 	# Save
 	grammar.flatten("#setupSaves#")
 	
-	current_dialog_state = DialogState.NONE
+	current_dialog_state = DialogState.FIRST_INTERACTION
 
 func show_dialog():
 	var dialog_manager = get_dialog_manager()
@@ -61,3 +62,19 @@ func _show_player_interact_indication():
 		# hide img
 		interact_icon.hide()
 	pass
+
+func on_state_changed():
+	_set_marker_color()
+	
+func _set_marker_color():
+	match current_dialog_state:
+		DialogState.NONE:
+			marker_animation.modulate = Color(2.454, 2.249, 0.0) # Yellow
+		DialogState.FIRST_INTERACTION:
+			marker_animation.modulate = Color(2.454, 2.249, 0.0) # Yellow
+		DialogState.QUEST_PROGRESS:
+			marker_animation.modulate = Color(0.206, 2.249, 2.454) # Blue
+		DialogState.QUEST_COMPLETED:
+			marker_animation.modulate = Color(0.813, 2.249, 0.477) # Green
+		DialogState.COMPLETED:
+			marker_animation.modulate = Color(0.682, 0.687, 0.734) # Gray
