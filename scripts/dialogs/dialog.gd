@@ -12,6 +12,8 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 # Questions
 @export var questions_btn: Array[DialogButton]
 @export var questions_data : Array[Question]
+@export var no_question_pos : Vector2
+@export var questions_pos : Vector2
 
 # NPC
 var current_npc : Node
@@ -110,7 +112,14 @@ func _show_current_sentence_text():
 	
 	if full_sentence == "<questions>":
 		print("start questions")
-	# to do: bool in questions pour pas skip lol
+		full_sentence = _get_and_setup_random_question()
+		if (!is_in_questions):
+			is_in_questions = true
+			_start_questions_ui()
+	else:
+		if (is_in_questions):
+			is_in_questions = false
+			_end_questions_ui()
 	
 	revealed_characters = 0
 	text_label.text = ""
@@ -166,6 +175,9 @@ func _check_quest_progress():
 
 #region Show / Hide & Pressed
 func _on_dialog_pressed() -> void:
+	if is_in_questions:
+		return
+	
 	if is_typing:
 		# Skip typing
 		is_typing = false
@@ -177,12 +189,21 @@ func show_dialog(npc : Node) -> void:
 	current_npc = npc
 	_get_and_show_current_state_text()
 	dialog_btn.show()
+	hide_questions_btn()
 	set_saved_color()
 	
 func hide_dialog() -> void:
 	dialog_btn.hide()
 	if current_npc:
 		_get_current_state()
+		
+func show_questions_btn():
+	for btn in questions_btn:
+		btn.show()
+		
+func hide_questions_btn():
+	for btn in questions_btn:
+		btn.hide()
 #endregion
 
 #region Questions
@@ -190,10 +211,22 @@ func _start_questions():
 	pass
 	
 func _start_questions_ui():
+	dialog_btn.set_global_position(questions_pos)
+	show_questions_btn()
 	pass
 	
 func _end_questions_ui():
+	dialog_btn.set_global_position(no_question_pos)
+	hide_questions_btn()
 	pass
+	
+func _get_and_setup_random_question() -> String:
+	var random_question = questions_data.pick_random()
+	questions_data.erase(random_question)
+	print("Random question : ", random_question.title)
+	# setup choices txt
+	
+	return random_question.title
 	
 func on_click_on_button():
 	# todo : class btn qui set le texte + bool is good et qui renvoie ici

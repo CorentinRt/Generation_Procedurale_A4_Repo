@@ -20,13 +20,22 @@ dialog_btn = NodePath("Dialog")
 button_style = ExtResource("3_pr53c")
 questions_btn = [NodePath("Dialog/Button"), NodePath("Dialog/Button2"), NodePath("Dialog/Button3"), NodePath("Dialog/Button4")]
 questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("4_2fuk2")])
+no_question_pos = Vector2(100, 530)
+questions_pos = Vector2(100, 380)
 
 [node name="Dialog" type="Button" parent="."]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 500.0
-offset_right = 1050.0
-offset_bottom = 600.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -476.0
+offset_top = -118.0
+offset_right = 474.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/normal = ExtResource("3_pr53c")
 theme_override_styles/pressed = ExtResource("3_pr53c")
 theme_override_styles/hover = ExtResource("3_pr53c")
@@ -77,25 +86,51 @@ autowrap_mode = 0
 vertical_alignment = 1
 
 [node name="Button" parent="Dialog" instance=ExtResource("3_7uu03")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
 offset_right = 450.0
+offset_bottom = 70.0
+grow_vertical = 0
 
 [node name="Button2" parent="Dialog" instance=ExtResource("3_7uu03")]
-layout_mode = 0
-offset_left = 500.0
-offset_right = 950.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = 20.0
+offset_right = 0.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Button3" parent="Dialog" instance=ExtResource("3_7uu03")]
-layout_mode = 0
-offset_top = 190.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 90.0
 offset_right = 450.0
-offset_bottom = 240.0
+offset_bottom = 140.0
+grow_vertical = 0
 
 [node name="Button4" parent="Dialog" instance=ExtResource("3_7uu03")]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 190.0
-offset_right = 950.0
-offset_bottom = 240.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = 90.0
+offset_right = 0.0
+offset_bottom = 140.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [connection signal="pressed" from="Dialog" to="." method="_on_dialog_pressed"]
