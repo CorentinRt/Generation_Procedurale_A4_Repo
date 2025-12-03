@@ -9,16 +9,22 @@ enum DialogState {
 }
 
 @export var json : JSON
-var has_been_init : bool = false;
 
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 var grammar: TraceryScript.Grammar
 
-var current_dialog_state = DialogState.NONE
 @export var has_quest: bool = true
+var current_dialog_state = DialogState.NONE
+
+@export var interact_icon : Sprite2D = null
+@export var marker_animation : AnimatedSprite2D = null
 
 func _ready():
 	_setup_dialog()
+	marker_animation.play()
+
+func _process(delta: float) -> void:
+	_show_player_interact_indication()
 
 func _setup_dialog():
 	var rules = json.data
@@ -35,7 +41,6 @@ func show_dialog():
 	var dialog_manager = get_dialog_manager()
 	if dialog_manager:
 		dialog_manager.show_dialog(self)
-		has_been_init = true
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")
 
@@ -44,3 +49,15 @@ func get_dialog_manager():
 	if managers.size() > 0:
 		return managers[0]
 	return null
+	
+func _show_player_interact_indication():
+	var player_pos = Player.Instance.global_position
+	var interact_radius = Player.Instance.interact_radius
+	
+	if global_position.distance_to(player_pos) <= interact_radius:
+		# show img
+		interact_icon.show()
+	else:
+		# hide img
+		interact_icon.hide()
+	pass
