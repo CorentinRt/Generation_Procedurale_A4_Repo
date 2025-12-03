@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=4 uid="uid://c1yajohabvwhw"]
+
+[ext_resource type="TileSet" uid="uid://ntxcluur3yhc" path="res://resources/tilesets/pirates_tileset.tres" id="1_deh0j"]
+[ext_resource type="Script" uid="uid://dnup6xw8yf8w" path="res://scripts/level_generation/room_exterior.gd" id="2_cnmi8"]
+
+[node name="ExteriorStartingRoom1" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAAAPz/AQALAAEAAAABAPz/AQALAAEAAAACAPz/AQALAAEAAAADAPz/AQALAAEAAAADAP3/AQALAAEAAAADAP7/AQALAAEAAAADAP//AQAGAAQAAAD///z/AQALAAEAAAD+//z/AQALAAEAAAD9//z/AQALAAEAAAD8//z/AQALAAEAAAD8//3/AQALAAEAAAD8//7/AQALAAEAAAD8////AQALAAEAAAD8/wAAAQALAAEAAAD8/wEAAQALAAEAAAD8/wIAAQALAAEAAAD8/wMAAQALAAEAAAD9/wMAAQALAAEAAAD+/wMAAQALAAEAAAD//wMAAQALAAEAAAAAAAMAAQALAAEAAAABAAMAAQALAAEAAAACAAMAAQALAAEAAAADAAMAAQALAAEAAAADAAIAAQALAAEAAAADAAEAAQALAAEAAAADAAAAAQAGAAQAAAA=")
+tile_set = ExtResource("1_deh0j")
+script = ExtResource("2_cnmi8")
+directions = Array[int]([2])

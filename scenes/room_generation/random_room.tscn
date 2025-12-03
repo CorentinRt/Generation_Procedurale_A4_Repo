@@ -9,10 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c8sgnkkrxlkf0" path="res://scenes/room_generation/rooms_exteriors/exterior_test_3.tscn" id="7_u4j3m"]
 
 [node name="RandomRoom" type="Node2D"]
-position = Vector2(100, 100)
 script = ExtResource("1_tyftb")
 _roomsInteriorsDict = Dictionary[PackedScene, int]({
-ExtResource("2_ta1ug"): 10,
+ExtResource("2_ta1ug"): 1,
 ExtResource("3_nqs1k"): 1,
 ExtResource("4_06ke4"): 1
 })

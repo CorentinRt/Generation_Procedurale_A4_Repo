@@ -8,4 +8,4 @@ tile_map_data = PackedByteArray("AAD8//z/AQADAAAAAAD8//3/AQADAAEAAAD8//7/AQADAAE
 tile_set = ExtResource("1_levwr")
 script = ExtResource("2_uhg4l")
 doorsCount = 1
-metadata/doorsCount = 7
+directions = Array[int]([2])

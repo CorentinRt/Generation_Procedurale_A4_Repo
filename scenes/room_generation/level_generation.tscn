@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://cktu31engex65"]
+[gd_scene load_steps=4 format=3 uid="uid://cktu31engex65"]
+
+[ext_resource type="Script" uid="uid://d2gepobba4qmc" path="res://scripts/level_generation/level_generation.gd" id="1_hmi2g"]
+[ext_resource type="PackedScene" uid="uid://qyvmsd7x48rr" path="res://scenes/room_generation/starting_room.tscn" id="2_wubsp"]
+[ext_resource type="PackedScene" uid="uid://c7ilvyxagbmtm" path="res://scenes/room_generation/random_room.tscn" id="3_wubsp"]
 
 [node name="LevelGeneration" type="Node2D"]
+script = ExtResource("1_hmi2g")
+_startingRoom = ExtResource("2_wubsp")
+_randomRoomBase = ExtResource("3_wubsp")
+_roomsMaxCount = 5
+_roomSize = Vector2i(128, 128)
