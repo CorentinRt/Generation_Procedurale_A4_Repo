@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf72cnu7fr5md"]
+
+[ext_resource type="PackedScene" uid="uid://c5n2r31po3qdh" path="res://scenes/minigame/ship_sharks/shark.tscn" id="1_bax7d"]
+[ext_resource type="Script" uid="uid://hs328bhubyj4" path="res://scripts/minigame/ship_sharks/shark_path.gd" id="1_yvx8s"]
+
+[sub_resource type="Curve2D" id="Curve2D_u8vhm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -100)
+}
+point_count = 2
+
+[node name="Shark_Path" type="Path2D" node_paths=PackedStringArray("shark", "followPath")]
+curve = SubResource("Curve2D_u8vhm")
+script = ExtResource("1_yvx8s")
+shark = NodePath("PathFollow2D/Shark")
+followPath = NodePath("PathFollow2D")
+speed = 25.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+loop = false
+
+[node name="Shark" parent="PathFollow2D" instance=ExtResource("1_bax7d")]

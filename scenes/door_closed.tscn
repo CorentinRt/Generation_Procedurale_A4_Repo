@@ -21,12 +21,12 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_470b0")
 
 [node name="Open" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("3_c5f6s")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
 [node name="Closed" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_c5f6s")
 region_enabled = true
 region_rect = Rect2(128, 64, 16, 16)
@@ -48,5 +48,3 @@ region_rect = Rect2(96, 48, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_j3msj")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
