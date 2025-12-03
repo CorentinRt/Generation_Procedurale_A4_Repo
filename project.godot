@@ -30,6 +30,7 @@ folder_colors={
 "res://resources/score/": "yellow",
 "res://scenes/dialogs/": "pink",
 "res://scenes/minigame/": "orange",
+"res://scenes/rooms/LD/": "red",
 "res://scenes/score/": "yellow",
 "res://scripts/dialogs/": "pink",
 "res://scripts/minigame/": "orange",
