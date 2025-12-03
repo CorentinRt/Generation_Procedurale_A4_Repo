@@ -21,6 +21,11 @@ var is_typing: bool = false
 var full_sentence: String = ""
 var revealed_characters: int = 0
 
+# Questions
+var is_in_questions: bool = false
+# current question
+# list resource questions
+
 func _ready():
 	hide_dialog()
 	
@@ -98,6 +103,11 @@ func set_saved_color():
 #region Show text
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
+	
+	if full_sentence == "<questions>":
+		print("start questions")
+	# to do: bool in questions pour pas skip lol
+	
 	revealed_characters = 0
 	text_label.text = ""
 	
@@ -169,4 +179,19 @@ func hide_dialog() -> void:
 	dialog_btn.hide()
 	if current_npc:
 		_get_current_state()
+#endregion
+
+#region Questions
+func _start_questions():
+	pass
+	
+func _start_questions_ui():
+	pass
+	
+func _end_questions_ui():
+	pass
+	
+func on_click_on_button():
+	# todo : class btn qui set le texte + bool is good et qui renvoie ici
+	pass
 #endregion
