@@ -1,12 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctjhhqfodba6g"]
+[gd_scene load_steps=13 format=3 uid="uid://ctjhhqfodba6g"]
 
 [ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
 [ext_resource type="Texture2D" uid="uid://b7ef7glppoqoh" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0090.png" id="2_bw1ec"]
 [ext_resource type="JSON" path="res://resources/dialogs/traceryTestWithQuest.json" id="2_c01eb"]
+[ext_resource type="Texture2D" uid="uid://re0eu1rvq2gy" path="res://sprites/dialogs/ExclamationMark_grayscale.png" id="4_7unyn"]
+[ext_resource type="Texture2D" uid="uid://by6021h45yirf" path="res://sprites/inputs/keyboard_e_outline.png" id="5_w5rv1"]
 
-[node name="Npc" type="Node2D" groups=["NPC"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5rv1"]
+atlas = ExtResource("4_7unyn")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikvak"]
+atlas = ExtResource("4_7unyn")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi87f"]
+atlas = ExtResource("4_7unyn")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81oif"]
+atlas = ExtResource("4_7unyn")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41gh4"]
+atlas = ExtResource("4_7unyn")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bxao"]
+atlas = ExtResource("4_7unyn")
+region = Rect2(640, 320, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd3wa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5rv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikvak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi87f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81oif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41gh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bxao")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Npc" type="Node2D" node_paths=PackedStringArray("interact_icon", "marker_animation") groups=["NPC"]]
 script = ExtResource("1_yk1oq")
 json = ExtResource("2_c01eb")
+interact_icon = NodePath("InteractionIcon")
+marker_animation = NodePath("AnimatedSprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="NPCSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_bw1ec")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.6820939, 0.6868486, 0.7343954, 1)
+position = Vector2(0, -12.000003)
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_rd3wa")
+frame_progress = 0.46362346
+
+[node name="InteractionIcon" type="Sprite2D" parent="."]
+position = Vector2(3.3881318e-21, 2.9999998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_w5rv1")
