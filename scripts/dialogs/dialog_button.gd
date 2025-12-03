@@ -12,3 +12,17 @@ func on_btn_clicked():
 		print("Click on right answer")
 	else:
 		print("Click on wrong answer")
+		
+	# event on right / wrong answer
+	
+	var dialog_manager = get_dialog_manager()
+	if dialog_manager:
+		dialog_manager._on_answer_pressed()
+	else:
+		push_warning("Aucun DialogManager trouvé dans la scène !")
+	
+func get_dialog_manager(): # todo : mettre dans uen class utils
+	var managers = get_tree().get_nodes_in_group("dialog_manager")
+	if managers.size() > 0:
+		return managers[0]
+	return null

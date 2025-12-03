@@ -185,6 +185,9 @@ func _on_dialog_pressed() -> void:
 		# Next
 		_next_sentence()
 		
+func _on_answer_pressed():
+	_next_sentence()
+		
 func show_dialog(npc : Node) -> void:
 	current_npc = npc
 	_get_and_show_current_state_text()
