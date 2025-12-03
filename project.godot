@@ -32,6 +32,7 @@ folder_colors={
 "res://scenes/minigame/": "orange",
 "res://scenes/score/": "yellow",
 "res://scripts/dialogs/": "pink",
+"res://scripts/minigame/": "orange",
 "res://scripts/score/": "yellow"
 }
 
@@ -81,6 +82,7 @@ Interact={
 2d_physics/layer_1="default"
 2d_physics/layer_2="player attack"
 2d_physics/layer_3="enemies attack"
+2d_physics/layer_4="room_zone"
 
 [physics]
 

@@ -12,23 +12,36 @@ var _state : MINIGAME_STATE = MINIGAME_STATE.NONE
 
 var _doors : Array[Door]
 
+@export var _room_zone_detector : Room_Zone_Detector
+
 func _ready() -> void:
 	call_deferred("_setup_minigame")
+
+func _process(delta: float) -> void:
+	if _state != MINIGAME_STATE.RUNNING:
+		return
+		
+	if _check_completed_condition():
+		_set_state(MINIGAME_STATE.COMPLETED)
+	
+func _check_completed_condition() -> bool:
+	return false
 
 func _setup_minigame() -> void:
 	for child in get_node("../Props").get_children():
 		if child is Door:
 			_doors.append(child)
 			
+	_room_zone_detector._on_player_enters.connect(_receive_on_enter_room_zone_callback)
+	_room_zone_detector._on_player_exits.connect(_receive_on_exit_room_zone_callback)
 	_set_state(MINIGAME_STATE.NOT_STARTED)
 	
-	var parent : Node = get_parent()
-	if parent is Room:
-		parent.on_enter_room_event.connect(_receive_on_enter_room_callback)
-	
-func _receive_on_enter_room_callback() -> void:
+func _receive_on_enter_room_zone_callback() -> void:
 	if _state == MINIGAME_STATE.NOT_STARTED:
 		_set_state(MINIGAME_STATE.RUNNING)
+		
+func _receive_on_exit_room_zone_callback() -> void:
+	pass
 	
 func _minigame_not_started() -> void:
 	_unlock_doors()
