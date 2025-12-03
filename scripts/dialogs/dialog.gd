@@ -221,10 +221,31 @@ func _end_questions_ui():
 	pass
 	
 func _get_and_setup_random_question() -> String:
+	# Question title
 	var random_question = questions_data.pick_random()
 	questions_data.erase(random_question)
 	print("Random question : ", random_question.title)
-	# setup choices txt
+	
+	var random_answers: Array[String]
+	
+	# i = 0 : Right 
+	random_answers.append(random_question.right_answer_text)
+	print(random_answers[0])
+	
+	# i = 1, 2, 3 : Wrong answer
+	var temp = random_question.wrong_answers_text.duplicate()
+	for i in 3:
+		var index = randi() % temp.size()
+		random_answers.append(temp[index])
+		temp.remove_at(index)
+	
+	# Question answers
+	questions_btn.shuffle()
+	for i in questions_btn.size():
+		if i == 0: # Right
+			questions_btn[i].setup_btn(random_answers[i], true);
+		else: # Wrong
+			questions_btn[i].setup_btn(random_answers[i], false);
 	
 	return random_question.title
 	
