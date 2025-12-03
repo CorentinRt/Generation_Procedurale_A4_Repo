@@ -9,6 +9,10 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var type_speed:float = 0.02
 @export var button_style: StyleBoxFlat
 
+# Questions
+@export var questions_btn: Array[DialogButton]
+@export var questions_data : Array[Question]
+
 # NPC
 var current_npc : Node
 
