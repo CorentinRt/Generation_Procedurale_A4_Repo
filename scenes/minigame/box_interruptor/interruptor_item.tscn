@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjpu7udfde6xb"]
+
+[ext_resource type="Script" uid="uid://rdigdcqx1qp4" path="res://scripts/minigame/box_interruptor/interruptor_item_minigame.gd" id="1_6nilk"]
+
+[node name="InterruptorItem" type="Node2D"]
+script = ExtResource("1_6nilk")

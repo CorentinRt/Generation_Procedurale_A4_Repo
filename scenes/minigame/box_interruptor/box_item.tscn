@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmmb6xiaidfow"]
+
+[ext_resource type="Script" uid="uid://b0o2tbckaeehv" path="res://scripts/minigame/box_interruptor/box_item_minigame.gd" id="1_7nrvl"]
+[ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="2_so7r6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so7r6"]
+
+[node name="BoxItem" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 6.0
+angular_damp = 6.0
+script = ExtResource("1_7nrvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 11
+z_as_relative = false
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_so7r6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0.5764706, 0.2901961, 0.2, 1)
+z_as_relative = false
+scale = Vector2(5.22, 5.22)
+texture = ExtResource("2_so7r6")

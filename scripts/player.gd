@@ -2,6 +2,8 @@ class_name Player extends CharacterBase
 
 static var Instance : Player
 
+@export var impulse_force : float = 5
+
 @export_group("Input")
 @export_range (0.0, 1.0) var controller_dead_zone : float = 0.3
 
@@ -23,6 +25,16 @@ func _process(delta: float) -> void:
 	_update_inputs()
 	_update_room()
 
+func _physics_process(_delta: float) -> void:
+	super(_delta)
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var rb = collision.get_collider()
+		if rb is RigidBody2D:
+			var dir : Vector2
+			dir = rb.global_position - global_position
+			rb.apply_central_impulse(dir.normalized() * impulse_force)
+			
 
 func enter_room(room : Room) -> void:
 	var previous = _room

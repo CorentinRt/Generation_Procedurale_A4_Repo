@@ -1,1 +1,1 @@
-class_name Box_Item extends Node2D
+class_name Box_Item extends RigidBody2D
