@@ -27,6 +27,7 @@ project/assembly_name="Procedural"
 [file_customization]
 
 folder_colors={
+"res://resources/dialogs/": "pink",
 "res://resources/score/": "yellow",
 "res://scenes/dialogs/": "pink",
 "res://scenes/minigame/": "orange",

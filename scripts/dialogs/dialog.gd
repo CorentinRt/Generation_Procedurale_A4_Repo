@@ -9,6 +9,12 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var type_speed:float = 0.02
 @export var button_style: StyleBoxFlat
 
+# Questions
+@export var questions_btn: Array[DialogButton]
+@export var questions_data : Array[Question]
+@export var no_question_pos : Vector2
+@export var questions_pos : Vector2
+
 # NPC
 var current_npc : Node
 
@@ -20,6 +26,11 @@ var current_sentence_id: int = 0
 var is_typing: bool = false
 var full_sentence: String = ""
 var revealed_characters: int = 0
+
+# Questions
+var is_in_questions: bool = false
+# current question
+# list resource questions
 
 func _ready():
 	hide_dialog()
@@ -98,6 +109,18 @@ func set_saved_color():
 #region Show text
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
+	
+	if full_sentence == "<questions>":
+		print("start questions")
+		full_sentence = _get_and_setup_random_question()
+		if (!is_in_questions):
+			is_in_questions = true
+			_start_questions_ui()
+	else:
+		if (is_in_questions):
+			is_in_questions = false
+			_end_questions_ui()
+	
 	revealed_characters = 0
 	text_label.text = ""
 	
@@ -152,6 +175,9 @@ func _check_quest_progress():
 
 #region Show / Hide & Pressed
 func _on_dialog_pressed() -> void:
+	if is_in_questions:
+		return
+	
 	if is_typing:
 		# Skip typing
 		is_typing = false
@@ -159,14 +185,74 @@ func _on_dialog_pressed() -> void:
 		# Next
 		_next_sentence()
 		
+func _on_answer_pressed():
+	_next_sentence()
+		
 func show_dialog(npc : Node) -> void:
 	current_npc = npc
 	_get_and_show_current_state_text()
 	dialog_btn.show()
+	hide_questions_btn()
 	set_saved_color()
 	
 func hide_dialog() -> void:
 	dialog_btn.hide()
 	if current_npc:
 		_get_current_state()
+		
+func show_questions_btn():
+	for btn in questions_btn:
+		btn.show()
+		
+func hide_questions_btn():
+	for btn in questions_btn:
+		btn.hide()
+#endregion
+
+#region Questions
+func _start_questions():
+	pass
+	
+func _start_questions_ui():
+	dialog_btn.set_global_position(questions_pos)
+	show_questions_btn()
+	pass
+	
+func _end_questions_ui():
+	dialog_btn.set_global_position(no_question_pos)
+	hide_questions_btn()
+	pass
+	
+func _get_and_setup_random_question() -> String:
+	# Question title
+	var random_question = questions_data.pick_random()
+	questions_data.erase(random_question)
+	print("Random question : ", random_question.title)
+	
+	var random_answers: Array[String]
+	
+	# i = 0 : Right 
+	random_answers.append(random_question.right_answer_text)
+	print(random_answers[0])
+	
+	# i = 1, 2, 3 : Wrong answer
+	var temp = random_question.wrong_answers_text.duplicate()
+	for i in 3:
+		var index = randi() % temp.size()
+		random_answers.append(temp[index])
+		temp.remove_at(index)
+	
+	# Question answers
+	questions_btn.shuffle()
+	for i in questions_btn.size():
+		if i == 0: # Right
+			questions_btn[i].setup_btn(random_answers[i], true);
+		else: # Wrong
+			questions_btn[i].setup_btn(random_answers[i], false);
+	
+	return random_question.title
+	
+func on_click_on_button():
+	# todo : class btn qui set le texte + bool is good et qui renvoie ici
+	pass
 #endregion
