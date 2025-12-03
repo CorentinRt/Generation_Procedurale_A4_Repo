@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjpu7udfde6xb"]
+[gd_scene load_steps=4 format=3 uid="uid://cjpu7udfde6xb"]
 
 [ext_resource type="Script" uid="uid://rdigdcqx1qp4" path="res://scripts/minigame/box_interruptor/interruptor_item_minigame.gd" id="1_6nilk"]
+[ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="2_0rbhf"]
 
-[node name="InterruptorItem" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6nilk"]
+
+[node name="InterruptorItem" type="Area2D" node_paths=PackedStringArray("interruptor_sprite")]
+collision_mask = 16
 script = ExtResource("1_6nilk")
+interruptor_sprite = NodePath("CollisionShape2D/Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6nilk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_0rbhf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -14,6 +14,8 @@ var _doors : Array[Door]
 
 @export var _room_zone_detector : Room_Zone_Detector
 
+@export var _scores_datas : Scores_Datas
+
 func _ready() -> void:
 	call_deferred("_setup_minigame")
 
@@ -25,6 +27,8 @@ func _process(delta: float) -> void:
 		_set_state(MINIGAME_STATE.COMPLETED)
 	
 func _check_completed_condition() -> bool:
+	if _state == MINIGAME_STATE.COMPLETED:
+		return true	# in case some mini game has no continuous check condition and force it to completed
 	return false
 
 func _setup_minigame() -> void:
@@ -51,6 +55,7 @@ func _minigame_running() -> void:
 	
 func _minigame_completed() -> void:
 	_unlock_doors()
+	ScoreManager._add_score(_scores_datas._minigame_completed)
 	
 func _set_state(state: MINIGAME_STATE) -> void:
 	if _state == state:

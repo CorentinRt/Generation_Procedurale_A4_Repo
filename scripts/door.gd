@@ -48,6 +48,7 @@ func _ready() -> void:
 
 
 func try_unlock() -> void:
+	return	# keep code in case but key aren't used anymore for now
 	if state != STATE.CLOSED || Player.Instance.key_count <= 0:
 		return
 

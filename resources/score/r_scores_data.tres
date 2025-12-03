@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_58ku6")
 _enemy_death = 200
-_door_open = 500
 _heart_collect = 100
 _gold_collect = 300
 _key_collect = 200
+_minigame_completed = 100000
 metadata/_custom_type_script = "uid://dqvmh6c3ux65d"

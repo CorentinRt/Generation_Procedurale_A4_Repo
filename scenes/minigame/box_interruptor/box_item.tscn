@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so7r6"]
 
 [node name="BoxItem" type="RigidBody2D"]
+collision_layer = 16
 gravity_scale = 0.0
 linear_damp = 6.0
 angular_damp = 6.0
@@ -19,6 +20,7 @@ shape = SubResource("RectangleShape2D_so7r6")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 modulate = Color(0.5764706, 0.2901961, 0.2, 1)
+z_index = 1
 z_as_relative = false
 scale = Vector2(5.22, 5.22)
 texture = ExtResource("2_so7r6")

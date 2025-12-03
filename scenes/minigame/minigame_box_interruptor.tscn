@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ht1ish66k7o6"]
+[gd_scene load_steps=3 format=3 uid="uid://ht1ish66k7o6"]
 
 [ext_resource type="Script" uid="uid://c8y8diwqm8ln2" path="res://scripts/minigame/minigame_box_interruptor.gd" id="1_6cwus"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_jrgtc"]
 
 [node name="MinigameBoxInterruptor" type="Node"]
 script = ExtResource("1_6cwus")
+_scores_datas = ExtResource("2_jrgtc")

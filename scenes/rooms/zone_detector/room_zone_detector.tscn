@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5la4"]
 
 [node name="RoomZoneDetector" type="Node2D"]
+scale = Vector2(6.435, 4.635)
 script = ExtResource("1_5qdpp")
 
 [node name="Area2D" type="Area2D" parent="."]
