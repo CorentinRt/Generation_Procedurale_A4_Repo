@@ -17,7 +17,7 @@ func on_btn_clicked():
 	
 	var dialog_manager = get_dialog_manager()
 	if dialog_manager:
-		dialog_manager._on_answer_pressed()
+		dialog_manager._on_answer_pressed(_is_right_answer)
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")
 	

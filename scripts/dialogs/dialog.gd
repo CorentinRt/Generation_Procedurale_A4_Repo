@@ -10,10 +10,12 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var button_style: StyleBoxFlat
 
 # Questions
+@export var questions_answers_json: JSON
 @export var questions_btn: Array[DialogButton]
 @export var questions_data : Array[Question]
 @export var no_question_pos : Vector2
 @export var questions_pos : Vector2
+var questions_grammar: TraceryScript.Grammar
 
 # NPC
 var current_npc : Node
@@ -34,6 +36,13 @@ var is_in_questions: bool = false
 
 func _ready():
 	hide_dialog()
+	_setup_questions_answers_right_and_wrong()
+	
+func _setup_questions_answers_right_and_wrong():
+	var rules = questions_answers_json.data
+	
+	questions_grammar = TraceryScript.Grammar.new(rules)
+	questions_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
@@ -185,8 +194,18 @@ func _on_dialog_pressed() -> void:
 		# Next
 		_next_sentence()
 		
-func _on_answer_pressed():
-	_next_sentence()
+func _on_answer_pressed(is_right_answer : bool):
+	_end_questions_ui()
+	is_in_questions = false
+	if (is_right_answer):
+		full_sentence = questions_grammar.flatten("#rightAnswer#")
+	else:
+		full_sentence = questions_grammar.flatten("#wrongAnswer#")
+	revealed_characters = 0
+	text_label.text = ""
+	
+	is_typing = true
+	_start_typing()
 		
 func show_dialog(npc : Node) -> void:
 	current_npc = npc
