@@ -11,7 +11,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var button_style: StyleBoxFlat
 
 # Questions
-@export var questions_answers_json: JSON
+@export var questions_answers_json: JSON 
 @export var questions_btn: Array[DialogButton]
 @export var questions_data: Array[Question]
 @export var no_question_pos: Vector2
@@ -298,7 +298,7 @@ func _get_and_setup_random_question() -> String:
 	
 	# i = 0 : Right 
 	var right_answerText: String = ""
-	right_answerText = QuestionManager.get_text_answer_from_type(random_question.right_answer_type)
+	right_answerText = QuestionManager.get_text_answer_from_type(random_question.right_answer_type, random_question.static_answer_for_type_not_saved)
 	random_answers.append(right_answerText)
 	print(random_answers[0])
 	
