@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5n2r31po3qdh"]
+
+[ext_resource type="Script" uid="uid://dbglwxi3ip2sq" path="res://scripts/minigame/ship_sharks/shark.gd" id="1_7ye1a"]
+[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="1_8kkam"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ye1a"]
+
+[node name="Shark" type="AnimatableBody2D"]
+collision_layer = 32
+sync_to_physics = false
+script = ExtResource("1_7ye1a")
+metadata/_custom_type_script = "uid://dbglwxi3ip2sq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_7ye1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_8kkam")
+region_enabled = true
+region_rect = Rect2(16, 112, 16, 16)

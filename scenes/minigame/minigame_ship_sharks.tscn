@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtw8kdvabfniw"]
+
+[ext_resource type="Script" uid="uid://car2041v5klhr" path="res://scripts/minigame/minigame_ship_sharks.gd" id="1_w6e55"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_tcaau"]
+
+[node name="MinigameShipSharks" type="Node"]
+script = ExtResource("1_w6e55")
+_scores_datas = ExtResource("2_tcaau")
+metadata/_custom_type_script = "uid://car2041v5klhr"
