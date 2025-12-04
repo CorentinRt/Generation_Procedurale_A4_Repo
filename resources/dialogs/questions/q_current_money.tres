@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_ksnqp")
 title = "Combien d’argent possédez vous ?"
-right_answer_type = 4
+right_answer_type = 5
 wrong_answers_text = Array[String](["500000", "350000", "200000", "750000", "0"])
 metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"
