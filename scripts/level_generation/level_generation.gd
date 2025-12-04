@@ -18,20 +18,22 @@ var _currentRoom:Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 		var startingRoomInstance:Node2D = _startingRoom.instantiate()
+		startingRoomInstance.initRoom()
 		add_child(startingRoomInstance)
 		_startingRoomDirections = startingRoomInstance.directions.duplicate()
 		
 		_currentRoom = startingRoomInstance
-		var currentRoomPossibleDirs:Array[LevelGenerationUtils.Directions] = startingRoomInstance.directions
+		#var currentRoomPossibleDirs:Array[LevelGenerationUtils.Directions] = startingRoomInstance.directions
 				
 		#Créer toujours au moins une salle pour chaque direction de la salle de départ
 		for i in range(_startingRoomDirections.size()):
-			_create_room(_startingRoomDirections[i], false)
+			_create_room(_startingRoomDirections[i], false, 0)
 			_roomsMaxCount -= 1
 		
 		for i in _roomsMaxCount:
-			var randDir:LevelGenerationUtils.Directions = _random_dir(currentRoomPossibleDirs)
-			_create_room(randDir, true)
+			_currentRoom = _get_random_room_from_availables()
+			var randDir:LevelGenerationUtils.Directions = _random_dir(_currentRoom.directions)
+			_create_room(randDir, true, 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -41,9 +43,31 @@ func _random_dir(dirList:Array) -> LevelGenerationUtils.Directions:
 	var dir:LevelGenerationUtils.Directions = dirList[randi() % dirList.size()] as LevelGenerationUtils.Directions
 	return dir
 
-func _create_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom:bool) -> Node2D:
+func _create_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom:bool, minimumDoorsCount:int) -> Node2D:
+	#Direction que la room créée doit avoir
+	#Elle correspond a la direction inverse de celle de création pour connecter les portes
+	var restrictionDir:LevelGenerationUtils.Directions
+	
+	match creationDir:
+		LevelGenerationUtils.Directions.NORTH:
+			restrictionDir = LevelGenerationUtils.Directions.SOUTH
+		LevelGenerationUtils.Directions.SOUTH:
+			restrictionDir = LevelGenerationUtils.Directions.NORTH
+		LevelGenerationUtils.Directions.EAST:
+			restrictionDir = LevelGenerationUtils.Directions.WEST			
+		LevelGenerationUtils.Directions.WEST:
+			restrictionDir = LevelGenerationUtils.Directions.EAST			
+	
 	#On créer la room et on l'ajoute a la hiérarchie
 	var createdRoom:Node2D = _randomRoomBase.instantiate()
+	createdRoom.initRoom(restrictionDir)
+	
+	#On reroll la salle jusqu'a en avoir une qui corresponde a ce qu'on veut (probablement a rework si le temps)
+	while(createdRoom.directions.size() < minimumDoorsCount):
+		print(createdRoom.directions.size())
+		createdRoom = _randomRoomBase.instantiate()
+		createdRoom.initRoom(restrictionDir)
+	
 	add_child(createdRoom)		
 	
 	#On positionne la room créée en fonction de la direction que l'on a et on supprime les directions utilisées par chaque room
@@ -90,3 +114,7 @@ func _create_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom
 	if(updateCurrentRoom):
 		_currentRoom = createdRoom
 	return createdRoom
+
+func _get_random_room_from_availables() -> Node2D:
+	var room:Node2D = _roomsWithAvailableDoors[randi() % _roomsWithAvailableDoors.size()]
+	return room

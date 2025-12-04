@@ -8,5 +8,5 @@
 script = ExtResource("1_hmi2g")
 _startingRoom = ExtResource("2_wubsp")
 _randomRoomBase = ExtResource("3_wubsp")
-_roomsMaxCount = 5
+_roomsMaxCount = 10
 _roomSize = Vector2i(128, 128)
