@@ -22,6 +22,8 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
 
+var is_in_dialog: bool = false
+
 # NPC
 var current_npc : Node
 
@@ -58,6 +60,9 @@ func _setup_questions_and_start_grammar():
 	start_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
 func show_start_dialog():
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
 	start_grammar.flatten("#setupSaves#", start_json)
 	
 	var sentences = start_grammar.flatten("#firstInteraction#", start_json)
@@ -240,6 +245,12 @@ func _on_answer_pressed(is_right_answer : bool):
 	_start_typing()
 		
 func show_dialog(npc : Node) -> void:
+	if is_in_dialog:
+		return
+	
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
 	current_npc = npc
 	_get_and_show_current_state_text()
 	dialog_btn.show()
@@ -250,6 +261,9 @@ func hide_dialog() -> void:
 	dialog_btn.hide()
 	if current_npc:
 		_get_current_state()
+		
+	is_in_dialog = false
+	Player.Instance.set_is_in_dialog(is_in_dialog)
 		
 func show_questions_btn():
 	for btn in questions_btn:
