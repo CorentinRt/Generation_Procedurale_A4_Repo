@@ -29,11 +29,12 @@ func get_text_answer_from_type(answerType : RightAnswerType, static_answer : Str
 			answer = get_variable_text_from_json(start_json, "savedPlayerJob")
 		RightAnswerType.LOST_MONEY:
 			answer = str(ScoreManager._total_lost_score)
+			ScoreManager._show(false) # Hide score
 		RightAnswerType.CURRENT_MONEY:
 			answer = str(ScoreManager._score)
+			ScoreManager._show(false) # Hide score
 		RightAnswerType.HOST:
 			answer = static_answer
-			print("set hide name true")
 			UtilsManager.get_dialog_manager()._hide_name() # Name = ???
 	
 	return answer
