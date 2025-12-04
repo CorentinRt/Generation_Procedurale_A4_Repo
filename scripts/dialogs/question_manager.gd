@@ -1,6 +1,7 @@
 extends Node
 
 enum RightAnswerType {
+	NOT_SAVED,
 	PLAYER_NAME,
 	PLAYER_AGE
 }
@@ -10,10 +11,12 @@ enum RightAnswerType {
 
 var saved_dict : Dictionary = {}
 
-func get_text_answer_from_type(answerType : RightAnswerType) -> String:
+func get_text_answer_from_type(answerType : RightAnswerType, static_answer : String) -> String:
 	var answer: String = ""
 	
 	match answerType:
+		RightAnswerType.NOT_SAVED:
+			answer = static_answer
 		RightAnswerType.PLAYER_NAME:
 			answer = get_variable_text_from_json(start_json, "savedPlayerName")
 		RightAnswerType.PLAYER_AGE:

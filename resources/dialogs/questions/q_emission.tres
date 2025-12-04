@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://dpd42kv6p4dao"]
+
+[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_cpl8f"]
+
+[resource]
+script = ExtResource("1_cpl8f")
+title = "Comment s'appelle l'émission ?"
+static_answer_for_type_not_saved = "Piratatak"
+wrong_answers_text = Array[String](["Les Anges de la Téléréalité", "Les ch'tis VS le monde", "Koh-Lanta", "Le meilleur pâtissier", "La France a un incroyable talent", "The Voice"])
+metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"
