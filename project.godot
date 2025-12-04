@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ScoreManager="*res://scripts/score/score_manager.gd"
 GameManager="*res://scripts/managers/game_manager.gd"
+QuestionManager="*res://scripts/dialogs/question_manager.gd"
 
 [dotnet]
 
@@ -41,6 +42,8 @@ folder_colors={
 [global_group]
 
 dialog_manager=""
+item_minigame=""
+doors=""
 
 [input]
 

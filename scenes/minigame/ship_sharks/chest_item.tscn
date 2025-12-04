@@ -8,7 +8,7 @@ size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omcyj"]
 
-[node name="ChestItem" type="StaticBody2D" node_paths=PackedStringArray("closed_sprite", "open_sprite")]
+[node name="ChestItem" type="StaticBody2D" node_paths=PackedStringArray("closed_sprite", "open_sprite") groups=["item_minigame"]]
 script = ExtResource("1_emw3s")
 closed_sprite = NodePath("closed")
 open_sprite = NodePath("open")

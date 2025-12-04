@@ -4,16 +4,17 @@ var _box : Box_Item
 
 var _interruptor : Interruptor_Item
 
-
 func _setup_minigame() -> void:
 	super()
-	for child in get_parent().get_children():
-		if _box == null && child is Box_Item:
-			_box = child
+	
+	for i in propsTileMapLayer.get_children():
+		if !i.is_in_group("item_minigame"):
 			continue
-		if _interruptor == null && child is Interruptor_Item:
-			_interruptor = child
-			continue
+			
+		if _box == null && i is Box_Item:
+			_box = i
+		elif _interruptor == null && i is Interruptor_Item:
+			_interruptor = i
 			
 	_interruptor.on_interruptor_activated.connect(receive_interruptor_activated_callback)
 	

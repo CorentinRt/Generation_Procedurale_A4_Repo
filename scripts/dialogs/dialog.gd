@@ -3,6 +3,7 @@ extends Control
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 
 # UI
+@export var start_json: JSON
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
 @export var dialog_btn: Button
@@ -12,10 +13,16 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 # Questions
 @export var questions_answers_json: JSON
 @export var questions_btn: Array[DialogButton]
-@export var questions_data : Array[Question]
-@export var no_question_pos : Vector2
-@export var questions_pos : Vector2
+@export var questions_data: Array[Question]
+@export var no_question_pos: Vector2
+@export var questions_pos: Vector2
+@export var add_score_right_answer: int = 100000
+@export var remove_score_wrong_answer: int = 100000
+
+var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
+
+var is_in_dialog: bool = false
 
 # NPC
 var current_npc : Node
@@ -36,13 +43,43 @@ var is_in_questions: bool = false
 
 func _ready():
 	hide_dialog()
-	_setup_questions_answers_right_and_wrong()
+	_setup_questions_and_start_grammar()
+	show_start_dialog()
 	
-func _setup_questions_answers_right_and_wrong():
-	var rules = questions_answers_json.data
+func _setup_questions_and_start_grammar():
+	# Questions
+	var questions_rules = questions_answers_json.data
 	
-	questions_grammar = TraceryScript.Grammar.new(rules)
+	questions_grammar = TraceryScript.Grammar.new(questions_rules)
 	questions_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Start
+	var start_rules = start_json.data
+	
+	start_grammar = TraceryScript.Grammar.new(start_rules)
+	start_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+func show_start_dialog():
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
+	start_grammar.flatten("#setupSaves#", start_json)
+	
+	var sentences = start_grammar.flatten("#firstInteraction#", start_json)
+	_get_array_sentences(sentences)
+	
+	_show_current_sentence_text()
+	
+	# Get name
+	var saved_name = start_grammar.get_variable("savedName")
+	name_label.text = saved_name
+	pass
+	
+	dialog_btn.show()
+	hide_questions_btn()
+	var saved_color = start_grammar.get_variable("savedColor")
+	var color : Color = _get_color_from_string(saved_color)
+	set_button_color(dialog_btn, color)
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
@@ -61,7 +98,7 @@ func _get_and_show_current_state_text():
 	print("Current state origin : ", origin)
 	
 	# Get sentences
-	var sentences = current_npc.grammar.flatten(origin)
+	var sentences = current_npc.grammar.flatten(origin, current_npc.json)
 	_get_array_sentences(sentences)
 	
 	_show_current_sentence_text()
@@ -119,8 +156,8 @@ func set_saved_color():
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
 	
-	if full_sentence == "<questions>":
-		print("start questions")
+	if full_sentence == "<question>":
+		print("start question")
 		full_sentence = _get_and_setup_random_question()
 		if (!is_in_questions):
 			is_in_questions = true
@@ -198,9 +235,9 @@ func _on_answer_pressed(is_right_answer : bool):
 	_end_questions_ui()
 	is_in_questions = false
 	if (is_right_answer):
-		full_sentence = questions_grammar.flatten("#rightAnswer#")
+		full_sentence = questions_grammar.flatten("#rightAnswer#", questions_answers_json)
 	else:
-		full_sentence = questions_grammar.flatten("#wrongAnswer#")
+		full_sentence = questions_grammar.flatten("#wrongAnswer#", questions_answers_json)
 	revealed_characters = 0
 	text_label.text = ""
 	
@@ -208,6 +245,12 @@ func _on_answer_pressed(is_right_answer : bool):
 	_start_typing()
 		
 func show_dialog(npc : Node) -> void:
+	if is_in_dialog:
+		return
+	
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
 	current_npc = npc
 	_get_and_show_current_state_text()
 	dialog_btn.show()
@@ -218,6 +261,9 @@ func hide_dialog() -> void:
 	dialog_btn.hide()
 	if current_npc:
 		_get_current_state()
+		
+	is_in_dialog = false
+	Player.Instance.set_is_in_dialog(is_in_dialog)
 		
 func show_questions_btn():
 	for btn in questions_btn:
@@ -251,7 +297,9 @@ func _get_and_setup_random_question() -> String:
 	var random_answers: Array[String]
 	
 	# i = 0 : Right 
-	random_answers.append(random_question.right_answer_text)
+	var right_answerText: String = ""
+	right_answerText = QuestionManager.get_text_answer_from_type(random_question.right_answer_type)
+	random_answers.append(right_answerText)
 	print(random_answers[0])
 	
 	# i = 1, 2, 3 : Wrong answer
@@ -270,8 +318,4 @@ func _get_and_setup_random_question() -> String:
 			questions_btn[i].setup_btn(random_answers[i], false);
 	
 	return random_question.title
-	
-func on_click_on_button():
-	# todo : class btn qui set le texte + bool is good et qui renvoie ici
-	pass
 #endregion

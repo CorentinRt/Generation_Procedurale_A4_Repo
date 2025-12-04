@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://dhfsea6pvn6a2"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://dhfsea6pvn6a2"]
 
 [ext_resource type="PackedScene" uid="uid://dov4nkfsf27hs" path="res://scenes/heart_collectible.tscn" id="1_0yx2v"]
 [ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="1_wqfka"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://caqkxr3u45dsp" path="res://scenes/door_closed.tscn" id="4_551a3"]
 [ext_resource type="PackedScene" uid="uid://b0ahenmxn2ain" path="res://scenes/enemy.tscn" id="5_1dum8"]
 [ext_resource type="PackedScene" uid="uid://cinljgej7owpj" path="res://scenes/spikes.tscn" id="6_ahxv7"]
+[ext_resource type="PackedScene" uid="uid://catoqx6ha1nl1" path="res://scenes/minigame/ship_sharks/chest_item.tscn" id="7_1dum8"]
+[ext_resource type="PackedScene" uid="uid://dmmb6xiaidfow" path="res://scenes/minigame/box_interruptor/box_item.tscn" id="8_fspi8"]
+[ext_resource type="PackedScene" uid="uid://cjpu7udfde6xb" path="res://scenes/minigame/box_interruptor/interruptor_item.tscn" id="9_iaxjm"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7xntj"]
 resource_name = "Collectibles"
@@ -182,8 +185,15 @@ scenes/1/scene = ExtResource("4_551a3")
 scenes/2/scene = ExtResource("5_1dum8")
 scenes/3/scene = ExtResource("6_ahxv7")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_551a3"]
+resource_name = "Minigame_Item"
+scenes/1/scene = ExtResource("7_1dum8")
+scenes/6/scene = ExtResource("9_iaxjm")
+scenes/7/scene = ExtResource("8_fspi8")
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_nf0ji")
 sources/0 = SubResource("TileSetScenesCollectionSource_7xntj")
 sources/2 = SubResource("TileSetScenesCollectionSource_ok072")
+sources/3 = SubResource("TileSetScenesCollectionSource_551a3")
