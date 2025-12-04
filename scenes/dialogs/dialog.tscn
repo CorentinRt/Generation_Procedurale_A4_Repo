@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=9 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
-[ext_resource type="JSON" path="res://resources/dialogs/questions/questions_answers.json" id="3_2fuk2"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
+[ext_resource type="JSON" path="res://resources/dialogs/questions/q_answers.json" id="3_2fuk2"]
 [ext_resource type="PackedScene" uid="uid://dj8bd8otlm0ca" path="res://scenes/dialogs/dialog_button.tscn" id="3_7uu03"]
 [ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="3_g2gxm"]
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_pr53c"]
-[ext_resource type="Resource" uid="uid://bqlawfeyys3l1" path="res://resources/dialogs/questions/testQuestion.tres" id="4_2fuk2"]
+[ext_resource type="Resource" uid="uid://bqlawfeyys3l1" path="res://resources/dialogs/questions/q_name.tres" id="4_2fuk2"]
+[ext_resource type="Resource" uid="uid://bkm5nvkrjqod0" path="res://resources/dialogs/questions/q_playerAge.tres" id="6_2fuk2"]
 
 [node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label", "dialog_btn", "questions_btn") groups=["dialog_manager"]]
 layout_mode = 3
@@ -15,13 +17,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7uu03")
+start_json = ExtResource("2_136k0")
 text_label = NodePath("Dialog/Text")
 name_label = NodePath("Dialog/NamePanel/Name")
 dialog_btn = NodePath("Dialog")
 button_style = ExtResource("3_pr53c")
 questions_answers_json = ExtResource("3_2fuk2")
 questions_btn = [NodePath("Dialog/Button"), NodePath("Dialog/Button2"), NodePath("Dialog/Button3"), NodePath("Dialog/Button4")]
-questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("4_2fuk2")])
+questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("4_2fuk2"), ExtResource("6_2fuk2")])
 no_question_pos = Vector2(100, 530)
 questions_pos = Vector2(100, 380)
 

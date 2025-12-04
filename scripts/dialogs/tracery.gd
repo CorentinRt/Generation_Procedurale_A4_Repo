@@ -182,8 +182,8 @@ class Grammar extends RefCounted:
 			_modifier_lookup[ k ] = modifiers[ k ]
 		
 		
-	func flatten( rule : String ) -> String:
-		rule = _resolve_save_symbols(rule)
+	func flatten( rule : String, json : JSON) -> String:
+		rule = _resolve_save_symbols(rule, json)
 		
 		var expansion_matches = _expansion_regex.search_all(rule)
 			
@@ -192,7 +192,7 @@ class Grammar extends RefCounted:
 			var match_value = match_result.strings[0]
 			
 			# Resolve save symbols
-			_resolve_save_symbols( match_value )
+			_resolve_save_symbols( match_value, json)
 			
 			# Remove the # surrounding the symbol name
 			var match_name = match_value.replace( "#", "" )
@@ -219,13 +219,13 @@ class Grammar extends RefCounted:
 			if typeof( selected_rule ) == TYPE_ARRAY:
 				var rand_index  = rng.randi() % selected_rule.size()
 				var chosen = selected_rule[ rand_index ] as String
-				var resolved = flatten( chosen )
+				var resolved = flatten( chosen, json)
 				
 				resolved = _apply_modifiers( resolved, modifiers )
 				
 				rule = rule.replace( match_value, resolved )
 			else:
-				var resolved = flatten( selected_rule )
+				var resolved = flatten( selected_rule, json)
 				
 				resolved = _apply_modifiers( resolved, modifiers )
 				
@@ -242,7 +242,7 @@ class Grammar extends RefCounted:
 			return _save_data[name]
 		return ""
 		
-	func _resolve_save_symbols(rule: String) -> String:
+	func _resolve_save_symbols(rule: String, json : JSON) -> String:
 		var result = rule
 		var matches = _save_symbol_regex.search_all(rule)
 		
@@ -258,12 +258,13 @@ class Grammar extends RefCounted:
 
 				# 🔹 Only set if not already in _save_data
 				if not _save_data.has(name):
-					var data = flatten(symbol)  # Résolution correcte
+					var data = flatten(symbol, json)  # Résolution correcte
 					_save_data[name] = data
 					
 			# enlever le bloc de sauvegarde du texte final
 			result = result.replace(block, "")
 			
+		QuestionManager.save_variables_for_json(json, _save_data)
 		return result
 		
 	func _get_modifiers( symbol : String ) -> Array:
