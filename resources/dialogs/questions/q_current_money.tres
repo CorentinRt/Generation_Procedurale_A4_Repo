@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://odqciikpmnpx"]
+
+[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_ksnqp"]
+
+[resource]
+script = ExtResource("1_ksnqp")
+title = "Combien d’argent possédez vous ?"
+right_answer_type = 4
+wrong_answers_text = Array[String](["500000", "350000", "200000", "750000", "0"])
+metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"

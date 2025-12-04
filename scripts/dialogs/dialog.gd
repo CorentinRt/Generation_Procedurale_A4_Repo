@@ -70,16 +70,21 @@ func show_start_dialog():
 	
 	_show_current_sentence_text()
 	
-	# Get name
-	var saved_name = start_grammar.get_variable("savedName")
-	name_label.text = saved_name
-	pass
+	_set_name()
 	
 	dialog_btn.show()
 	hide_questions_btn()
 	var saved_color = start_grammar.get_variable("savedColor")
 	var color : Color = _get_color_from_string(saved_color)
 	set_button_color(dialog_btn, color)
+	
+func _set_name():
+	var saved_name = start_grammar.get_variable("savedName")
+	name_label.text = saved_name
+		
+
+func _hide_name():
+	name_label.text = "???"
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
@@ -103,9 +108,7 @@ func _get_and_show_current_state_text():
 	
 	_show_current_sentence_text()
 	
-	# Get name
-	var saved_name = current_npc.grammar.get_variable("savedName")
-	name_label.text = saved_name
+	_set_name()
 
 func _get_array_sentences(sentences : String):
 	print("Get array sentences")
@@ -241,6 +244,7 @@ func _on_answer_pressed(is_right_answer : bool):
 	revealed_characters = 0
 	text_label.text = ""
 	
+	_set_name() # Reset if name = "???"
 	is_typing = true
 	_start_typing()
 		
@@ -304,8 +308,15 @@ func _get_and_setup_random_question() -> String:
 	
 	# i = 1, 2, 3 : Wrong answer
 	var temp = random_question.wrong_answers_text.duplicate()
-	for i in 3:
+	var needed = 3
+	while random_answers.size() < needed + 1: # +1 car random_answers[0] est la bonne
+		if temp.is_empty():
+			break # pas assez de réponses différentes
 		var index = randi() % temp.size()
+		if temp[index] == random_answers[0]:
+			print("same answer wrong & right, retrying")
+			temp.remove_at(index) # on l'enlève pour éviter de boucler infiniment
+			continue
 		random_answers.append(temp[index])
 		temp.remove_at(index)
 	

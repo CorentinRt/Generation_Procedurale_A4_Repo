@@ -1,8 +1,6 @@
 {
 	"name": [
-		"Pascal",
-		"Jean-Eude",
-		"Nicolas"
+		"Mike Harrison"
 	],
 	"occupation": [
 		"président",
@@ -19,7 +17,7 @@
 	"firstInteraction": [
     "Salut c'est #savedName#.<next>
 	<question><next>
-	Merci d'avoir répondu à mes questions"
+	Merci d'avoir répondu à ma question"
 	],
 	"questInProgress": [
 		"Va voir la bas si j'y suis stp"

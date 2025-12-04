@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://3a0mddbpd1yp"]
+
+[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_jurec"]
+
+[resource]
+script = ExtResource("1_jurec")
+title = "Combien d’argent avez vous perdu au total  jusqu’ici ?  "
+right_answer_type = 3
+wrong_answers_text = Array[String](["500000", "350000", "200000", "750000", "0"])
+metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"
