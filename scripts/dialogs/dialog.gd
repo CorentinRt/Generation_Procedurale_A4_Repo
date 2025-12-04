@@ -61,6 +61,8 @@ func _setup_questions_and_start_grammar():
 	
 func show_start_dialog():
 	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
 	start_grammar.flatten("#setupSaves#", start_json)
 	
 	var sentences = start_grammar.flatten("#firstInteraction#", start_json)
@@ -247,6 +249,7 @@ func show_dialog(npc : Node) -> void:
 		return
 	
 	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
 	
 	current_npc = npc
 	_get_and_show_current_state_text()
@@ -260,6 +263,7 @@ func hide_dialog() -> void:
 		_get_current_state()
 		
 	is_in_dialog = false
+	Player.Instance.set_is_in_dialog(is_in_dialog)
 		
 func show_questions_btn():
 	for btn in questions_btn:
