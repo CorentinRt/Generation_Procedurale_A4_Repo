@@ -36,7 +36,8 @@ folder_colors={
 "res://scenes/score/": "yellow",
 "res://scripts/dialogs/": "pink",
 "res://scripts/minigame/": "orange",
-"res://scripts/score/": "yellow"
+"res://scripts/score/": "yellow",
+"res://scripts/tween_effects/": "green"
 }
 
 [global_group]
