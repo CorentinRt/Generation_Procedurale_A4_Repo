@@ -14,6 +14,7 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var invincibility_blink_period : float = 0.2
 @export var dead_color : Color = Color.GRAY
 @export var sprites : Array[Sprite2D] = []
+@export var invincibility_alpha : float = 0.7
 
 @export_group("Movement")
 @export var default_movement : MovementParameters
@@ -96,8 +97,8 @@ func apply_hit(attack : Attack) -> void:
 	else:
 		if attack != null && attack.knockback_duration > 0.0:
 			apply_knockback(attack.knockback_duration, (attack.position - position).normalized() * attack.knockback_speed)
-		#_end_blink()
-		#blink()
+		_end_blink()
+		blink()
 
 
 func apply_knockback(duration : float, velocity : Vector2) -> void:
@@ -124,8 +125,13 @@ func blink() -> void:
 
 		invincibility_timer += get_process_delta_time()
 		var isVisible : bool = (int)(invincibility_timer/ invincibility_blink_period) % 2 == 1
+		
+		print(isVisible)
 		for sprite in sprites:
-			sprite.visible = isVisible
+			if isVisible:
+				sprite.modulate.a = 1
+			else:
+				sprite.modulate.a = invincibility_alpha
 		
 		if get_tree() != null:
 			await get_tree().process_frame

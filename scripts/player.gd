@@ -8,7 +8,8 @@ static var Instance : Player
 @export_range (0.0, 1.0) var controller_dead_zone : float = 0.3
 
 @export_group("Animation")
-@export var animation_player : AnimationPlayer
+@export var running_animation_player : AnimationPlayer
+@export var hit_animation_player : AnimationPlayer
 
 # Collectible
 var key_count : int
@@ -31,11 +32,11 @@ func _process(delta: float) -> void:
 
 func _update_anim() -> void:
 	if velocity.length() <= 0.3:
-		if animation_player.current_animation != "idle":
-			animation_player.play("idle", 0.3)
+		if running_animation_player.current_animation != "idle":
+			running_animation_player.play("idle", 0.3)
 	else:
-		if animation_player.current_animation != "run":
-			animation_player.play("run")
+		if running_animation_player.current_animation != "run":
+			running_animation_player.play("run")
 		
 
 func _physics_process(_delta: float) -> void:
@@ -50,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 			
 func apply_hit(attack : Attack) -> void:
 	super(attack)
-	animation_player.play("hit")
+	hit_animation_player.play("hit")
 
 func enter_room(room : Room) -> void:
 	var previous = _room
