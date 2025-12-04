@@ -245,6 +245,7 @@ func _on_answer_pressed(is_right_answer : bool):
 	text_label.text = ""
 	
 	_set_name() # Reset if name = "???"
+	ScoreManager._show(true) # Reset if score hidden
 	is_typing = true
 	_start_typing()
 		
