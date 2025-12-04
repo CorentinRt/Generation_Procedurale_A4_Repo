@@ -8,7 +8,7 @@ func setup_btn(answerText : String, is_right_answer : bool):
 	_is_right_answer = is_right_answer
 	
 func on_btn_clicked():
-	var dialog_manager = get_dialog_manager()
+	var dialog_manager = UtilsManager.get_dialog_manager()
 	if dialog_manager:
 		if _is_right_answer:
 			print("Click on right answer")
@@ -20,9 +20,3 @@ func on_btn_clicked():
 		dialog_manager._on_answer_pressed(_is_right_answer)
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")
-	
-func get_dialog_manager(): # todo : mettre dans uen class utils
-	var managers = get_tree().get_nodes_in_group("dialog_manager")
-	if managers.size() > 0:
-		return managers[0]
-	return null

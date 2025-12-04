@@ -39,17 +39,13 @@ func _setup_dialog():
 	current_dialog_state = DialogState.FIRST_INTERACTION
 
 func show_dialog():
-	var dialog_manager = get_dialog_manager()
+	var dialog_manager = UtilsManager.get_dialog_manager()
 	if dialog_manager:
 		dialog_manager.show_dialog(self)
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")
 
-func get_dialog_manager():
-	var managers = get_tree().get_nodes_in_group("dialog_manager")
-	if managers.size() > 0:
-		return managers[0]
-	return null
+
 	
 func _show_player_interact_indication():
 	var player_pos = Player.Instance.global_position

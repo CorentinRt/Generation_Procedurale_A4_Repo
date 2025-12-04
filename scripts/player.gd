@@ -71,9 +71,12 @@ func _update_inputs() -> void:
 			
 		if Input.is_action_just_pressed("Interact"):
 			_interact()
-		
+			
 	else:
 		_direction = Vector2.ZERO
+		
+		if Input.is_action_just_pressed("NextDialog"):
+			_nextDialog()
 
 
 func _set_state(state : STATE) -> void:
