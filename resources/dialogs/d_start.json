@@ -5,9 +5,9 @@
 		"Nicolas"
 	],
 	"playerAge": [
-		"12",
-		"58",
-		"25"
+		"12 ans",
+		"58 ans",
+		"25 ans"
 	],
 	"occupation": [
 		"président",
@@ -22,9 +22,6 @@
 		"[savedName:Présentateur][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#]"
 	],
 	"firstInteraction": [
-    	"Tu es #savedPlayerName# et tu as #savedPlayerAge# ans."
+    	"Tu es #savedPlayerName# et tu as #savedPlayerAge#."
 	],
-	"completed": [
-		"Finito pepito"
-	]
 }

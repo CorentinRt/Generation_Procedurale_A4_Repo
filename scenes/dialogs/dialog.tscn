@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=9 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
 [ext_resource type="JSON" path="res://resources/dialogs/questions/q_answers.json" id="3_2fuk2"]
 [ext_resource type="PackedScene" uid="uid://dj8bd8otlm0ca" path="res://scenes/dialogs/dialog_button.tscn" id="3_7uu03"]
 [ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="3_g2gxm"]
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7uu03")
+start_json = ExtResource("2_136k0")
 text_label = NodePath("Dialog/Text")
 name_label = NodePath("Dialog/NamePanel/Name")
 dialog_btn = NodePath("Dialog")

@@ -3,6 +3,7 @@ extends Control
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 
 # UI
+@export var start_json: JSON
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
 @export var dialog_btn: Button
@@ -18,9 +19,8 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var add_score_right_answer: int = 100000
 @export var remove_score_wrong_answer: int = 100000
 
-
+var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
-
 
 # NPC
 var current_npc : Node
@@ -41,13 +41,40 @@ var is_in_questions: bool = false
 
 func _ready():
 	hide_dialog()
-	_setup_questions_answers_right_and_wrong()
+	_setup_questions_and_start_grammar()
+	show_start_dialog()
 	
-func _setup_questions_answers_right_and_wrong():
-	var rules = questions_answers_json.data
+func _setup_questions_and_start_grammar():
+	# Questions
+	var questions_rules = questions_answers_json.data
 	
-	questions_grammar = TraceryScript.Grammar.new(rules)
+	questions_grammar = TraceryScript.Grammar.new(questions_rules)
 	questions_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Start
+	var start_rules = start_json.data
+	
+	start_grammar = TraceryScript.Grammar.new(start_rules)
+	start_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+func show_start_dialog():
+	start_grammar.flatten("#setupSaves#", start_json)
+	
+	var sentences = start_grammar.flatten("#firstInteraction#", start_json)
+	_get_array_sentences(sentences)
+	
+	_show_current_sentence_text()
+	
+	# Get name
+	var saved_name = start_grammar.get_variable("savedName")
+	name_label.text = saved_name
+	pass
+	
+	dialog_btn.show()
+	hide_questions_btn()
+	var saved_color = start_grammar.get_variable("savedColor")
+	var color : Color = _get_color_from_string(saved_color)
+	set_button_color(dialog_btn, color)
 	
 #region Get Sentences
 func _get_and_show_current_state_text():

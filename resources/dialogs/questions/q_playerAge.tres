@@ -6,5 +6,5 @@
 script = ExtResource("1_v0mk0")
 title = "Quel âge as-tu ?"
 right_answer_type = 1
-wrong_answers_text = Array[String](["A", "B", "C", "D", "E"])
+wrong_answers_text = Array[String](["2 ans", "99 ans", "37 ans", "18 ans", "86 ans"])
 metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"

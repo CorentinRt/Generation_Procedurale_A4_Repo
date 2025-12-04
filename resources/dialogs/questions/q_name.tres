@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_8k01f")
 title = "Comment t'appelles-tu ? "
-wrong_answers_text = Array[String](["non", "pas du tout", "absolument pas", "toujours pas", "AAAAAAAAAAAAAAH"])
+wrong_answers_text = Array[String](["Corentin", "Hugo", "Manon", "Tom", "Ruben", "Louison", "Clément"])
 metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"
