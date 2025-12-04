@@ -4,7 +4,8 @@ enum RightAnswerType {
 	NOT_SAVED,
 	PLAYER_NAME,
 	PLAYER_AGE,
-	LOST_MONEY
+	LOST_MONEY,
+	CURRENT_MONEY
 }
 
 # todo: changer avec les nouveaux npc
@@ -24,6 +25,8 @@ func get_text_answer_from_type(answerType : RightAnswerType, static_answer : Str
 			answer = get_variable_text_from_json(start_json, "savedPlayerAge")
 		RightAnswerType.LOST_MONEY:
 			answer = str(ScoreManager._total_lost_score)
+		RightAnswerType.CURRENT_MONEY:
+			answer = str(ScoreManager._score)
 	
 	return answer
 	

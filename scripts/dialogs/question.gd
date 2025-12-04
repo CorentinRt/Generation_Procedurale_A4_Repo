@@ -4,7 +4,8 @@ enum RightAnswerType {
 	NOT_SAVED,
 	PLAYER_NAME,
 	PLAYER_AGE,
-	LOST_MONEY
+	LOST_MONEY,
+	CURRENT_MONEY
 }
 
 @export var title: String = ""
