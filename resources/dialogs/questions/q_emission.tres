@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_cpl8f")
 title = "Comment s’appelle l’émission ?"
-static_answer_for_type_not_saved = "Piratatak"
+static_answer_for_type_not_saved = "Pirate Attack"
 wrong_answers_text = Array[String](["Les Anges de la Téléréalité", "Les ch'tis VS le monde", "Koh-Lanta", "Le meilleur pâtissier", "La France a un incroyable talent", "The Voice"])
 metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"
