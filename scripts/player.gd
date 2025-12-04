@@ -7,6 +7,9 @@ static var Instance : Player
 @export_group("Input")
 @export_range (0.0, 1.0) var controller_dead_zone : float = 0.3
 
+@export_group("Animation")
+@export var animation_player : AnimationPlayer
+
 # Collectible
 var key_count : int
 
@@ -35,6 +38,9 @@ func _physics_process(_delta: float) -> void:
 			dir = rb.global_position - global_position
 			rb.apply_central_impulse(dir.normalized() * impulse_force)
 			
+func apply_hit(attack : Attack) -> void:
+	super(attack)
+	animation_player.play("hit")
 
 func enter_room(room : Room) -> void:
 	var previous = _room

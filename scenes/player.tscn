@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bib07te5reau7"]
+[gd_scene load_steps=10 format=3 uid="uid://bib07te5reau7"]
 
 [ext_resource type="Script" uid="uid://c0tc77spyevjo" path="res://scripts/player.gd" id="1_ups2j"]
 [ext_resource type="Resource" uid="uid://b3nexs1nbtrff" path="res://resources/player_default_movement.tres" id="2_ay78m"]
@@ -8,18 +8,55 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidcf"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "attack_spawn_point")]
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.2),
+"transitions": PackedFloat32Array(1, 1, 0.5),
+"update": 0,
+"values": [0.0, 1.0471975511965976, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_tuyoq"),
+&"hit": SubResource("Animation_qlg0r")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprites")]
 collision_mask = 29
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ups2j")
 impulse_force = 1.0
+animation_player = NodePath("AnimationPlayer")
 dead_color = Color(0.413595, 0.399579, 0.385991, 1)
-sprites = [NodePath("BodySprite"), NodePath("")]
+sprites = [NodePath("BodySprite")]
 default_movement = ExtResource("2_ay78m")
 stunned_movemement = ExtResource("3_8ktro")
 attack_scene = ExtResource("4_u74pk")
-attack_spawn_point = NodePath("")
 orientation = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -33,3 +70,8 @@ z_index = 2
 texture = ExtResource("5_tuyoq")
 region_enabled = true
 region_rect = Rect2(96, 112, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}
