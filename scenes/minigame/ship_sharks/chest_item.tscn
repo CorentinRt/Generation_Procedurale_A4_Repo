@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://catoqx6ha1nl1"]
+[gd_scene load_steps=6 format=3 uid="uid://catoqx6ha1nl1"]
 
 [ext_resource type="Script" uid="uid://c5usic04npeir" path="res://scripts/minigame/ship_sharks/chest_item.gd" id="1_emw3s"]
+[ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="2_i8pgd"]
 [ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="2_omcyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ssin"]
@@ -8,10 +9,15 @@ size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omcyj"]
 
-[node name="ChestItem" type="StaticBody2D" node_paths=PackedStringArray("closed_sprite", "open_sprite") groups=["item_minigame"]]
+[node name="ChestItem" type="StaticBody2D" node_paths=PackedStringArray("closed_sprite", "open_sprite", "interaction_sprite") groups=["item_minigame"]]
 script = ExtResource("1_emw3s")
 closed_sprite = NodePath("closed")
 open_sprite = NodePath("open")
+interaction_sprite = NodePath("InteractionIcon")
+
+[node name="InteractionIcon" parent="." instance=ExtResource("2_i8pgd")]
+z_index = 11
+position = Vector2(4.7683716e-07, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 11

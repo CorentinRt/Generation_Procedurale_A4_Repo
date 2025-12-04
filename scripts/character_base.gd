@@ -126,7 +126,6 @@ func blink() -> void:
 		invincibility_timer += get_process_delta_time()
 		var isVisible : bool = (int)(invincibility_timer/ invincibility_blink_period) % 2 == 1
 		
-		print(isVisible)
 		for sprite in sprites:
 			if isVisible:
 				sprite.modulate.a = 1
