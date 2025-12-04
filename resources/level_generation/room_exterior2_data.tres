@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomExteriorData" load_steps=3 format=3 uid="uid://oy54hkbu3vqo"]
+
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_exterior_data.gd" id="1_0srbk"]
+[ext_resource type="PackedScene" uid="uid://cdinihw0qacbl" path="res://scenes/room_generation/rooms_exteriors/exterior_test_2.tscn" id="1_xv82a"]
+
+[resource]
+script = ExtResource("1_0srbk")
+roomExteriorScene = ExtResource("1_xv82a")
+directions = Array[int]([0, 3])

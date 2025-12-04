@@ -9,19 +9,19 @@
 		"58 ans",
 		"25 ans"
 	],
-	"occupation": [
-		"président",
-		"boulanger",
-		"commerçant"
+	"playerJob": [
+		"fermier",
+		"chomeur",
+		"cycliste"
 	],
 	"color":[
 		"gray",
 		"black"
 	],
 	"setupSaves": [
-		"[savedName:Présentateur][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#]"
+		"[savedName:Mike Harrison][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#][savedPlayerJob:#playerJob#]"
 	],
 	"firstInteraction": [
-    	"Tu es #savedPlayerName# et tu as #savedPlayerAge#."
+    	"Tu es #savedPlayerName#, tu es #savedPlayerJob# et tu as #savedPlayerAge#."
 	],
 }
