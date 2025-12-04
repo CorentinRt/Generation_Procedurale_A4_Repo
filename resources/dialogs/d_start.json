@@ -21,7 +21,33 @@
 	"setupSaves": [
 		"[savedName:Mike Harrison][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#][savedPlayerJob:#playerJob#]"
 	],
+
 	"firstInteraction": [
-    	"Tu es #savedPlayerName#, tu es #savedPlayerJob# et tu as #savedPlayerAge#."
+    	"#intro#"
 	],
+	
+	"intro":[
+		"#phraseAccroche# #presentation#<next>#heure# #politesse# #savedPlayerName#, #savedPlayerAge#, #savedPlayerJob# qui nous vient #origine#.<next>#presentation_host# #emission#."
+	],
+	"phraseAccroche": [
+		"Bonjour !", "Bonsoir !", "Bienvenu !", "Soyez les bienvenus !"
+	],
+	"presentation": [
+		"Je suis ravi de vous retrouver pour cette nouvelle émission."
+	],
+	"heure":[
+		"Aujourd'hui", "Ce soir", "Pour cette nouvelle soirée", "Pour cette nouvelle émission" 
+	],
+	"politesse":[
+		"nous avons le plaisir d'accueillir", "c'est avec joie que nous recevons", "c'est avec un immense plaisir que nous recevons", "c'est pour nous une joie de recevoir", "c'est pour moi un immense plaisir de recevoir"
+	],
+	"origine":[
+		"de France", "d'Espagne", "de Colombie", "du Canada"
+	],
+	"presentation_host":[
+		"Je suis Mike Harrison", "Ici Mike Harrison"
+	],
+	"emission":[
+		"et vous regardez Pirate Attack", "et vous profitez de Pirate Attack", "et je vous souhaite bon visionnage de cette édition de Pirate Attack", "en direct de Pirate Attack"
+	]
 }
