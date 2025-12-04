@@ -119,8 +119,8 @@ func set_saved_color():
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
 	
-	if full_sentence == "<questions>":
-		print("start questions")
+	if full_sentence == "<question>":
+		print("start question")
 		full_sentence = _get_and_setup_random_question()
 		if (!is_in_questions):
 			is_in_questions = true

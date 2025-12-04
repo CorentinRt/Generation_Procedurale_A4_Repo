@@ -13,18 +13,12 @@
 		"gray",
 		"black"
 	],
-	"slayAnswer":[
-		"Slayyyyyy"
-	],
-	"feurAnswer":[
-		"T'es ban"
-	],
 	"setupSaves": [
 		"[savedName:#name#][savedColor:#color#]"
 	],
 	"firstInteraction": [
     "Salut c'est #savedName#.<next>
-	<questions><next>
+	<question><next>
 	Merci d'avoir répondu à mes questions"
 	],
 	"questInProgress": [
