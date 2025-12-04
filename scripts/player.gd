@@ -27,6 +27,16 @@ func _process(delta: float) -> void:
 	super(delta)
 	_update_inputs()
 	_update_room()
+	_update_anim()
+
+func _update_anim() -> void:
+	if velocity.length() <= 0.3:
+		if animation_player.current_animation != "idle":
+			animation_player.play("idle", 0.3)
+	else:
+		if animation_player.current_animation != "run":
+			animation_player.play("run")
+		
 
 func _physics_process(_delta: float) -> void:
 	super(_delta)
