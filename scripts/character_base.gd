@@ -202,3 +202,6 @@ func _can_move() -> bool:
 
 func set_is_in_dialog(in_dialog : bool):
 	is_in_dialog = in_dialog
+	
+func _nextDialog():
+	UtilsManager.get_dialog_manager()._on_dialog_pressed()
