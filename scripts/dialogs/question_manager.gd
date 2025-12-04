@@ -4,6 +4,7 @@ enum RightAnswerType {
 	NOT_SAVED,
 	PLAYER_NAME,
 	PLAYER_AGE,
+	PLAYER_JOB,
 	LOST_MONEY,
 	CURRENT_MONEY,
 	HOST
@@ -24,6 +25,8 @@ func get_text_answer_from_type(answerType : RightAnswerType, static_answer : Str
 			answer = get_variable_text_from_json(start_json, "savedPlayerName")
 		RightAnswerType.PLAYER_AGE:
 			answer = get_variable_text_from_json(start_json, "savedPlayerAge")
+		RightAnswerType.PLAYER_JOB:
+			answer = get_variable_text_from_json(start_json, "savedPlayerJob")
 		RightAnswerType.LOST_MONEY:
 			answer = str(ScoreManager._total_lost_score)
 		RightAnswerType.CURRENT_MONEY:

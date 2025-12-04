@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6q61c")
 title = "Comment est ce que je m’appelle ? "
-right_answer_type = 5
+right_answer_type = 6
 static_answer_for_type_not_saved = "Mike Harrison"
-wrong_answers_text = Array[String](["Mike Agougagak", "Mike Slay", "Mike Feur", "Mike Petit-Pois", "Mike Jasmin", "Mike Megan"])
+wrong_answers_text = Array[String](["Mike Agougagak", "Mike Tyson", "Magic Mike", "Mike Eul-Jackson", "Mickey Mouse"])
 metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"

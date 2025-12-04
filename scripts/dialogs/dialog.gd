@@ -324,9 +324,15 @@ func _get_and_setup_random_question() -> String:
 	questions_btn.shuffle()
 	for i in questions_btn.size():
 		if i == 0: # Right
-			questions_btn[i].setup_btn(random_answers[i], true);
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), true);
 		else: # Wrong
-			questions_btn[i].setup_btn(random_answers[i], false);
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), false);
 	
 	return random_question.title
+	
+func first_letter_upper(s: String) -> String:
+	if s == "":
+		return s
+	var first = s.substr(0, 1).to_upper()
+	return first + s.substr(1, s.length() - 1)
 #endregion
