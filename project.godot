@@ -40,6 +40,8 @@ folder_colors={
 [global_group]
 
 dialog_manager=""
+item_minigame=""
+doors=""
 
 [input]
 
