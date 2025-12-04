@@ -12,10 +12,15 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 # Questions
 @export var questions_answers_json: JSON
 @export var questions_btn: Array[DialogButton]
-@export var questions_data : Array[Question]
-@export var no_question_pos : Vector2
-@export var questions_pos : Vector2
+@export var questions_data: Array[Question]
+@export var no_question_pos: Vector2
+@export var questions_pos: Vector2
+@export var add_score_right_answer: int = 100000
+@export var remove_score_wrong_answer: int = 100000
+
+
 var questions_grammar: TraceryScript.Grammar
+
 
 # NPC
 var current_npc : Node
@@ -270,8 +275,4 @@ func _get_and_setup_random_question() -> String:
 			questions_btn[i].setup_btn(random_answers[i], false);
 	
 	return random_question.title
-	
-func on_click_on_button():
-	# todo : class btn qui set le texte + bool is good et qui renvoie ici
-	pass
 #endregion
