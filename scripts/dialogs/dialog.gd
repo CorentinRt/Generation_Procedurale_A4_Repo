@@ -304,8 +304,15 @@ func _get_and_setup_random_question() -> String:
 	
 	# i = 1, 2, 3 : Wrong answer
 	var temp = random_question.wrong_answers_text.duplicate()
-	for i in 3:
+	var needed = 3
+	while random_answers.size() < needed + 1: # +1 car random_answers[0] est la bonne
+		if temp.is_empty():
+			break # pas assez de réponses différentes
 		var index = randi() % temp.size()
+		if temp[index] == random_answers[0]:
+			print("same answer wrong & right, retrying")
+			temp.remove_at(index) # on l'enlève pour éviter de boucler infiniment
+			continue
 		random_answers.append(temp[index])
 		temp.remove_at(index)
 	

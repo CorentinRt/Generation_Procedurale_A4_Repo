@@ -3,7 +3,8 @@ class_name Question extends Resource
 enum RightAnswerType {
 	NOT_SAVED,
 	PLAYER_NAME,
-	PLAYER_AGE
+	PLAYER_AGE,
+	LOST_MONEY
 }
 
 @export var title: String = ""
