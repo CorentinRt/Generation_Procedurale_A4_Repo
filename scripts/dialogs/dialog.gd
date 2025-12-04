@@ -66,7 +66,7 @@ func _get_and_show_current_state_text():
 	print("Current state origin : ", origin)
 	
 	# Get sentences
-	var sentences = current_npc.grammar.flatten(origin)
+	var sentences = current_npc.grammar.flatten(origin, current_npc.json)
 	_get_array_sentences(sentences)
 	
 	_show_current_sentence_text()
@@ -203,9 +203,9 @@ func _on_answer_pressed(is_right_answer : bool):
 	_end_questions_ui()
 	is_in_questions = false
 	if (is_right_answer):
-		full_sentence = questions_grammar.flatten("#rightAnswer#")
+		full_sentence = questions_grammar.flatten("#rightAnswer#", questions_answers_json)
 	else:
-		full_sentence = questions_grammar.flatten("#wrongAnswer#")
+		full_sentence = questions_grammar.flatten("#wrongAnswer#", questions_answers_json)
 	revealed_characters = 0
 	text_label.text = ""
 	
@@ -256,7 +256,9 @@ func _get_and_setup_random_question() -> String:
 	var random_answers: Array[String]
 	
 	# i = 0 : Right 
-	random_answers.append(random_question.right_answer_text)
+	var right_answerText: String = ""
+	right_answerText = QuestionManager.get_text_answer_from_type(random_question.right_answer_type)
+	random_answers.append(right_answerText)
 	print(random_answers[0])
 	
 	# i = 1, 2, 3 : Wrong answer

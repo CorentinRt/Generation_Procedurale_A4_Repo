@@ -34,7 +34,7 @@ func _setup_dialog():
 	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
 	# Save
-	grammar.flatten("#setupSaves#")
+	grammar.flatten("#setupSaves#", json)
 	
 	current_dialog_state = DialogState.FIRST_INTERACTION
 

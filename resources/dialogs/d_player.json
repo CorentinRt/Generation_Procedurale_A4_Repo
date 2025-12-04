@@ -1,0 +1,30 @@
+{
+	"playerName": [
+		"Pascal",
+		"Jean-Eude",
+		"Nicolas"
+	],
+	"playerAge": [
+		"12",
+		"58",
+		"25"
+	],
+	"occupation": [
+		"président",
+		"boulanger",
+		"commerçant"
+	],
+	"color":[
+		"gray",
+		"black"
+	],
+	"setupSaves": [
+		"[savedName:Présentateur][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#]"
+	],
+	"firstInteraction": [
+    	"Tu es #savedPlayerName# et tu as #savedPlayerAge# ans."
+	],
+	"completed": [
+		"Finito pepito"
+	]
+}

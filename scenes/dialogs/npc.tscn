@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
 [ext_resource type="Texture2D" uid="uid://b7ef7glppoqoh" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0090.png" id="2_bw1ec"]
-[ext_resource type="JSON" path="res://resources/dialogs/traceryTestWithQuest.json" id="2_c01eb"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_npc.json" id="2_c01eb"]
 [ext_resource type="Texture2D" uid="uid://re0eu1rvq2gy" path="res://sprites/dialogs/ExclamationMark_grayscale.png" id="4_7unyn"]
 [ext_resource type="Texture2D" uid="uid://by6021h45yirf" path="res://sprites/inputs/keyboard_e_outline.png" id="5_w5rv1"]
 
