@@ -5,7 +5,8 @@ enum RightAnswerType {
 	PLAYER_NAME,
 	PLAYER_AGE,
 	LOST_MONEY,
-	CURRENT_MONEY
+	CURRENT_MONEY,
+	HOST
 }
 
 @export var title: String = ""

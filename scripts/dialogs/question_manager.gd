@@ -5,7 +5,8 @@ enum RightAnswerType {
 	PLAYER_NAME,
 	PLAYER_AGE,
 	LOST_MONEY,
-	CURRENT_MONEY
+	CURRENT_MONEY,
+	HOST
 }
 
 # todo: changer avec les nouveaux npc
@@ -27,6 +28,10 @@ func get_text_answer_from_type(answerType : RightAnswerType, static_answer : Str
 			answer = str(ScoreManager._total_lost_score)
 		RightAnswerType.CURRENT_MONEY:
 			answer = str(ScoreManager._score)
+		RightAnswerType.HOST:
+			answer = static_answer
+			print("set hide name true")
+			UtilsManager.get_dialog_manager()._hide_name() # Name = ???
 	
 	return answer
 	

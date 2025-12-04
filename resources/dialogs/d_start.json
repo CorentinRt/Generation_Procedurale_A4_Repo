@@ -19,7 +19,7 @@
 		"black"
 	],
 	"setupSaves": [
-		"[savedName:Présentateur][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#]"
+		"[savedName:Mike Harrison][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#]"
 	],
 	"firstInteraction": [
     	"Tu es #savedPlayerName# et tu as #savedPlayerAge#."
