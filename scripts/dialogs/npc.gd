@@ -19,10 +19,14 @@ var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 @export var interact_icon : Sprite2D = null
 @export var marker_animation : AnimatedSprite2D = null
 
+@export var sprite_animation_player : AnimationPlayer
+@export var notif_animation_player : AnimationPlayer
+
 func _ready():
 	_setup_dialog()
 	_set_marker_color()
 	marker_animation.play()
+	notif_animation_player.play("idle")
 
 func _process(delta: float) -> void:
 	_show_player_interact_indication()
@@ -44,6 +48,8 @@ func show_dialog():
 		dialog_manager.show_dialog(self)
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")
+	
+	sprite_animation_player.play("interact")
 
 
 	

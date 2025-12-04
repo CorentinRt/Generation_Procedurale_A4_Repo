@@ -1,10 +1,47 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctjhhqfodba6g"]
+[gd_scene load_steps=19 format=3 uid="uid://ctjhhqfodba6g"]
 
 [ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
 [ext_resource type="Texture2D" uid="uid://b7ef7glppoqoh" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0090.png" id="2_bw1ec"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_npc.json" id="2_c01eb"]
 [ext_resource type="Texture2D" uid="uid://re0eu1rvq2gy" path="res://sprites/dialogs/ExclamationMark_grayscale.png" id="4_7unyn"]
 [ext_resource type="Texture2D" uid="uid://by6021h45yirf" path="res://sprites/inputs/keyboard_e_outline.png" id="5_w5rv1"]
+
+[sub_resource type="Animation" id="Animation_fi87f"]
+resource_name = "interact"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_81oif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81oif"]
+_data = {
+&"RESET": SubResource("Animation_81oif"),
+&"interact": SubResource("Animation_fi87f")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5rv1"]
 atlas = ExtResource("4_7unyn")
@@ -56,14 +93,59 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Npc" type="Node2D" node_paths=PackedStringArray("interact_icon", "marker_animation") groups=["NPC"]]
+[sub_resource type="Animation" id="Animation_w5rv1"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -8), Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_ikvak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12.000003)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikvak"]
+_data = {
+&"RESET": SubResource("Animation_ikvak"),
+&"idle": SubResource("Animation_w5rv1")
+}
+
+[node name="Npc" type="Node2D" node_paths=PackedStringArray("interact_icon", "marker_animation", "sprite_animation_player", "notif_animation_player") groups=["NPC"]]
 script = ExtResource("1_yk1oq")
 json = ExtResource("2_c01eb")
 interact_icon = NodePath("InteractionIcon")
 marker_animation = NodePath("AnimatedSprite2D")
+sprite_animation_player = NodePath("NPCSprite/AnimationPlayer_Sprite")
+notif_animation_player = NodePath("AnimatedSprite2D/AnimationPlayer_Notif")
 
 [node name="NPCSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_bw1ec")
+
+[node name="AnimationPlayer_Sprite" type="AnimationPlayer" parent="NPCSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_81oif")
+}
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.6820939, 0.6868486, 0.7343954, 1)
@@ -71,6 +153,11 @@ position = Vector2(0, -12.000003)
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_rd3wa")
 frame_progress = 0.46362346
+
+[node name="AnimationPlayer_Notif" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ikvak")
+}
 
 [node name="InteractionIcon" type="Sprite2D" parent="."]
 position = Vector2(3.3881318e-21, 2.9999998)
