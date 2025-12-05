@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=11 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
 [ext_resource type="JSON" path="res://resources/dialogs/questions/q_answers.json" id="3_2fuk2"]
 [ext_resource type="PackedScene" uid="uid://dj8bd8otlm0ca" path="res://scenes/dialogs/dialog_button.tscn" id="3_7uu03"]
 [ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="3_g2gxm"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_taunt.json" id="3_kyx3p"]
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_pr53c"]
 [ext_resource type="Resource" uid="uid://odqciikpmnpx" path="res://resources/dialogs/questions/q_current_money.tres" id="6_ufbtj"]
 [ext_resource type="Resource" uid="uid://3a0mddbpd1yp" path="res://resources/dialogs/questions/q_lost_money.tres" id="7_kyx3p"]
@@ -19,11 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7uu03")
 start_json = ExtResource("2_136k0")
+taunt_json = ExtResource("3_kyx3p")
+questions_answers_json = ExtResource("3_2fuk2")
 text_label = NodePath("Dialog/Text")
 name_label = NodePath("Dialog/NamePanel/Name")
 dialog_btn = NodePath("Dialog")
 button_style = ExtResource("3_pr53c")
-questions_answers_json = ExtResource("3_2fuk2")
 questions_btn = [NodePath("Dialog/Button"), NodePath("Dialog/Button2"), NodePath("Dialog/Button3"), NodePath("Dialog/Button4")]
 questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("6_ufbtj"), ExtResource("7_kyx3p")])
 no_question_pos = Vector2(100, 530)
