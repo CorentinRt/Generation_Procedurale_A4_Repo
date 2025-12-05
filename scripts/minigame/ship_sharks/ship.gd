@@ -1,1 +1,1 @@
-class_name Ship extends Node2D
+class_name Ship extends Area2D

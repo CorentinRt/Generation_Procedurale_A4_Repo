@@ -7,6 +7,10 @@ static var Instance : Player
 @export_group("Input")
 @export_range (0.0, 1.0) var controller_dead_zone : float = 0.3
 
+@export_group("Animation")
+@export var running_animation_player : AnimationPlayer
+@export var hit_animation_player : AnimationPlayer
+
 # Collectible
 var key_count : int
 
@@ -24,6 +28,16 @@ func _process(delta: float) -> void:
 	super(delta)
 	_update_inputs()
 	_update_room()
+	_update_anim()
+
+func _update_anim() -> void:
+	if velocity.length() <= 0.3:
+		if running_animation_player.current_animation != "idle":
+			running_animation_player.play("idle", 0.3)
+	else:
+		if running_animation_player.current_animation != "run":
+			running_animation_player.play("run")
+		
 
 func _physics_process(_delta: float) -> void:
 	super(_delta)
@@ -35,6 +49,9 @@ func _physics_process(_delta: float) -> void:
 			dir = rb.global_position - global_position
 			rb.apply_central_impulse(dir.normalized() * impulse_force)
 			
+func apply_hit(attack : Attack) -> void:
+	super(attack)
+	hit_animation_player.play("hit")
 
 func enter_room(room : Room) -> void:
 	var previous = _room
@@ -71,9 +88,12 @@ func _update_inputs() -> void:
 			
 		if Input.is_action_just_pressed("Interact"):
 			_interact()
-		
+			
 	else:
 		_direction = Vector2.ZERO
+		
+		if Input.is_action_just_pressed("NextDialog"):
+			_nextDialog()
 
 
 func _set_state(state : STATE) -> void:

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://bkm5nvkrjqod0"]
 
-[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_v0mk0"]
+[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_wbo11"]
 
 [resource]
-script = ExtResource("1_v0mk0")
-title = "Quel âge as-tu ?"
-right_answer_type = 1
+script = ExtResource("1_wbo11")
+title = "Quelle âge avez vous ?"
+right_answer_type = 2
 wrong_answers_text = Array[String](["2 ans", "99 ans", "37 ans", "18 ans", "86 ans"])
 metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"

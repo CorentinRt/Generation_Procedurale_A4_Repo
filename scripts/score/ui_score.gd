@@ -11,6 +11,7 @@ var _tween_scale_bobbing : Tween
 
 func _ready() -> void:
 	ScoreManager._on_change_score.connect(_set_score_text)
+	ScoreManager._on_request_show.connect(_show)
 	_set_score_text(0)
 	
 func _bobbing_position() -> void:
@@ -34,3 +35,9 @@ func _set_score_text(score: int) -> void:
 	if (score > 0):
 		_bobbing_position()
 		_bobbing_scale()
+
+func _show(is_shown : bool):
+	if is_shown:
+		score_label.show()
+	else:
+		score_label.hide()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://ba8rjgkvdbudn"]
+
+[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_xm2rq"]
+
+[resource]
+script = ExtResource("1_xm2rq")
+title = "Quel est votre métier ? "
+right_answer_type = 3
+wrong_answers_text = Array[String](["SDF", "Dictateur ", "Platiste", "Clown"])
+metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"
