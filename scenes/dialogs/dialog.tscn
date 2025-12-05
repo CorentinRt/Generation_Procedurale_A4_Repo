@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=11 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
-[ext_resource type="JSON" path="res://resources/dialogs/questions/questions_answers.json" id="3_2fuk2"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
+[ext_resource type="JSON" path="res://resources/dialogs/questions/q_answers.json" id="3_2fuk2"]
 [ext_resource type="PackedScene" uid="uid://dj8bd8otlm0ca" path="res://scenes/dialogs/dialog_button.tscn" id="3_7uu03"]
 [ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="3_g2gxm"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_taunt.json" id="3_kyx3p"]
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_pr53c"]
-[ext_resource type="Resource" uid="uid://bqlawfeyys3l1" path="res://resources/dialogs/questions/testQuestion.tres" id="4_2fuk2"]
+[ext_resource type="Resource" uid="uid://odqciikpmnpx" path="res://resources/dialogs/questions/q_current_money.tres" id="6_ufbtj"]
+[ext_resource type="Resource" uid="uid://3a0mddbpd1yp" path="res://resources/dialogs/questions/q_lost_money.tres" id="7_kyx3p"]
+[ext_resource type="Texture2D" uid="uid://bfuqanhm61p4d" path="res://sprites/dialogs/icon_arrow.png" id="9_ufbtj"]
 
 [node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label", "dialog_btn", "questions_btn") groups=["dialog_manager"]]
 layout_mode = 3
@@ -15,13 +19,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7uu03")
+start_json = ExtResource("2_136k0")
+taunt_json = ExtResource("3_kyx3p")
+questions_answers_json = ExtResource("3_2fuk2")
 text_label = NodePath("Dialog/Text")
 name_label = NodePath("Dialog/NamePanel/Name")
 dialog_btn = NodePath("Dialog")
 button_style = ExtResource("3_pr53c")
-questions_answers_json = ExtResource("3_2fuk2")
 questions_btn = [NodePath("Dialog/Button"), NodePath("Dialog/Button2"), NodePath("Dialog/Button3"), NodePath("Dialog/Button4")]
-questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("4_2fuk2")])
+questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("6_ufbtj"), ExtResource("7_kyx3p")])
 no_question_pos = Vector2(100, 530)
 questions_pos = Vector2(100, 380)
 
@@ -56,9 +62,9 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-text = "Sentence text"
+text = "Sentence text ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 scroll_active = false
-autowrap_mode = 0
+autowrap_mode = 2
 
 [node name="NamePanel" type="Panel" parent="Dialog"]
 layout_mode = 0
@@ -146,5 +152,21 @@ grow_vertical = 0
 text = Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":true,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":1,"anchors_preset":-1,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":1.0,"anchor_bottom":1.0,"offset_left":15.0,"offset_top":15.0,"offset_right":-15.0,"offset_bottom":-15.0,"grow_horizontal":2,"grow_vertical":2,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":3,"focus_behavior_recursive":0,"mouse_filter":2,"mouse_behavior_recursive":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"accessibility_name":"","accessibility_description":"","accessibility_live":0,"accessibility_controls_nodes":Array[NodePath]([]),"accessibility_described_by_nodes":Array[NodePath]([]),"accessibility_labeled_by_nodes":Array[NodePath]([]),"accessibility_flow_to_nodes":Array[NodePath]([]),"theme":null,"theme_type_variation":&"","bbcode_enabled":false,"text":"Answer","fit_content":false,"scroll_active":false,"scroll_following":false,"scroll_following_visible_characters":true,"autowrap_mode":0,"autowrap_trim_flags":192,"tab_size":4,"context_menu_enabled":false,"shortcut_keys_enabled":true,"horizontal_alignment":1,"vertical_alignment":1,"justification_flags":163,"tab_stops":PackedFloat32Array(),"custom_effects":[],"meta_underlined":true,"hint_underlined":true,"threaded":false,"progress_bar_delay":1000,"selection_enabled":false,"deselect_on_focus_loss_enabled":true,"drag_and_drop_selection_enabled":true,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
 
 text = NodePath("Answer")
+
+[node name="Arrow" type="TextureRect" parent="Dialog"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_ufbtj")
+expand_mode = 1
 
 [connection signal="pressed" from="Dialog" to="." method="_on_dialog_pressed"]

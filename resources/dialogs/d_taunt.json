@@ -1,0 +1,27 @@
+{
+	"color": [
+		"gray",
+		"black"
+	],
+	"setupSaves": [
+		"[savedName:Mike Harrison][savedColor:#color#]"
+	],
+	"firstInteraction": [
+		"#sujet# #perte# #PO#"
+	],
+	"sujet": [
+		"Le candidat",
+		"Le joueur",
+		"Notre invité",
+		"Notre ami"
+	],
+	"perte": [
+		"vient de perdre",
+		"vient de se séparer de",
+		"vient d'égarer",
+	],
+	"PO": [
+		"200 000 Pièces !",
+		"200 000 Pièces de son trésor !"
+	]
+}

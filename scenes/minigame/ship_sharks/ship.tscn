@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://jti3mgir6w1b"]
+
+[ext_resource type="Script" uid="uid://uxmug0bq455c" path="res://scripts/minigame/ship_sharks/ship.gd" id="1_8kkam"]
+[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="2_hdjuf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8kkam"]
+radius = 8.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hdjuf"]
+radius = 6.0
+height = 27.0
+
+[node name="Ship" type="Area2D"]
+script = ExtResource("1_8kkam")
+metadata/_custom_type_script = "uid://uxmug0bq455c"
+
+[node name="Enter_Ship_Shape" type="CollisionShape2D" parent="."]
+z_index = 11
+position = Vector2(-1, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8kkam")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enter_Ship_Shape"]
+z_as_relative = false
+position = Vector2(-1, -0.99999994)
+rotation = -1.5707964
+texture = ExtResource("2_hdjuf")
+region_enabled = true
+region_rect = Rect2(240, 80, 32, 16)
+
+[node name="Area2D" type="Area2D" parent="Enter_Ship_Shape"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter_Ship_Shape/Area2D"]
+shape = SubResource("CapsuleShape2D_hdjuf")
+debug_color = Color(0.8594014, 0.30148166, 0.527872, 0.41960785)

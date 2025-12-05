@@ -14,6 +14,7 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var invincibility_blink_period : float = 0.2
 @export var dead_color : Color = Color.GRAY
 @export var sprites : Array[Sprite2D] = []
+@export var invincibility_alpha : float = 0.7
 
 @export_group("Movement")
 @export var default_movement : MovementParameters
@@ -28,6 +29,8 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export_group("Interact")
 @export var interact_radius: float = 50.0
 var npcs : Array[Node]
+
+var is_in_dialog: bool = false
 
 # Life
 var _last_hit_time : float
@@ -67,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 	if _direction.length() > 0.000001:
 		velocity += _direction * _current_movement.acceleration * get_physics_process_delta_time()
 		velocity = velocity.limit_length(_current_movement.speed_max)
-		main_sprite.rotation = _compute_orientation_angle(_direction)
+		#main_sprite.rotation = _compute_orientation_angle(_direction)
 	else:
 		## If direction length == 0, Apply friction
 		var friction_length = _current_movement.friction * get_physics_process_delta_time()
@@ -122,8 +125,12 @@ func blink() -> void:
 
 		invincibility_timer += get_process_delta_time()
 		var isVisible : bool = (int)(invincibility_timer/ invincibility_blink_period) % 2 == 1
+		
 		for sprite in sprites:
-			sprite.visible = isVisible
+			if isVisible:
+				sprite.modulate.a = 1
+			else:
+				sprite.modulate.a = invincibility_alpha
 		
 		if get_tree() != null:
 			await get_tree().process_frame
@@ -157,6 +164,9 @@ func _compute_orientation_angle(direction : Vector2) -> float:
 
 
 func _attack() -> void:
+	if (is_in_dialog):
+		return
+	
 	if Time.get_unix_time_from_system() - _last_attack_time < attack_cooldown:
 		return
 
@@ -177,6 +187,9 @@ func _spawn_attack_scene() -> void:
 	spawned_attack.attack_owner = self
 
 func _interact() -> void:
+	if (is_in_dialog): 
+		return
+	
 	print("Interact")
 	var player_pos: Vector2 = global_position
 	
@@ -190,4 +203,10 @@ func _interact() -> void:
 	print("Didn't find npc around player")
 
 func _can_move() -> bool:
-	return _state == STATE.IDLE
+	return !is_in_dialog && _state == STATE.IDLE
+
+func set_is_in_dialog(in_dialog : bool):
+	is_in_dialog = in_dialog
+	
+func _nextDialog():
+	UtilsManager.get_dialog_manager()._on_dialog_pressed()

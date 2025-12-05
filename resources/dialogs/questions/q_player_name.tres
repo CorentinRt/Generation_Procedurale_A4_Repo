@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://bqlawfeyys3l1"]
+
+[ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="1_18vtf"]
+
+[resource]
+script = ExtResource("1_18vtf")
+title = "Comment vous appelez vous ?"
+right_answer_type = 1
+wrong_answers_text = Array[String](["Corentin", "Hugo", "Manon", "Tom", "Ruben", "Louison", "Clément"])
+metadata/_custom_type_script = "uid://d2bqj7ke2sq5r"

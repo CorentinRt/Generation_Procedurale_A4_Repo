@@ -9,8 +9,14 @@ func _setup_minigame() -> void:
 	for i in get_parent().get_children():
 		if i is Shark_Path:
 			sharks_paths.append(i)
-		elif chest == null && i is Chest_Item:
+			
+	for i in propsTileMapLayer.get_children():
+		if !i.is_in_group("item_minigame"):
+			continue
+			
+		if chest == null && i is Chest_Item:
 			chest = i
+			break
 	
 	chest.on_chest_opened.connect(receive_chest_opened_callback)
 			

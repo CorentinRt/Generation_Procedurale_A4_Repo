@@ -1,8 +1,6 @@
 {
 	"name": [
-		"Pascal",
-		"Jean-Eude",
-		"Nicolas"
+		"Mike Harrison"
 	],
 	"occupation": [
 		"président",
@@ -13,19 +11,13 @@
 		"gray",
 		"black"
 	],
-	"slayAnswer":[
-		"Slayyyyyy"
-	],
-	"feurAnswer":[
-		"T'es ban"
-	],
 	"setupSaves": [
 		"[savedName:#name#][savedColor:#color#]"
 	],
 	"firstInteraction": [
     "Salut c'est #savedName#.<next>
-	<questions><next>
-	Merci d'avoir répondu à mes questions"
+	<question><next>
+	Merci d'avoir répondu à ma question"
 	],
 	"questInProgress": [
 		"Va voir la bas si j'y suis stp"

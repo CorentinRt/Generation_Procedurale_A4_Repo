@@ -19,10 +19,14 @@ var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 @export var interact_icon : Sprite2D = null
 @export var marker_animation : AnimatedSprite2D = null
 
+@export var sprite_animation_player : AnimationPlayer
+@export var notif_animation_player : AnimationPlayer
+
 func _ready():
 	_setup_dialog()
 	_set_marker_color()
 	marker_animation.play()
+	notif_animation_player.play("idle")
 
 func _process(delta: float) -> void:
 	_show_player_interact_indication()
@@ -34,22 +38,20 @@ func _setup_dialog():
 	grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
 	# Save
-	grammar.flatten("#setupSaves#")
+	grammar.flatten("#setupSaves#", json)
 	
 	current_dialog_state = DialogState.FIRST_INTERACTION
 
 func show_dialog():
-	var dialog_manager = get_dialog_manager()
+	var dialog_manager = UtilsManager.get_dialog_manager()
 	if dialog_manager:
 		dialog_manager.show_dialog(self)
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")
+	
+	sprite_animation_player.play("interact")
 
-func get_dialog_manager():
-	var managers = get_tree().get_nodes_in_group("dialog_manager")
-	if managers.size() > 0:
-		return managers[0]
-	return null
+
 	
 func _show_player_interact_indication():
 	var player_pos = Player.Instance.global_position

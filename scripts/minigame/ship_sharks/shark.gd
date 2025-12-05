@@ -1,1 +1,1 @@
-class_name Shark extends AnimatableBody2D
+class_name Shark extends Area2D

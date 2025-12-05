@@ -16,6 +16,8 @@ var _doors : Array[Door]
 
 @export var _scores_datas : Scores_Datas
 
+@onready var propsTileMapLayer : TileMapLayer = $"../Props"
+
 func _ready() -> void:
 	call_deferred("_setup_minigame")
 
@@ -32,9 +34,9 @@ func _check_completed_condition() -> bool:
 	return false
 
 func _setup_minigame() -> void:
-	for child in get_node("../Props").get_children():
-		if child is Door:
-			_doors.append(child)
+	for i in get_parent().get_tree().get_nodes_in_group("doors"):
+		if i is Door:
+			_doors.append(i)
 			
 	_room_zone_detector._on_player_enters.connect(_receive_on_enter_room_zone_callback)
 	_room_zone_detector._on_player_exits.connect(_receive_on_exit_room_zone_callback)

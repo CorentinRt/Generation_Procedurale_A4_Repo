@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://d2bd4nrdruls4"]
+[gd_scene load_steps=6 format=4 uid="uid://d2bd4nrdruls4"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_q853q"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="3_8h73v"]
 [ext_resource type="PackedScene" uid="uid://dtw8kdvabfniw" path="res://scenes/minigame/minigame_ship_sharks.tscn" id="3_u8vhm"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="4_4ssin"]
 [ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="5_4ssin"]
-[ext_resource type="PackedScene" uid="uid://catoqx6ha1nl1" path="res://scenes/minigame/ship_sharks/chest_item.tscn" id="6_nvm38"]
 
 [node name="Room4" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_q853q")
@@ -16,7 +15,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("3_8h73v")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAPv/AgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAAAPv/AgAAAAAAAQAIAPv/AwAAAAAAAQA=")
 tile_set = ExtResource("3_8h73v")
 
 [node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_u8vhm")]
@@ -27,6 +26,3 @@ position = Vector2(88.125, -72)
 
 [node name="Shark_Path" parent="." instance=ExtResource("5_4ssin")]
 position = Vector2(89, -23)
-
-[node name="ChestItem" parent="." instance=ExtResource("6_nvm38")]
-position = Vector2(138, -70)

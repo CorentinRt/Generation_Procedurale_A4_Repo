@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdud0ra8kii2c"]
+
+[ext_resource type="Texture2D" uid="uid://by6021h45yirf" path="res://sprites/inputs/keyboard_e_outline.png" id="1_erf0b"]
+
+[node name="InteractionIcon" type="Sprite2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_erf0b")
