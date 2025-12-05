@@ -16,5 +16,5 @@ tile_map_data = PackedByteArray("AAABAPr/AQAEAAYAAAADAPv/AQAEAAYAAAAIAPn/AQAEAAY
 tile_set = ExtResource("2_dwov4")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAHAPz/AQAHAAcAAAAFAPn/AQAHAAcAAAADAP3/AQAHAAcAAAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAHAPz/AQAHAAcAAAAFAPn/AQAHAAcAAAADAP3/AQAHAAcAAAACAPj/AQADAAcAAAA=")
 tile_set = ExtResource("2_dwov4")
