@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=18 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bfuqanhm61p4d" path="res://sprites/dialogs/icon_arrow.png" id="9_ufbtj"]
 [ext_resource type="StyleBox" uid="uid://b10agfp4q6set" path="res://style/slider_style.tres" id="11_jaf1p"]
 [ext_resource type="Script" uid="uid://837rr3cklplf" path="res://scripts/dialogs/custom_timer.gd" id="11_sbcri"]
+[ext_resource type="Script" uid="uid://c7i14ajf5k0es" path="res://scripts/dialogs/simple_dialog_manager.gd" id="13_adovd"]
+[ext_resource type="JSON" path="res://resources/dialogs/simple/d_skulls.json" id="14_adovd"]
+[ext_resource type="JSON" path="res://resources/dialogs/simple/q_letters.json" id="15_7cf0w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbcri"]
 corner_radius_top_left = 10
@@ -201,12 +204,17 @@ editable = false
 scrollable = false
 tick_count = 30
 
-[node name="CustomTimer" type="Node" parent="." node_paths=PackedStringArray("timer_label", "timer_slider", "timer")]
+[node name="CustomTimer" type="Node" parent="." node_paths=PackedStringArray("timer_slider", "timer")]
 script = ExtResource("11_sbcri")
-timer_label = NodePath("")
 timer_slider = NodePath("../Dialog/TimerSlider")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="CustomTimer"]
+
+[node name="SimpleDialogManager" type="Node2D" parent="."]
+script = ExtResource("13_adovd")
+skulls_json = ExtResource("14_adovd")
+letters_json = ExtResource("15_7cf0w")
+metadata/_custom_type_script = "uid://c7i14ajf5k0es"
 
 [connection signal="pressed" from="Dialog" to="." method="_on_dialog_pressed"]

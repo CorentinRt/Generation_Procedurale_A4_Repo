@@ -387,3 +387,22 @@ func _on_timer_end():
 	is_typing = true
 	_start_typing()
 #endregion
+
+#region Simple Dialog (only text, no tracery except <next> + no name)
+func start_simple_dialog(dialog_text: String, color : Color):
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
+	var sentences = dialog_text
+	_get_array_sentences(sentences)
+	
+	_show_current_sentence_text()
+	
+	name_label.hide()
+	
+	dialog_btn.show()
+	hide_questions_btn()
+
+	set_button_color(dialog_btn, color)
+	pass
+#endregion
