@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7a3grtr4nexr"]
+
+[ext_resource type="PackedScene" uid="uid://b3ki8rg606xtc" path="res://scenes/swords/sword_enemy.tscn" id="1_ur6h0"]
+
+[node name="Sword_Player" instance=ExtResource("1_ur6h0")]
+collision_layer = 2
+
+[node name="Sword_Sprite" parent="." index="1"]
+z_as_relative = false

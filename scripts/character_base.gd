@@ -25,6 +25,9 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var attack_spawn_point : Node2D
 @export var attack_cooldown : float = 0.3
 @export var orientation : ORIENTATION = ORIENTATION.FREE
+@export var attack_offset : float = 3
+
+var direction_attack : Vector2 = Vector2.ZERO
 
 @export_group("Interact")
 @export var interact_radius: float = 25.0
@@ -159,6 +162,7 @@ func _set_color(color : Color) -> void:
 
 func _compute_orientation_angle(direction : Vector2) -> float:
 	var angle = direction.angle()
+	print(direction)
 	match orientation:
 		ORIENTATION.DPAD_8:
 			return Utils.DiscreteAngle(angle, 45)
@@ -185,9 +189,17 @@ func _spawn_attack_scene() -> void:
 	var spawn_position = attack_spawn_point.global_position if attack_spawn_point != null else global_position
 	var spawn_rotation = attack_spawn_point.global_rotation if attack_spawn_point != null else global_rotation
 	var spawned_attack = attack_scene.instantiate() as Attack
-	get_tree().root.add_child(spawned_attack)
-	spawned_attack.global_position = spawn_position
-	spawned_attack.global_rotation = spawn_rotation
+	var angle := _compute_orientation_angle(direction_attack)
+	angle = angle + 90
+	attack_spawn_point.add_child(spawned_attack)
+
+	print(angle)
+	spawned_attack.rotation = angle
+	spawned_attack.position = direction_attack * attack_offset
+	
+	#get_tree().root.add_child(spawned_attack)
+	#spawned_attack.global_position = spawn_position
+	#spawned_attack.global_rotation = spawn_rotation
 	spawned_attack.attack_owner = self
 
 func _interact() -> void:

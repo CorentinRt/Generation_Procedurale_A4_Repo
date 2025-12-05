@@ -96,6 +96,7 @@ func _update_room() -> void:
 
 
 func _update_inputs() -> void:
+	direction_attack = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 	if _can_move():
 		_direction = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 		if _direction.length() < controller_dead_zone:
