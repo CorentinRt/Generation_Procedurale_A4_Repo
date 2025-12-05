@@ -10,6 +10,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export_group("UI")
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
+@export var name_panel: Panel
 @export var dialog_btn: Button
 @export var button_style: StyleBoxFlat
 @export var type_speed:float = 0.02
@@ -107,10 +108,12 @@ func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
 
 #region Setup Name
 func _set_name(grammar : TraceryScript.Grammar):
+	name_label.show()
 	var saved_name = grammar.get_variable("savedName")
 	name_label.text = saved_name
 		
 func _hide_name():
+	name_label.show()
 	name_label.text = "???"
 #endregion
 	
@@ -386,4 +389,24 @@ func _on_timer_end():
 	ScoreManager._show(true) # Reset if score hidden
 	is_typing = true
 	_start_typing()
+#endregion
+
+#region Simple Dialog (only text, no tracery except <next> + no name)
+func start_simple_dialog(dialog_text: String, color : Color):
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
+	var sentences = dialog_text
+	_get_array_sentences(sentences)
+	
+	_show_current_sentence_text()
+	
+	name_label.hide()
+	name_panel.hide()
+	
+	dialog_btn.show()
+	hide_questions_btn()
+
+	set_button_color(dialog_btn, color)
+	pass
 #endregion

@@ -27,8 +27,10 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var orientation : ORIENTATION = ORIENTATION.FREE
 
 @export_group("Interact")
-@export var interact_radius: float = 50.0
+@export var interact_radius: float = 25.0
+
 var npcs : Array[Node]
+var simple_dialogs : Array[Node]
 
 var is_in_dialog: bool = false
 var is_in_ship : bool = false
@@ -55,9 +57,11 @@ var _room #: Room
 @onready var main_sprite : Sprite2D = $"BodySprite"
 
 func _ready() -> void:
-	# Get npcs
+	# Get npcs & dialogs
 	npcs = get_tree().get_nodes_in_group("NPC")
-	print("Found npcs : ", npcs.size())
+	simple_dialogs = get_tree().get_nodes_in_group("simple_dialog")
+	print("found simple dialogs : ", simple_dialogs.size())
+
 
 func _process(delta: float) -> void:
 	_update_state(delta)
@@ -190,7 +194,6 @@ func _interact() -> void:
 	if (is_in_dialog || is_in_ship): 
 		return
 	
-	print("Interact")
 	var player_pos: Vector2 = global_position
 	
 	for npc in npcs:
@@ -199,8 +202,12 @@ func _interact() -> void:
 				print("Dialog shown for ", npc.name)
 				npc.show_dialog()
 				return 
-	
-	print("Didn't find npc around player")
+				
+	for s_d in simple_dialogs:
+		if s_d.global_position.distance_to(player_pos) <= interact_radius:
+			if s_d.has_method("show_dialog"):
+				s_d.show_dialog()
+				return 
 
 func _can_move() -> bool:
 	return !is_in_dialog && _state == STATE.IDLE && !is_in_ship

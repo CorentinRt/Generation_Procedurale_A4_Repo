@@ -49,6 +49,7 @@ folder_colors={
 dialog_manager=""
 item_minigame=""
 doors=""
+simple_dialog=""
 
 [input]
 

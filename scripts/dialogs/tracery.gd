@@ -237,7 +237,7 @@ class Grammar extends RefCounted:
 	func get_variable(name: String) -> String:
 		for key in _save_data:
 			var value = _save_data[key]
-			print("Found saved variable : ", key, " = ", value)
+			#print("Found saved variable : ", key, " = ", value)
 		if _save_data.has(name):
 			return _save_data[name]
 		return ""
