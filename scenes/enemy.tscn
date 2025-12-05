@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0ahenmxn2ain"]
+[gd_scene load_steps=8 format=3 uid="uid://b0ahenmxn2ain"]
 
 [ext_resource type="Script" uid="uid://b5df80s50tpg6" path="res://scripts/enemy.gd" id="1_nd4pc"]
 [ext_resource type="PackedScene" uid="uid://imvv20oldcd0" path="res://scenes/enemy_attack.tscn" id="2_mf8py"]
 [ext_resource type="Resource" uid="uid://4wrtqv1kgm5c" path="res://resources/enemy_default_movement.tres" id="2_nnsly"]
 [ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_xwavj"]
 [ext_resource type="Resource" uid="uid://cxk1f1srqi8ot" path="res://resources/enemy_stunned_movement.tres" id="3_vw1dg"]
-[ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="5_lxxh3"]
-[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="6_nenq2"]
+[ext_resource type="Texture2D" uid="uid://m5cxy2e4m3gb" path="res://sprites/imports/kenney_monochrome-pirates/Monochrome/Tilemap/tilemap_packed.png" id="6_xwavj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1d5c"]
 
@@ -17,11 +16,11 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_nd4pc")
 attack_distance = 30.0
 _scores_datas = ExtResource("2_xwavj")
-sprites = [NodePath("BodySprite"), NodePath("BodySprite/NoseSprite")]
+sprites = [NodePath("BodySprite"), NodePath("")]
 default_movement = ExtResource("2_nnsly")
 stunned_movemement = ExtResource("3_vw1dg")
 attack_scene = ExtResource("2_mf8py")
-attack_spawn_point = NodePath("BodySprite/NoseSprite")
+attack_spawn_point = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -31,14 +30,6 @@ shape = SubResource("CircleShape2D_p1d5c")
 [node name="BodySprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 z_index = 2
-texture = ExtResource("6_nenq2")
+texture = ExtResource("6_xwavj")
 region_enabled = true
-region_rect = Rect2(128, 112, 16, 16)
-
-[node name="NoseSprite" type="Sprite2D" parent="BodySprite"]
-visible = false
-modulate = Color(1, 0, 0, 1)
-z_index = 2
-position = Vector2(6, 0)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_lxxh3")
+region_rect = Rect2(112, 112, 16, 16)

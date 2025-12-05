@@ -37,9 +37,11 @@ folder_colors={
 "res://scenes/minigame/": "orange",
 "res://scenes/rooms/LD/": "red",
 "res://scenes/score/": "yellow",
+"res://scenes/swords/": "teal",
 "res://scripts/dialogs/": "pink",
 "res://scripts/minigame/": "orange",
-"res://scripts/score/": "yellow"
+"res://scripts/score/": "yellow",
+"res://scripts/swords/": "teal"
 }
 
 [global_group]
