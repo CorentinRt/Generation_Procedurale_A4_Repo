@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://837rr3cklplf" path="res://scripts/dialogs/custom_timer.gd" id="11_sbcri"]
 [ext_resource type="Script" uid="uid://c7i14ajf5k0es" path="res://scripts/dialogs/simple_dialog_manager.gd" id="13_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_skulls.json" id="14_adovd"]
-[ext_resource type="JSON" path="res://resources/dialogs/simple/q_letters.json" id="15_7cf0w"]
+[ext_resource type="JSON" path="res://resources/dialogs/simple/d_letters.json" id="15_7cf0w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbcri"]
 corner_radius_top_left = 10
@@ -215,7 +215,9 @@ timer = NodePath("Timer")
 [node name="SimpleDialogManager" type="Node2D" parent="."]
 script = ExtResource("13_adovd")
 skulls_json = ExtResource("14_adovd")
+skulls_color = Color(0.37823164, 6.0464254e-07, 4.813075e-08, 1)
 letters_json = ExtResource("15_7cf0w")
+letters_color = Color(0.11250638, 0.28216064, 0.29371014, 1)
 metadata/_custom_type_script = "uid://c7i14ajf5k0es"
 
 [connection signal="pressed" from="Dialog" to="." method="_on_dialog_pressed"]
