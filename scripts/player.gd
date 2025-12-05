@@ -4,6 +4,8 @@ static var Instance : Player
 
 @export var impulse_force : float = 5
 
+@export var collision_shape : CollisionShape2D
+
 @export_group("Input")
 @export_range (0.0, 1.0) var controller_dead_zone : float = 0.3
 
@@ -49,6 +51,9 @@ func _physics_process(_delta: float) -> void:
 			dir = rb.global_position - global_position
 			rb.apply_central_impulse(dir.normalized() * impulse_force)
 			
+func _get_shape() -> CollisionShape2D:
+	return collision_shape
+			
 func apply_hit(attack : Attack) -> void:
 	super(attack)
 	hit_animation_player.play("hit")
@@ -58,6 +63,21 @@ func enter_room(room : Room) -> void:
 	_room = room
 	_room.on_enter_room(previous)
 
+#region Ship Enter/Exit
+func enter_ship(ship : Ship) -> void:
+	if _state == STATE.DEAD || !_can_move() || ship == null:
+		return
+	is_in_ship = true
+	ship._set_player_in(self)
+	collision_shape.disabled = true
+	
+func exit_ship(ship : Ship) -> void:
+	if _state == STATE.DEAD || ship == null:
+		return
+	is_in_ship = false
+	ship._set_player_out(self)
+	collision_shape.disabled = false
+#endregion
 
 func _update_room() -> void:
 	var room_bounds : Rect2 = _room.get_world_bounds()

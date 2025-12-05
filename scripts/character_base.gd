@@ -31,6 +31,7 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 var npcs : Array[Node]
 
 var is_in_dialog: bool = false
+var is_in_ship : bool = false
 
 # Life
 var _last_hit_time : float
@@ -164,7 +165,7 @@ func _compute_orientation_angle(direction : Vector2) -> float:
 
 
 func _attack() -> void:
-	if (is_in_dialog):
+	if (is_in_dialog || is_in_ship):
 		return
 	
 	if Time.get_unix_time_from_system() - _last_attack_time < attack_cooldown:
@@ -187,7 +188,7 @@ func _spawn_attack_scene() -> void:
 	spawned_attack.attack_owner = self
 
 func _interact() -> void:
-	if (is_in_dialog): 
+	if (is_in_dialog || is_in_ship): 
 		return
 	
 	print("Interact")
@@ -203,7 +204,7 @@ func _interact() -> void:
 	print("Didn't find npc around player")
 
 func _can_move() -> bool:
-	return !is_in_dialog && _state == STATE.IDLE
+	return !is_in_dialog && _state == STATE.IDLE && !is_in_ship
 
 func set_is_in_dialog(in_dialog : bool):
 	is_in_dialog = in_dialog

@@ -30,7 +30,9 @@ project/assembly_name="Procedural"
 
 folder_colors={
 "res://resources/dialogs/": "pink",
+"res://resources/minigame/": "orange",
 "res://resources/score/": "yellow",
+"res://scenes/debug/": "green",
 "res://scenes/dialogs/": "pink",
 "res://scenes/minigame/": "orange",
 "res://scenes/rooms/LD/": "red",
@@ -96,6 +98,9 @@ NextDialog={
 2d_physics/layer_4="room_zone"
 2d_physics/layer_5="box_item"
 2d_physics/layer_6="sharks"
+2d_physics/layer_7="ship"
+2d_physics/layer_8="sea_limits"
+2d_physics/layer_9="sea_interior"
 
 [physics]
 

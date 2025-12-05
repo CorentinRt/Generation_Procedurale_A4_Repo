@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Ship_Data" load_steps=2 format=3 uid="uid://ctvg0dklnynad"]
+
+[ext_resource type="Script" uid="uid://bmmd2tej3bqjd" path="res://scenes/minigame/ship_sharks/ship_data.gd" id="1_dm7im"]
+
+[resource]
+script = ExtResource("1_dm7im")
+metadata/_custom_type_script = "uid://bmmd2tej3bqjd"
