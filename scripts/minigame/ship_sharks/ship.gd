@@ -10,15 +10,6 @@ var player_is_in : bool = false
 
 var associated_player : Player
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if player_is_near || body is Player:
-		player_is_near = true
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if !player_is_near || body is Player:
-		player_is_near = false
-		
 func _process(delta: float) -> void:
 	_update_inputs_interact()
 	_update_clamp_player_to_anchor()
@@ -88,3 +79,23 @@ func place_player_outside_collision(start_pos: Vector2, radius : int = 22.0, ste
 			associated_player.global_position = pos
 			return true
 	return false
+
+
+func _on_enter_area_body_entered(body: Node2D) -> void:
+	if player_is_near || body is Player:
+		player_is_near = true
+
+
+func _on_enter_area_body_exited(body: Node2D) -> void:
+	if !player_is_near || body is Player:
+		player_is_near = false
+
+
+func _on_damage_area_area_entered(area: Area2D) -> void:
+	if area is Shark:
+		if associated_player != null:
+			associated_player.apply_hit(null)
+
+
+func _on_damage_area_area_exited(area: Area2D) -> void:
+	pass
