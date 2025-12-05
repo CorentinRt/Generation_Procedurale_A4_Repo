@@ -7,11 +7,14 @@
 
 [node name="Shark" type="Area2D"]
 collision_layer = 32
+collision_mask = 64
 input_pickable = false
 script = ExtResource("1_7ye1a")
 metadata/_custom_type_script = "uid://dbglwxi3ip2sq"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_8kkam")
 region_enabled = true

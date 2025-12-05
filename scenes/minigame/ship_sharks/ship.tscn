@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jti3mgir6w1b"]
+[gd_scene load_steps=7 format=3 uid="uid://jti3mgir6w1b"]
 
 [ext_resource type="Script" uid="uid://uxmug0bq455c" path="res://scripts/minigame/ship_sharks/ship.gd" id="1_8kkam"]
 [ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="2_hdjuf"]
@@ -12,9 +12,13 @@ height = 27.0
 radius = 11.8
 height = 46.95
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jf0su"]
+radius = 7.4
+
 [node name="Ship" type="CharacterBody2D" node_paths=PackedStringArray("ship_player_anchor")]
+z_index = 1
 collision_layer = 64
-collision_mask = 129
+collision_mask = 161
 input_pickable = true
 script = ExtResource("1_8kkam")
 data = ExtResource("2_jf0su")
@@ -26,9 +30,10 @@ z_index = 12
 position = Vector2(-1, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8kkam")
-debug_color = Color(0.85882354, 0.3019608, 0.5294118, 0.41960785)
+debug_color = Color(4.235506e-06, 0.58208376, 0.79492086, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+z_index = 2
 z_as_relative = false
 position = Vector2(-1, -0.99999994)
 rotation = -1.5707964
@@ -36,17 +41,31 @@ texture = ExtResource("2_hdjuf")
 region_enabled = true
 region_rect = Rect2(240, 80, 32, 16)
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D"]
+[node name="Enter_Area" type="Area2D" parent="CollisionShape2D"]
 
-[node name="EnterShape" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
+[node name="EnterShape" type="CollisionShape2D" parent="CollisionShape2D/Enter_Area"]
 z_index = 11
 z_as_relative = false
 shape = SubResource("CapsuleShape2D_hdjuf")
-debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
+debug_color = Color(0.2917013, 0.6133072, 0.4158803, 0.41960785)
 
 [node name="Ship_Player_Anchor" type="Node2D" parent="CollisionShape2D"]
 position = Vector2(-1.9999998, 5)
 rotation = -1.5707964
 
-[connection signal="body_entered" from="CollisionShape2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CollisionShape2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Damage_Area" type="Area2D" parent="."]
+z_index = 12
+z_as_relative = false
+position = Vector2(-1, 1)
+rotation = 1.5707964
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Area"]
+shape = SubResource("CapsuleShape2D_jf0su")
+debug_color = Color(0.85165465, 0.30220303, 0.56118655, 0.41960785)
+
+[connection signal="body_entered" from="CollisionShape2D/Enter_Area" to="." method="_on_enter_area_body_entered"]
+[connection signal="body_exited" from="CollisionShape2D/Enter_Area" to="." method="_on_enter_area_body_exited"]
+[connection signal="area_entered" from="Damage_Area" to="." method="_on_damage_area_area_entered"]
+[connection signal="area_exited" from="Damage_Area" to="." method="_on_damage_area_area_exited"]

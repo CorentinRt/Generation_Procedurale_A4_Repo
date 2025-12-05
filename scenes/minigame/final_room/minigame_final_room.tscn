@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfooe2mnnsgg"]
+
+[ext_resource type="Script" uid="uid://5tdoctjeis6j" path="res://scripts/minigame/final_room/minigame_final_room.gd" id="1_vawdu"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_begci"]
+
+[node name="MinigameFinalRoom" type="Node"]
+script = ExtResource("1_vawdu")
+_scores_datas = ExtResource("2_begci")
+metadata/_custom_type_script = "uid://5tdoctjeis6j"

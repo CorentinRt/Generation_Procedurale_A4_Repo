@@ -101,7 +101,6 @@ func apply_hit(attack : Attack) -> void:
 		_end_blink()
 		blink()
 
-
 func apply_knockback(duration : float, velocity : Vector2) -> void:
 	_set_state(STATE.STUNNED)
 	_has_to_apply_knockback = true
