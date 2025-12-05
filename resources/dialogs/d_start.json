@@ -14,7 +14,7 @@
 		"chomeur",
 		"cycliste"
 	],
-	"color":[
+	"color": [
 		"gray",
 		"black"
 	],
@@ -23,31 +23,125 @@
 	],
 
 	"firstInteraction": [
-    	"#intro#"
+		"#intro#<next>#regles#"
 	],
-	
-	"intro":[
-		"#phraseAccroche# #presentation#<next>#heure# #politesse# #savedPlayerName#, #savedPlayerAge#, #savedPlayerJob# qui nous vient #origine#.<next>#presentation_host# #emission#."
+
+	"intro": [
+		"#phraseAccroche# #presentation#<next>#heure#, #politesse# #savedPlayerName#, #savedPlayerAge#, #savedPlayerJob# qui nous vient #origine#.<next>#presentationHost# #emission#."
 	],
 	"phraseAccroche": [
-		"Bonjour !", "Bonsoir !", "Bienvenu !", "Soyez les bienvenus !"
+		"Bonjour !",
+		"Bonsoir !",
+		"Bienvenu !",
+		"Soyez les bienvenus !"
 	],
 	"presentation": [
 		"Je suis ravi de vous retrouver pour cette nouvelle émission."
 	],
-	"heure":[
-		"Aujourd'hui", "Ce soir", "Pour cette nouvelle soirée", "Pour cette nouvelle émission" 
+	"heure": [
+		"Aujourd'hui",
+		"Ce soir",
+		"Pour cette nouvelle soirée",
+		"Pour cette nouvelle émission"
 	],
-	"politesse":[
-		"nous avons le plaisir d'accueillir", "c'est avec joie que nous recevons", "c'est avec un immense plaisir que nous recevons", "c'est pour nous une joie de recevoir", "c'est pour moi un immense plaisir de recevoir"
+	"politesse": [
+		"nous avons le plaisir d'accueillir",
+		"c'est avec joie que nous recevons",
+		"c'est avec un immense plaisir que nous recevons",
+		"c'est pour nous une joie de recevoir",
+		"c'est pour moi un immense plaisir de recevoir"
 	],
-	"origine":[
-		"de France", "d'Espagne", "de Colombie", "du Canada"
+	"origine": [
+		"de France",
+		"d'Espagne",
+		"de Colombie",
+		"du Canada"
 	],
-	"presentation_host":[
-		"Je suis Mike Harrison", "Ici Mike Harrison"
+	"presentationHost": [
+		"Je suis Mike Harrison",
+		"Ici Mike Harrison"
 	],
-	"emission":[
-		"et vous regardez Pirate Attack", "et vous profitez de Pirate Attack", "et je vous souhaite bon visionnage de cette édition de Pirate Attack", "en direct de Pirate Attack"
+	"emission": [
+		"et vous regardez Pirate Attack",
+		"et vous profitez de Pirate Attack",
+		"et je vous souhaite bon visionnage de cette édition de Pirate Attack",
+		"en direct de Pirate Attack"
+	],
+
+	"regles": [
+		"#introRegles#, un rappel s'impose.<next>#sujet# #objectif# #adjTresor# #tresor# #capitaine#.<next>#sortie# le #tresor# #action#.<next>#warning#, #danger# #attente#.<next>#reussite#.<next>#regleAttention#, #regleFinale#, #menace#."
+	],
+	"introRegles": [
+		"Avant de lancer le jeu",
+		"Avant de laisser le candidat s'élancer",
+		"Avant le début du jeu",
+		"Mais d'abord"
+	],
+	"sujet": [
+		"Le candidat",
+		"Le joueur",
+		"Notre invité"
+	],
+	"objectif": [
+		"doit retrouver",
+		"devra retrouver",
+		"doit chercher",
+		"devra chercher"
+	],
+	"adjTresor": [
+		"l'immense",
+		"le luxueux",
+		"le précieux"
+	],
+	"tresor": [
+		"butin",
+		"trésor"
+	],
+	"capitaine": [
+		"de notre Capitaine à la Barbe Pas Si Blanche",
+		"du Capitaine à la Barbe Pas Si Blanche",
+		"de notre bon vieux Capitaine à la Barbe Pas Si Blanche",
+		"du célèbre Capitaine à la Barbe Pas Si Blanche"
+	],
+	"sortie": [
+		"La sortie ne s'ouvrira qu'une fois",
+		"La porte derrière moi ne sera débloquée que lorsque",
+		"Le candidat ne pourra sortir qu'une fois"
+	],
+	"action": [
+		"récupéré",
+		"découvert",
+		"en sa possession"
+	],
+	"warning": [
+		"Mais attention",
+		"Mais prenez garde",
+		"Mais il devra rester sur ses gardes"
+	],
+	"danger": [
+		"de nombreux dangers",
+		"de grands dangers",
+		"des dangers"
+	],
+	"attente": [
+		"se dresseront",
+		"l'attendent",
+		"l'attendront"
+	],
+	"reussite": [
+		"Chaque réussite ou échec a ces épreuves permettront d’augmenter ou de diminuer la quantité d’or que le joueur possède"
+	],
+	"regleAttention": [
+		"Mais attention",
+		"Souvenez-vous",
+		"Prenez garde"
+	],
+	"regleFinale": [
+		"vous ne pouvez pas atteindre le pallier fatidique des 0 Pièces d'or",
+		"vous ne pouvez pas tomber en dessous des 0 Pièces d'or"
+	],
+	"menace": [
+		"ou un funestre destin vous attend",
+		"ou alors vous sombrerez dans les abysses"
 	]
 }

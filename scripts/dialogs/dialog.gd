@@ -2,25 +2,31 @@ extends Control
 
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 
-# UI
+@export_group("JSON")
 @export var start_json: JSON
+@export var taunt_json: JSON
+@export var questions_answers_json: JSON 
+
+@export_group("UI")
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
 @export var dialog_btn: Button
-@export var type_speed:float = 0.02
 @export var button_style: StyleBoxFlat
+@export var type_speed:float = 0.02
 
-# Questions
-@export var questions_answers_json: JSON 
+@export_group("Questions")
 @export var questions_btn: Array[DialogButton]
 @export var questions_data: Array[Question]
 @export var no_question_pos: Vector2
 @export var questions_pos: Vector2
 @export var add_score_right_answer: int = 100000
 @export var remove_score_wrong_answer: int = 100000
+@export var custom_timer: CustomTimer
+@export var question_time: float = 5.0
 
 var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
+var taunt_grammar: TraceryScript.Grammar
 
 var is_in_dialog: bool = false
 
@@ -38,15 +44,18 @@ var revealed_characters: int = 0
 
 # Questions
 var is_in_questions: bool = false
-# current question
-# list resource questions
 
 func _ready():
 	hide_dialog()
-	_setup_questions_and_start_grammar()
+	_setup_grammars()
 	show_start_dialog()
 	
-func _setup_questions_and_start_grammar():
+	# Timer
+	custom_timer.timer_finished.connect(_on_timer_end)
+	custom_timer.hide_timer()
+
+#region Setup
+func _setup_grammars():
 	# Questions
 	var questions_rules = questions_answers_json.data
 	
@@ -59,32 +68,51 @@ func _setup_questions_and_start_grammar():
 	start_grammar = TraceryScript.Grammar.new(start_rules)
 	start_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
+	# Taunt
+	var taunt_rules = taunt_json.data
+	
+	taunt_grammar = TraceryScript.Grammar.new(taunt_rules)
+	taunt_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+#endregion
+	
+#region Show dialog JSON
 func show_start_dialog():
+	show_dialog_json(start_json, start_grammar)
+	
+func show_taunt_dialog():
+	if is_in_dialog:
+		return
+		
+	show_dialog_json(taunt_json, taunt_grammar)
+	
+func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
 	is_in_dialog = true
 	Player.Instance.set_is_in_dialog(is_in_dialog)
 	
-	start_grammar.flatten("#setupSaves#", start_json)
+	grammar.flatten("#setupSaves#", json)
 	
-	var sentences = start_grammar.flatten("#firstInteraction#", start_json)
+	var sentences = grammar.flatten("#firstInteraction#", json)
 	_get_array_sentences(sentences)
 	
 	_show_current_sentence_text()
 	
-	_set_name()
+	_set_name(grammar)
 	
 	dialog_btn.show()
 	hide_questions_btn()
-	var saved_color = start_grammar.get_variable("savedColor")
+	var saved_color = grammar.get_variable("savedColor")
 	var color : Color = _get_color_from_string(saved_color)
 	set_button_color(dialog_btn, color)
-	
-func _set_name():
-	var saved_name = start_grammar.get_variable("savedName")
+#endregion	
+
+#region Setup Name
+func _set_name(grammar : TraceryScript.Grammar):
+	var saved_name = grammar.get_variable("savedName")
 	name_label.text = saved_name
 		
-
 func _hide_name():
 	name_label.text = "???"
+#endregion
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
@@ -108,7 +136,7 @@ func _get_and_show_current_state_text():
 	
 	_show_current_sentence_text()
 	
-	_set_name()
+	_set_name(current_npc.grammar)
 
 func _get_array_sentences(sentences : String):
 	print("Get array sentences")
@@ -123,17 +151,17 @@ func _get_array_sentences(sentences : String):
 func _get_color_from_string(colorStr : String) -> Color:
 	match(colorStr):
 		"white":
-			return Color(1.0, 1.0, 1.0, 1.0)
+			return Color(0.882, 0.882, 0.882, 1.0)
 		"gray":
-			return Color(0.501, 0.501, 0.501, 1.0)
+			return Color(0.537, 0.537, 0.537, 1.0)
 		"black":
-			return Color(0.0, 0.0, 0.0, 1.0)
+			return Color(0.074, 0.12, 0.188, 1.0)
 		"pink":
-			return Color(0.931, 0.352, 1.0, 1.0)
+			return Color(0.966, 0.565, 0.866, 1.0)
 		"cyan":
-			return Color(0.0, 0.945, 0.867, 1.0)
+			return Color(0.23, 0.624, 0.602, 1.0)
 		"red":
-			return Color(1.0, 0.0, 0.0, 1.0)
+			return Color(0.946, 0.414, 0.373, 1.0)
 	
 	return Color(1,1,1)
 	
@@ -158,6 +186,7 @@ func set_saved_color():
 #region Show text
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
+	print("full sentence : ", full_sentence)
 	
 	if full_sentence == "<question>":
 		print("start question")
@@ -236,6 +265,7 @@ func _on_dialog_pressed() -> void:
 		
 func _on_answer_pressed(is_right_answer : bool):
 	_end_questions_ui()
+	stop_question_timer()
 	is_in_questions = false
 	if (is_right_answer):
 		full_sentence = questions_grammar.flatten("#rightAnswer#", questions_answers_json)
@@ -244,7 +274,7 @@ func _on_answer_pressed(is_right_answer : bool):
 	revealed_characters = 0
 	text_label.text = ""
 	
-	_set_name() # Reset if name = "???"
+	_set_name(current_npc.grammar) # Reset if name = "???"
 	ScoreManager._show(true) # Reset if score hidden
 	is_typing = true
 	_start_typing()
@@ -279,13 +309,11 @@ func hide_questions_btn():
 		btn.hide()
 #endregion
 
-#region Questions
-func _start_questions():
-	pass
-	
+#region Questions	
 func _start_questions_ui():
 	dialog_btn.set_global_position(questions_pos)
 	show_questions_btn()
+	start_question_timer()
 	pass
 	
 func _end_questions_ui():
@@ -336,4 +364,26 @@ func first_letter_upper(s: String) -> String:
 		return s
 	var first = s.substr(0, 1).to_upper()
 	return first + s.substr(1, s.length() - 1)
+#endregion
+
+#region Timer
+func start_question_timer():
+	custom_timer.show_and_start_timer(question_time)
+	
+func stop_question_timer():
+	custom_timer.hide_and_stop_timer()
+	
+func _on_timer_end():
+	ScoreManager._remove_score(remove_score_wrong_answer)
+	_end_questions_ui()
+	is_in_questions = false
+	
+	full_sentence = questions_grammar.flatten("#timerAnswer#", questions_answers_json)
+	revealed_characters = 0
+	text_label.text = ""
+	
+	_set_name(current_npc.grammar) # Reset if name = "???"
+	ScoreManager._show(true) # Reset if score hidden
+	is_typing = true
+	_start_typing()
 #endregion
