@@ -1,7 +1,12 @@
 class_name SimpleDialogManager extends Node2D
 
+@export_group("Skulls")
 @export var skulls_json: JSON
+@export var skulls_color: Color
+
+@export_group("Letters")
 @export var letters_json: JSON
+@export var letters_color: Color
 
 var skulls_text: Array[String]
 var letters_text: Array[String]
@@ -41,9 +46,15 @@ func _get_strings(json: JSON) -> Array[String]:
 	return []
 
 func _setup_dialogs():
-	pass
-	# get dialog
-	# switch type
-	# set text random skull or letter and remove from list
+	print("setup simple dialogs")
+	for dialog in simple_dialogs:
+		match dialog.dialog_type:
+			SimpleDialog.SimpleDialogType.SKULL:
+				skulls_text.shuffle()
+				dialog.setup(skulls_text[0], skulls_color)
+			SimpleDialog.SimpleDialogType.LETTER:
+				letters_text.shuffle()
+				dialog.setup(letters_text[0], letters_color)
+
 	
 	
