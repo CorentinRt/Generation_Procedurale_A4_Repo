@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://dmt44xjgjb5hq"]
+[gd_scene load_steps=4 format=4 uid="uid://dmt44xjgjb5hq"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_j6vp6"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_2v77m"]
+
+[sub_resource type="Curve" id="Curve_j6vp6"]
+_data = [Vector2(0.032921813, 1), 0.0, 0.0, 0, 0, Vector2(0.99588484, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_j6vp6")
@@ -14,3 +18,14 @@ tile_set = ExtResource("2_2v77m")
 [node name="Props" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAFAP3/AQAEAAYAAAAFAPz/AQAEAAUAAAABAP3/AQAEAAYAAAABAPz/AQAEAAUAAAAIAPr/AQAEAAYAAAAIAPn/AQAEAAUAAAAEAPr/AQAEAAYAAAAEAPn/AQAEAAUAAAADAPv/AQAMAAUAAAABAPj/AQAIAAUAAAABAPn/AQAAAAYAAAACAPj/AQAAAAUAAAA=")
 tile_set = ExtResource("2_2v77m")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(40, -118)
+amount = 3
+lifetime = 0.68
+emission_shape = 3
+emission_rect_extents = Vector2(3, 1)
+gravity = Vector2(0, -100)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_j6vp6")
