@@ -29,15 +29,18 @@ project/assembly_name="Procedural"
 [file_customization]
 
 folder_colors={
+"res://resources/audio/": "red",
 "res://resources/dialogs/": "pink",
 "res://resources/minigame/": "orange",
 "res://resources/score/": "yellow",
+"res://scenes/audio/": "red",
 "res://scenes/debug/": "green",
 "res://scenes/dialogs/": "pink",
 "res://scenes/minigame/": "orange",
 "res://scenes/rooms/LD/": "red",
 "res://scenes/score/": "yellow",
 "res://scenes/swords/": "teal",
+"res://scripts/audio/": "red",
 "res://scripts/dialogs/": "pink",
 "res://scripts/minigame/": "orange",
 "res://scripts/score/": "yellow",

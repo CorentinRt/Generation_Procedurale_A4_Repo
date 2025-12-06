@@ -218,6 +218,10 @@ func _start_typing():
 	# Add character
 	revealed_characters += 1
 	text_label.text = full_sentence.substr(0, revealed_characters)
+	
+	# ----- AUDIO ----- #
+	AudioManager.Instance.play_dialog_beep()
+	# ----- AUDIO ----- #
 
 	# Wait & recursive
 	await get_tree().create_timer(type_speed).timeout
