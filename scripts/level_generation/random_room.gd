@@ -5,40 +5,31 @@ class_name RandomRoom extends Node2D
 @export var coordinates:Vector2i
 var directions:Array[LevelGenerationUtils.Directions]
 
-@export var _startingInterior:PackedScene
-@export var _startingExteriorsDict:Dictionary[PackedScene, int] = {}
-@export var _roomsInteriorsDict:Dictionary[PackedScene, int] = {}
-@export var _roomsExteriorsDict:Dictionary[RoomExteriorData, int] = {}
+@export var _startingRoom:PackedScene
+#@export var _startingExteriorsDict:Dictionary[PackedScene, int] = {}
+@export var _roomsDict:Dictionary[PackedScene, int] = {}
+#@export var _roomsExteriorsDict:Dictionary[RoomExteriorData, int] = {}
 @export var _door:PackedScene
 
 var _room:TileMapLayer
 
 func initRoom(dir:Array[LevelGenerationUtils.Directions] = []):
 	if(_isStartingRoom):
-		var selectedExterior:PackedScene = _pickRandomElementFromDict(_startingExteriorsDict)
-		
-		var interiorInstance = _startingInterior.instantiate()
-		var exteriorInstance = selectedExterior.instantiate()
-		add_child(interiorInstance)
-		add_child(exteriorInstance)
+		#var selectedExterior:PackedScene = _pickRandomElementFromDict(_startingExteriorsDict)
+		var startingRoomInstance = _startingRoom.instantiate()
+		_room = startingRoomInstance
+		#var exteriorInstance = selectedExterior.instantiate()
+		add_child(startingRoomInstance)
+		#add_child(exteriorInstance)
 		#directions = exteriorInstance.directions
-		
 	else:
-		var selectedInterior:PackedScene = _pickRandomElementFromDict(_roomsInteriorsDict)
-		var selectedExterior:PackedScene
-		if(dir.size() == LevelGenerationUtils.Directions.NONE):
-			selectedExterior = _pickRandomElementFromDictData(_roomsExteriorsDict)
-		else :
-			selectedExterior = _pickRandomCompatibleElementFromDictDataWithDir(_roomsExteriorsDict, dir)
-			
-		
-		var interiorInstance = selectedInterior.instantiate()
-		var exteriorInstance = selectedExterior.instantiate()
-		_room = exteriorInstance
-		
-		add_child(interiorInstance)
-		add_child(exteriorInstance)
+		var roomInstance = _pickRandomElementFromDict(_roomsDict).instantiate()
+		_room = roomInstance
+		add_child(roomInstance)
 		#directions = exteriorInstance.directions
+	
+	_add_doors(dir)
+		
 
 func _pickRandomElementFromDict(dictionary: Dictionary[PackedScene, int]) -> PackedScene:
 	var totalWeight:int = 0
@@ -113,7 +104,7 @@ func _add_doors(doorsDirections:Array[LevelGenerationUtils.Directions]):
 	var isWidthEven:bool = false
 	var isHeightEven:bool = false
 	
-	#Placer correctement la door en fonction de si la size de la tilemap est pair ou impair
+	#Faire en sorte que si les directions sont vides, en selectionner aléatoirement
 	
 	if(int(roomBounds.size.x) % 2 == 0): isWidthEven = true
 	if(int(roomBounds.size.y) % 2 == 0): isHeightEven = true
