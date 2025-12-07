@@ -13,6 +13,8 @@ var _startingRoomDirections:Array[LevelGenerationUtils.Directions]
 @export var _maxLevelWidth:int
 @export var _roomSize:Vector2i
 
+var _roomList:Array[Node2D]
+
 var _roomsWithAvailableDoors:Array[Node2D]
 var _currentRoom:Node2D
 # Called when the node enters the scene tree for the first time.
@@ -27,13 +29,13 @@ func _ready() -> void:
 				
 		#Créer toujours au moins une salle pour chaque direction de la salle de départ
 		for i in range(_startingRoomDirections.size()):
-			_create_room(_startingRoomDirections[i], false, 0)
+			_roomList.append(_create_room(_startingRoomDirections[i], false, 0))
 			_roomsMaxCount -= 1
 		
 		for i in _roomsMaxCount:
 			_currentRoom = _get_random_room_from_availables()
 			var randDir:LevelGenerationUtils.Directions = _random_dir(_currentRoom.directions)
-			_create_room(randDir, true, 1)
+			_roomList.append(_create_room(randDir, true, 1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -44,21 +46,81 @@ func _random_dir(dirList:Array) -> LevelGenerationUtils.Directions:
 	return dir
 
 func _create_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom:bool, minimumDoorsCount:int) -> Node2D:
-	#Direction que la room créée doit avoir
-	#Elle correspond a la direction inverse de celle de création pour connecter les portes
-	var restrictionDir:LevelGenerationUtils.Directions
+	#Directions que la room créée doit avoir
+	#Elles correspondent aux direction inverse de celles qu'elle aura autour d'elle si elles ont des portes
+	var restrictionDir:Array[LevelGenerationUtils.Directions]
 	
 	match creationDir:
 		LevelGenerationUtils.Directions.NORTH:
-			restrictionDir = LevelGenerationUtils.Directions.SOUTH
+			restrictionDir.append(LevelGenerationUtils.Directions.SOUTH)
 		LevelGenerationUtils.Directions.SOUTH:
-			restrictionDir = LevelGenerationUtils.Directions.NORTH
+			restrictionDir.append(LevelGenerationUtils.Directions.NORTH)
 		LevelGenerationUtils.Directions.EAST:
-			restrictionDir = LevelGenerationUtils.Directions.WEST			
+			restrictionDir.append(LevelGenerationUtils.Directions.WEST)	
 		LevelGenerationUtils.Directions.WEST:
-			restrictionDir = LevelGenerationUtils.Directions.EAST			
+			restrictionDir.append(LevelGenerationUtils.Directions.EAST)		
 	
-	#On créer la room et on l'ajoute a la hiérarchie
+	var createdRoomPosition:Vector2
+	var createdRoomCoordinates:Vector2i
+	var directionToErase:LevelGenerationUtils.Directions
+	#On positionne la room créée en fonction de la direction que l'on a et on supprime les directions utilisées par chaque room
+	match creationDir:
+		LevelGenerationUtils.Directions.NORTH:
+			print("North")
+			createdRoomPosition = Vector2(_currentRoom.position.x, _currentRoom.position.y - _roomSize.y)
+			createdRoomCoordinates = Vector2(_currentRoom.coordinates.x, _currentRoom.coordinates.y - 1)
+			
+			directionToErase = LevelGenerationUtils.Directions.SOUTH
+			_currentRoom.directions.erase(LevelGenerationUtils.Directions.NORTH)
+	
+		LevelGenerationUtils.Directions.SOUTH:
+			print("South")
+			createdRoomPosition = Vector2(_currentRoom.position.x, _currentRoom.position.y + _roomSize.y)
+			createdRoomCoordinates = Vector2(_currentRoom.coordinates.x, _currentRoom.coordinates.y + 1)
+			
+			directionToErase = LevelGenerationUtils.Directions.NORTH
+			_currentRoom.directions.erase(LevelGenerationUtils.Directions.SOUTH)
+	
+		LevelGenerationUtils.Directions.EAST:
+			print("East")
+			createdRoomPosition = Vector2(_currentRoom.position.x + _roomSize.x, _currentRoom.position.y)
+			createdRoomCoordinates = Vector2(_currentRoom.coordinates.x + 1, _currentRoom.coordinates.y)
+			
+			directionToErase = LevelGenerationUtils.Directions.WEST
+			_currentRoom.directions.erase(LevelGenerationUtils.Directions.EAST)
+	
+		LevelGenerationUtils.Directions.WEST:
+			print("West")
+			createdRoomPosition = Vector2(_currentRoom.position.x - _roomSize.x, _currentRoom.position.y)
+			createdRoomCoordinates = Vector2( _currentRoom.coordinates.x - 1, _currentRoom.coordinates.y)
+			
+			directionToErase = LevelGenerationUtils.Directions.EAST
+			_currentRoom.directions.erase(LevelGenerationUtils.Directions.WEST)
+	
+	#UPDATE LA ROOM CREER AVEC LES NOUVELLES DATAS PUIS FINIR LA BOUCLE
+	#POUR CHECK LES SALLES ALENTOUR AVEC DES CONNEXIONS POSSIBLES
+	
+	for room in _roomList:
+		if (room != _currentRoom):
+			#if((room.coordinates.x == createdRoomCoordinates.x && room.coordinates.y == createdRoomCoordinates.y + 1) || (room.coordinates.x == createdRoomCoordinates.x && room.coordinates.y == createdRoomCoordinates.y - 1) || (room.coordinates.y == createdRoomCoordinates.y && room.coordinates.x == createdRoomCoordinates.x - 1) || (room.coordinates.y == createdRoomCoordinates.y && room.coordinates.x == createdRoomCoordinates.x + 1)) :
+			if(createdRoomCoordinates.x == room.coordinates.x && createdRoomCoordinates.y + 1 == room.coordinates.y):
+				if(room.directions.has(LevelGenerationUtils.Directions.NORTH)):
+					restrictionDir.append(LevelGenerationUtils.Directions.SOUTH)
+					
+			elif(createdRoomCoordinates.x == room.coordinates.x && createdRoomCoordinates.y - 1 == room.coordinates.y):
+				if(room.directions.has(LevelGenerationUtils.Directions.SOUTH)):
+					restrictionDir.append(LevelGenerationUtils.Directions.NORTH)
+					
+			elif(createdRoomCoordinates.x + 1 == room.coordinates.x && createdRoomCoordinates.y == room.coordinates.y):
+				if(room.directions.has(LevelGenerationUtils.Directions.WEST)):
+					restrictionDir.append(LevelGenerationUtils.Directions.EAST)
+					
+			elif(createdRoomCoordinates.x - 1 == room.coordinates.x && createdRoomCoordinates.y == room.coordinates.y):
+				if(room.directions.has(LevelGenerationUtils.Directions.EAST)):
+					restrictionDir.append(LevelGenerationUtils.Directions.WEST)
+					
+					
+	#On créer la room
 	var createdRoom:Node2D = _randomRoomBase.instantiate()
 	createdRoom.initRoom(restrictionDir)
 	
@@ -67,48 +129,21 @@ func _create_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom
 		print(createdRoom.directions.size())
 		createdRoom = _randomRoomBase.instantiate()
 		createdRoom.initRoom(restrictionDir)
+		
 	
+	#On l'initialise et on la place au bon endroit
+	createdRoom.directions.erase(directionToErase)
+	createdRoom.position = createdRoomPosition
+	createdRoom.coordinates = createdRoomCoordinates
+	
+	#On l'ajoute a la hiérarchie
 	add_child(createdRoom)		
 	
-	#On positionne la room créée en fonction de la direction que l'on a et on supprime les directions utilisées par chaque room
-	match creationDir:
-		LevelGenerationUtils.Directions.NORTH:
-			print("North")
-			createdRoom.position += Vector2(_currentRoom.position.x, _currentRoom.position.y - _roomSize.y)
-			createdRoom.coordinates.y = _currentRoom.coordinates.y - 1
-			
-			createdRoom.directions.erase(LevelGenerationUtils.Directions.SOUTH)
-			_currentRoom.directions.erase(LevelGenerationUtils.Directions.NORTH)
-	
-		LevelGenerationUtils.Directions.SOUTH:
-			print("South")
-			createdRoom.position += Vector2(_currentRoom.position.x, _currentRoom.position.y + _roomSize.y)
-			createdRoom.coordinates.y = _currentRoom.coordinates.y + 1
-			
-			createdRoom.directions.erase(LevelGenerationUtils.Directions.NORTH)
-			_currentRoom.directions.erase(LevelGenerationUtils.Directions.SOUTH)
-	
-		LevelGenerationUtils.Directions.EAST:
-			print("East")
-			createdRoom.position += Vector2(_currentRoom.position.x + _roomSize.x, _currentRoom.position.y)
-			createdRoom.coordinates.x = _currentRoom.coordinates.x + 1
-			
-			createdRoom.directions.erase(LevelGenerationUtils.Directions.WEST)
-			_currentRoom.directions.erase(LevelGenerationUtils.Directions.EAST)
-	
-		LevelGenerationUtils.Directions.WEST:
-			print("West")
-			createdRoom.position += Vector2(_currentRoom.position.x - _roomSize.x, _currentRoom.position.y)
-			createdRoom.coordinates.x = _currentRoom.coordinates.x - 1
-			
-			createdRoom.directions.erase(LevelGenerationUtils.Directions.EAST)
-			_currentRoom.directions.erase(LevelGenerationUtils.Directions.WEST)
-	
+	_roomsWithAvailableDoors.append(createdRoom)
 	#On vérifie si il reste encore des directions possibles sur les 2 rooms et on ajoute ou supprime de la liste de rooms utilisables en fonction
-	if(createdRoom.directions.size() > 0 && !_roomsWithAvailableDoors.has(createdRoom)) :
-		_roomsWithAvailableDoors.append(createdRoom)
-	if(_currentRoom.directions.size() <= 0 && _roomsWithAvailableDoors.has(_currentRoom)):
-		_roomsWithAvailableDoors.erase(_currentRoom)
+	for room in _roomsWithAvailableDoors:
+		if(room.directions.size() <= 0):
+			_roomsWithAvailableDoors.erase(room)
 	
 	#On actualise la room courante
 	if(updateCurrentRoom):
