@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=23 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -9,9 +9,14 @@
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_pr53c"]
 [ext_resource type="Resource" uid="uid://odqciikpmnpx" path="res://resources/dialogs/questions/q_current_money.tres" id="6_ufbtj"]
 [ext_resource type="Resource" uid="uid://3a0mddbpd1yp" path="res://resources/dialogs/questions/q_lost_money.tres" id="7_kyx3p"]
+[ext_resource type="Resource" uid="uid://bkm5nvkrjqod0" path="res://resources/dialogs/questions/q_player_age.tres" id="9_nef8f"]
 [ext_resource type="Texture2D" uid="uid://bfuqanhm61p4d" path="res://sprites/dialogs/icon_arrow.png" id="9_ufbtj"]
+[ext_resource type="Resource" uid="uid://dpd42kv6p4dao" path="res://resources/dialogs/questions/q_emission.tres" id="10_mgb4h"]
 [ext_resource type="StyleBox" uid="uid://b10agfp4q6set" path="res://style/slider_style.tres" id="11_jaf1p"]
+[ext_resource type="Resource" uid="uid://bqlawfeyys3l1" path="res://resources/dialogs/questions/q_player_name.tres" id="11_mbybk"]
 [ext_resource type="Script" uid="uid://837rr3cklplf" path="res://scripts/dialogs/custom_timer.gd" id="11_sbcri"]
+[ext_resource type="Resource" uid="uid://dhbuuj33h3t3f" path="res://resources/dialogs/questions/q_host.tres" id="12_5xytx"]
+[ext_resource type="Resource" uid="uid://ba8rjgkvdbudn" path="res://resources/dialogs/questions/q_player_job.tres" id="13_0s3e1"]
 [ext_resource type="Script" uid="uid://c7i14ajf5k0es" path="res://scripts/dialogs/simple_dialog_manager.gd" id="13_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_skulls.json" id="14_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_letters.json" id="15_7cf0w"]
@@ -46,7 +51,7 @@ name_panel = NodePath("Dialog/NamePanel")
 dialog_btn = NodePath("Dialog")
 button_style = ExtResource("3_pr53c")
 questions_btn = [NodePath("Dialog/Button"), NodePath("Dialog/Button2"), NodePath("Dialog/Button3"), NodePath("Dialog/Button4")]
-questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("6_ufbtj"), ExtResource("7_kyx3p")])
+questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("6_ufbtj"), ExtResource("7_kyx3p"), ExtResource("9_nef8f"), ExtResource("10_mgb4h"), ExtResource("11_mbybk"), ExtResource("12_5xytx"), ExtResource("13_0s3e1")])
 no_question_pos = Vector2(100, 530)
 questions_pos = Vector2(100, 380)
 custom_timer = NodePath("CustomTimer")

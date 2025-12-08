@@ -74,10 +74,12 @@ func _add_quest_script():
 func start_quest():
 	if has_quest && quest != null:
 		QuestManager.Instance.start_quest(quest)
+		quest.start_quest()
 		
 func end_quest():
 	if has_quest && quest != null:
 		QuestManager.Instance.complete_current_quest()
+		quest.end_quest()
 		
 func is_quest_completed() -> bool:
 	return quest.is_quest_completed
@@ -114,9 +116,9 @@ func _set_marker_color():
 			marker_animation.modulate = Color(2.454, 2.249, 0.0) # Yellow
 		DialogState.QUEST_PROGRESS:
 			if (quest.is_quest_completed):
-				marker_animation.modulate = Color(0.206, 2.249, 2.454) # Blue
-			else:
 				marker_animation.modulate = Color(0.813, 2.249, 0.477) # Green
+			else:
+				marker_animation.modulate = Color(0.206, 2.249, 2.454) # Blue
 		DialogState.QUEST_COMPLETED:
 			marker_animation.modulate = Color(0.813, 2.249, 0.477) # Green
 		DialogState.COMPLETED:

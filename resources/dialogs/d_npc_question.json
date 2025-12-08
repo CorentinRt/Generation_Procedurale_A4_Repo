@@ -1,6 +1,6 @@
 {
 	"name": [
-		"Mike Harrison",
+		"Mike Harrison"
 	],
 	"occupation": [
 		"président",
@@ -8,17 +8,18 @@
 		"commerçant"
 	],
 	"color":[
-		"pink",
-		"cyan",
-		"red"
+		"gray",
+		"black"
 	],
 	"setupSaves": [
 		"[savedName:#name#][savedColor:#color#]"
 	],
 	"firstInteraction": [
-		"Salut c'est #savedName# le #occupation#.<next>Super !<next><question><next>Bye"
+    	"Salut c'est #savedName#.<next>
+		<question><next>
+		Merci d'avoir répondu à ma question"
 	],
 	"completed": [
-		"Moi j'ai pas de quete et c'est okay"
+		"J'ai plus de question là."
 	]
 }
