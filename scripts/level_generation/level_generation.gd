@@ -29,17 +29,17 @@ func _ready() -> void:
 				
 		#Créer toujours au moins une salle pour chaque direction de la salle de départ
 		for i in range(startingRoomDirections.size()):
-			_spawn_room(startingRoomDirections[i], false)
+			_spawn_room(startingRoomDirections[i])
 			_roomsMaxCount -= 1
 		
 		for i in _roomsMaxCount:
 			_currentRoom = _get_random_room()
-			
 			while(_currentRoom.directions.size() >= 4):
-				_currentRoom = _get_random_room()
-				
+				_currentRoom = _get_random_room()	
 			var randDir:LevelGenerationUtils.Directions = _random_dir(_currentRoom)
-			_spawn_room(randDir, true)
+			_spawn_room(randDir)
+		
+		_add_doors()
 
 func _random_dir(room:RoomData) -> LevelGenerationUtils.Directions:
 	var dir:LevelGenerationUtils.Directions = LevelGenerationUtils.Directions.values()[randi() % LevelGenerationUtils.Directions.size()] as LevelGenerationUtils.Directions
@@ -62,12 +62,10 @@ func _selectRandomDirFromArray(dirs:Array[LevelGenerationUtils.Directions]) -> A
 				dirsCopy.erase(addedDir)
 		return returnedArray
 
-func _spawn_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom:bool) -> void:
+func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	var selectedRoomData:RoomData = _pickRandomElementFromDict(_roomsList).duplicate()
 	selectedRoomData.tilemap = selectedRoomData.roomScene.instantiate()
 	selectedRoomData.directions.clear()
-	if selectedRoomData.directions.size() > 0:
-		print("ayaya")
 	match creationDir:
 		LevelGenerationUtils.Directions.NORTH:
 			print("North")
@@ -94,65 +92,55 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions, updateCurrentRoom:
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.WEST)
 	
 	selectedRoomData.tilemap.position = Vector2(selectedRoomData.coordinates.x * _roomSize.x, selectedRoomData.coordinates.y * _roomSize.y)
-	if selectedRoomData.directions.size()>1:
-		print("ayaya")
 	_roomMap[selectedRoomData.coordinates] = selectedRoomData
 	add_child(selectedRoomData.tilemap)
 
-func _add_door(doorsDir:LevelGenerationUtils.Directions, minimumDoorsCount:int) -> void:
+func _add_doors() -> void:
 	for i in _roomMap:
-		_currentRoom = _roomMap[i]
-		for dir in LevelGenerationUtils.Directions.values():
-			if(roomHasNeighboorInDir(_currentRoom.coordinates, dir)):
-				var roomBounds:Rect2 = _currentRoom.get_used_rect()
-				var tileSize:Vector2i = _currentRoom.tilemap.tile_set.tile_size
-				var isWidthEven:bool = false
-				var isHeightEven:bool = false
-				
-				#Faire en sorte que si les directions sont vides, en selectionner aléatoirement
-				
-				if(int(roomBounds.size.x) % 2 == 0): isWidthEven = true
-				if(int(roomBounds.size.y) % 2 == 0): isHeightEven = true
-				
-				var offset:Vector2 = Vector2.ZERO
-				offset = tileSize / 2
-				match dir:
-					LevelGenerationUtils.Directions.NORTH:
-						var yCoord:float = roomBounds.position.y - roomBounds.size.y / 2 + offset.y
-						if(isWidthEven):
-							_create_door(_currentRoom, Vector2(roomBounds.position.x + offset.x, yCoord))
-							_create_door(_currentRoom,Vector2(roomBounds.position.x - offset.x, yCoord))
-						else:
-							_create_door(_currentRoom,Vector2(roomBounds.position.x, yCoord))
+		for dir in _roomMap[i].directions:
+			var roomBounds:Rect2 = _roomMap[i].tilemap.get_used_rect()
+			var tileSize:Vector2i = _roomMap[i].tilemap.tile_set.tile_size
+			var isWidthEven:bool = false
+			var isHeightEven:bool = false
+			
+			if(int(roomBounds.size.x) % 2 == 0): isWidthEven = true
+			if(int(roomBounds.size.y) % 2 == 0): isHeightEven = true
+			
+			roomBounds.size *= tileSize.x
+			var offset:Vector2 = Vector2.ZERO
+			offset = tileSize / 2
+			match dir:
+				LevelGenerationUtils.Directions.NORTH:
+					#var yCoord:float = roomBounds.position.y - roomBounds.size.y / 2 + offset.y
+					if(isWidthEven):
+						_create_door(_roomMap[i], Vector2(offset.x, -roomBounds.size.y / 2))
+						_create_door(_roomMap[i], Vector2(-offset.x, -roomBounds.size.y / 2))
+					else:
+						_create_door(_roomMap[i], Vector2(0, -roomBounds.size.y / 2))
+					
+				LevelGenerationUtils.Directions.SOUTH:
+					#var yCoord:float = roomBounds.position.y + roomBounds.size.y / 2 - offset.y
+					if(isWidthEven):
+						_create_door(_roomMap[i], Vector2(offset.x, roomBounds.size.y / 2))
+						_create_door(_roomMap[i], Vector2(-offset.x,  roomBounds.size.y / 2))
+					else:
+						_create_door(_roomMap[i], Vector2(0,  roomBounds.size.y / 2))
 						
-						_currentRoom.directions.append(LevelGenerationUtils.Directions.NORTH)
-					LevelGenerationUtils.Directions.SOUTH:
-						var yCoord:float = roomBounds.position.y + roomBounds.size.y / 2 - offset.y
-						if(isWidthEven):
-							_create_door(_currentRoom,Vector2(roomBounds.position.x + offset.x, yCoord))
-							_create_door(_currentRoom,Vector2(roomBounds.position.x - offset.x, yCoord))
-						else:
-							_create_door(_currentRoom,Vector2(roomBounds.position.x, yCoord))
-							
-						_currentRoom.directions.append(LevelGenerationUtils.Directions.SOUTH)
-					LevelGenerationUtils.Directions.EAST:
-						var xCoord:float = roomBounds.position.x + roomBounds.size.x / 2 - offset.x
-						if(isHeightEven):
-							_create_door(_currentRoom,Vector2(xCoord, roomBounds.position.y - offset.y))
-							_create_door(_currentRoom,Vector2(xCoord, roomBounds.position.y + offset.y))
-						else:
-							_create_door(_currentRoom,Vector2(xCoord, roomBounds.position.y))
-							
-						_currentRoom.directions.append(LevelGenerationUtils.Directions.EAST)
-					LevelGenerationUtils.Directions.WEST:
-						var xCoord:float = roomBounds.position.x - roomBounds.size.x / 2 + offset.x
-						if(isHeightEven):
-							_create_door(_currentRoom,Vector2(xCoord, roomBounds.position.y - offset.y))
-							_create_door(_currentRoom,Vector2(xCoord, roomBounds.position.y + offset.y))
-						else:
-							_create_door(_currentRoom,Vector2(xCoord, roomBounds.position.y))
-							
-						_currentRoom.directions.append(LevelGenerationUtils.Directions.WEST)
+				LevelGenerationUtils.Directions.EAST:
+					#var xCoord:float = roomBounds.position.x + roomBounds.size.x / 2 - offset.x
+					if(isHeightEven):
+						_create_door(_roomMap[i], Vector2(-roomBounds.size.x / 2, -offset.y))
+						_create_door(_roomMap[i], Vector2(-roomBounds.size.x / 2, offset.y))
+					else:
+						_create_door(_roomMap[i], Vector2(-roomBounds.size.x / 2, 0))
+						
+				LevelGenerationUtils.Directions.WEST:
+					#var xCoord:float = roomBounds.position.x - roomBounds.size.x / 2 + offset.x
+					if(isHeightEven):
+						_create_door(_roomMap[i], Vector2(-roomBounds.size.x / 2, -offset.y))
+						_create_door(_roomMap[i], Vector2(-roomBounds.size.x / 2, offset.y))
+					else:
+						_create_door(_roomMap[i], Vector2(-roomBounds.size.x / 2, 0))
 
 func roomHasNeighboorInDir(coordinates:Vector2i, dir:LevelGenerationUtils.Directions) -> bool:
 	match dir:
