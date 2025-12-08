@@ -1,10 +1,352 @@
-[gd_scene load_steps=2 format=3 uid="uid://psvhqqirckxe"]
+[gd_scene load_steps=15 format=3 uid="uid://psvhqqirckxe"]
 
 [ext_resource type="Script" uid="uid://eldfhh8vm7fk" path="res://scripts/minigame/casino_machine/casino/ui_casino.gd" id="1_pilwi"]
+[ext_resource type="Script" uid="uid://cpkfk2jm3i1qh" path="res://scripts/minigame/casino_machine/casino_reel.gd" id="2_5iqkj"]
+[ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="2_ubwra"]
+[ext_resource type="Texture2D" uid="uid://b05sq5d5ukqij" path="res://sprites/heart.png" id="3_oib7k"]
+[ext_resource type="Texture2D" uid="uid://by6021h45yirf" path="res://sprites/inputs/keyboard_e_outline.png" id="4_5iqkj"]
+[ext_resource type="Texture2D" uid="uid://mo1eyyar2d7f" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0031.png" id="5_rv4m6"]
 
-[node name="UICasino" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_thdb8"]
+font_size = 80
+font_color = Color(1, 0, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rv4m6"]
+font_size = 61
+font_color = Color(7.0544744, 0.55269754, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ap1v6"]
+font_size = 101
+font_color = Color(0, 0, 0.5294118, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_rv4m6"]
+resource_name = "bingo"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelBingo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelBingo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1007, 790), Vector2(1191, 28)]
+}
+
+[sub_resource type="Animation" id="Animation_thdb8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelBingo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelBingo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1007, 790)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelLittleWin:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelLittleWin:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelFailed:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LabelFailed:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(363, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LabelFailed:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(236, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ap1v6"]
+resource_name = "little_win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelLittleWin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelLittleWin:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.32987726, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_l6ntl"]
+resource_name = "failed"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelFailed:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelFailed:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2, 2),
+"points": PackedFloat32Array(-210, -0.00016666668, 0, 0.1665, 0, 236, -0.5333333, 82, 0.43333328, -93, 254, -0.016666671, -2.3333335, 0, 0, 700, -0.04444444, 75.5, 0, 0),
+"times": PackedFloat32Array(0, 1, 1.6, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thdb8"]
+_data = {
+&"RESET": SubResource("Animation_thdb8"),
+&"bingo": SubResource("Animation_rv4m6"),
+&"failed": SubResource("Animation_l6ntl"),
+&"little_win": SubResource("Animation_ap1v6")
+}
+
+[node name="UICasino" type="Control" node_paths=PackedStringArray("animation_player", "reels")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_pilwi")
+animation_player = NodePath("AnimationPlayer")
+reels = [NodePath("Container/Reel1"), NodePath("Container/Reel2"), NodePath("Container/Reel3")]
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.2
+anchor_right = 0.85
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reel1" type="Control" parent="Container"]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.025
+anchor_right = 0.325
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5iqkj")
+symbols = Array[Texture2D]([ExtResource("3_oib7k"), ExtResource("4_5iqkj"), ExtResource("5_rv4m6"), ExtResource("2_ubwra")])
+reel_speed = 4000.0
+
+[node name="ColorRect" type="ColorRect" parent="Container/Reel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32156864)
+
+[node name="SymbolList" type="VBoxContainer" parent="Container/Reel1"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reel2" type="Control" parent="Container"]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.35
+anchor_right = 0.65
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5iqkj")
+symbols = Array[Texture2D]([ExtResource("3_oib7k"), ExtResource("4_5iqkj"), ExtResource("5_rv4m6"), ExtResource("2_ubwra")])
+reel_speed = 4000.0
+
+[node name="ColorRect" type="ColorRect" parent="Container/Reel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32156864)
+
+[node name="SymbolList" type="VBoxContainer" parent="Container/Reel2"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reel3" type="Control" parent="Container"]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.675
+anchor_right = 0.975
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5iqkj")
+symbols = Array[Texture2D]([ExtResource("3_oib7k"), ExtResource("4_5iqkj"), ExtResource("5_rv4m6"), ExtResource("2_ubwra")])
+reel_speed = 4000.0
+
+[node name="ColorRect" type="ColorRect" parent="Container/Reel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32156864)
+
+[node name="SymbolList" type="VBoxContainer" parent="Container/Reel3"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelBingo" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -1007.0
+offset_top = 790.0
+offset_right = -62.0
+offset_bottom = 1013.0001
+rotation = -0.24958208
+text = "BINGO !!!!!!!!
+SLAYYYYYYYYYYYYYYYYY"
+label_settings = SubResource("LabelSettings_thdb8")
+horizontal_alignment = 1
+
+[node name="LabelLittleWin" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 316.0
+offset_top = 271.0
+offset_right = 677.0
+offset_bottom = 355.0
+text = "LITTLE WIN !!!"
+label_settings = SubResource("LabelSettings_rv4m6")
+horizontal_alignment = 1
+
+[node name="LabelFailed" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 363.0
+offset_top = 236.0
+offset_right = 754.0
+offset_bottom = 374.00012
+text = "FAILED !"
+label_settings = SubResource("LabelSettings_ap1v6")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_thdb8")
+}
