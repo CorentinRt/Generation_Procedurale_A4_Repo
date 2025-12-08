@@ -114,9 +114,9 @@ func _set_marker_color():
 			marker_animation.modulate = Color(2.454, 2.249, 0.0) # Yellow
 		DialogState.QUEST_PROGRESS:
 			if (quest.is_quest_completed):
-				marker_animation.modulate = Color(0.206, 2.249, 2.454) # Blue
-			else:
 				marker_animation.modulate = Color(0.813, 2.249, 0.477) # Green
+			else:
+				marker_animation.modulate = Color(0.206, 2.249, 2.454) # Blue
 		DialogState.QUEST_COMPLETED:
 			marker_animation.modulate = Color(0.813, 2.249, 0.477) # Green
 		DialogState.COMPLETED:
