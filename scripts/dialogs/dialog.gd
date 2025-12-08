@@ -244,6 +244,8 @@ func _get_current_state():
 		
 		current_npc.DialogState.FIRST_INTERACTION:
 			if (current_npc.has_quest):
+				# Start quest
+				current_npc.start_quest()
 				current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
 			else:
 				current_npc.current_dialog_state = current_npc.DialogState.COMPLETED

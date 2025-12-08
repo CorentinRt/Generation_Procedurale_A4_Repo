@@ -38,6 +38,7 @@ folder_colors={
 "res://scenes/debug/": "green",
 "res://scenes/dialogs/": "pink",
 "res://scenes/minigame/": "orange",
+"res://scenes/quests/": "pink",
 "res://scenes/rooms/LD/": "red",
 "res://scenes/score/": "yellow",
 "res://scenes/swords/": "teal",

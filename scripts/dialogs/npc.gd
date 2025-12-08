@@ -72,6 +72,10 @@ func _add_quest_script():
 
 			quest = quest_node as Quest
 			print("Quest script added : ", quest)
+			
+func start_quest():
+	if has_quest && quest != null:
+		QuestManager.Instance.start_quest(quest)
 
 func show_dialog():
 	var dialog_manager = UtilsManager.get_dialog_manager()

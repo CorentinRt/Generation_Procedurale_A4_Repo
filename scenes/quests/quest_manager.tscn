@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://0sto3gfi2y6x"]
+
+[ext_resource type="Script" uid="uid://bgo226obencyl" path="res://scripts/quests/quest_manager.gd" id="1_4a2l1"]
+
+[node name="QuestManager" type="Control" node_paths=PackedStringArray("quest_text")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4a2l1")
+quest_text = NodePath("QuestText")
+metadata/_custom_type_script = "uid://bgo226obencyl"
+
+[node name="QuestText" type="RichTextLabel" parent="."]
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 50.0
+text = "Quest Name"
