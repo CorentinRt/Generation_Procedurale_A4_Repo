@@ -162,7 +162,6 @@ func _set_color(color : Color) -> void:
 
 func _compute_orientation_angle(direction : Vector2) -> float:
 	var angle = direction.angle()
-	print(direction)
 	match orientation:
 		ORIENTATION.DPAD_8:
 			return Utils.DiscreteAngle(angle, 45)
@@ -193,7 +192,6 @@ func _spawn_attack_scene() -> void:
 	angle = angle + 90
 	attack_spawn_point.add_child(spawned_attack)
 
-	print(angle)
 	spawned_attack.rotation = angle
 	spawned_attack.position = direction_attack * attack_offset
 	
