@@ -59,6 +59,8 @@ item_minigame=""
 doors=""
 simple_dialog=""
 enemy=""
+item_quest=""
+item_quest_container=""
 
 [input]
 

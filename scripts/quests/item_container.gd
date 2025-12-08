@@ -1,11 +1,15 @@
-extends Node
+class_name ItemContainer extends Node2D
 
+var has_created_item: bool = false
+const ITEM_SCENE := preload("res://scenes/quests/quest_item.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+# plus tard : room en param pour pas créer un item dans la meme
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func create_item(item_type : ItemSpawnManager.ItemType):
+	var item = ITEM_SCENE.instantiate()
+	add_child(item)
+	
+	if item.has_method("setup_item"):
+		item.setup_item(item_type)
+	
+	has_created_item = true

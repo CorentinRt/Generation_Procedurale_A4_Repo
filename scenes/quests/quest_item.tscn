@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgspftucjpeyf"]
+
+[ext_resource type="Script" uid="uid://dyxucd0wyo2mm" path="res://scripts/quests/item.gd" id="1_ua7nw"]
+[ext_resource type="Texture2D" uid="uid://b05sq5d5ukqij" path="res://sprites/heart.png" id="2_fe4ys"]
+
+[node name="QuestItem" type="Node2D" node_paths=PackedStringArray("item_visual")]
+script = ExtResource("1_ua7nw")
+item_visual = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://dyxucd0wyo2mm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fe4ys")

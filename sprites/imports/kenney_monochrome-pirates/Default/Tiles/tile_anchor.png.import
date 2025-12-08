@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qegpho8acj5c"
-path="res://.godot/imported/tile_0121.png-b232da7c18ef4ea2fb3bbabe952a7c88.ctex"
+uid="uid://fhb7d20eelny"
+path="res://.godot/imported/tile_anchor.png-73deb6d8d3cbac1a957684a3c802d50e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0121.png"
-dest_files=["res://.godot/imported/tile_0121.png-b232da7c18ef4ea2fb3bbabe952a7c88.ctex"]
+source_file="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_anchor.png"
+dest_files=["res://.godot/imported/tile_anchor.png-73deb6d8d3cbac1a957684a3c802d50e.ctex"]
 
 [params]
 

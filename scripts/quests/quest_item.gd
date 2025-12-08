@@ -7,9 +7,9 @@ func _ready() -> void:
 
 func setup_item():
 	target_value = ItemSpawnManager.get_random_uncreated_item_type() # enum id of item type
-
-	# Create random item in another room
 	
+	# Create random item in another room
+	ItemSpawnManager.spawn_item(target_value)
 
 func format_target_value() -> String:
 	match target_value:

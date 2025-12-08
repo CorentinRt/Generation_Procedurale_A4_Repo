@@ -9,11 +9,21 @@ enum ItemType{
 }
 
 var created_items: Dictionary = {}
+var containers: Array[ItemContainer] = []
 
 func _ready():
-	# Init dict
+	_init_created_items()
+	_find_all_containers()
+
+func _init_created_items():
 	for key in ItemType.keys():
 		created_items[ItemType[key]] = false
+
+func _find_all_containers():
+	for node in get_tree().get_nodes_in_group("item_quest_container"):
+		if node is ItemContainer:
+			containers.append(node)
+	print("Item containers found : ", containers.size())
 
 func get_random_uncreated_item_type():
 	# Get not created types
@@ -28,5 +38,17 @@ func get_random_uncreated_item_type():
 	# Get random
 	return available_types[randi() % available_types.size()]
 
-func set_item_type_created(created_item_type : ItemType):
-	created_items[created_items] = true
+func spawn_item(item_type : ItemType):
+	print("Spawn item : ", item_type)
+	
+	if item_type == null:
+		print("Tous les items sont déjà créés")
+		return
+
+	for container in containers:
+		if not container.has_created_item:
+			container.create_item(item_type)
+			created_items[item_type] = true
+			return
+	
+	print("Aucun container libre !")
