@@ -150,9 +150,9 @@ func blink() -> void:
 			if sprite == null or not is_instance_valid(sprite):
 				continue
 			if isVisible:
-				sprite.modulate.a = 1
+				sprite.self_modulate.a = 1
 			else:
-				sprite.modulate.a = invincibility_alpha
+				sprite.self_modulate.a = invincibility_alpha
 		
 		if get_tree() != null:
 			await get_tree().process_frame
@@ -172,7 +172,7 @@ func _end_blink() -> void:
 
 func _set_color(color : Color) -> void:
 	for sprite in sprites:
-		sprite.modulate = color
+		sprite.self_modulate = color
 
 
 func _compute_orientation_angle(direction : Vector2) -> float:

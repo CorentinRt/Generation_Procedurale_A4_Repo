@@ -121,9 +121,8 @@ func _update_attack_direction() -> void:
 	if _can_move():
 		if _direction.length() > 0.5:
 			direction_attack = _direction
-	else:
-		direction_attack = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
-
+			
+			
 func _set_state(state : STATE) -> void:
 	if state == STATE.DEAD and _state == STATE.DEAD:
 		return
