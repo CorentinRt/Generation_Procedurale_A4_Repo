@@ -27,3 +27,8 @@ func add_one_target_value():
 	current_value += 1
 	if current_value >= target_value:
 		is_quest_completed = true
+
+# To override in children
+func format_target_value() -> String:
+	assert(false, "use() must be overridden in child class")
+	return ""

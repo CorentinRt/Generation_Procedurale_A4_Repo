@@ -10,3 +10,6 @@ func _ready() -> void:
 	target_value = randi_range(target_min_value, target_max_value)
 	
 	GameManager.on_kill_enemy.connect(add_one_target_value)
+
+func format_target_value() -> String:
+	return str(target_value)

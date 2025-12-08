@@ -58,18 +58,30 @@ func _setup_dialog():
 		has_quest = false
 	
 func _add_quest_script():
-	if savedQuest != "Combat":
+	if savedQuest != "Combat" && savedQuest != "Item":
 		return
+		
+	print("Saved quest : ", savedQuest, " for npc : ", self.name)
 	
 	match(savedQuest):
 		"Combat":
 			var quest_node := Node.new()
 			quest_node.name = "Quest_Combat"
+			
 			var quest_script := load("res://scripts/quests/quest_combat.gd")
 			quest_node.set_script(quest_script)
 
 			add_child(quest_node)
+			quest = quest_node as Quest
+			
+		"Item":
+			var quest_node := Node.new()
+			quest_node.name = "Quest_Item"
+			
+			var quest_script := load("res://scripts/quests/quest_item.gd")
+			quest_node.set_script(quest_script)
 
+			add_child(quest_node)
 			quest = quest_node as Quest
 			
 func start_quest():
