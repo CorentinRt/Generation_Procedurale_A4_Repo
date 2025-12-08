@@ -6,6 +6,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var start_json: JSON
 @export var taunt_json: JSON
 @export var questions_answers_json: JSON 
+@export var item_json: JSON 
 
 @export_group("UI")
 @export var text_label: RichTextLabel
@@ -28,6 +29,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
 var taunt_grammar: TraceryScript.Grammar
+var item_grammar: TraceryScript.Grammar
 
 var is_in_dialog: bool = false
 
@@ -77,6 +79,12 @@ func _setup_grammars():
 	
 	taunt_grammar = TraceryScript.Grammar.new(taunt_rules)
 	taunt_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Item
+	var item_rules = item_json.data
+	
+	item_grammar = TraceryScript.Grammar.new(item_rules)
+	item_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 #endregion
 	
 #region Show dialog JSON
@@ -445,3 +453,15 @@ func start_simple_dialog(dialog_text: String, color : Color):
 	set_button_color(dialog_btn, color)
 	pass
 #endregion
+
+func start_item_dialog(can_get_item : bool):
+	var dialog_text: String = ""
+	
+	if (can_get_item):
+		dialog_text = item_grammar.flatten("#getItem#", item_json)
+	else:
+		dialog_text = item_grammar.flatten("#cantGetItem#", item_json)
+		
+	print(dialog_text)
+	
+	start_simple_dialog(dialog_text, Color(0.65, 0.22, 0.436, 1.0))

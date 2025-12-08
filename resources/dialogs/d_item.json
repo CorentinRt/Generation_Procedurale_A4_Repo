@@ -1,0 +1,8 @@
+{
+	"getItem": [
+		"Item récupéré !"
+	],
+	"cantGetItem": [
+		"Tu ne peux pas récupérer cet item !"
+	]
+}

@@ -54,4 +54,5 @@ func interact():
 				can_get_item = true
 
 	print("can get item interacted : ", can_get_item)
+	UtilsManager.get_dialog_manager().start_item_dialog(can_get_item)
 	
