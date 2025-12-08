@@ -36,8 +36,22 @@ func setup_item(new_item_type : ItemSpawnManager.ItemType):
 			item_visual.texture = load("res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_cannon.png")
 
 func interact():
-	print("interact with item")
+	print("QuestManager.Instance : ", QuestManager.Instance)
+	print("QuestManager.Instance.current_quest : ", QuestManager.Instance.current_quest)
+	
+	var current_quest: Quest = null
+	current_quest = QuestManager.Instance.current_quest
+	
+	var can_get_item: bool = false
+	
 	# check if current quest + current quest is item + current quest id is the same
-		# -> get item
-	# else
-		# dialog cant get item
+	if QuestManager.Instance.current_quest != null:
+		# is in quest
+		if current_quest.quest_data.quest_type == QuestData.QuestType.ITEM:
+			# is in quest item
+			if current_quest.target_value == item_type:
+				# is same item type
+				can_get_item = true
+
+	print("can get item interacted : ", can_get_item)
+	
