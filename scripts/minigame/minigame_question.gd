@@ -3,6 +3,7 @@ class_name Minigame_Final_Room extends Room_Minigame
 
 func _setup_minigame() -> void:
 	super()
+	_score = _scores_datas._minigame_completed_question
 	for i in propsTileMapLayer.get_children():
 		if !i.is_in_group("item_minigame"):
 			continue

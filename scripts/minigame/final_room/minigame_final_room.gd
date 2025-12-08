@@ -4,6 +4,7 @@ var chest : Chest_Item
 
 func _setup_minigame() -> void:
 	super()
+	_score = _scores_datas._minigame_completed_final_chest
 	for i in propsTileMapLayer.get_children():
 		if !i.is_in_group("item_minigame"):
 			continue

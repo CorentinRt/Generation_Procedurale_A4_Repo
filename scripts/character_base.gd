@@ -15,6 +15,8 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var dead_color : Color = Color.GRAY
 @export var sprites : Array[Sprite2D] = []
 @export var invincibility_alpha : float = 0.7
+@export var cannot_die : bool
+@export var hit_decrease_score : bool
 
 @export_group("Movement")
 @export var default_movement : MovementParameters
@@ -33,6 +35,9 @@ var direction_attack : Vector2 = Vector2.ZERO
 
 @export_group("Interact")
 @export var interact_radius: float = 25.0
+
+@export_group("Scores")
+@export var _scores_datas : Scores_Datas
 
 var npcs : Array[Node]
 var simple_dialogs : Array[Node]
@@ -105,9 +110,15 @@ func apply_hit(attack : Attack) -> void:
 		return
 	_last_hit_time = Time.get_unix_time_from_system()
 
-	life -= attack.damages if attack != null else 1
+	if !cannot_die:
+		life -= attack.damages if attack != null else 1
+	
+	if hit_decrease_score:
+		ScoreManager._remove_score(_scores_datas._player_hit)
+		
 	if life <= 0 and _state != STATE.DEAD:
-		_set_state(STATE.DEAD)
+		if !cannot_die:
+			_set_state(STATE.DEAD)
 	else:
 		if attack != null && attack.knockback_duration > 0.0:
 			apply_knockback(attack.knockback_duration, (position - attack.position).normalized() * attack.knockback_speed)

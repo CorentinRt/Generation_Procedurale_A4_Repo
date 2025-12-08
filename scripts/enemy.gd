@@ -7,8 +7,6 @@ signal on_killed();
 @export var attack_warm_up : float = 0.5
 @export var attack_distance : float = 0.5
 
-@export var _scores_datas : Scores_Datas
-
 @export_group("Animation")
 @export var running_animation_player : AnimationPlayer
 @export var hit_animation_player : AnimationPlayer

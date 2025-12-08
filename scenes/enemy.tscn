@@ -206,7 +206,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nd4pc")
 attack_distance = 30.0
-_scores_datas = ExtResource("2_xwavj")
 running_animation_player = NodePath("AnimationEnemy_Running")
 hit_animation_player = NodePath("AnimationPlayer_Hit")
 sprites = [NodePath("BodySprite")]
@@ -215,6 +214,7 @@ stunned_movemement = ExtResource("3_vw1dg")
 attack_scene = ExtResource("5_xwavj")
 attack_spawn_point = NodePath("Attack_Spawn_Point")
 attack_offset = 7.0
+_scores_datas = ExtResource("2_xwavj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5

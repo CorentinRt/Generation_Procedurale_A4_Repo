@@ -18,7 +18,10 @@ var _doors : Array[Door]
 
 @onready var propsTileMapLayer : TileMapLayer = $"../Props"
 
+var _score : int
+
 func _ready() -> void:
+	_score = _scores_datas._minigame_completed_default
 	call_deferred("_setup_minigame")
 
 func _process(delta: float) -> void:
@@ -59,7 +62,7 @@ func _minigame_running() -> void:
 	
 func _minigame_completed() -> void:
 	_unlock_doors()
-	ScoreManager._add_score(_scores_datas._minigame_completed)
+	ScoreManager._add_score(_score)
 	
 func _set_state(state: MINIGAME_STATE) -> void:
 	if _state == state:

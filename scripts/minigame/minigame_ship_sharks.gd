@@ -6,6 +6,7 @@ var chest : Chest_Item
 
 func _setup_minigame() -> void:
 	super()
+	_score = _scores_datas._minigame_completed_ship_sharks
 	for i in get_parent().get_children():
 		if i is Shark_Path:
 			sharks_paths.append(i)
