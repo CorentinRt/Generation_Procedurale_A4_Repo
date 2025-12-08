@@ -22,8 +22,8 @@ func _init_created_items():
 func _find_all_containers():
 	for node in get_tree().get_nodes_in_group("item_quest_container"):
 		if node is ItemContainer:
+			node.room = get_room_from_node(node)
 			containers.append(node)
-	print("Item containers found : ", containers.size())
 
 func get_random_uncreated_item_type():
 	# Get not created types
@@ -38,17 +38,30 @@ func get_random_uncreated_item_type():
 	# Get random
 	return available_types[randi() % available_types.size()]
 
-func spawn_item(item_type : ItemType):
-	print("Spawn item : ", item_type)
-	
+func spawn_item(item_type: ItemType, avoid_room: Node = null):
 	if item_type == null:
 		print("Tous les items sont déjà créés")
 		return
 
 	for container in containers:
 		if not container.has_created_item:
+			var container_room = container.room  
+			
+			# Skip containers with room to avoid (npc room)
+			if container_room == avoid_room:
+				continue  
+				
+			print("Spawn item in room : ", container_room.name)
 			container.create_item(item_type)
 			created_items[item_type] = true
 			return
-	
+
 	print("Aucun container libre !")
+
+func get_room_from_node(node: Node) -> Node:
+	var current = node
+	while current != null:
+		if current is Room:
+			return current
+		current = current.get_parent()
+	return null

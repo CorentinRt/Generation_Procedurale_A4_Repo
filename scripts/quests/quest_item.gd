@@ -3,13 +3,12 @@ class_name QuestItem extends Quest
 func _ready() -> void:
 	# Setup data 
 	quest_data = load("res://resources/quests/qd_item.tres")
-	call_deferred("setup_item")
 
-func setup_item():
+func setup_item(avoid_room: Room = null):
 	target_value = ItemSpawnManager.get_random_uncreated_item_type() # enum id of item type
 	
-	# Create random item in another room
-	ItemSpawnManager.spawn_item(target_value)
+	# Create random item in different room
+	ItemSpawnManager.spawn_item(target_value, avoid_room)
 
 func format_target_value() -> String:
 	match target_value:

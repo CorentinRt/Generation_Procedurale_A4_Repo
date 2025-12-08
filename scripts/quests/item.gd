@@ -5,8 +5,6 @@ class_name Item extends Node2D
 var item_type: ItemSpawnManager.ItemType
 
 func setup_item(new_item_type : ItemSpawnManager.ItemType):
-	print("setup item : ", new_item_type)
-	
 	item_type = new_item_type
 	
 	# Set visuals

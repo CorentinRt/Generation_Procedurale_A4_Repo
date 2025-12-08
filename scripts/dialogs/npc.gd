@@ -80,6 +80,10 @@ func _add_quest_script():
 			
 			var quest_script := load("res://scripts/quests/quest_item.gd")
 			quest_node.set_script(quest_script)
+			
+			var npc_room = ItemSpawnManager.get_room_from_node(self)
+			print("NPC room : ", npc_room.name)
+			quest_node.setup_item(npc_room)
 
 			add_child(quest_node)
 			quest = quest_node as Quest
