@@ -33,9 +33,9 @@ func _process(_delta: float) -> void:
 	
 func update_ui():
 	if (current_quest):
-		quest_text.text = format_quest_name()
+		quest_text.text = format_quest_name() + "\n" + format_quest_reward() + "\n" + format_quest_loss()
 	else:
-		quest_text.text = ""
+		quest_text.text = "Aucune quête en cours."
 		
 	
 func format_quest_name() -> String:
@@ -49,3 +49,11 @@ func format_quest_name() -> String:
 		return "[color=green]" + formatted + "[/color]"
 	else:
 		return "[color=cyan]" + formatted + "[/color]"
+
+func format_quest_reward() -> String:
+	return "[color=yellow]Reward : +" + str(current_quest.quest_data.add_score_on_completed) + "[/color]"
+
+func format_quest_loss() -> String:
+	if current_quest.quest_data.can_fail:
+		return "[color=red]Failed : -" + str(current_quest.quest_data.remove_score_on_failed) + "[/color]"
+	return ""

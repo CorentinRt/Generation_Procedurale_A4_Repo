@@ -12,9 +12,10 @@ quest_text = NodePath("Panel/QuestText")
 metadata/_custom_type_script = "uid://bgo226obencyl"
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.321)
 layout_mode = 1
 offset_right = 500.0
-offset_bottom = 50.0
+offset_bottom = 81.0
 
 [node name="QuestText" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
