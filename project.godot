@@ -37,6 +37,7 @@ folder_colors={
 "res://scenes/audio/": "red",
 "res://scenes/debug/": "green",
 "res://scenes/dialogs/": "pink",
+"res://scenes/enemies/": "purple",
 "res://scenes/minigame/": "orange",
 "res://scenes/quests/": "pink",
 "res://scenes/rooms/LD/": "red",
