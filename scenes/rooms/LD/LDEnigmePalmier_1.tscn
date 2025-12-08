@@ -20,4 +20,4 @@ collision_layer = 256
 
 [node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
 position = Vector2(55, 64)
-polygon = PackedVector2Array(105, -79, 104, -115, 76, -115, 74, -162, 56, -162, 22, -144, 22, -108, 38, -109, 40, -94, 53, -93, 53, -80)
+polygon = PackedVector2Array(105, -79, 104, -115, 76, -115, 74, -162, 56, -162, 55, -148, 22, -144, 22, -108, 38, -109, 40, -94, 53, -93, 53, -80)
