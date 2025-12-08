@@ -56,3 +56,11 @@ func interact():
 	print("can get item interacted : ", can_get_item)
 	UtilsManager.get_dialog_manager().start_item_dialog(can_get_item)
 	
+	if (can_get_item):
+		get_item()
+
+func get_item():
+	QuestManager.Instance.current_quest.set_completed()
+	
+	# Destroy item
+	queue_free()

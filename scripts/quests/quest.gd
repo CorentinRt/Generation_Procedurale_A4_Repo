@@ -20,13 +20,16 @@ func fail_quest():
 	is_quest_failed = true
 
 # ennemy killed, item found...
-func add_one_target_value():
+func add_one_current_value():
 	if !is_quest_started:
 		return
 	
 	current_value += 1
 	if current_value >= target_value:
 		is_quest_completed = true
+		
+func set_completed():
+	is_quest_completed = true
 
 # To override in children
 func format_target_value() -> String:

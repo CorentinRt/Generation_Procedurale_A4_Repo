@@ -1,8 +1,10 @@
 {
 	"getItem": [
-		"Item récupéré !"
+		"Item récupéré !",
+		"Item dans la poche !"
 	],
 	"cantGetItem": [
-		"Tu ne peux pas récupérer cet item !"
+		"Tu ne peux pas récupérer cet item !",
+		"C'est pas le moment de récupérer cet item !"
 	]
 }

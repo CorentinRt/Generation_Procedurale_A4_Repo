@@ -238,11 +238,15 @@ func _interact() -> void:
 	if (item_quests.size() == 0):
 		get_item_quests()
 	
-	for item in item_quests:
+	# check items destroyed before interact
+	for item in item_quests.duplicate():
+		if not is_instance_valid(item):
+			item_quests.erase(item)
+			continue
 		if item.global_position.distance_to(player_pos) <= interact_radius:
 			if item.has_method("interact"):
 				item.interact()
-				return 
+				return
 	
 	for npc in npcs:
 		if npc.global_position.distance_to(player_pos) <= interact_radius:

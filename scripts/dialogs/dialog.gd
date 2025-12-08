@@ -454,6 +454,7 @@ func start_simple_dialog(dialog_text: String, color : Color):
 	pass
 #endregion
 
+#region Item simple dialog
 func start_item_dialog(can_get_item : bool):
 	var dialog_text: String = ""
 	
@@ -465,3 +466,4 @@ func start_item_dialog(can_get_item : bool):
 	print(dialog_text)
 	
 	start_simple_dialog(dialog_text, Color(0.65, 0.22, 0.436, 1.0))
+#endregion
