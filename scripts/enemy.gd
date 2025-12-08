@@ -7,6 +7,10 @@ static var all_enemies : Array[Enemy]
 
 @export var _scores_datas : Scores_Datas
 
+@export_group("Animation")
+@export var running_animation_player : AnimationPlayer
+@export var hit_animation_player : AnimationPlayer
+
 var _state_timer : float = 0.0
 
 
@@ -22,11 +26,23 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	update_AI()
+	_update_anim()
 
 
 func _exit_tree() -> void:
 	all_enemies.erase(self)
 
+func _update_anim() -> void:
+	if velocity.length() <= 0.3:
+		if running_animation_player.current_animation != "idle":
+			running_animation_player.play("idle", 0.3)
+	else:
+		if running_animation_player.current_animation != "run":
+			running_animation_player.play("run")
+
+func apply_hit(attack : Attack) -> void:
+	super(attack)
+	hit_animation_player.play("hit")
 
 func update_AI() -> void:
 	_update_attack_direction()
