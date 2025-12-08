@@ -1,0 +1,29 @@
+{
+	"name": [
+		"Mike Harrison"
+	],
+	"occupation": [
+		"président",
+		"boulanger",
+		"commerçant"
+	],
+	"color":[
+		"gray",
+		"black"
+	],
+	"setupSaves": [
+		"[savedName:#name#][savedColor:#color#][savedQuest:Combat]"
+	],
+	"firstInteraction": [
+    "Wsh j'ai une quete de combat, va taper des ennemis."
+	],
+	"questInProgress": [
+		"T'as encore des ennemis à taper."
+	],
+	"questJustCompleted": [
+		"GG t'as bien tapé."
+	],
+	"completed": [
+		"T'as déjà fini ma quête."
+	]
+}

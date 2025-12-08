@@ -13,7 +13,11 @@ enum DialogState {
 const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 var grammar: TraceryScript.Grammar
 
+# Quest
 @export var has_quest: bool = true
+var savedQuest: String = ""
+var quest: Quest = null
+
 var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 
 @export var interact_icon : Sprite2D = null
@@ -22,13 +26,15 @@ var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 @export var sprite_animation_player : AnimationPlayer
 @export var notif_animation_player : AnimationPlayer
 
+
+
 func _ready():
 	_setup_dialog()
 	_set_marker_color()
 	marker_animation.play()
 	notif_animation_player.play("idle")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_show_player_interact_indication()
 
 func _setup_dialog():
@@ -41,6 +47,31 @@ func _setup_dialog():
 	grammar.flatten("#setupSaves#", json)
 	
 	current_dialog_state = DialogState.FIRST_INTERACTION
+	
+	# Quest
+	savedQuest = QuestionManager.get_variable_text_from_json(json, "savedQuest");
+	print("Saved quest : ", savedQuest)
+	if (savedQuest != ""):
+		has_quest = true
+		_add_quest_script()
+	else:
+		has_quest = false
+	
+func _add_quest_script():
+	if savedQuest != "Combat":
+		return
+	
+	match(savedQuest):
+		"Combat":
+			var quest_node := Node.new()
+			quest_node.name = "Quest_Combat"
+			var quest_script := load("res://scripts/quests/quest_combat.gd")
+			quest_node.set_script(quest_script)
+
+			add_child(quest_node)
+
+			quest = quest_node as Quest
+			print("Quest script added : ", quest)
 
 func show_dialog():
 	var dialog_manager = UtilsManager.get_dialog_manager()

@@ -44,4 +44,9 @@ func save_variables_for_json(json : JSON, variables : Dictionary):
 	saved_dict[path] = variables
 	
 func get_variable_text_from_json(json : JSON, variable_name : String) -> String:
-	return saved_dict[json.resource_path][variable_name]
+	var path := json.resource_path
+	
+	if saved_dict.has(path) and saved_dict[path].has(variable_name):
+		return saved_dict[path][variable_name]
+	
+	return ""
