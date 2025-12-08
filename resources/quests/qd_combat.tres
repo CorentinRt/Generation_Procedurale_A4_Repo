@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_yfddl")
 quest_name = "Tuer <target> ennemis : <current> / <target>"
+remove_score_on_failed = 0
 metadata/_custom_type_script = "uid://ddk16xl4yiq88"
