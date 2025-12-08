@@ -4,7 +4,7 @@ class_name Attack extends Area2D
 @export var damages : int = 1
 @export var has_infinite_lifetime : bool
 @export var lifetime : float = 0.3
-@export var knockback_speed : float = 3.0
+@export var knockback_speed : float = 50.0
 @export var knockback_duration : float = 0.5
 
 var attack_owner : Node
