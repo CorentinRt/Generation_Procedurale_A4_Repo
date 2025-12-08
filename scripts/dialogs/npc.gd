@@ -74,10 +74,12 @@ func _add_quest_script():
 func start_quest():
 	if has_quest && quest != null:
 		QuestManager.Instance.start_quest(quest)
+		quest.start_quest()
 		
 func end_quest():
 	if has_quest && quest != null:
 		QuestManager.Instance.complete_current_quest()
+		quest.end_quest()
 		
 func is_quest_completed() -> bool:
 	return quest.is_quest_completed
