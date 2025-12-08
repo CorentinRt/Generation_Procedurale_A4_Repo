@@ -27,6 +27,8 @@ var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 @export var sprite_animation_player : AnimationPlayer
 @export var notif_animation_player : AnimationPlayer
 
+signal on_question_answered(right_answer : bool)
+
 func _ready():
 	_setup_dialog()
 	_set_marker_color()

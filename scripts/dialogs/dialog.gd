@@ -313,6 +313,8 @@ func _on_answer_pressed(is_right_answer : bool):
 	revealed_characters = 0
 	text_label.text = ""
 	
+	current_npc.on_question_answered.emit(is_right_answer)
+	
 	_set_name(current_npc.grammar) # Reset if name = "???"
 	ScoreManager._show(true) # Reset if score hidden
 	is_typing = true
