@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=4 uid="uid://jet2rkf41p0a"]
+
+[ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_4ngjw"]
+[ext_resource type="PackedScene" uid="uid://jti3mgir6w1b" path="res://scenes/minigame/ship_sharks/ship.tscn" id="2_vstnd"]
+[ext_resource type="PackedScene" uid="uid://dtw8kdvabfniw" path="res://scenes/minigame/minigame_ship_sharks.tscn" id="3_ybp4r"]
+[ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="4_b6drx"]
+
+[sub_resource type="Curve2D" id="Curve2D_glihq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 73, 1)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_j6iub"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -85, 2, 0, 0, 0, 0, 3, 1)
+}
+point_count = 2
+
+[node name="Marchand1" type="Node2D"]
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAP3/AQAGAAEAAAABAP7/AQAGAAEAAAABAP//AQAGAAEAAAABAAMAAQAGAAEAAAABAAQAAQAGAAIAAAACAAQAAQAHAAIAAAADAAQAAQAHAAIAAAAEAAQAAQAHAAIAAAAFAAQAAQAHAAIAAAAHAAQAAQAHAAIAAAAIAAQAAQAHAAIAAAAJAAQAAQAHAAIAAAAKAAQAAQAHAAIAAAALAAQAAQAIAAIAAAALAAMAAQAIAAEAAAALAAIAAQAIAAEAAAALAAEAAQAIAAEAAAALAP//AQAIAAEAAAALAP7/AQAIAAEAAAALAP3/AQAIAAEAAAALAPz/AQAIAAAAAAABAPz/AQAGAAAAAAACAPz/AQAHAAAAAAADAPz/AQAHAAAAAAAEAPz/AQAHAAAAAAAFAPz/AQAHAAAAAAAHAPz/AQAHAAAAAAAIAPz/AQAHAAAAAAAJAPz/AQAHAAAAAAAKAPz/AQAHAAAAAAABAAEAAQAGAAEAAAABAAIAAQAGAAEAAAACAP3/AQAAAAEAAAADAP3/AQADAAEAAAAEAP3/AQAEAAEAAAAFAP3/AQAEAAEAAAAGAP3/AQAEAAEAAAAHAP3/AQAEAAEAAAAIAP3/AQAFAAEAAAAJAP3/AQAAAAMAAAAKAP3/AQABAAMAAAAKAP7/AQABAAQAAAAJAP7/AQAAAAQAAAAIAP7/AQAFAAIAAAAHAP7/AQAEAAIAAAAFAP7/AQAEAAIAAAAEAP7/AQAEAAIAAAADAP7/AQADAAIAAAACAP7/AQACAAIAAAACAP//AQABAAEAAAADAP//AQAAAAIAAAAFAP//AQAAAAEAAAAHAP//AQACAAQAAAAIAP//AQAAAAEAAAAJAP//AQABAAIAAAAKAP//AQAAAAEAAAAFAAAAAQABAAEAAAAEAAAAAQABAAEAAAACAAAAAQAAAAIAAAACAAEAAQAAAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAAFAAEAAQABAAEAAAAGAAEAAQABAAEAAAAHAAEAAQABAAEAAAAJAAEAAQAAAAEAAAAJAAIAAQAFAAAAAAAIAAIAAQAEAAAAAAAHAAIAAQAEAAAAAAAGAAIAAQAEAAAAAAAFAAIAAQAEAAAAAAAEAAIAAQAEAAAAAAADAAIAAQADAAAAAAACAAIAAQABAAIAAAACAAMAAQABAAEAAAADAAMAAQADAAEAAAAEAAMAAQAEAAEAAAAFAAMAAQAEAAEAAAAGAAMAAQAEAAEAAAAHAAMAAQAEAAEAAAAIAAMAAQAEAAEAAAAJAAMAAQAFAAEAAAAKAAIAAQACAAQAAAAKAAEAAQABAAIAAAAKAAMAAQAAAAEAAAAKAAAAAQABAAEAAAAEAP//AQABAAEAAAAGAP//AQABAAEAAAAGAAAAAQAAAAEAAAAHAAAAAQABAAEAAAAIAAAAAQABAAEAAAAIAAEAAQABAAEAAAAGAP7/AQAEAAIAAAADAAAAAQABAAEAAAAJAAAAAQAAAAIAAAA=")
+tile_set = ExtResource("1_4ngjw")
+
+[node name="Décors" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAGAPz/AQAIAAQAAAABAAAAAQAIAAQAAGALAAAAAQAIAAQAAFAGAAQAAQAIAAQAADAEAAIAAQAEAAYAAAAEAAEAAQAEAAUAAAAHAP7/AQAEAAYAAAAHAP3/AQAEAAUAAAA=")
+tile_set = ExtResource("1_4ngjw")
+
+[node name="Props" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAQALAAAAAgAAAAAAAQAGAPz/AgAAAAAAAQAGAAQAAgAAAAAAAQA=")
+tile_set = ExtResource("1_4ngjw")
+
+[node name="Sea_Body" type="StaticBody2D" parent="."]
+position = Vector2(-160, -10)
+collision_layer = 256
+
+[node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
+polygon = PackedVector2Array(335, 73, 335, -37, 303, -37, 303, -11, 211, -8, 210, -37, 193, -37, 193, 74, 211, 73, 213, 43, 317, 44, 318, 73)
+
+[node name="Borders_Body" type="StaticBody2D" parent="."]
+position = Vector2(-160, -10)
+collision_layer = 128
+collision_mask = 64
+
+[node name="Borders_Shape" type="CollisionPolygon2D" parent="Borders_Body"]
+position = Vector2(175, 91)
+build_mode = 1
+polygon = PackedVector2Array(160, -17, 159, -127, 129, -127, 127, -102, 35, -99, 35, -128, 18, -128, 18, -19, 36, -18, 37, -47, 143, -47, 143, -18)
+
+[node name="Ship" parent="." instance=ExtResource("2_vstnd")]
+position = Vector2(100, 26)
+
+[node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_ybp4r")]
+_room_zone_detector = NodePath("")
+
+[node name="Shark_Path" parent="." instance=ExtResource("4_b6drx")]
+position = Vector2(71, -9)
+curve = SubResource("Curve2D_glihq")
+
+[node name="Shark_Path2" parent="." instance=ExtResource("4_b6drx")]
+position = Vector2(138, 7)
+curve = SubResource("Curve2D_j6iub")
