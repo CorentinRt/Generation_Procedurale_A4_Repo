@@ -61,8 +61,6 @@ func _add_quest_script():
 	if savedQuest != "Combat" && savedQuest != "Item":
 		return
 		
-	print("Saved quest : ", savedQuest, " for npc : ", self.name)
-	
 	match(savedQuest):
 		"Combat":
 			var quest_node := Node.new()
@@ -82,7 +80,6 @@ func _add_quest_script():
 			quest_node.set_script(quest_script)
 			
 			var npc_room = ItemSpawnManager.get_room_from_node(self)
-			print("NPC room : ", npc_room.name)
 			quest_node.setup_item(npc_room)
 
 			add_child(quest_node)

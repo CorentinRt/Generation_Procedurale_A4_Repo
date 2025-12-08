@@ -36,9 +36,6 @@ func setup_item(new_item_type : ItemSpawnManager.ItemType):
 			item_visual.texture = load("res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_cannon.png")
 
 func interact():
-	print("QuestManager.Instance : ", QuestManager.Instance)
-	print("QuestManager.Instance.current_quest : ", QuestManager.Instance.current_quest)
-	
 	var current_quest: Quest = null
 	current_quest = QuestManager.Instance.current_quest
 	
@@ -53,7 +50,6 @@ func interact():
 				# is same item type
 				can_get_item = true
 
-	print("can get item interacted : ", can_get_item)
 	UtilsManager.get_dialog_manager().start_item_dialog(can_get_item)
 	
 	if (can_get_item):

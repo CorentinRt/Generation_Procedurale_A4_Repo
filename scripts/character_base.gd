@@ -77,8 +77,7 @@ func _ready() -> void:
 
 func get_item_quests():
 	item_quests = get_tree().get_nodes_in_group("item_quest")
-	print("found item quests: ", item_quests.size())
-
+	
 func _process(delta: float) -> void:
 	_update_state(delta)
 

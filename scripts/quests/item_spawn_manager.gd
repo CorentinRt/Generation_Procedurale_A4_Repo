@@ -51,7 +51,6 @@ func spawn_item(item_type: ItemType, avoid_room: Node = null):
 			if container_room == avoid_room:
 				continue  
 				
-			print("Spawn item in room : ", container_room.name)
 			container.create_item(item_type)
 			created_items[item_type] = true
 			return
