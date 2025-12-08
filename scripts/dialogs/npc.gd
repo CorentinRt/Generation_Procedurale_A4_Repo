@@ -123,7 +123,6 @@ func _show_player_interact_indication():
 	else:
 		# hide img
 		interact_icon.hide()
-	pass
 
 func on_state_changed():
 	_set_marker_color()
