@@ -193,7 +193,7 @@ func _spawn_attack_scene() -> void:
 	attack_spawn_point.add_child(spawned_attack)
 
 	spawned_attack.rotation = angle
-	spawned_attack.position = direction_attack * attack_offset
+	spawned_attack.position = direction_attack.normalized() * attack_offset
 	
 	#get_tree().root.add_child(spawned_attack)
 	#spawned_attack.global_position = spawn_position
