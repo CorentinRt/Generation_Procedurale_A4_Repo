@@ -5,99 +5,33 @@ class_name RandomRoom extends Node2D
 @export var coordinates:Vector2i
 var directions:Array[LevelGenerationUtils.Directions]
 
-@export var _startingRoom:PackedScene
+#@export var _startingRoom:PackedScene
 #@export var _startingExteriorsDict:Dictionary[PackedScene, int] = {}
-@export var _roomsDict:Dictionary[PackedScene, int] = {}
+#@export var _roomsDict:Dictionary[PackedScene, int] = {}
 #@export var _roomsExteriorsDict:Dictionary[RoomExteriorData, int] = {}
 @export var _door:PackedScene
 
 var _room:TileMapLayer
 
-func initRoom(dir:Array[LevelGenerationUtils.Directions] = []):
-	if(_isStartingRoom):
-		#var selectedExterior:PackedScene = _pickRandomElementFromDict(_startingExteriorsDict)
-		var startingRoomInstance = _startingRoom.instantiate()
-		_room = startingRoomInstance
-		#var exteriorInstance = selectedExterior.instantiate()
-		add_child(startingRoomInstance)
-		#add_child(exteriorInstance)
-		#directions = exteriorInstance.directions
-	else:
-		var roomInstance = _pickRandomElementFromDict(_roomsDict).instantiate()
-		_room = roomInstance
-		add_child(roomInstance)
-		#directions = exteriorInstance.directions
-	
-	_add_doors(dir)
-		
+#func initRoom(dir:Array[LevelGenerationUtils.Directions] = []):
+	#if(_isStartingRoom):
+		##var selectedExterior:PackedScene = _pickRandomElementFromDict(_startingExteriorsDict)
+		#var startingRoomInstance = _startingRoom.instantiate()
+		#var possibleDirections:Array[LevelGenerationUtils.Directions] = [LevelGenerationUtils.Directions.EAST, LevelGenerationUtils.Directions.WEST]
+		#_room = startingRoomInstance
+		##var exteriorInstance = selectedExterior.instantiate()
+		#add_child(startingRoomInstance)
+		#_add_doors(_selectRandomDirFromArray(possibleDirections))
+		##add_child(exteriorInstance)
+		##directions = exteriorInstance.directions
+	#else:
+		#var roomInstance = _pickRandomElementFromDict(_roomsDict).instantiate()
+		#_room = roomInstance
+		#add_child(roomInstance)
+		##directions = exteriorInstance.directions
+		#_add_doors(dir)
 
-func _pickRandomElementFromDict(dictionary: Dictionary[PackedScene, int]) -> PackedScene:
-	var totalWeight:int = 0
 	
-	for i in dictionary.values().size():
-		totalWeight += dictionary.values()[i]
-	
-	var randomDictionaryWeight:int = randi_range(0, totalWeight)
-	
-	var weight:int = 0
-	var count:int = 0
-	for i in dictionary.values().size():
-		weight += dictionary.values()[i]
-		if(weight >= randomDictionaryWeight):
-			break
-		count += 1
-	
-	return dictionary.keys()[count]
-	
-func _pickRandomElementFromDictData(dictionary: Dictionary[RoomExteriorData, int]) -> PackedScene:
-	var totalWeight:int = 0
-	
-	for i in dictionary.values().size():
-		totalWeight += dictionary.values()[i]
-	
-	var randomDictionaryWeight:int = randi_range(0, totalWeight)
-	
-	var weight:int = 0
-	var count:int = 0
-	for i in dictionary.values().size():
-		weight += dictionary.values()[i]
-		if(weight >= randomDictionaryWeight):
-			break
-		count += 1
-	
-	return dictionary.keys()[count].roomExteriorScene
-	
-func _pickRandomCompatibleElementFromDictDataWithDir(dictionary: Dictionary[RoomExteriorData, int], dirArray:Array[LevelGenerationUtils.Directions]) -> PackedScene:
-	var totalWeight:int = 0
-	
-	var elementWithDir:Dictionary[RoomExteriorData, int]
-	
-	for i in dictionary.keys().size():		
-		#Regarder si il contient au moins toutes les directions qu'on veut
-		for dir in dirArray:
-			var countDir:int = 0
-			if(!dictionary.keys()[i].directions.has(dir)):
-				break;
-			countDir += 1
-			if(countDir == dirArray.size()):
-				elementWithDir[dictionary.keys()[i]] = dictionary.values()[i]
-	
-	for i in elementWithDir.values().size():
-		totalWeight += elementWithDir.values()[i]
-	
-	var randomDictionaryWeight:int = randi_range(0, totalWeight)
-	
-	var weight:int = 0
-	var count:int = 0
-	for i in elementWithDir.values().size():
-		weight += elementWithDir.values()[i]
-		if(weight >= randomDictionaryWeight):
-			break
-		count += 1
-	
-	return elementWithDir.keys()[count].roomExteriorScene
-
-
 func _add_doors(doorsDirections:Array[LevelGenerationUtils.Directions]):
 	var roomBounds:Rect2 = _room.get_used_rect()
 	var tileSize:Vector2i = _room.tile_set.tile_size
@@ -155,3 +89,16 @@ func _create_door(coord:Vector2) -> void:
 	var createdDoor:Node2D = _door.instantiate()
 	createdDoor.global_position = coord
 	add_child(createdDoor)
+
+func _selectRandomDirFromArray(dirs:Array[LevelGenerationUtils.Directions]) -> Array[LevelGenerationUtils.Directions]:
+		var dirsCopy = dirs.duplicate()
+		var returnedArray:Array[LevelGenerationUtils.Directions]
+		var randomCount:int = randi_range(1, dirs.size())
+		
+		while returnedArray.size() != randomCount:
+			var randomIndex:int = randi_range(0, dirsCopy.size() - 1)
+			var addedDir:LevelGenerationUtils.Directions = dirsCopy[randomIndex]
+			if(!returnedArray.has(addedDir)):
+				returnedArray.append(addedDir)
+				dirsCopy.erase(addedDir)
+		return returnedArray
