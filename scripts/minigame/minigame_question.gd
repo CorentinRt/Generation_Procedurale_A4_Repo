@@ -1,4 +1,4 @@
-class_name Minigame_Final_Room extends Room_Minigame
+class_name Minigame_Question extends Room_Minigame
 
 
 func _setup_minigame() -> void:

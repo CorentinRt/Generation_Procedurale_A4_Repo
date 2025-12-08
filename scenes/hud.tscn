@@ -11,6 +11,7 @@ script = ExtResource("1_ftoh2")
 heart_scene = ExtResource("2_fymyw")
 
 [node name="LifeContainer" type="HBoxContainer" parent="."]
+visible = false
 offset_right = 170.0
 offset_bottom = 50.0
 theme_override_constants/separation = 10
