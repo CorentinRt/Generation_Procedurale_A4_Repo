@@ -25,12 +25,18 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var attack_spawn_point : Node2D
 @export var attack_cooldown : float = 0.3
 @export var orientation : ORIENTATION = ORIENTATION.FREE
+@export var attack_offset : float = 3
+
+var direction_attack : Vector2 = Vector2.ZERO
 
 @export_group("Interact")
-@export var interact_radius: float = 50.0
+@export var interact_radius: float = 25.0
+
 var npcs : Array[Node]
+var simple_dialogs : Array[Node]
 
 var is_in_dialog: bool = false
+var is_in_ship : bool = false
 
 # Life
 var _last_hit_time : float
@@ -54,9 +60,11 @@ var _room #: Room
 @onready var main_sprite : Sprite2D = $"BodySprite"
 
 func _ready() -> void:
-	# Get npcs
+	# Get npcs & dialogs
 	npcs = get_tree().get_nodes_in_group("NPC")
-	print("Found npcs : ", npcs.size())
+	simple_dialogs = get_tree().get_nodes_in_group("simple_dialog")
+	print("found simple dialogs : ", simple_dialogs.size())
+
 
 func _process(delta: float) -> void:
 	_update_state(delta)
@@ -99,7 +107,6 @@ func apply_hit(attack : Attack) -> void:
 			apply_knockback(attack.knockback_duration, (attack.position - position).normalized() * attack.knockback_speed)
 		_end_blink()
 		blink()
-
 
 func apply_knockback(duration : float, velocity : Vector2) -> void:
 	_set_state(STATE.STUNNED)
@@ -164,7 +171,7 @@ func _compute_orientation_angle(direction : Vector2) -> float:
 
 
 func _attack() -> void:
-	if (is_in_dialog):
+	if (is_in_dialog || is_in_ship):
 		return
 	
 	if Time.get_unix_time_from_system() - _last_attack_time < attack_cooldown:
@@ -181,16 +188,22 @@ func _spawn_attack_scene() -> void:
 	var spawn_position = attack_spawn_point.global_position if attack_spawn_point != null else global_position
 	var spawn_rotation = attack_spawn_point.global_rotation if attack_spawn_point != null else global_rotation
 	var spawned_attack = attack_scene.instantiate() as Attack
-	get_tree().root.add_child(spawned_attack)
-	spawned_attack.global_position = spawn_position
-	spawned_attack.global_rotation = spawn_rotation
+	var angle := _compute_orientation_angle(direction_attack)
+	angle = angle + 90
+	attack_spawn_point.add_child(spawned_attack)
+
+	spawned_attack.rotation = angle
+	spawned_attack.position = direction_attack.normalized() * attack_offset
+	
+	#get_tree().root.add_child(spawned_attack)
+	#spawned_attack.global_position = spawn_position
+	#spawned_attack.global_rotation = spawn_rotation
 	spawned_attack.attack_owner = self
 
 func _interact() -> void:
-	if (is_in_dialog): 
+	if (is_in_dialog || is_in_ship): 
 		return
 	
-	print("Interact")
 	var player_pos: Vector2 = global_position
 	
 	for npc in npcs:
@@ -199,11 +212,15 @@ func _interact() -> void:
 				print("Dialog shown for ", npc.name)
 				npc.show_dialog()
 				return 
-	
-	print("Didn't find npc around player")
+				
+	for s_d in simple_dialogs:
+		if s_d.global_position.distance_to(player_pos) <= interact_radius:
+			if s_d.has_method("show_dialog"):
+				s_d.show_dialog()
+				return 
 
 func _can_move() -> bool:
-	return !is_in_dialog && _state == STATE.IDLE
+	return !is_in_dialog && _state == STATE.IDLE && !is_in_ship
 
 func set_is_in_dialog(in_dialog : bool):
 	is_in_dialog = in_dialog

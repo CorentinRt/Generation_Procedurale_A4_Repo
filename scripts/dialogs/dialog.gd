@@ -10,6 +10,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export_group("UI")
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
+@export var name_panel: Panel
 @export var dialog_btn: Button
 @export var button_style: StyleBoxFlat
 @export var type_speed:float = 0.02
@@ -21,6 +22,8 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var questions_pos: Vector2
 @export var add_score_right_answer: int = 100000
 @export var remove_score_wrong_answer: int = 100000
+@export var custom_timer: CustomTimer
+@export var question_time: float = 5.0
 
 var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
@@ -47,8 +50,12 @@ func _ready():
 	hide_dialog()
 	_setup_grammars()
 	show_start_dialog()
-	#show_taunt_dialog()
 	
+	# Timer
+	custom_timer.timer_finished.connect(_on_timer_end)
+	custom_timer.hide_timer()
+
+#region Setup
 func _setup_grammars():
 	# Questions
 	var questions_rules = questions_answers_json.data
@@ -67,14 +74,14 @@ func _setup_grammars():
 	
 	taunt_grammar = TraceryScript.Grammar.new(taunt_rules)
 	taunt_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+#endregion
 	
+#region Show dialog JSON
 func show_start_dialog():
 	show_dialog_json(start_json, start_grammar)
 	
 func show_taunt_dialog():
-	print("show taunt dialog")
 	if is_in_dialog:
-		print("already in dialog")
 		return
 		
 	show_dialog_json(taunt_json, taunt_grammar)
@@ -97,13 +104,18 @@ func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
 	var saved_color = grammar.get_variable("savedColor")
 	var color : Color = _get_color_from_string(saved_color)
 	set_button_color(dialog_btn, color)
-	
+#endregion	
+
+#region Setup Name
 func _set_name(grammar : TraceryScript.Grammar):
+	name_label.show()
 	var saved_name = grammar.get_variable("savedName")
 	name_label.text = saved_name
 		
 func _hide_name():
+	name_label.show()
 	name_label.text = "???"
+#endregion
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
@@ -206,6 +218,10 @@ func _start_typing():
 	# Add character
 	revealed_characters += 1
 	text_label.text = full_sentence.substr(0, revealed_characters)
+	
+	# ----- AUDIO ----- #
+	AudioManager.Instance.play_dialog_beep()
+	# ----- AUDIO ----- #
 
 	# Wait & recursive
 	await get_tree().create_timer(type_speed).timeout
@@ -256,6 +272,7 @@ func _on_dialog_pressed() -> void:
 		
 func _on_answer_pressed(is_right_answer : bool):
 	_end_questions_ui()
+	stop_question_timer()
 	is_in_questions = false
 	if (is_right_answer):
 		full_sentence = questions_grammar.flatten("#rightAnswer#", questions_answers_json)
@@ -299,13 +316,11 @@ func hide_questions_btn():
 		btn.hide()
 #endregion
 
-#region Questions
-func _start_questions():
-	pass
-	
+#region Questions	
 func _start_questions_ui():
 	dialog_btn.set_global_position(questions_pos)
 	show_questions_btn()
+	start_question_timer()
 	pass
 	
 func _end_questions_ui():
@@ -356,4 +371,46 @@ func first_letter_upper(s: String) -> String:
 		return s
 	var first = s.substr(0, 1).to_upper()
 	return first + s.substr(1, s.length() - 1)
+#endregion
+
+#region Timer
+func start_question_timer():
+	custom_timer.show_and_start_timer(question_time)
+	
+func stop_question_timer():
+	custom_timer.hide_and_stop_timer()
+	
+func _on_timer_end():
+	ScoreManager._remove_score(remove_score_wrong_answer)
+	_end_questions_ui()
+	is_in_questions = false
+	
+	full_sentence = questions_grammar.flatten("#timerAnswer#", questions_answers_json)
+	revealed_characters = 0
+	text_label.text = ""
+	
+	_set_name(current_npc.grammar) # Reset if name = "???"
+	ScoreManager._show(true) # Reset if score hidden
+	is_typing = true
+	_start_typing()
+#endregion
+
+#region Simple Dialog (only text, no tracery except <next> + no name)
+func start_simple_dialog(dialog_text: String, color : Color):
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
+	var sentences = dialog_text
+	_get_array_sentences(sentences)
+	
+	_show_current_sentence_text()
+	
+	name_label.hide()
+	name_panel.hide()
+	
+	dialog_btn.show()
+	hide_questions_btn()
+
+	set_button_color(dialog_btn, color)
+	pass
 #endregion

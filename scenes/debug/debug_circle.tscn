@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://deyytlsm3w4g5"]
+
+[ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="1_gxy3d"]
+
+[node name="DebugCircle" type="Sprite2D"]
+modulate = Color(0, 1, 0, 0.34117648)
+z_index = 30
+z_as_relative = false
+texture = ExtResource("1_gxy3d")

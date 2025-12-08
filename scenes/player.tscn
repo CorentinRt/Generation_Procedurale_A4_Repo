@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c0tc77spyevjo" path="res://scripts/player.gd" id="1_ups2j"]
 [ext_resource type="Resource" uid="uid://b3nexs1nbtrff" path="res://resources/player_default_movement.tres" id="2_ay78m"]
 [ext_resource type="Resource" uid="uid://132vux808d1f" path="res://resources/player_stunned_movement.tres" id="3_8ktro"]
-[ext_resource type="PackedScene" uid="uid://dtdfaefxq5nnw" path="res://scenes/player_attack.tscn" id="4_u74pk"]
+[ext_resource type="PackedScene" uid="uid://c7a3grtr4nexr" path="res://scenes/swords/sword_player.tscn" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://bwl6vwug2r0ve" path="res://sprites/imports/kenney_monochrome-pirates/Dot Matrix/Tilemap/tilemap_packed.png" id="5_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidcf"]
@@ -175,12 +175,13 @@ _data = {
 &"hit": SubResource("Animation_ur7pv")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("running_animation_player", "hit_animation_player", "sprites")]
-collision_mask = 29
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape", "running_animation_player", "hit_animation_player", "sprites", "attack_spawn_point")]
+collision_mask = 413
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ups2j")
 impulse_force = 1.0
+collision_shape = NodePath("CollisionShape2D")
 running_animation_player = NodePath("AnimationPlayer_Running")
 hit_animation_player = NodePath("AnimationPlayer_Hit")
 dead_color = Color(0.413595, 0.399579, 0.385991, 1)
@@ -188,8 +189,10 @@ sprites = [NodePath("BodySprite")]
 invincibility_alpha = 0.3
 default_movement = ExtResource("2_ay78m")
 stunned_movemement = ExtResource("3_8ktro")
-attack_scene = ExtResource("4_u74pk")
+attack_scene = ExtResource("4_qlg0r")
+attack_spawn_point = NodePath("Attack_Spawn_Point")
 orientation = 1
+attack_offset = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 11
@@ -198,7 +201,7 @@ scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_eidcf")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 3
 texture = ExtResource("5_tuyoq")
 region_enabled = true
 region_rect = Rect2(96, 112, 16, 16)
@@ -212,3 +215,5 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_d2wvv")
 }
+
+[node name="Attack_Spawn_Point" type="Node2D" parent="."]
