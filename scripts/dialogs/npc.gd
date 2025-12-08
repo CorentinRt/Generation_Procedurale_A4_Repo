@@ -75,6 +75,10 @@ func start_quest():
 	if has_quest && quest != null:
 		QuestManager.Instance.start_quest(quest)
 		
+func end_quest():
+	if has_quest && quest != null:
+		QuestManager.Instance.complete_current_quest()
+		
 func is_quest_completed() -> bool:
 	return quest.is_quest_completed
 

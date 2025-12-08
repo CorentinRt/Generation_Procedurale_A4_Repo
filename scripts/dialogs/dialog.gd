@@ -257,6 +257,7 @@ func _get_current_state():
 				current_npc.current_dialog_state = current_npc.DialogState.QUEST_COMPLETED
 		
 		current_npc.DialogState.QUEST_COMPLETED:
+			current_npc.end_quest()
 			current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
 
 		# Completed : don't change
