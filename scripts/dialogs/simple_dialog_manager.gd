@@ -27,7 +27,7 @@ func _get_skulls_texts():
 	skulls_text = _get_strings(skulls_json)
 	
 func _get_letters_texts():
-	skulls_text = _get_strings(skulls_json)
+	letters_text = _get_strings(letters_json)
 
 func _get_strings(json: JSON) -> Array[String]:
 	print("get strings")
@@ -51,10 +51,15 @@ func _setup_dialogs():
 		match dialog.dialog_type:
 			SimpleDialog.SimpleDialogType.SKULL:
 				skulls_text.shuffle()
-				dialog.setup(skulls_text[0], skulls_color)
+				var random = skulls_text[0]
+				dialog.setup(random, skulls_color)
+				skulls_text.erase(random)
+				
 			SimpleDialog.SimpleDialogType.LETTER:
 				letters_text.shuffle()
+				var random = letters_text[0]
 				dialog.setup(letters_text[0], letters_color)
+				letters_text.erase(random)
 
 	
 	
