@@ -26,8 +26,6 @@ var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 @export var sprite_animation_player : AnimationPlayer
 @export var notif_animation_player : AnimationPlayer
 
-
-
 func _ready():
 	_setup_dialog()
 	_set_marker_color()
@@ -76,6 +74,9 @@ func _add_quest_script():
 func start_quest():
 	if has_quest && quest != null:
 		QuestManager.Instance.start_quest(quest)
+		
+func is_quest_completed() -> bool:
+	return quest.is_quest_completed
 
 func show_dialog():
 	var dialog_manager = UtilsManager.get_dialog_manager()
@@ -85,8 +86,6 @@ func show_dialog():
 		push_warning("Aucun DialogManager trouvé dans la scène !")
 	
 	sprite_animation_player.play("interact")
-
-
 	
 func _show_player_interact_indication():
 	var player_pos = Player.Instance.global_position

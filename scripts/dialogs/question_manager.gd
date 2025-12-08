@@ -10,7 +10,6 @@ enum RightAnswerType {
 	HOST
 }
 
-# todo: changer avec les nouveaux npc
 @onready var start_json: JSON = load("res://resources/dialogs/d_start.json")
 
 var saved_dict : Dictionary = {}

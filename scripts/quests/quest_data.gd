@@ -6,6 +6,4 @@ enum QuestType{
 }
 
 @export var quest_type: QuestType
-@export var is_completed: bool = false
-@export var custom_value: int = 0
 @export var quest_name: String = "QuestName"

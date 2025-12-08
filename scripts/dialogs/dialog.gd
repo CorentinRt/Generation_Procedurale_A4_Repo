@@ -250,8 +250,11 @@ func _get_current_state():
 			else:
 				current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
 
-		# voir pour check quest progress et potentiellement mettre completed direct
-		
+		current_npc.DialogState.QUEST_PROGRESS:
+			if current_npc.is_quest_completed():
+				current_npc.current_npc.current_dialog_state = current_npc.DialogState.QUEST_COMPLETED
+			pass
+
 		# Completed : don't change
 	
 	current_npc.on_state_changed()

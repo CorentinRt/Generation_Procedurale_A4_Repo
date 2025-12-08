@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource("1_yfddl")
-custom_value = 2
-quest_name = "Tuer <custom> ennemis : <x> / <custom>"
+quest_name = "Tuer <target> ennemis : <current> / <target>"
 metadata/_custom_type_script = "uid://ddk16xl4yiq88"
