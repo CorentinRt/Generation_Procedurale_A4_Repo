@@ -8,7 +8,7 @@ func _setup_minigame() -> void:
 	super()
 	
 	for i in propsTileMapLayer.get_children():
-		if !i.is_in_group("enemy"):
+		if !i is Enemy:
 			continue
 		
 		enemies.append(i)
