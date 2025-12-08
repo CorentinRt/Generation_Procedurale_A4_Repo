@@ -120,6 +120,8 @@ func _hide_name():
 #region Get Sentences
 func _get_and_show_current_state_text():
 	# Get origin
+	_check_quest_progress()
+	
 	var origin : String = ""
 	match current_npc.current_dialog_state:
 		current_npc.DialogState.FIRST_INTERACTION:
@@ -244,18 +246,29 @@ func _get_current_state():
 		
 		current_npc.DialogState.FIRST_INTERACTION:
 			if (current_npc.has_quest):
+				# Start quest
+				current_npc.start_quest()
 				current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
 			else:
 				current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
 
-		# voir pour check quest progress et potentiellement mettre completed direct
+		current_npc.DialogState.QUEST_PROGRESS:
+			if current_npc.is_quest_completed():
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_COMPLETED
 		
+		current_npc.DialogState.QUEST_COMPLETED:
+			current_npc.end_quest()
+			current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
+
 		# Completed : don't change
 	
 	current_npc.on_state_changed()
 		
 func _check_quest_progress():
-	pass
+	if current_npc:
+		if current_npc.current_dialog_state == current_npc.DialogState.QUEST_PROGRESS:
+			if current_npc.is_quest_completed():
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_COMPLETED
 #endregion
 
 #region Show / Hide & Pressed

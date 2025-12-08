@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3 uid="uid://dn14oftagxehl"]
+
+[ext_resource type="Script" uid="uid://ddk16xl4yiq88" path="res://scripts/quests/quest_data.gd" id="1_yfddl"]
+
+[resource]
+script = ExtResource("1_yfddl")
+quest_name = "Tuer <target> ennemis : <current> / <target>"
+metadata/_custom_type_script = "uid://ddk16xl4yiq88"
