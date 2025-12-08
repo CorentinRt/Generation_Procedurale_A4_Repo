@@ -44,7 +44,7 @@
 	],
 
 	"intro": [
-		"#phraseAccroche# #presentation#<next>#heure#, #politesse# #savedPlayerName#, #savedPlayerAge#, #savedPlayerJob# qui nous vient #origine#.<next>#presentationHost# #emission#."
+		"#phraseAccroche# #presentation#<next>#heure# #politesse# #savedPlayerName#, #savedPlayerAge#, #savedPlayerJob# qui nous vient #origine#.<next>#presentationHost# #emission#."
 	],
 	"phraseAccroche": [
 		"Bonjour !",

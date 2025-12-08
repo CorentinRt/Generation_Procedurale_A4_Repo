@@ -15,15 +15,9 @@
 		"[savedName:#name#][savedColor:#color#]"
 	],
 	"firstInteraction": [
-    "Salut c'est #savedName#.<next>
-	<question><next>
-	Merci d'avoir répondu à ma question"
-	],
-	"questInProgress": [
-		"Va voir la bas si j'y suis stp"
-	],
-	"questJustCompleted": [
-		"Quête qui vient d'être finie"
+    	"Salut c'est #savedName#.<next>
+		<question><next>
+		Merci d'avoir répondu à ma question"
 	],
 	"completed": [
 		"Finito pepito le #savedName#"
