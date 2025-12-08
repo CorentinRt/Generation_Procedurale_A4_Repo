@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc6jjn8xbje6n"]
+
+[ext_resource type="Script" uid="uid://hvpubq1v246o" path="res://scripts/minigame/minigame_question.gd" id="1_kqsc6"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_1ehwh"]
+
+[node name="MinigameQuestion" type="Node"]
+script = ExtResource("1_kqsc6")
+_scores_datas = ExtResource("2_1ehwh")
+metadata/_custom_type_script = "uid://vmemha8tibn"
