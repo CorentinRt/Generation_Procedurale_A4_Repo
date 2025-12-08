@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://cyq45ab6nhmei"]
+[gd_scene load_steps=3 format=4 uid="uid://y57wlbpvjd8n"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_2qc8u"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_2ir2c"]
@@ -12,5 +12,5 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("2_2ir2c")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAIAPr/AQAGAAYAAAAIAPn/AQAGAAUAAAABAPj/AQAAAAYAAAACAPr/AQAEAAYAAAACAPn/AQAEAAUAAAAGAP7/AQAEAAYAAAAGAP3/AQAEAAUAAAAJAP7/AQAAAAIAAAAIAP7/AQABAAIAAAAGAPz/AQAHAAcAAAAGAPr/AQAHAAcAAAAEAPr/AQAHAAcAAAAEAPz/AQAHAAcAAAABAP7/AQAIAAUAAAACAP7/AQAAAAYAAAABAP3/AQAAAAYAAAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAIAPr/AQAGAAYAAAAIAPn/AQAGAAUAAAABAPj/AQAAAAYAAAACAPr/AQAEAAYAAAACAPn/AQAEAAUAAAAGAP7/AQAEAAYAAAAGAP3/AQAEAAUAAAAJAP7/AQAAAAIAAAAIAP7/AQABAAIAAAAGAPz/AQAHAAcAAAAGAPr/AQAHAAcAAAAEAPr/AQAHAAcAAAAEAPz/AQAHAAcAAAABAP7/AQAIAAUAAAACAP7/AQAAAAYAAAABAP3/AQAAAAYAAAABAPz/AQAAAAUAAAA=")
 tile_set = ExtResource("2_2ir2c")

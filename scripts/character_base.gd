@@ -25,6 +25,11 @@ enum STATE {IDLE, ATTACKING, STUNNED, DEAD}
 @export var attack_spawn_point : Node2D
 @export var attack_cooldown : float = 0.3
 @export var orientation : ORIENTATION = ORIENTATION.FREE
+@export var attack_offset : float = 3
+
+@export var kockback_strength = 50
+
+var direction_attack : Vector2 = Vector2.ZERO
 
 @export_group("Interact")
 @export var interact_radius: float = 25.0
@@ -54,6 +59,8 @@ var _is_blinking : bool
 # Dungeon position
 var _room #: Room
 
+var knockback_time: float = 0.0
+
 @onready var main_sprite : Sprite2D = $"BodySprite"
 
 func _ready() -> void:
@@ -68,9 +75,11 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if _has_to_apply_knockback:
+	if _state == STATE.STUNNED:
 		velocity = _knockback_value
-		_has_to_apply_knockback = false
+		_knockback_value *= 0.95
+		move_and_slide()
+		return
 
 	if _direction.length() > 0.000001:
 		velocity += _direction * _current_movement.acceleration * get_physics_process_delta_time()
@@ -101,17 +110,24 @@ func apply_hit(attack : Attack) -> void:
 		_set_state(STATE.DEAD)
 	else:
 		if attack != null && attack.knockback_duration > 0.0:
-			apply_knockback(attack.knockback_duration, (attack.position - position).normalized() * attack.knockback_speed)
+			apply_knockback(attack.knockback_duration, (position - attack.position).normalized() * attack.knockback_speed)
 		_end_blink()
 		blink()
 
 func apply_knockback(duration : float, velocity : Vector2) -> void:
+	if _state == STATE.STUNNED:
+		return
+	
 	_set_state(STATE.STUNNED)
-	_has_to_apply_knockback = true
+	
 	_knockback_value = velocity
-	await get_tree().create_timer(duration).timeout
-	_set_state(STATE.IDLE)
+	knockback_time = duration
+	
+	await get_tree().create_timer(knockback_time).timeout.connect(reset_knockback)
 
+func reset_knockback() -> void:
+	_knockback_value = Vector2.ZERO
+	_set_state(STATE.IDLE)
 
 @abstract func _update_state(delta : float)
 
@@ -124,13 +140,15 @@ func blink() -> void:
 	_is_blinking = true
 	var invincibility_timer : float = 0.0
 	while invincibility_timer < invincibility_duration:
-		if !_is_blinking:
+		if !_is_blinking or not is_inside_tree():
 			return
 
 		invincibility_timer += get_process_delta_time()
 		var isVisible : bool = (int)(invincibility_timer/ invincibility_blink_period) % 2 == 1
 		
 		for sprite in sprites:
+			if sprite == null or not is_instance_valid(sprite):
+				continue
 			if isVisible:
 				sprite.modulate.a = 1
 			else:
@@ -185,9 +203,16 @@ func _spawn_attack_scene() -> void:
 	var spawn_position = attack_spawn_point.global_position if attack_spawn_point != null else global_position
 	var spawn_rotation = attack_spawn_point.global_rotation if attack_spawn_point != null else global_rotation
 	var spawned_attack = attack_scene.instantiate() as Attack
-	get_tree().root.add_child(spawned_attack)
-	spawned_attack.global_position = spawn_position
-	spawned_attack.global_rotation = spawn_rotation
+	var angle := _compute_orientation_angle(direction_attack)
+	angle = angle + 90
+	attack_spawn_point.add_child(spawned_attack)
+
+	spawned_attack.rotation = angle
+	spawned_attack.position = direction_attack.normalized() * attack_offset
+	
+	#get_tree().root.add_child(spawned_attack)
+	#spawned_attack.global_position = spawn_position
+	#spawned_attack.global_rotation = spawn_rotation
 	spawned_attack.attack_owner = self
 
 func _interact() -> void:

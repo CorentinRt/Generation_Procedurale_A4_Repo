@@ -1,26 +1,220 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0ahenmxn2ain"]
+[gd_scene load_steps=15 format=3 uid="uid://b0ahenmxn2ain"]
 
 [ext_resource type="Script" uid="uid://b5df80s50tpg6" path="res://scripts/enemy.gd" id="1_nd4pc"]
-[ext_resource type="PackedScene" uid="uid://imvv20oldcd0" path="res://scenes/enemy_attack.tscn" id="2_mf8py"]
 [ext_resource type="Resource" uid="uid://4wrtqv1kgm5c" path="res://resources/enemy_default_movement.tres" id="2_nnsly"]
 [ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_xwavj"]
 [ext_resource type="Resource" uid="uid://cxk1f1srqi8ot" path="res://resources/enemy_stunned_movement.tres" id="3_vw1dg"]
+[ext_resource type="PackedScene" uid="uid://b3ki8rg606xtc" path="res://scenes/swords/sword_enemy.tscn" id="5_xwavj"]
 [ext_resource type="Texture2D" uid="uid://m5cxy2e4m3gb" path="res://sprites/imports/kenney_monochrome-pirates/Monochrome/Tilemap/tilemap_packed.png" id="6_xwavj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1d5c"]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "attack_spawn_point")]
+[sub_resource type="Animation" id="Animation_tuyoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodySprite:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1)
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3, 3, 3),
+"points": PackedFloat32Array(0, -0.025, -0.1, 0.025, 0.1, 0.4, -0.025, 0, 0.025, 0, 0, -0.025, 0.2, 0.025, -0.2, -0.4, -0.024999999, 0, 0.024999999, 0, 0, -0.024999999, -0.10000001, 0.024999999, 0.10000001),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.07810842, 0, 0.08855825, 0, 0, -0.0033960193, 0, 0.059730507, 0, 0, -0.06312653, 0, 0.025431722, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.46865052, 0.48902664, 0.84740967, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3, 3, 3),
+"points": PackedFloat32Array(0, -0.025, 0.5, 0.025, -0.5, -2, -0.025, 0, 0.025, 0, 0, -0.025, 0, 0.025, 0, -2, -0.024999999, 0, 0.024999999, 0, 0, -0.024999999, -0.5, 0.024999999, 0.5),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_tuyoq"),
+&"idle": SubResource("Animation_smehm"),
+&"run": SubResource("Animation_fjrip")
+}
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.2),
+"transitions": PackedFloat32Array(1, 1, 0.5),
+"update": 0,
+"values": [0.0, 1.0471975511965976, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(3.2944162, 3.2944162, 3.2944162, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2wvv"]
+_data = {
+&"RESET": SubResource("Animation_y4r1p"),
+&"hit": SubResource("Animation_ur7pv")
+}
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("running_animation_player", "hit_animation_player", "sprites", "attack_spawn_point")]
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nd4pc")
 attack_distance = 30.0
 _scores_datas = ExtResource("2_xwavj")
-sprites = [NodePath("BodySprite"), NodePath("")]
+running_animation_player = NodePath("AnimationEnemy_Running")
+hit_animation_player = NodePath("AnimationPlayer_Hit")
+sprites = [NodePath("BodySprite")]
 default_movement = ExtResource("2_nnsly")
 stunned_movemement = ExtResource("3_vw1dg")
-attack_scene = ExtResource("2_mf8py")
-attack_spawn_point = NodePath("")
+attack_scene = ExtResource("5_xwavj")
+attack_spawn_point = NodePath("Attack_Spawn_Point")
+attack_offset = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -28,8 +222,20 @@ scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_p1d5c")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 z_index = 2
 texture = ExtResource("6_xwavj")
 region_enabled = true
 region_rect = Rect2(112, 112, 16, 16)
+
+[node name="Attack_Spawn_Point" type="Node2D" parent="."]
+
+[node name="AnimationEnemy_Running" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}
+
+[node name="AnimationPlayer_Hit" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d2wvv")
+}

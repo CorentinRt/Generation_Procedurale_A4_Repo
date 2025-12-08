@@ -96,6 +96,7 @@ func _update_room() -> void:
 
 
 func _update_inputs() -> void:
+	_update_attack_direction()
 	if _can_move():
 		_direction = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 		if _direction.length() < controller_dead_zone:
@@ -115,6 +116,13 @@ func _update_inputs() -> void:
 		if Input.is_action_just_pressed("NextDialog"):
 			_nextDialog()
 
+
+func _update_attack_direction() -> void:
+	if _can_move():
+		if _direction.length() > 0.5:
+			direction_attack = _direction
+	else:
+		direction_attack = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down"))
 
 func _set_state(state : STATE) -> void:
 	if state == STATE.DEAD and _state == STATE.DEAD:
