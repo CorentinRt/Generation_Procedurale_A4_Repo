@@ -138,8 +138,6 @@ func _get_and_show_current_state_text():
 		current_npc.DialogState.COMPLETED:
 			origin = "#completed#"
 			
-	print("Current state origin : ", origin)
-	
 	# Get sentences
 	var sentences = current_npc.grammar.flatten(origin, current_npc.json)
 	
@@ -159,7 +157,6 @@ func _get_and_show_current_state_text():
 	_set_name(current_npc.grammar)
 
 func _get_array_sentences(sentences : String):
-	print("Get array sentences")
 	# Cut at next
 	sentences_cut = sentences.split("<next>", false)
 	
@@ -195,8 +192,6 @@ func set_button_color(btn: Button, color: Color) -> void:
 		btn.add_theme_stylebox_override(state, style)
 
 func set_saved_color():
-	print("Set saved color")
-	
 	var saved_color = current_npc.grammar.get_variable("savedColor")
 	var color : Color = _get_color_from_string(saved_color)
 	set_button_color(dialog_btn, color)
@@ -206,10 +201,8 @@ func set_saved_color():
 #region Show text
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
-	print("full sentence : ", full_sentence)
 	
 	if full_sentence == "<question>":
-		print("start question")
 		full_sentence = _get_and_setup_random_question()
 		if (!is_in_questions):
 			is_in_questions = true
@@ -371,15 +364,13 @@ func _get_and_setup_random_question() -> String:
 	# Question title
 	var random_question = questions_data.pick_random()
 	questions_data.erase(random_question)
-	print("Random question : ", random_question.title)
-	
+
 	var random_answers: Array[String]
 	
 	# i = 0 : Right 
 	var right_answerText: String = ""
 	right_answerText = QuestionManager.get_text_answer_from_type(random_question.right_answer_type, random_question.static_answer_for_type_not_saved)
 	random_answers.append(right_answerText)
-	print(random_answers[0])
 	
 	# i = 1, 2, 3 : Wrong answer
 	var temp = random_question.wrong_answers_text.duplicate()
@@ -389,7 +380,6 @@ func _get_and_setup_random_question() -> String:
 			break # pas assez de réponses différentes
 		var index = randi() % temp.size()
 		if temp[index] == random_answers[0]:
-			print("same answer wrong & right, retrying")
 			temp.remove_at(index) # on l'enlève pour éviter de boucler infiniment
 			continue
 		random_answers.append(temp[index])

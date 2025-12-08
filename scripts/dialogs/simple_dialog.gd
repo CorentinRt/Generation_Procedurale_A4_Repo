@@ -26,7 +26,6 @@ func _show_player_interact_indication():
 		interact_icon.hide()
 
 func setup(text : String, color : Color): 
-	print("Setup skull : ", text)
 	dialog_text = text
 	dialog_color = color
 
@@ -36,7 +35,6 @@ func can_be_interacted() -> bool:
 	return true
 
 func show_dialog():
-	print("show simple dialog")
 	if can_be_interacted():
 		UtilsManager.get_dialog_manager().start_simple_dialog(dialog_text, dialog_color)
 		has_been_interacted = true

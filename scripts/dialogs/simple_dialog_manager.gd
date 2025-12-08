@@ -30,7 +30,6 @@ func _get_letters_texts():
 	letters_text = _get_strings(letters_json)
 
 func _get_strings(json: JSON) -> Array[String]:
-	print("get strings")
 	if json == null:
 		push_error("json null")
 		return []
@@ -46,7 +45,6 @@ func _get_strings(json: JSON) -> Array[String]:
 	return []
 
 func _setup_dialogs():
-	print("setup simple dialogs")
 	for dialog in simple_dialogs:
 		match dialog.dialog_type:
 			SimpleDialog.SimpleDialogType.SKULL:
@@ -60,6 +58,3 @@ func _setup_dialogs():
 				var random = letters_text[0]
 				dialog.setup(letters_text[0], letters_color)
 				letters_text.erase(random)
-
-	
-	

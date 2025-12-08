@@ -49,7 +49,6 @@ func _setup_dialog():
 	
 	# Quest
 	savedQuest = QuestionManager.get_variable_text_from_json(json, "savedQuest");
-	print("Saved quest : ", savedQuest)
 	if (savedQuest != ""):
 		has_quest = true
 		_add_quest_script()
@@ -70,7 +69,6 @@ func _add_quest_script():
 			add_child(quest_node)
 
 			quest = quest_node as Quest
-			print("Quest script added : ", quest)
 			
 func start_quest():
 	if has_quest && quest != null:

@@ -12,7 +12,6 @@ var displayed_value := 0.0
 var is_counting: bool = false
 
 func show_and_start_timer(time : float):
-	print("start timer")
 	total_time = time
 	displayed_value = 0
 	
@@ -31,7 +30,6 @@ func show_and_start_timer(time : float):
 	is_counting = true
 	
 func hide_and_stop_timer():
-	print("stop timer")
 	timer.stop()
 	hide_timer()
 	

@@ -72,7 +72,6 @@ func _ready() -> void:
 	# Get npcs & dialogs
 	npcs = get_tree().get_nodes_in_group("NPC")
 	simple_dialogs = get_tree().get_nodes_in_group("simple_dialog")
-	print("found simple dialogs : ", simple_dialogs.size())
 
 
 func _process(delta: float) -> void:
@@ -235,7 +234,6 @@ func _interact() -> void:
 	for npc in npcs:
 		if npc.global_position.distance_to(player_pos) <= interact_radius:
 			if npc.has_method("show_dialog"):
-				print("Dialog shown for ", npc.name)
 				npc.show_dialog()
 				return 
 				
