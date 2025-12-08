@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://m5cxy2e4m3gb" path="res://sprites/imports/kenney_monochrome-pirates/Monochrome/Tilemap/tilemap_packed.png" id="2_43vbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uypnu"]
+size = Vector2(46.666664, 30)
 
 [sub_resource type="Animation" id="Animation_f0aii"]
 length = 0.001
@@ -92,6 +93,7 @@ metadata/_custom_type_script = "uid://bq46ts3aef3lx"
 
 [node name="Attack_Shape" type="CollisionShape2D" parent="."]
 z_index = 11
+position = Vector2(0, -1.5)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_uypnu")
 debug_color = Color(0.86640584, 0.3172829, 0.42519537, 0.41960785)
@@ -107,3 +109,5 @@ region_rect = Rect2(64, 112, 16, 16)
 libraries = {
 &"": SubResource("AnimationLibrary_f0aii")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
