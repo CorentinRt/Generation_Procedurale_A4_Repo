@@ -21,6 +21,11 @@ func has_already_a_quest() -> bool:
 	return current_quest != null	
 
 func complete_current_quest():
+	ScoreManager._add_score(current_quest.quest_data.add_score_on_completed)
+	current_quest = null
+	
+func fail_current_quest(): # todo : call
+	ScoreManager._add_score(current_quest.quest_data.remove_score_on_failed)
 	current_quest = null
 	
 func _process(_delta: float) -> void:
