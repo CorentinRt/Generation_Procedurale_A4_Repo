@@ -9,4 +9,7 @@ func _ready() -> void:
 	quest_data = load("res://resources/quests/qd_combat.tres")
 	target_value = randi_range(target_min_value, target_max_value)
 	
-	GameManager.on_kill_enemy.connect(add_one_target_value)
+	GameManager.on_kill_enemy.connect(add_one_current_value)
+
+func format_target_value() -> String:
+	return str(target_value)

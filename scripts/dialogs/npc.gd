@@ -58,18 +58,31 @@ func _setup_dialog():
 		has_quest = false
 	
 func _add_quest_script():
-	if savedQuest != "Combat":
+	if savedQuest != "Combat" && savedQuest != "Item":
 		return
-	
+		
 	match(savedQuest):
 		"Combat":
 			var quest_node := Node.new()
 			quest_node.name = "Quest_Combat"
+			
 			var quest_script := load("res://scripts/quests/quest_combat.gd")
 			quest_node.set_script(quest_script)
 
 			add_child(quest_node)
+			quest = quest_node as Quest
+			
+		"Item":
+			var quest_node := Node.new()
+			quest_node.name = "Quest_Item"
+			
+			var quest_script := load("res://scripts/quests/quest_item.gd")
+			quest_node.set_script(quest_script)
+			
+			var npc_room = ItemSpawnManager.get_room_from_node(self)
+			quest_node.setup_item(npc_room)
 
+			add_child(quest_node)
 			quest = quest_node as Quest
 			
 func start_quest():
@@ -107,7 +120,6 @@ func _show_player_interact_indication():
 	else:
 		# hide img
 		interact_icon.hide()
-	pass
 
 func on_state_changed():
 	_set_marker_color()

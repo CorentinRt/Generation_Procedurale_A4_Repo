@@ -53,14 +53,13 @@ func update_ui():
 	
 func format_quest_name() -> String:
 	# Format with variables
-	var formatted := current_quest.quest_data.quest_name
-	formatted = formatted.replace("<target>", str(current_quest.target_value))
-	formatted = formatted.replace("<current>", str(current_quest.current_value))
-
-	# Add color
 	if current_quest.is_quest_completed:
+		var formatted := current_quest.quest_data.quest_name_after_target
 		return "[color=green]" + formatted + "[/color]"
 	else:
+		var formatted := current_quest.quest_data.quest_name
+		formatted = formatted.replace("<target>", current_quest.format_target_value())
+		formatted = formatted.replace("<current>", str(current_quest.current_value))
 		return "[color=cyan]" + formatted + "[/color]"
 
 func format_quest_reward() -> String:

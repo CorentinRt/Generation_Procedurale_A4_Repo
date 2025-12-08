@@ -41,6 +41,7 @@ var direction_attack : Vector2 = Vector2.ZERO
 
 var npcs : Array[Node]
 var simple_dialogs : Array[Node]
+var item_quests : Array[Node]
 
 var is_in_dialog: bool = false
 var is_in_ship : bool = false
@@ -72,11 +73,13 @@ func _ready() -> void:
 	# Get npcs & dialogs
 	npcs = get_tree().get_nodes_in_group("NPC")
 	simple_dialogs = get_tree().get_nodes_in_group("simple_dialog")
+	call_deferred("get_item_quests")
 
-
+func get_item_quests():
+	item_quests = get_tree().get_nodes_in_group("item_quest")
+	
 func _process(delta: float) -> void:
 	_update_state(delta)
-
 
 func _physics_process(_delta: float) -> void:
 	if _state == STATE.STUNNED:
@@ -230,6 +233,19 @@ func _interact() -> void:
 		return
 	
 	var player_pos: Vector2 = global_position
+	
+	if (item_quests.size() == 0):
+		get_item_quests()
+	
+	# check items destroyed before interact
+	for item in item_quests.duplicate():
+		if not is_instance_valid(item):
+			item_quests.erase(item)
+			continue
+		if item.global_position.distance_to(player_pos) <= interact_radius:
+			if item.has_method("interact"):
+				item.interact()
+				return
 	
 	for npc in npcs:
 		if npc.global_position.distance_to(player_pos) <= interact_radius:

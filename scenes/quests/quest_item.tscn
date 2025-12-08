@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgspftucjpeyf"]
+
+[ext_resource type="Script" uid="uid://dyxucd0wyo2mm" path="res://scripts/quests/item.gd" id="1_ua7nw"]
+[ext_resource type="Texture2D" uid="uid://fhb7d20eelny" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_anchor.png" id="2_fe4ys"]
+[ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="3_q4gu3"]
+
+[node name="QuestItem" type="Node2D" node_paths=PackedStringArray("item_visual", "interact_icon") groups=["item_quest"]]
+script = ExtResource("1_ua7nw")
+item_visual = NodePath("Sprite2D")
+interact_icon = NodePath("InteractionIcon")
+metadata/_custom_type_script = "uid://dyxucd0wyo2mm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fe4ys")
+
+[node name="InteractionIcon" parent="." instance=ExtResource("3_q4gu3")]
+position = Vector2(2.019484e-28, -12.999999)

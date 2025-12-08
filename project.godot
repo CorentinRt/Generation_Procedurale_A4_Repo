@@ -21,6 +21,7 @@ ScoreManager="*res://scripts/score/score_manager.gd"
 GameManager="*res://scripts/managers/game_manager.gd"
 QuestionManager="*res://scripts/dialogs/question_manager.gd"
 UtilsManager="*res://scripts/utils.gd"
+ItemSpawnManager="*res://scripts/quests/item_spawn_manager.gd"
 
 [dotnet]
 
@@ -58,6 +59,8 @@ item_minigame=""
 doors=""
 simple_dialog=""
 enemy=""
+item_quest=""
+item_quest_container=""
 
 [input]
 

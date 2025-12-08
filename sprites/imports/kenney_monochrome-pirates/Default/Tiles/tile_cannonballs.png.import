@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fhb7d20eelny"
-path="res://.godot/imported/tile_0086.png-d6c7afd4c298e5d9bae25b5c7f12c9ed.ctex"
+uid="uid://qegpho8acj5c"
+path="res://.godot/imported/tile_cannonballs.png-92d15ee2b759159b5fbf7644b748cdf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0086.png"
-dest_files=["res://.godot/imported/tile_0086.png-d6c7afd4c298e5d9bae25b5c7f12c9ed.ctex"]
+source_file="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_cannonballs.png"
+dest_files=["res://.godot/imported/tile_cannonballs.png-92d15ee2b759159b5fbf7644b748cdf9.ctex"]
 
 [params]
 
