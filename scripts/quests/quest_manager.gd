@@ -17,6 +17,9 @@ func start_quest(quest : Quest):
 	print("Start quest : ", quest.quest_data.quest_name)
 	current_quest = quest
 	
+func has_already_a_quest() -> bool:
+	return current_quest != null	
+
 func complete_current_quest():
 	current_quest = null
 	
@@ -40,4 +43,4 @@ func format_quest_name() -> String:
 	if current_quest.is_quest_completed:
 		return "[color=green]" + formatted + "[/color]"
 	else:
-		return "[color=yellow]" + formatted + "[/color]"
+		return "[color=cyan]" + formatted + "[/color]"

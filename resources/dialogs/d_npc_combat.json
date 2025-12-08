@@ -15,7 +15,13 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:Combat]"
 	],
 	"firstInteraction": [
-    "Wsh j'ai une quete de combat, va taper des ennemis."
+    	"Salut ça va ?"
+	],
+	"questCantStart": [
+		"Finis ta quete en cours et reviens."
+	],
+	"questStart":[
+		"Va taper des ennemis de ma part stp."
 	],
 	"questInProgress": [
 		"T'as encore des ennemis à taper."

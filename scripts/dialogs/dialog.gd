@@ -46,6 +46,9 @@ var revealed_characters: int = 0
 # Questions
 var is_in_questions: bool = false
 
+# Quest
+var quest_started = false
+
 func _ready():
 	hide_dialog()
 	_setup_grammars()
@@ -137,6 +140,16 @@ func _get_and_show_current_state_text():
 	
 	# Get sentences
 	var sentences = current_npc.grammar.flatten(origin, current_npc.json)
+	
+	# Quest
+	if current_npc.has_quest && current_npc.current_dialog_state == current_npc.DialogState.FIRST_INTERACTION:
+		sentences += "<next>"
+		if QuestManager.Instance.has_already_a_quest():
+			sentences += current_npc.grammar.flatten("#questCantStart#", current_npc.json)
+		else:
+			sentences += current_npc.grammar.flatten("#questStart#", current_npc.json)
+			quest_started = true
+		
 	_get_array_sentences(sentences)
 	
 	_show_current_sentence_text()
@@ -247,8 +260,12 @@ func _get_current_state():
 		current_npc.DialogState.FIRST_INTERACTION:
 			if (current_npc.has_quest):
 				# Start quest
-				current_npc.start_quest()
-				current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
+				if quest_started:
+					current_npc.start_quest()
+					current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
+					quest_started = false
+				else:
+					current_npc.current_dialog_state = current_npc.DialogState.FIRST_INTERACTION
 			else:
 				current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
 
