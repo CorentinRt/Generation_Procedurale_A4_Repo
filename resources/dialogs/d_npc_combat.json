@@ -2,11 +2,6 @@
 	"name": [
 		"Mike Harrison"
 	],
-	"occupation": [
-		"président",
-		"boulanger",
-		"commerçant"
-	],
 	"color":[
 		"gray",
 		"black"
@@ -26,8 +21,11 @@
 	"questInProgress": [
 		"T'as encore des ennemis à taper."
 	],
-	"questJustCompleted": [
+	"questCompleted": [
 		"GG t'as bien tapé."
+	],
+	"questFailed": [
+		"Je suis déçu t'aurais pu faire mieux."
 	],
 	"completed": [
 		"T'as déjà fini ma quête."

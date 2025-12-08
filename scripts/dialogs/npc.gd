@@ -5,6 +5,7 @@ enum DialogState {
 	FIRST_INTERACTION,
 	QUEST_PROGRESS,
 	QUEST_COMPLETED,
+	QUEST_FAILED,
 	COMPLETED,
 }
 
@@ -83,6 +84,9 @@ func end_quest():
 		
 func is_quest_completed() -> bool:
 	return quest.is_quest_completed
+	
+func is_quest_failed() -> bool:
+	return quest.is_quest_failed
 
 func show_dialog():
 	var dialog_manager = UtilsManager.get_dialog_manager()

@@ -25,7 +25,7 @@ func complete_current_quest():
 	current_quest = null
 	
 func fail_current_quest(): # todo : call
-	ScoreManager._add_score(current_quest.quest_data.remove_score_on_failed)
+	ScoreManager._remove_score(current_quest.quest_data.remove_score_on_failed)
 	current_quest = null
 	
 func _process(_delta: float) -> void:
