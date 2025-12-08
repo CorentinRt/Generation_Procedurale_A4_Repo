@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=22 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -21,19 +21,6 @@
 [ext_resource type="Script" uid="uid://c7i14ajf5k0es" path="res://scripts/dialogs/simple_dialog_manager.gd" id="13_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_skulls.json" id="14_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_letters.json" id="15_7cf0w"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbcri"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jaf1p"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label", "name_panel", "dialog_btn", "questions_btn", "custom_timer") groups=["dialog_manager"]]
 layout_mode = 3
@@ -204,13 +191,9 @@ offset_top = -50.0
 offset_bottom = -34.0
 grow_horizontal = 2
 theme_override_styles/slider = ExtResource("11_jaf1p")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_sbcri")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_jaf1p")
 max_value = 10.0
 step = 0.01
 editable = false
-scrollable = false
-tick_count = 30
 
 [node name="CustomTimer" type="Node" parent="." node_paths=PackedStringArray("timer_slider", "timer")]
 script = ExtResource("11_sbcri")
