@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6p5hoir7gifh"]
+
+[ext_resource type="Script" uid="uid://rj3ucwx1fmbv" path="res://scripts/minigame/minigame_casino.gd" id="1_fkbqs"]
+
+[node name="MinigameCasino" type="Node"]
+script = ExtResource("1_fkbqs")
+metadata/_custom_type_script = "uid://rj3ucwx1fmbv"

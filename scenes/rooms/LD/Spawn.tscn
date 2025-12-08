@@ -15,3 +15,18 @@ tile_set = ExtResource("1_3j7wr")
 [node name="Props" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAQALAAAAAgAAAAAAAQAGAPz/AgAAAAAAAQA=")
 tile_set = ExtResource("1_3j7wr")
+
+[node name="Sea_Body" type="StaticBody2D" parent="."]
+collision_layer = 256
+
+[node name="Sea_Shape4" type="CollisionPolygon2D" parent="Sea_Body"]
+position = Vector2(-42, 17)
+polygon = PackedVector2Array(92, -46, 93, -64, 74, -65, 74, -46)
+
+[node name="Sea_Shape3" type="CollisionPolygon2D" parent="Sea_Body"]
+position = Vector2(51, 16)
+polygon = PackedVector2Array(125, -45, 125, -64, 107, -63, 107, -45)
+
+[node name="Sea_Shape2" type="CollisionPolygon2D" parent="Sea_Body"]
+position = Vector2(4, 56)
+polygon = PackedVector2Array(110, -37, 110, -58, 90, -59, 90, -37)

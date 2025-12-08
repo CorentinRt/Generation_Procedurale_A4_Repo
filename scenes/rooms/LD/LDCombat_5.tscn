@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://dpkckdp3ellui"]
+[gd_scene load_steps=5 format=4 uid="uid://dpkckdp3ellui"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_utc2r"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_dwov4"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_7iyes"]
+[ext_resource type="PackedScene" uid="uid://diyfld2lowmbu" path="res://scenes/minigame/minigame_battle.tscn" id="4_mhju0"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_utc2r")
@@ -16,5 +18,18 @@ tile_map_data = PackedByteArray("AAABAPr/AQAEAAYAAAADAPv/AQAEAAYAAAAIAPn/AQAEAAY
 tile_set = ExtResource("2_dwov4")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAHAPz/AQAHAAcAAAAFAPn/AQAHAAcAAAADAP3/AQAHAAcAAAACAPj/AQADAAcAAAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQACAPj/AQADAAcAAAADAP3/AgAAAAAABQAHAPz/AgAAAAAABQAFAPn/AgAAAAAABgA=")
 tile_set = ExtResource("2_dwov4")
+
+[node name="Sea_Body" type="StaticBody2D" parent="."]
+collision_layer = 256
+
+[node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
+position = Vector2(2, -17)
+polygon = PackedVector2Array(97, -45, 97, -65, 59, -65, 59, -45)
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("3_7iyes")]
+position = Vector2(88.125, -72)
+
+[node name="MinigameBattle" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("4_mhju0")]
+_room_zone_detector = NodePath("../RoomZoneDetector")

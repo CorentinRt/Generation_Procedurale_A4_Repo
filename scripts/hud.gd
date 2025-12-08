@@ -8,11 +8,14 @@ var previous_life : int
 
 
 func _ready() -> void:
+	_setup_life_container()
+
+func _setup_life_container() -> void:
+	return
 	previous_life = Player.Instance.life
 	Player.Instance.life_changed.connect(_on_life_changed)
 	for heart in previous_life:
 		_add_heart()
-
 
 func _on_life_changed(new_life : int) -> void:
 	if new_life < previous_life:
@@ -22,11 +25,13 @@ func _on_life_changed(new_life : int) -> void:
 
 
 func _add_heart() -> void:
+	return
 	var heart = heart_scene.instantiate()
 	life_container.add_child(heart)
 
 
 func _remove_heart() -> void:
+	return
 	if life_container.get_child_count() == 0:
 		return
 

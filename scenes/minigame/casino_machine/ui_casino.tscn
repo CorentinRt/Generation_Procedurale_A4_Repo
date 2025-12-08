@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://psvhqqirckxe"]
+
+[ext_resource type="Script" uid="uid://eldfhh8vm7fk" path="res://scripts/minigame/casino_machine/casino/ui_casino.gd" id="1_pilwi"]
+
+[node name="UICasino" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pilwi")
