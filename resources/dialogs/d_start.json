@@ -2,17 +2,34 @@
 	"playerName": [
 		"Pascal",
 		"Jean-Eude",
-		"Nicolas"
+		"Nicolas",
+		"Corentin",
+		"Jhonson",
+		"Timothé", 
+		"Henry"
 	],
 	"playerAge": [
 		"12 ans",
 		"58 ans",
-		"25 ans"
+		"25 ans",
+		"60 ans",
+		"20 ans",
+		"30 ans",
+		"40 ans",
+		"51 ans"
 	],
 	"playerJob": [
 		"fermier",
 		"chomeur",
-		"cycliste"
+		"cycliste",
+		"SDF",
+		"Directeur général de la banque centrale européenne",
+		"Conseiller de vente",
+		"Employer polyvalent",
+		"Astronaute",
+		"Pilote de Formule 1",
+		"Livreur à domicile",
+		"Policier"
 	],
 	"color": [
 		"gray",
@@ -36,26 +53,30 @@
 		"Soyez les bienvenus !"
 	],
 	"presentation": [
-		"Je suis ravi de vous retrouver pour cette nouvelle émission."
+		"Je suis ravi de vous retrouver pour cette nouvelle émission.",
+		"C'est avec immense plaisir que je vous retrouve."
 	],
 	"heure": [
-		"Aujourd'hui",
-		"Ce soir",
-		"Pour cette nouvelle soirée",
-		"Pour cette nouvelle émission"
+		"Aujourd'hui,",
+		"Ce soir,",
+		"Pour cette nouvelle soirée,",
+		"Pour cette nouvelle émission,"
 	],
 	"politesse": [
 		"nous avons le plaisir d'accueillir",
 		"c'est avec joie que nous recevons",
 		"c'est avec un immense plaisir que nous recevons",
 		"c'est pour nous une joie de recevoir",
-		"c'est pour moi un immense plaisir de recevoir"
+		"c'est pour moi un immense plaisir de recevoir",
+		"nous accueillons"
 	],
 	"origine": [
 		"de France",
 		"d'Espagne",
 		"de Colombie",
-		"du Canada"
+		"du Canada",
+		"des USA",
+		"d'Allemange"
 	],
 	"presentationHost": [
 		"Je suis Mike Harrison",
@@ -91,7 +112,8 @@
 	"adjTresor": [
 		"l'immense",
 		"le luxueux",
-		"le précieux"
+		"le précieux",
+		"le cébèbre"
 	],
 	"tresor": [
 		"butin",
@@ -104,9 +126,9 @@
 		"du célèbre Capitaine à la Barbe Pas Si Blanche"
 	],
 	"sortie": [
-		"La sortie ne s'ouvrira qu'une fois",
-		"La porte derrière moi ne sera débloquée que lorsque",
-		"Le candidat ne pourra sortir qu'une fois"
+		"La sortie ne s'ouvrira qu'une fois le",
+		"La porte derrière moi ne sera débloquée que lorsque le",
+		"Le candidat ne pourra sortir qu'une fois le"
 	],
 	"action": [
 		"récupéré",
@@ -114,9 +136,9 @@
 		"en sa possession"
 	],
 	"warning": [
-		"Mais attention",
-		"Mais prenez garde",
-		"Mais il devra rester sur ses gardes"
+		"Mais attention,",
+		"Mais prenez garde,",
+		"Mais il devra rester sur ses gardes,"
 	],
 	"danger": [
 		"de nombreux dangers",
@@ -129,7 +151,7 @@
 		"l'attendront"
 	],
 	"reussite": [
-		"Chaque réussite ou échec a ces épreuves permettront d’augmenter ou de diminuer la quantité d’or que le joueur possède"
+		"Chaque réussite ou échec aux épreuves permettront d’augmenter ou de diminuer la quantité d’or que le joueur possède"
 	],
 	"regleAttention": [
 		"Mais attention",
@@ -138,7 +160,8 @@
 	],
 	"regleFinale": [
 		"vous ne pouvez pas atteindre le pallier fatidique des 0 Pièces d'or",
-		"vous ne pouvez pas tomber en dessous des 0 Pièces d'or"
+		"vous ne pouvez pas tomber en dessous des 0 Pièces d'or",
+		"Ne tombez pas à 0 Pièces d'or"
 	],
 	"menace": [
 		"ou un funestre destin vous attend",
