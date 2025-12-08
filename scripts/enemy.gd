@@ -71,6 +71,7 @@ func _set_state(state : STATE) -> void:
 			_end_blink()
 			queue_free()
 			_give_score()
+			GameManager._notify_kill_enemy()
 		_:
 			_current_movement = default_movement
 

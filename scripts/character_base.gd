@@ -101,8 +101,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func apply_hit(attack : Attack) -> void:
-	if attack != null or attack.attack_owner is Enemy and self is Enemy:
-		return
 	if Time.get_unix_time_from_system() - _last_hit_time < invincibility_duration:
 		return
 	_last_hit_time = Time.get_unix_time_from_system()
