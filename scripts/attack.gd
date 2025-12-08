@@ -24,4 +24,4 @@ func _on_body_entered(_body:Node2D) -> void:
 		if _body is Enemy and attack_owner is Enemy:
 			return
 		_body.apply_hit(self)
-		queue_free()
+		#queue_free()

@@ -214,7 +214,7 @@ default_movement = ExtResource("2_nnsly")
 stunned_movemement = ExtResource("3_vw1dg")
 attack_scene = ExtResource("5_xwavj")
 attack_spawn_point = NodePath("Attack_Spawn_Point")
-attack_offset = 6.0
+attack_offset = 7.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
