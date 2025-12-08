@@ -2,6 +2,8 @@ class_name Enemy extends CharacterBase
 
 static var all_enemies : Array[Enemy]
 
+signal on_killed();
+
 @export var attack_warm_up : float = 0.5
 @export var attack_distance : float = 0.5
 
@@ -61,6 +63,7 @@ func _update_attack_direction() -> void:
 	
 
 func _set_state(state : STATE) -> void:
+	var oldState : STATE = _state
 	super(state)
 	_state_timer = 0.0
 
@@ -68,10 +71,12 @@ func _set_state(state : STATE) -> void:
 		STATE.STUNNED:
 			_current_movement = stunned_movemement
 		STATE.DEAD:
-			_end_blink()
-			queue_free()
-			_give_score()
-			GameManager._notify_kill_enemy()
+			if oldState != state:
+				_end_blink()
+				queue_free()
+				_give_score()
+				GameManager._notify_kill_enemy()
+				on_killed.emit()
 		_:
 			_current_movement = default_movement
 

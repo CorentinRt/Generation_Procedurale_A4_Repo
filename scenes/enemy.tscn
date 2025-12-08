@@ -200,7 +200,7 @@ _data = {
 &"hit": SubResource("Animation_ur7pv")
 }
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("running_animation_player", "hit_animation_player", "sprites", "attack_spawn_point")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("running_animation_player", "hit_animation_player", "sprites", "attack_spawn_point") groups=["Enemy"]]
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
