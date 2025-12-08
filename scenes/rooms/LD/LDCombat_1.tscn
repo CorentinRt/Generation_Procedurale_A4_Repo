@@ -14,3 +14,10 @@ tile_set = ExtResource("2_e4hai")
 [node name="Props" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAHAPz/AQAHAAcAAAAFAPz/AQAIAAUAAAAFAPr/AQAIAAUAAAAEAP3/AQAEAAYAAAAEAPz/AQAEAAUAAAADAPv/AQAHAAcAAAAHAPn/AQAHAAcAAAACAPv/AQAEAAYAAAACAPr/AQAEAAUAAAAIAP3/AQAGAAYAAAAIAPz/AQAGAAUAAAAIAPr/AQAGAAYAAAAIAPn/AQAGAAUAAAABAPj/AQAAAAYAAAABAP7/AQAAAAIAAAABAP3/AQABAAIAAAAJAP7/AQADAAcAAAA=")
 tile_set = ExtResource("2_e4hai")
+
+[node name="Sea_Body" type="StaticBody2D" parent="."]
+collision_layer = 256
+
+[node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
+position = Vector2(-65, 33)
+polygon = PackedVector2Array(116, -50, 115, -83, 100, -85, 99, -99, 81, -98, 82, -49)
