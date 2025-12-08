@@ -24,3 +24,4 @@ theme_override_constants/separation = 10
 [node name="QuestManager" parent="." instance=ExtResource("5_uo2fv")]
 
 [node name="UICasino" parent="." instance=ExtResource("6_047uy")]
+mouse_filter = 2

@@ -7,22 +7,22 @@
 		"black"
 	],
 	"setupSaves": [
-		"[savedName:#name#][savedColor:#color#][savedQuest:Item]"
+		"[savedName:#name#][savedColor:#color#][savedQuest:AddScore]"
 	],
 	"firstInteraction": [
-    	"j'ai besoin que tu trouves quelque chose."
+    	"Coucou !"
 	],
 	"questCantStart": [
 		"Finis ta quete en cours et reviens."
 	],
 	"questStart":[
-		"Peux-tu me le ramener ?"
+		"Va gagner de l'argent et reviens !"
 	],
 	"questInProgress": [
-		"J'attends toujours mon objet."
+		"T'as encore des pièces d'or à gagner."
 	],
 	"questCompleted": [
-		"Tu l'as retrouvé !"
+		"T'es riche maintenant !"
 	],
 	"questFailed": [
 		"Je suis déçu t'aurais pu faire mieux."

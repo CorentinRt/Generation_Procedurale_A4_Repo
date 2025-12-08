@@ -21,10 +21,13 @@ func fail_quest():
 
 # ennemy killed, item found...
 func add_one_current_value():
+	add_current_value(1)
+		
+func add_current_value(value : int):
 	if !is_quest_started:
 		return
 	
-	current_value += 1
+	current_value += value
 	if current_value >= target_value:
 		is_quest_completed = true
 		

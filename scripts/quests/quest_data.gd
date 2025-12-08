@@ -2,7 +2,8 @@ class_name QuestData extends Resource
 
 enum QuestType{
 	COMBAT,
-	ITEM
+	ITEM,
+	ADD_SCORE
 }
 
 @export var quest_type: QuestType

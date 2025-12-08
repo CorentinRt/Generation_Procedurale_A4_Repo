@@ -58,7 +58,7 @@ func _setup_dialog():
 		has_quest = false
 	
 func _add_quest_script():
-	if savedQuest != "Combat" && savedQuest != "Item":
+	if savedQuest != "Combat" && savedQuest != "Item" && savedQuest != "AddScore":
 		return
 		
 	match(savedQuest):
@@ -81,6 +81,16 @@ func _add_quest_script():
 			
 			var npc_room = ItemSpawnManager.get_room_from_node(self)
 			quest_node.setup_item(npc_room)
+
+			add_child(quest_node)
+			quest = quest_node as Quest
+			
+		"AddScore":
+			var quest_node := Node.new()
+			quest_node.name = "Quest_AddScore"
+			
+			var quest_script := load("res://scripts/quests/quest_add_score.gd")
+			quest_node.set_script(quest_script)
 
 			add_child(quest_node)
 			quest = quest_node as Quest
