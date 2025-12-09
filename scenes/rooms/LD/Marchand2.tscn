@@ -15,9 +15,12 @@ tile_map_data = PackedByteArray("AAAJAP3/AQAGAAUAAAAJAP7/AQAGAAYAAAAKAAMAAQAIAAY
 tile_set = ExtResource("1_mfxf4")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAJAP//AQAQAAcAAAAJAAAAAQAQAAcAAAAJAAEAAQAQAAcAAAAKAAAAAQAFAAcAAAABAAAAAgAAAAAAAQAGAAQAAgAAAAAAAQAGAPz/AgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAJAP//AQAQAAcAAAAJAAAAAQAQAAcAAAAJAAEAAQAQAAcAAAAKAAAAAwAAAAAAAwABAAAAAgAAAAAAAQAGAAQAAgAAAAAAAQAGAPz/AgAAAAAAAQA=")
 tile_set = ExtResource("1_mfxf4")
 
 [node name="NpcContainer" parent="." instance=ExtResource("2_p56u7")]
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("3_jdab1")]
+
+[connection signal="body_entered" from="Props/Shop" to="Props/Shop" method="_on_shop_body_entered"]
+[connection signal="body_exited" from="Props/Shop" to="Props/Shop" method="_on_shop_body_exited"]

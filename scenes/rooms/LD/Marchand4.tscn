@@ -15,7 +15,7 @@ tile_map_data = PackedByteArray("AAAGAP7/AQAHAAYAAAACAP3/AQAHAAYAAAAIAAIAAQAIAAY
 tile_set = ExtResource("1_0bnnu")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAJAP//AQAQAAcAAAAJAAAAAQAQAAcAAAAJAAEAAQAQAAcAAAAKAAAAAQAFAAcAAAAIAP7/AQAGAAUAAAAIAP//AQAGAAYAAAAGAAQAAgAAAAAAAQABAAAAAgAAAAAAAQAGAPz/AgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAJAP//AQAQAAcAAAAJAAAAAQAQAAcAAAAJAAEAAQAQAAcAAAAKAAAAAwAAAAAAAwAIAP7/AQAGAAUAAAAIAP//AQAGAAYAAAAGAAQAAgAAAAAAAQABAAAAAgAAAAAAAQAGAPz/AgAAAAAAAQA=")
 tile_set = ExtResource("1_0bnnu")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
@@ -28,3 +28,6 @@ polygon = PackedVector2Array(118, -79, 102, -81, 102, -94, 70, -95, 69, -61, 119
 [node name="NpcContainer" parent="." instance=ExtResource("2_rq006")]
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("3_2hvad")]
+
+[connection signal="body_entered" from="Props/Shop" to="Props/Shop" method="_on_shop_body_entered"]
+[connection signal="body_exited" from="Props/Shop" to="Props/Shop" method="_on_shop_body_exited"]
