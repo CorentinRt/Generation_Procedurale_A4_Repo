@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://wx1d3cdd6ci2"]
+[gd_scene load_steps=10 format=4 uid="uid://wx1d3cdd6ci2"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_cips2"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_hnbyo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bg45dxuyn2nc1" path="res://scenes/dialogs/skull.tscn" id="7_aq8op"]
 [ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="8_ow1e4"]
 [ext_resource type="PackedScene" uid="uid://6qmuxs06irmp" path="res://scenes/dialogs/letter.tscn" id="8_y5lrh"]
+[ext_resource type="PackedScene" uid="uid://dhkvh36n5bpjl" path="res://scenes/npc/npc_question.tscn" id="9_ow1e4"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="10_wtcj1"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
@@ -39,9 +40,12 @@ position = Vector2(95, -30)
 [node name="NpcContainer" parent="." instance=ExtResource("8_ow1e4")]
 position = Vector2(23, -91)
 
+[node name="Npc" parent="." instance=ExtResource("9_ow1e4")]
+position = Vector2(83, -64)
+
 [connection signal="body_entered" from="Props/Spikes" to="Props/Spikes" method="_on_body_entered"]
-[connection signal="body_entered" from="Props/@Area2D@39050" to="Props/@Area2D@39050" method="_on_body_entered"]
-[connection signal="body_entered" from="Props/@Area2D@39051" to="Props/@Area2D@39051" method="_on_body_entered"]
+[connection signal="body_entered" from="Props/@Area2D@28520" to="Props/@Area2D@28520" method="_on_body_entered"]
+[connection signal="body_entered" from="Props/@Area2D@28521" to="Props/@Area2D@28521" method="_on_body_entered"]
 [connection signal="body_entered" from="Props/KeyCollectible" to="Props/KeyCollectible" method="_on_body_entered"]
 [connection signal="body_entered" from="Props/InterruptorItem" to="Props/InterruptorItem" method="_on_body_entered"]
 [connection signal="body_exited" from="Props/InterruptorItem" to="Props/InterruptorItem" method="_on_body_exited"]
