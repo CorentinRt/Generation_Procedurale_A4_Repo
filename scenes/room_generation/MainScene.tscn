@@ -25,10 +25,10 @@ roomScene = ExtResource("5_g60s1")
 [node name="MainScene" type="Node2D"]
 
 [node name="LevelGeneration" parent="." instance=ExtResource("1_u2rfa")]
-_roomsList = Dictionary[ExtResource("2_grgwt"), int]({
-SubResource("Resource_grgwt"): 0,
-SubResource("Resource_f102n"): 2,
-SubResource("Resource_hb5b0"): 3
+_roomsList = Dictionary[ExtResource("2_grgwt"), float]({
+SubResource("Resource_grgwt"): 0.0,
+SubResource("Resource_f102n"): 2.0,
+SubResource("Resource_hb5b0"): 3.0
 })
 _roomsMaxCount = 2000
 
