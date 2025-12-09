@@ -23,6 +23,7 @@ QuestionManager="*res://scripts/dialogs/question_manager.gd"
 UtilsManager="*res://scripts/utils.gd"
 ItemSpawnManager="*res://scripts/quests/item_spawn_manager.gd"
 NpcSpawnManager="*res://scripts/quests/npc_spawn_manager.gd"
+EndManager="*res://scripts/dialogs/end_manager.gd"
 
 [dotnet]
 

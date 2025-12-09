@@ -1,20 +1,27 @@
 class_name DialogButton extends Control
 
 @export var text: RichTextLabel
-var _is_right_answer: bool = false
+var is_right_answer: bool = false
+var is_end_type: EndManager.EndType = EndManager.EndType.NONE 
 
-func setup_btn(answerText : String, is_right_answer : bool):
+func setup_btn(answerText : String, right_answer : bool, end_type : EndManager.EndType = EndManager.EndType.NONE):
 	text.text = answerText
-	_is_right_answer = is_right_answer
+	is_right_answer = right_answer
+	is_end_type = end_type
 	
 func on_btn_clicked():
 	var dialog_manager = UtilsManager.get_dialog_manager()
 	if dialog_manager:
-		if _is_right_answer:
-			ScoreManager._add_score(dialog_manager.add_score_right_answer)
+		if is_end_type != EndManager.EndType.NONE:
+			# End answer
+			print("click on end question")
 		else:
-			ScoreManager._remove_score(dialog_manager.remove_score_wrong_answer)
-			
-		dialog_manager._on_answer_pressed(_is_right_answer)
+			# Question answer
+			if is_right_answer:
+				ScoreManager._add_score(dialog_manager.add_score_right_answer)
+			else:
+				ScoreManager._remove_score(dialog_manager.remove_score_wrong_answer)
+				
+			dialog_manager._on_answer_pressed(is_right_answer)
 	else:
 		push_warning("Aucun DialogManager trouvé dans la scène !")

@@ -432,6 +432,22 @@ func _get_and_setup_random_question() -> String:
 	
 	return random_question.title
 	
+func _get_and_setup_end_question() -> String:
+	# Question title
+	var random_question = "Tu veux partir ?" # à voir pour procedural
+
+	var random_answers: Array[String]
+	random_answers = ["Non", "Oui", "Peut-être", "Je sais pas"]
+	# Question answers
+	questions_btn.shuffle()
+	for i in questions_btn.size():
+		if i == 0: # Right
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), true);
+		else: # Wrong
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), false);
+	
+	return random_question.title
+	
 func first_letter_upper(s: String) -> String:
 	if s == "":
 		return s
