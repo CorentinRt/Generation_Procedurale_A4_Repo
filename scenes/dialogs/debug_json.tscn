@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt2baiqo8huyi"]
+
+[ext_resource type="Script" uid="uid://dqlijbg0klerj" path="res://scripts/dialogs/debug_json.gd" id="1_ylqlk"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_pdpkr"]
+
+[node name="DebugJSON" type="Node"]
+script = ExtResource("1_ylqlk")
+json = ExtResource("2_pdpkr")
+metadata/_custom_type_script = "uid://dqlijbg0klerj"
