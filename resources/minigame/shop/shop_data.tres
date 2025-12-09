@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Shop_Data" load_steps=2 format=3 uid="uid://cyp3dvhmmq7yx"]
+
+[ext_resource type="Script" uid="uid://buo8l0byojgb0" path="res://scripts/minigame/shop/shop_data.gd" id="1_2ucr6"]
+
+[resource]
+script = ExtResource("1_2ucr6")
+coin_price = 5000
+bonus_attack_price = 100000
+bonus_defense_price = 100000
+potion_attack_price = 10000
+potion_defense_price = 10000
+metadata/_custom_type_script = "uid://buo8l0byojgb0"

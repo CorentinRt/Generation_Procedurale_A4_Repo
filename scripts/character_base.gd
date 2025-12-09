@@ -45,6 +45,8 @@ var item_quests : Array[Node]
 
 var is_in_dialog: bool = false
 var is_in_ship : bool = false
+var is_in_casino : bool = false
+var is_in_shop : bool = false
 
 # Life
 var _last_hit_time : float
@@ -199,7 +201,7 @@ func _compute_orientation_angle(direction : Vector2) -> float:
 
 
 func _attack() -> void:
-	if (is_in_dialog || is_in_ship):
+	if (is_in_dialog || is_in_ship || is_in_casino || is_in_shop):
 		return
 	
 	if Time.get_unix_time_from_system() - _last_attack_time < attack_cooldown:
@@ -229,7 +231,7 @@ func _spawn_attack_scene() -> void:
 	spawned_attack.attack_owner = self
 
 func _interact() -> void:
-	if (is_in_dialog || is_in_ship): 
+	if (is_in_dialog || is_in_ship || is_in_casino || is_in_shop): 
 		return
 	
 	var player_pos: Vector2 = global_position
@@ -260,7 +262,7 @@ func _interact() -> void:
 				return 
 
 func _can_move() -> bool:
-	return !is_in_dialog && _state == STATE.IDLE && !is_in_ship
+	return !is_in_dialog && _state == STATE.IDLE && !is_in_ship && !is_in_casino && !is_in_shop
 
 func set_is_in_dialog(in_dialog : bool):
 	is_in_dialog = in_dialog
