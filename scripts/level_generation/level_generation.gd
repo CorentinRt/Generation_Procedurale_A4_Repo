@@ -5,7 +5,7 @@ class_name LevelGeneration extends Node2D
 @export var _possibleStartingRoomDirections:Array[LevelGenerationUtils.Directions]
 
 @export_group("Other rooms base")
-@export var _roomsList:Dictionary[RoomData, int]
+@export var _roomsList:Dictionary[RoomData, float]
 
 @export_group("Generation parameters")
 @export var _door:PackedScene
@@ -177,15 +177,15 @@ func _create_door(roomData:RoomData, coord:Vector2) -> void:
 	createdDoor.global_position = coord
 	roomData.tilemap.add_child(createdDoor)
 
-func _pickRandomElementFromDict(dictionary: Dictionary[RoomData, int]) -> RoomData:
-	var totalWeight:int = 0
+func _pickRandomElementFromDict(dictionary: Dictionary[RoomData, float]) -> RoomData:
+	var totalWeight:float = 0
 	
 	for i in dictionary.values().size():
 		totalWeight += dictionary.values()[i]
 	
-	var randomDictionaryWeight:int = randi_range(0, totalWeight)
+	var randomDictionaryWeight:float = randf_range(0, totalWeight)
 	
-	var weight:int = 0
+	var weight:float = 0
 	var count:int = 0
 	for i in dictionary.values().size():
 		weight += dictionary.values()[i]
