@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://db5cfan2a3vjb"]
+[gd_scene load_steps=13 format=3 uid="uid://db5cfan2a3vjb"]
 
 [ext_resource type="PackedScene" uid="uid://wx1d3cdd6ci2" path="res://scenes/rooms/room_1.tscn" id="1_fekva"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="1_qspk8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/hud.tscn" id="7_i43eg"]
 [ext_resource type="PackedScene" uid="uid://d1srv4ih406nr" path="res://scenes/audio/audio_manager.tscn" id="8_18nlu"]
 [ext_resource type="AudioStream" uid="uid://yjrwcp2td3wd" path="res://resources/audio/s_beep.wav" id="9_c1pb6"]
+[ext_resource type="PackedScene" uid="uid://dt2baiqo8huyi" path="res://scenes/dialogs/debug_json.tscn" id="12_mngbo"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -52,3 +53,5 @@ position = Vector2(23, -24)
 
 [node name="AudioManager" parent="." instance=ExtResource("8_18nlu")]
 dialog_beep = ExtResource("9_c1pb6")
+
+[node name="DebugJSON" parent="." instance=ExtResource("12_mngbo")]
