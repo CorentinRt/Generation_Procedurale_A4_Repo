@@ -213,6 +213,7 @@ dead_color = Color(0.413595, 0.399579, 0.385991, 1)
 sprites = [NodePath("BodySprite")]
 invincibility_alpha = 0.3
 cannot_die = true
+hit_decrease_score = true
 default_movement = ExtResource("2_ay78m")
 stunned_movemement = ExtResource("3_8ktro")
 attack_scene = ExtResource("4_qlg0r")

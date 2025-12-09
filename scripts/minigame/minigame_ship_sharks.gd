@@ -47,7 +47,6 @@ func _receive_on_enter_room_zone_callback(player_pos : Vector2) -> void:
 # enable right items with direction
 func _setup_potentials_items(potentials : Array[Node2D]) -> void:
 	for i in potentials:
-		print(i.name)
 		i.visible = true
 		if !i.is_in_group("item_minigame"):
 			continue
