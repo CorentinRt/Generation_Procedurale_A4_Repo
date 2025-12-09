@@ -5,7 +5,7 @@ class_name Shop extends Area2D
 var player_is_near : bool
 
 func _ready() -> void:
-	pass
+	interaction_sprite.hide()
 
 func _process(delta: float) -> void:
 	if player_is_near && Input.is_action_just_pressed("Interact"):
