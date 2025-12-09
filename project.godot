@@ -65,6 +65,7 @@ enemy=""
 item_quest=""
 item_quest_container=""
 npc_container=""
+shop=""
 
 [input]
 

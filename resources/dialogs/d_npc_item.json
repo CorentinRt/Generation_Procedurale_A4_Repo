@@ -12,7 +12,33 @@
 	"firstInteraction": [
     	"j'ai besoin que tu trouves quelque chose."
 	],
-	"questCantStart": [
+	"Présentation":[
+		"Salut !",
+		"Hello !",
+		"Bonjour"
+	],
+	"introQuête":[
+		"J'aurais une demande.",
+		"J'aurais quelque chose a te demander.",
+		"Est ce que tu pourrais faire quelque chose pour moi ?",
+		"J'ai besoin que tu fasses quelque chose pour moi.",
+		"Je peux te demander quelque chose ?"
+	],
+	"demandeQuête":[
+		"Tu pourrais me rapporter :"
+	],
+	"Remerciment":[
+		"Merci à toi l'ami !",
+		"Merci !",
+		"Bon courage à toi !",
+		"Courage"
+	],
+	"Fin":[
+		"Reviens me voir quand tu auras tout ça !",
+		"Ne reviens pas avant d'avoir tout trouvé !",
+		"J'attendrais que tu trouves tout ça !"
+	],
+	"questCantStart":[
 		"Finis ta quete en cours et reviens."
 	],
 	"questStart":[
