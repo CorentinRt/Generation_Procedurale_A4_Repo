@@ -92,7 +92,10 @@ func _set_state(state : STATE) -> void:
 
 func _give_score() -> void:
 	@warning_ignore("incompatible_ternary")
-	var score_multiplier : float = 1 if Player.Instance._has_bonus_attack_effect() else _scores_datas._enemy_death_bonus_attack_multiplier
+	var score_multiplier : float = 1
+	
+	if Player.Instance._has_bonus_attack_effect():
+		score_multiplier = _scores_datas._enemy_death_bonus_attack_multiplier
 	
 	match (enemy_difficulty):
 		ENEMY_DIFFICULTY.EASY:

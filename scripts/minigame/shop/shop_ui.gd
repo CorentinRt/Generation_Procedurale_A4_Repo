@@ -68,7 +68,7 @@ func _buy_potion_defense() -> void:
 		return
 	if ScoreManager._score > data_shop.potion_defense_price:
 		ScoreManager._remove_score(data_shop.potion_defense_price)
-		Player.Instance._give_potion_attack_effects(data_shop.potion_defense_duration)
+		Player.Instance._give_potion_defense_effects(data_shop.potion_defense_duration)
 		btn_potion_defense.visible = false
 		print("buy potion defense")
 	
