@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://byb8cwip0k50a"]
+
+[ext_resource type="PackedScene" uid="uid://cdult7ivh2o31" path="res://scenes/room_generation/rooms_interiors/interior_test_3.tscn" id="1_c51lg"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="1_yrwda"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_yrwda")
+roomScene = ExtResource("1_c51lg")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://s6ah3dc0wqxd"]
+[gd_scene load_steps=5 format=4 uid="uid://s6ah3dc0wqxd"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_nujyu"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_g5ssp"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="3_g5ssp"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="4_ahsqd"]
 
 [node name="Room3" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_nujyu")
@@ -19,6 +20,9 @@ tile_set = ExtResource("2_g5ssp")
 [node name="QuestItemContainer" parent="." instance=ExtResource("3_g5ssp")]
 position = Vector2(21, -21)
 
+[node name="NpcContainer" parent="." instance=ExtResource("4_ahsqd")]
+position = Vector2(20, -105)
+
 [connection signal="body_entered" from="Props/HeartCollectible" to="Props/HeartCollectible" method="_on_body_entered"]
 [connection signal="body_entered" from="Props/KeyCollectible" to="Props/KeyCollectible" method="_on_body_entered"]
-[connection signal="body_entered" from="Props/@Area2D@54275" to="Props/@Area2D@54275" method="_on_body_entered"]
+[connection signal="body_entered" from="Props/@Area2D@40711" to="Props/@Area2D@40711" method="_on_body_entered"]

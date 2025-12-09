@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cktu31engex65"]
+[gd_scene load_steps=8 format=3 uid="uid://cktu31engex65"]
 
 [ext_resource type="Script" uid="uid://d2gepobba4qmc" path="res://scripts/level_generation/level_generation.gd" id="1_hmi2g"]
-[ext_resource type="PackedScene" uid="uid://qyvmsd7x48rr" path="res://scenes/room_generation/starting_room.tscn" id="2_wubsp"]
-[ext_resource type="PackedScene" uid="uid://c7ilvyxagbmtm" path="res://scenes/room_generation/random_room.tscn" id="3_wubsp"]
+[ext_resource type="Resource" uid="uid://ccnrqfbnlcw5y" path="res://resources/level_generation/starting_room_data.tres" id="2_nfuga"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="3_nfuga"]
+[ext_resource type="Resource" uid="uid://dmomkjg6jjafe" path="res://resources/level_generation/room_1_data.tres" id="4_d15f6"]
+[ext_resource type="Resource" uid="uid://oy54hkbu3vqo" path="res://resources/level_generation/room_2_data.tres" id="5_afbqx"]
+[ext_resource type="Resource" uid="uid://byb8cwip0k50a" path="res://resources/level_generation/room_3_data.tres" id="6_7qdmq"]
+[ext_resource type="PackedScene" uid="uid://caqkxr3u45dsp" path="res://scenes/door_closed.tscn" id="6_wxedu"]
 
 [node name="LevelGeneration" type="Node2D"]
 script = ExtResource("1_hmi2g")
-_startingRoom = ExtResource("2_wubsp")
-_randomRoomBase = ExtResource("3_wubsp")
-_roomsMaxCount = 10
+_startingRoom = ExtResource("2_nfuga")
+_possibleStartingRoomDirections = Array[int]([2, 3])
+_roomsList = Dictionary[ExtResource("3_nfuga"), int]({
+ExtResource("4_d15f6"): 0,
+ExtResource("5_afbqx"): 2,
+ExtResource("6_7qdmq"): 3
+})
+_door = ExtResource("6_wxedu")
+_roomsMaxCount = 40
 _roomSize = Vector2i(128, 128)
