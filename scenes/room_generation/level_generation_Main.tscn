@@ -1,0 +1,64 @@
+[gd_scene load_steps=29 format=3 uid="uid://dafulph0ab8h3"]
+
+[ext_resource type="Script" uid="uid://d2gepobba4qmc" path="res://scripts/level_generation/level_generation.gd" id="1_dvui6"]
+[ext_resource type="Resource" uid="uid://cxbysbfqrn2e7" path="res://scenes/rooms/RoomRH/LDSpawn.tres" id="2_dvui6"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="3_o5xyv"]
+[ext_resource type="Resource" uid="uid://b8suqhyedh42e" path="res://scenes/rooms/RoomRH/LDCombat_1.tres" id="4_5efro"]
+[ext_resource type="Resource" uid="uid://bt4i0xs015oh0" path="res://scenes/rooms/RoomRH/LDCombat_2.tres" id="5_if6pg"]
+[ext_resource type="Resource" uid="uid://d2oldcag3cks8" path="res://scenes/rooms/RoomRH/LDCombat_3.tres" id="6_14pfu"]
+[ext_resource type="Resource" uid="uid://celgpffsr0f3c" path="res://scenes/rooms/RoomRH/LDCombat_4.tres" id="7_hkipd"]
+[ext_resource type="PackedScene" uid="uid://caqkxr3u45dsp" path="res://scenes/door_closed.tscn" id="7_wf3qw"]
+[ext_resource type="Resource" uid="uid://cgsg4i83rx34r" path="res://scenes/rooms/RoomRH/LDCombat_5.tres" id="8_7rv3m"]
+[ext_resource type="Resource" uid="uid://bgn80dlkhyouu" path="res://scenes/rooms/RoomRH/LDCombat_6.tres" id="9_xewqf"]
+[ext_resource type="Resource" uid="uid://m55imu4k0s0d" path="res://scenes/rooms/RoomRH/LDCombat_7.tres" id="10_qwhfw"]
+[ext_resource type="Resource" uid="uid://c7ouxu5twha6u" path="res://scenes/rooms/RoomRH/LDCombat_8.tres" id="11_utmb2"]
+[ext_resource type="Resource" uid="uid://b5pbd05g0eyl6" path="res://scenes/rooms/RoomRH/LDMarchand_1.tres" id="12_phwuq"]
+[ext_resource type="Resource" uid="uid://7b4mwigi4pkj" path="res://scenes/rooms/RoomRH/LDMarchand_2.tres" id="13_dpmwm"]
+[ext_resource type="Resource" uid="uid://dgi4g4ro7rcy7" path="res://scenes/rooms/RoomRH/LDMarchand_3.tres" id="14_kpdmk"]
+[ext_resource type="Resource" uid="uid://dsylvw2qsma1e" path="res://scenes/rooms/RoomRH/LDMarchand_4.tres" id="15_7agfo"]
+[ext_resource type="Resource" uid="uid://ct8q8xqbtkihe" path="res://scenes/rooms/RoomRH/LDQuestion_1.tres" id="16_udyo4"]
+[ext_resource type="Resource" uid="uid://dugdg16ijgq4n" path="res://scenes/rooms/RoomRH/LDQuestion_2.tres" id="17_k50yq"]
+[ext_resource type="Resource" uid="uid://03gv3eir82kl" path="res://scenes/rooms/RoomRH/LDQuestion_3.tres" id="18_lj3qs"]
+[ext_resource type="Resource" uid="uid://bkhma5w6sypun" path="res://scenes/rooms/RoomRH/LDRequin_1.tres" id="19_1ghrv"]
+[ext_resource type="Resource" uid="uid://dtieoi4hwe44u" path="res://scenes/rooms/RoomRH/LDRequin_2.tres" id="20_6ptva"]
+[ext_resource type="Resource" uid="uid://ds68i5e4co22p" path="res://scenes/rooms/RoomRH/LDRequin_3.tres" id="21_0mq21"]
+[ext_resource type="Resource" uid="uid://c1fwyth003j4n" path="res://scenes/rooms/RoomRH/LDRequin_4.tres" id="22_ejcta"]
+[ext_resource type="Resource" uid="uid://ba17wonl8yxap" path="res://scenes/rooms/RoomRH/LDRequin_5.tres" id="23_0xy7b"]
+[ext_resource type="Resource" uid="uid://dwt778kuwkl1v" path="res://scenes/rooms/RoomRH/LDRequin_6.tres" id="24_1k4mp"]
+[ext_resource type="Resource" uid="uid://bwffnu3fet4pl" path="res://scenes/rooms/RoomRH/LDRoulette_1.tres" id="25_mbwel"]
+[ext_resource type="Resource" uid="uid://cognhokolmpf7" path="res://scenes/rooms/RoomRH/LDRoulette_2.tres" id="26_miug1"]
+[ext_resource type="Resource" uid="uid://7iiqn7kfxjux" path="res://scenes/rooms/RoomRH/LDTrésors.tres" id="27_vfr1o"]
+
+[node name="LevelGeneration" type="Node2D"]
+script = ExtResource("1_dvui6")
+_startingRoom = ExtResource("2_dvui6")
+_possibleStartingRoomDirections = Array[int]([2, 3])
+_roomsList = Dictionary[ExtResource("3_o5xyv"), int]({
+ExtResource("27_vfr1o"): 0,
+ExtResource("26_miug1"): 0,
+ExtResource("25_mbwel"): 0,
+ExtResource("24_1k4mp"): 0,
+ExtResource("23_0xy7b"): 0,
+ExtResource("22_ejcta"): 0,
+ExtResource("21_0mq21"): 0,
+ExtResource("20_6ptva"): 0,
+ExtResource("19_1ghrv"): 0,
+ExtResource("18_lj3qs"): 0,
+ExtResource("17_k50yq"): 0,
+ExtResource("16_udyo4"): 0,
+ExtResource("15_7agfo"): 0,
+ExtResource("14_kpdmk"): 0,
+ExtResource("13_dpmwm"): 0,
+ExtResource("12_phwuq"): 0,
+ExtResource("11_utmb2"): 0,
+ExtResource("10_qwhfw"): 0,
+ExtResource("9_xewqf"): 0,
+ExtResource("8_7rv3m"): 0,
+ExtResource("7_hkipd"): 0,
+ExtResource("6_14pfu"): 0,
+ExtResource("5_if6pg"): 0,
+ExtResource("4_5efro"): 0
+})
+_door = ExtResource("7_wf3qw")
+_roomsMaxCount = 40
+_roomSize = Vector2i(128, 128)

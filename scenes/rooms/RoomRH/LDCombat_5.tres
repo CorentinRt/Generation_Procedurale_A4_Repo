@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://cgsg4i83rx34r"]
+
+[ext_resource type="PackedScene" uid="uid://dpkckdp3ellui" path="res://scenes/rooms/LD/LDCombat_5.tscn" id="1_asauo"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="2_ve5ky"]
+
+[resource]
+script = ExtResource("2_ve5ky")
+roomScene = ExtResource("1_asauo")
+metadata/_custom_type_script = "uid://u1fkim7xb8ta"
