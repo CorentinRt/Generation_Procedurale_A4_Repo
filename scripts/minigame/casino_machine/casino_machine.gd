@@ -51,7 +51,11 @@ func _check_and_spend_coin() -> bool:
 	if interaction_count == 0:	# first try is free
 		return true
 		
-	return true
+	if Player.Instance.coins_count > 0:
+		Player.Instance.coins_count -= 1
+		return true
+		
+	return false
 	
 func _open_casino_display() -> void:
 	UI_Casino.Instance._show_casino_ui(self)

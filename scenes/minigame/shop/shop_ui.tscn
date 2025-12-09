@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://s7cxh3fadvn5"]
+[gd_scene load_steps=6 format=3 uid="uid://s7cxh3fadvn5"]
 
 [ext_resource type="Script" uid="uid://bnca8tyxnni35" path="res://scripts/minigame/shop/shop_ui.gd" id="1_41qv1"]
 [ext_resource type="StyleBox" uid="uid://0lsd245m20ox" path="res://style/shop.tres" id="2_ih36i"]
+[ext_resource type="Resource" uid="uid://cyp3dvhmmq7yx" path="res://resources/minigame/shop/shop_data.tres" id="2_l7q7t"]
 [ext_resource type="StyleBox" uid="uid://cvsitowu1g7a4" path="res://style/shop_borders.tres" id="3_gb0wm"]
 [ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="6_uuaod"]
 
@@ -15,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_41qv1")
+data_shop = ExtResource("2_l7q7t")
 btn_bonus_attack = NodePath("Container/Panel/Button_BAttack")
 btn_bonus_defense = NodePath("Container/Panel/Button2_BDefense")
 btn_potion_attack = NodePath("Container/Panel/Button3_PAttack")

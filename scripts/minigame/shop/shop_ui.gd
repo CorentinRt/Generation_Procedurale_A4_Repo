@@ -2,14 +2,13 @@ class_name Shop_UI extends Control
 
 static var Instance : Shop_UI
 
+@export var data_shop : Shop_Data
+
+@export_group("Buttons")
 @export var btn_bonus_attack : Button
-
 @export var btn_bonus_defense : Button
-
 @export var btn_potion_attack : Button
-
 @export var btn_potion_defense : Button
-
 @export var btn_coin : Button
 
 func _ready() -> void:
@@ -29,19 +28,29 @@ func _bind_btns() -> void:
 	btn_coin.pressed.connect(_buy_coin)
 	
 func _buy_bonus_attack() -> void:
-	pass
+	if ScoreManager._score > data_shop.bonus_attack_price:
+		ScoreManager._remove_score(data_shop.bonus_attack_price)
+		Player.Instance.bonus_attack_count += 1
 	
 func _buy_bonus_defense() -> void:
-	pass
+	if ScoreManager._score > data_shop.bonus_defense_price:
+		ScoreManager._remove_score(data_shop.bonus_defense_price)
+		Player.Instance.bonus_defense_count += 1
 	
 func _buy_potion_attack() -> void:
-	pass
+	if ScoreManager._score > data_shop.potion_attack_price:
+		ScoreManager._remove_score(data_shop.potion_attack_price)
+		Player.Instance.potion_attack_count += 1
 	
 func _buy_potion_defense() -> void:
-	pass
+	if ScoreManager._score > data_shop.potion_defense_price:
+		ScoreManager._remove_score(data_shop.potion_defense_price)
+		Player.Instance.potion_defense_count += 1
 	
 func _buy_coin() -> void:
-	pass
+	if ScoreManager._score > data_shop.coin_price:
+		ScoreManager._remove_score(data_shop.coin_price)
+		Player.Instance.coins_count += 1
 	
 func _show_shop_ui() -> void:
 	$Container.visible = true
