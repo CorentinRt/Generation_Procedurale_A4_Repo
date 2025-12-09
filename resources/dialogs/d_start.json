@@ -53,8 +53,11 @@
 		"Soyez les bienvenus !"
 	],
 	"presentation": [
-		"Je suis ravi de vous retrouver pour cette nouvelle émission.",
-		"C'est avec immense plaisir que je vous retrouve."
+		"Je suis ravie de vous retrouver pour cette nouvelle émission.",
+		"C'est avec plaisir que je vous retrouve.",
+		"C'est pour moi un honneur de vous retrouver",
+		"Je suis heureux d'être avec vous",
+		"Je suis heureux de vous retrouvez chers téléspéctateurs"
 	],
 	"heure": [
 		"Aujourd'hui,",
@@ -80,50 +83,65 @@
 	],
 	"presentationHost": [
 		"Je suis Mike Harrison",
-		"Ici Mike Harrison"
+		"Ici Mike Harrison",
+		"Je me présente, Mike Harrison",
+		"Je m'appelle Mike Harrison"
 	],
 	"emission": [
 		"et vous regardez Pirate Attack",
 		"et vous profitez de Pirate Attack",
 		"et je vous souhaite bon visionnage de cette édition de Pirate Attack",
-		"en direct de Pirate Attack"
+		"en direct de Pirate Attack", 
+		"et je serais votre présentateur pour cette soirée de Pirate Attack"
 	],
 
 	"regles": [
-		"#introRegles#, un rappel s'impose.<next>#sujet# #objectif# #adjTresor# #tresor# #capitaine#.<next>#sortie# le #tresor# #action#.<next>#warning#, #danger# #attente#.<next>#reussite#.<next>#regleAttention#, #regleFinale#, #menace#."
+		"#introRegles#, un rappel s'impose.<next>#sujet# #objectif# #adjTresor# #tresor# #capitaine# #couleurBarbe#.<next>#sortie# le #tresor# #action#.<next>#warning#, #danger# #attente#.<next>#reussite#.<next>#regleAttention#, #regleFinale#, #menace#."
 	],
 	"introRegles": [
 		"Avant de lancer le jeu",
-		"Avant de laisser le candidat s'élancer",
+		"Avant que notre candidat ne s'élancer",
 		"Avant le début du jeu",
-		"Mais d'abord"
+		"Mais d'abord", 
+		"Avant tout"
 	],
 	"sujet": [
-		"Le candidat",
-		"Le joueur",
-		"Notre invité"
+		"le candidat",
+		"le joueur",
+		"notre invité",
+		"notre ami"
 	],
 	"objectif": [
 		"doit retrouver",
 		"devra retrouver",
 		"doit chercher",
-		"devra chercher"
+		"devra chercher", 
+		"doit mettre la main sur"
 	],
 	"adjTresor": [
 		"l'immense",
 		"le luxueux",
 		"le précieux",
-		"le cébèbre"
+		"le cébèbre",
+		"le grand"
 	],
 	"tresor": [
 		"butin",
 		"trésor"
 	],
 	"capitaine": [
-		"de notre Capitaine à la Barbe Pas Si Blanche",
-		"du Capitaine à la Barbe Pas Si Blanche",
-		"de notre bon vieux Capitaine à la Barbe Pas Si Blanche",
-		"du célèbre Capitaine à la Barbe Pas Si Blanche"
+		"de notre Capitaine à la Barbe Pas Si",
+		"du Capitaine à la Barbe Pas Si",
+		"de notre bon vieux Capitaine à la Barbe Pas Si",
+		"du célèbre Capitaine à la Barbe Pas Si"
+	],
+	"couleurBarbe" :[
+		"Blanche",
+		"Rouge",
+		"Noire",
+		"Rousse",
+		"Verte"
+		
 	],
 	"sortie": [
 		"La sortie ne s'ouvrira qu'une fois le",
@@ -136,9 +154,9 @@
 		"en sa possession"
 	],
 	"warning": [
-		"Mais attention,",
-		"Mais prenez garde,",
-		"Mais il devra rester sur ses gardes,"
+		"Mais attention",
+		"Mais prenez garde",
+		"Mais il devra rester sur ses gardes"
 	],
 	"danger": [
 		"de nombreux dangers",
@@ -146,25 +164,33 @@
 		"des dangers"
 	],
 	"attente": [
-		"se dresseront",
+		"se dresseront sur sa route",
 		"l'attendent",
 		"l'attendront"
 	],
 	"reussite": [
-		"Chaque réussite ou échec aux épreuves permettront d’augmenter ou de diminuer la quantité d’or que le joueur possède"
+		"Chaque réussite ou échec aux épreuves permettront d’augmenter ou de diminuer la quantité d’or que le joueur possède",
+		"La réussite ou l'échec aux différentes épreuves détermineront le butin que notre candidat possèdera",
+		"Notre candidat devra réussir ces épreuves si il ne veut pas perdre de précieuses pièces d'or"
 	],
 	"regleAttention": [
 		"Mais attention",
 		"Souvenez-vous",
-		"Prenez garde"
+		"Prenez garde",
+		"Rester sur vos gardes"
 	],
 	"regleFinale": [
 		"vous ne pouvez pas atteindre le pallier fatidique des 0 Pièces d'or",
 		"vous ne pouvez pas tomber en dessous des 0 Pièces d'or",
-		"Ne tombez pas à 0 Pièces d'or"
+		"ne tombez pas à 0 Pièces d'or",
+		"n'atteignez pas 0 pièces d'or",
+		"veillez à toujours avoir des pièces sur vous"
 	],
 	"menace": [
 		"ou un funestre destin vous attend",
-		"ou alors vous sombrerez dans les abysses"
+		"ou alors vous sombrerez dans les abysses",
+		"ou vous perirez par le fond",
+		"ou vous sombrerez dans l'oublie",
+		"ou le noir eternel viendra vous chercher"
 	]
 }
