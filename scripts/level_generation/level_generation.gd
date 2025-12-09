@@ -5,7 +5,7 @@ class_name LevelGeneration extends Node2D
 @export var _possibleStartingRoomDirections:Array[LevelGenerationUtils.Directions]
 
 @export_group("Other rooms base")
-@export var _roomsList:Dictionary[RoomData, int]
+@export var _roomsList:Dictionary[RoomData, float]
 
 @export_group("Generation parameters")
 @export var _door:PackedScene
@@ -33,15 +33,23 @@ func _ready() -> void:
 			_spawn_room(startingRoomDirections[i])
 			_roomsMaxCount -= 1
 		
+		var t = 0;
 		for i in _roomsMaxCount:
 			_currentRoom = _get_random_room_from_Availables()
-			while(_currentRoom.directions.size() >= 4 || _currentRoom.coordinates == Vector2i.ZERO):
-				_currentRoom = _get_random_room_from_Availables()	
 			var randDir:LevelGenerationUtils.Directions = _random_dir(_currentRoom)
-			while(roomHasNeighboorInDir(_currentRoom.coordinates, randDir)):
+			
+			while(_currentRoom.directions.size() >= 4 || _currentRoom.coordinates == Vector2i.ZERO || roomHasNeighboorInDir(_currentRoom.coordinates, randDir)):
+				print("Rolling room : ")
+				_currentRoom = _get_random_room_from_Availables()
+				print("Rolling Dir = ")
 				randDir = _random_dir(_currentRoom)
-				#Peut avoir une boucle infinie si une seule possibilité de direction mais qu'il y a deja un voisin
+				
+			print("Spawning Room =")
 			_spawn_room(randDir)
+			t+=1;
+			if t > 100:
+				t = 0
+				await get_tree().create_timer(0.1).timeout
 		
 		_add_doors()
 
@@ -64,7 +72,6 @@ func _selectRandomDirFromArray(dirs:Array[LevelGenerationUtils.Directions]) -> A
 			if(!returnedArray.has(addedDir)):
 				returnedArray.append(addedDir)
 				dirsCopy.erase(addedDir)
-		print(returnedArray)
 		return returnedArray
 
 func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
@@ -99,6 +106,7 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	selectedRoomData.tilemap.position = Vector2(selectedRoomData.coordinates.x * _roomSize.x, selectedRoomData.coordinates.y * _roomSize.y)
 	_roomMap[selectedRoomData.coordinates] = selectedRoomData
 	_update_available_rooms(selectedRoomData)
+	_update_available_rooms(_currentRoom)
 	add_child(selectedRoomData.tilemap)
 
 func _add_doors() -> void:
@@ -169,15 +177,15 @@ func _create_door(roomData:RoomData, coord:Vector2) -> void:
 	createdDoor.global_position = coord
 	roomData.tilemap.add_child(createdDoor)
 
-func _pickRandomElementFromDict(dictionary: Dictionary[RoomData, int]) -> RoomData:
-	var totalWeight:int = 0
+func _pickRandomElementFromDict(dictionary: Dictionary[RoomData, float]) -> RoomData:
+	var totalWeight:float = 0
 	
 	for i in dictionary.values().size():
 		totalWeight += dictionary.values()[i]
 	
-	var randomDictionaryWeight:int = randi_range(0, totalWeight)
+	var randomDictionaryWeight:float = randf_range(0, totalWeight)
 	
-	var weight:int = 0
+	var weight:float = 0
 	var count:int = 0
 	for i in dictionary.values().size():
 		weight += dictionary.values()[i]
@@ -193,7 +201,7 @@ func _get_random_room_from_Availables() -> RoomData:
 	
 func _update_available_rooms(room:RoomData) -> void:
 	_availableRooms[room.coordinates] = room
-		
-	for i in _availableRooms:
+	var temp = _availableRooms.keys()
+	for i in temp:
 		if(_availableRooms[i].directions.size() >= 4 || (roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.NORTH) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.SOUTH) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.EAST) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.WEST))):
 			_availableRooms.erase(i)

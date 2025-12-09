@@ -7,17 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://cdult7ivh2o31" path="res://scenes/room_generation/rooms_interiors/interior_test_3.tscn" id="5_g60s1"]
 [ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="6_grgwt"]
 
-[sub_resource type="Resource" id="Resource_h363b"]
+[sub_resource type="Resource" id="Resource_grgwt"]
 resource_local_to_scene = true
 script = ExtResource("2_grgwt")
 roomScene = ExtResource("3_f102n")
 
-[sub_resource type="Resource" id="Resource_1wtyh"]
+[sub_resource type="Resource" id="Resource_f102n"]
 resource_local_to_scene = true
 script = ExtResource("2_grgwt")
 roomScene = ExtResource("4_hb5b0")
 
-[sub_resource type="Resource" id="Resource_r88o4"]
+[sub_resource type="Resource" id="Resource_hb5b0"]
 resource_local_to_scene = true
 script = ExtResource("2_grgwt")
 roomScene = ExtResource("5_g60s1")
@@ -26,10 +26,11 @@ roomScene = ExtResource("5_g60s1")
 
 [node name="LevelGeneration" parent="." instance=ExtResource("1_u2rfa")]
 _roomsList = Dictionary[ExtResource("2_grgwt"), int]({
-SubResource("Resource_h363b"): 0,
-SubResource("Resource_1wtyh"): 2,
-SubResource("Resource_r88o4"): 3
+SubResource("Resource_grgwt"): 0,
+SubResource("Resource_f102n"): 2,
+SubResource("Resource_hb5b0"): 3
 })
+_roomsMaxCount = 2000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("6_grgwt")
