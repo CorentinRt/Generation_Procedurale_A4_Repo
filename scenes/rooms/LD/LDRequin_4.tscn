@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://djqilmpjchpgu"]
+[gd_scene load_steps=9 format=4 uid="uid://djqilmpjchpgu"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_bfejt"]
 [ext_resource type="PackedScene" uid="uid://jti3mgir6w1b" path="res://scenes/minigame/ship_sharks/ship.tscn" id="2_5o7kh"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="4_np8o5"]
 
 [sub_resource type="Curve2D" id="Curve2D_glihq"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 77, 45, 0, 0, 0, 0, 77, -41)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_5o7kh"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 77, 45, 0, 0, 0, 0, 77, -41)
@@ -31,7 +38,7 @@ tile_map_data = PackedByteArray("AAAGAPz/AQAIAAQAAAABAAAAAQAIAAQAAGALAAAAAQAIAAQ
 tile_set = ExtResource("1_bfejt")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAQALAAAAAgAAAAAAAQAGAPz/AgAAAAAAAQAGAAQAAgAAAAAAAQAKAP//AQAOAAcAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAgAAAAAAAQALAAAAAgAAAAAAAQAGAPz/AgAAAAAAAQAGAAQAAgAAAAAAAQA=")
 tile_set = ExtResource("1_bfejt")
 
 [node name="Ship" parent="." instance=ExtResource("2_5o7kh")]
@@ -51,7 +58,7 @@ curve = SubResource("Curve2D_glihq")
 
 [node name="Shark_Path" parent="Shark_Path" instance=ExtResource("4_np8o5")]
 position = Vector2(-54.415, 7)
-curve = SubResource("Curve2D_glihq")
+curve = SubResource("Curve2D_5o7kh")
 
 [node name="Shark_Path2" parent="." instance=ExtResource("4_np8o5")]
 position = Vector2(133.6, 22)

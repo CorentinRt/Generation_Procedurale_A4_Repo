@@ -12,7 +12,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("2_hr2f8")
 
 [node name="Décors" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAGAPz/AQAEAAUAAAAGAP3/AQAEAAYAAAACAPj/AQAEAAUAAAACAPn/AQAEAAYAAAAIAP7/AQAAAAYAAAAIAPr/AQADAAcAAAAIAPj/AQAPAAUAAAAJAPj/AQAQAAUAAAA=")
+tile_map_data = PackedByteArray("AAAGAPz/AQAEAAUAAAAGAP3/AQAEAAYAAAACAPj/AQAEAAUAAAACAPn/AQAEAAYAAAAIAP7/AQAAAAYAAAAIAPj/AQAPAAUAAAAJAPj/AQAQAAUAAAA=")
 tile_set = ExtResource("2_hr2f8")
 
 [node name="Props" type="TileMapLayer" parent="."]
