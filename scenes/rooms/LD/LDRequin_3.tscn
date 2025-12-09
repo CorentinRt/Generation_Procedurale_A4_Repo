@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://lak7vigo0byo"]
+[gd_scene load_steps=9 format=4 uid="uid://lak7vigo0byo"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_8i5y4"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_k60jg"]
@@ -14,6 +14,13 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_g83mn"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 37, 55, 0, 0, 0, 0, 37, -33)
+}
+point_count = 2
+
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_8i5y4")
 tilemap_layers = [NodePath("Floor"), NodePath("Props")]
@@ -23,7 +30,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("1_k60jg")
 
 [node name="Décor" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAGAPr/AQAAAAIAAAAGAPv/AQABAAIAAAADAP7/AQACAAQAAAAHAPj/AQACAAIAAAACAPn/AQAEAAYAAAACAPj/AQAEAAUAAAACAPz/AQAEAAYAAAACAPv/AQAEAAUAAAAIAPn/AQAEAAYAAAAIAPj/AQAEAAUAAAAJAPz/AQAAAAYAAAAJAPn/AQAOAAcAAAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAGAPr/AQAAAAIAAAAGAPv/AQABAAIAAAADAP7/AQACAAQAAAAHAPj/AQACAAIAAAACAPn/AQAEAAYAAAACAPj/AQAEAAUAAAACAPz/AQAEAAYAAAACAPv/AQAEAAUAAAAIAPn/AQAEAAYAAAAIAPj/AQAEAAUAAAAJAPz/AQAAAAYAAAA=")
 tile_set = ExtResource("1_k60jg")
 
 [node name="Props" type="TileMapLayer" parent="."]
@@ -58,7 +65,7 @@ speed = 30.0
 [node name="Shark_Path2" parent="." instance=ExtResource("5_134li")]
 position = Vector2(122.225, -59.83)
 rotation = 3.1415927
-curve = SubResource("Curve2D_tg4fk")
+curve = SubResource("Curve2D_g83mn")
 
 [node name="RoomZoneDetector" parent="." instance=ExtResource("6_g83mn")]
 position = Vector2(87.145, -73.315)

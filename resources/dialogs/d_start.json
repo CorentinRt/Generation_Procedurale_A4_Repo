@@ -5,7 +5,7 @@
 		"Nicolas",
 		"Corentin",
 		"Jhonson",
-		"Timothé", 
+		"Timothé",
 		"Henry"
 	],
 	"playerAge": [
@@ -38,11 +38,9 @@
 	"setupSaves": [
 		"[savedName:Mike Harrison][savedColor:#color#][savedPlayerName:#playerName#][savedPlayerAge:#playerAge#][savedPlayerJob:#playerJob#]"
 	],
-
 	"firstInteraction": [
 		"#intro#<next>#regles#"
 	],
-
 	"intro": [
 		"#phraseAccroche# #presentation#<next>#heure# #politesse# #savedPlayerName#, #savedPlayerAge#, #savedPlayerJob# qui nous vient #origine#.<next>#presentationHost# #emission#."
 	],
@@ -91,10 +89,9 @@
 		"et vous regardez Pirate Attack",
 		"et vous profitez de Pirate Attack",
 		"et je vous souhaite bon visionnage de cette édition de Pirate Attack",
-		"en direct de Pirate Attack", 
+		"en direct de Pirate Attack",
 		"et je serais votre présentateur pour cette soirée de Pirate Attack"
 	],
-
 	"regles": [
 		"#introRegles#, un rappel s'impose.<next>#sujet# #objectif# #adjTresor# #tresor# #capitaine# #couleurBarbe#.<next>#sortie# le #tresor# #action#.<next>#warning#, #danger# #attente#.<next>#reussite#.<next>#regleAttention#, #regleFinale#, #menace#."
 	],
@@ -102,7 +99,7 @@
 		"Avant de lancer le jeu",
 		"Avant que notre candidat ne s'élancer",
 		"Avant le début du jeu",
-		"Mais d'abord", 
+		"Mais d'abord",
 		"Avant tout"
 	],
 	"sujet": [
@@ -115,7 +112,7 @@
 		"doit retrouver",
 		"devra retrouver",
 		"doit chercher",
-		"devra chercher", 
+		"devra chercher",
 		"doit mettre la main sur"
 	],
 	"adjTresor": [
@@ -135,13 +132,12 @@
 		"de notre bon vieux Capitaine à la Barbe Pas Si",
 		"du célèbre Capitaine à la Barbe Pas Si"
 	],
-	"couleurBarbe" :[
+	"couleurBarbe": [
 		"Blanche",
 		"Rouge",
 		"Noire",
 		"Rousse",
 		"Verte"
-		
 	],
 	"sortie": [
 		"La sortie ne s'ouvrira qu'une fois le",

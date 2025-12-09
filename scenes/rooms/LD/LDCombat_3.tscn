@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://pmi7g7021288"]
+[gd_scene load_steps=7 format=4 uid="uid://pmi7g7021288"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_j3wbq"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_088xi"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_klsau"]
 [ext_resource type="PackedScene" uid="uid://diyfld2lowmbu" path="res://scenes/minigame/minigame_battle.tscn" id="4_krkdb"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="5_yt8jc"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="6_om084"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_j3wbq")
@@ -14,7 +16,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("2_088xi")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAFAPz/AQAKAAEAAAACAPv/AQAEAAYAAAACAPr/AQAEAAUAAAAIAP3/AQAGAAYAAAAIAPz/AQAGAAUAAAAIAPr/AQAGAAYAAAAIAPn/AQAGAAUAAAABAPj/AQAAAAYAAAAEAP7/AQAEAAYAAAAEAP3/AQAEAAUAAAAGAPr/AQAKAAEAAAAFAPr/AQAKAAEAAAAEAPr/AQAKAAEAAAAFAP3/AQAKAAEAAAAGAP7/AQADAAcAAAACAP3/AgAAAAAABgADAPv/AgAAAAAABAAHAPn/AgAAAAAABgAHAPz/AgAAAAAABAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAFAPz/AQAKAAEAAAACAPv/AQAEAAYAAAACAPr/AQAEAAUAAAAIAP3/AQAGAAYAAAAIAPz/AQAGAAUAAAAIAPr/AQAGAAYAAAAIAPn/AQAGAAUAAAABAPj/AQAAAAYAAAAEAP7/AQAEAAYAAAAEAP3/AQAEAAUAAAAGAPr/AQAKAAEAAAAFAPr/AQAKAAEAAAAEAPr/AQAKAAEAAAAFAP3/AQAKAAEAAAACAP3/AgAAAAAABgADAPv/AgAAAAAABAAHAPn/AgAAAAAABgAHAPz/AgAAAAAABAA=")
 tile_set = ExtResource("2_088xi")
 
 [node name="RoomZoneDetector" parent="." instance=ExtResource("3_klsau")]
@@ -22,3 +24,7 @@ position = Vector2(88.125, -72)
 
 [node name="MinigameBattle" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("4_krkdb")]
 _room_zone_detector = NodePath("../RoomZoneDetector")
+
+[node name="NpcContainer" parent="." instance=ExtResource("5_yt8jc")]
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("6_om084")]

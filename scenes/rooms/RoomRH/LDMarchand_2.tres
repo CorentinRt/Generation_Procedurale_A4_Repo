@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://7b4mwigi4pkj"]
+
+[ext_resource type="PackedScene" uid="uid://bclwybi28r1mh" path="res://scenes/rooms/LD/Marchand2.tscn" id="1_yhc3g"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="2_e8u5d"]
+
+[resource]
+script = ExtResource("2_e8u5d")
+roomScene = ExtResource("1_yhc3g")
+metadata/_custom_type_script = "uid://u1fkim7xb8ta"

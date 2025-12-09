@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://brvho7xtllyaf"]
+[gd_scene load_steps=0 format=3 uid="uid://brvho7xtllyaf"]
 
 [node name="Door" type="Node2D"]
