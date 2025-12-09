@@ -5,6 +5,9 @@
 	],
 	"cantGetItem": [
 		"Tu ne peux pas récupérer cet item !",
-		"C'est pas le moment de récupérer cet item !"
+		"C'est pas le moment de récupérer cet item !",
+		"Cet objet ne peut être récupéré pour le moment",
+		"Vous ne pouvez le ramasser pour l'instant",
+		"Impossible de le ramasser pour le moment"
 	]
 }
