@@ -98,6 +98,8 @@ func show_taunt_dialog():
 	show_dialog_json(taunt_json, taunt_grammar)
 	
 func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
+	current_sentence_id = 0
+	
 	is_in_dialog = true
 	Player.Instance.set_is_in_dialog(is_in_dialog)
 	
@@ -334,6 +336,7 @@ func show_dialog(npc : Node) -> void:
 		return
 	
 	current_sentence_id = 0
+	
 	is_in_dialog = true
 	Player.Instance.set_is_in_dialog(is_in_dialog)
 	
@@ -438,6 +441,8 @@ func _on_timer_end():
 
 #region Simple Dialog (only text, no tracery except <next> + no name)
 func start_simple_dialog(dialog_text: String, color : Color):
+	current_sentence_id = 0
+	
 	is_in_dialog = true
 	Player.Instance.set_is_in_dialog(is_in_dialog)
 	
