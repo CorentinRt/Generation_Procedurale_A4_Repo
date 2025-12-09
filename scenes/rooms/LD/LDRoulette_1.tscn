@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://owcmp11rsljx"]
+[gd_scene load_steps=9 format=4 uid="uid://owcmp11rsljx"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_etdhr"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_kf6le"]
 [ext_resource type="PackedScene" uid="uid://bg45dxuyn2nc1" path="res://scenes/dialogs/skull.tscn" id="3_kf6le"]
+[ext_resource type="PackedScene" uid="uid://b6p5hoir7gifh" path="res://scenes/minigame/minigame_casino.tscn" id="4_5exlg"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="5_v1epb"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="6_1pvgt"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="7_1pvgt"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="8_ly1lq"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_etdhr")
@@ -37,6 +42,17 @@ polygon = PackedVector2Array(125, -32, 125, -65, 76, -66, 75, -32)
 
 [node name="Skull" parent="." instance=ExtResource("3_kf6le")]
 position = Vector2(72, -117)
+
+[node name="MinigameCasino" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("4_5exlg")]
+_room_zone_detector = NodePath("../RoomZoneDetector")
+_scores_datas = ExtResource("5_v1epb")
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("6_1pvgt")]
+position = Vector2(88, -73)
+
+[node name="NpcContainer" parent="." instance=ExtResource("7_1pvgt")]
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("8_ly1lq")]
 
 [connection signal="body_entered" from="Props/CasinoMachine" to="Props/CasinoMachine" method="_on_body_entered"]
 [connection signal="body_exited" from="Props/CasinoMachine" to="Props/CasinoMachine" method="_on_body_exited"]
