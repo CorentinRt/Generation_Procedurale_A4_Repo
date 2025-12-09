@@ -8,9 +8,20 @@ enum MINIGAME_STATE
 	COMPLETED = 3
 }
 
+enum DIRECTION_ROOM
+{
+	NONE = 0,
+	EAST = 1,
+	WEST = 2,
+	NORTH = 3,
+	SOUTH = 4
+}
+
 var _state : MINIGAME_STATE = MINIGAME_STATE.NONE
 
 var _doors : Array[Door]
+
+var _first_direction_player_entered : DIRECTION_ROOM = DIRECTION_ROOM.NONE
 
 @export var _room_zone_detector : Room_Zone_Detector
 
@@ -47,12 +58,33 @@ func _setup_minigame() -> void:
 	_room_zone_detector._on_player_exits.connect(_receive_on_exit_room_zone_callback)
 	_set_state(MINIGAME_STATE.NOT_STARTED)
 	
-func _receive_on_enter_room_zone_callback() -> void:
+func _receive_on_enter_room_zone_callback(player_pos : Vector2) -> void:
+	
+	if _first_direction_player_entered == DIRECTION_ROOM.NONE:
+		_first_direction_player_entered = _compute_player_enters_direction(player_pos)
+	
 	if _state == MINIGAME_STATE.NOT_STARTED:
 		_set_state(MINIGAME_STATE.RUNNING)
 		
-func _receive_on_exit_room_zone_callback() -> void:
+func _receive_on_exit_room_zone_callback(player_pos : Vector2) -> void:
 	pass
+	
+	
+func _compute_player_enters_direction(pos : Vector2) -> DIRECTION_ROOM:
+	var dir : Vector2 = pos - _room_zone_detector.global_position
+	dir = dir.normalized()
+	
+	if (absf(dir.y) > absf(dir.x)):
+		if dir.y > 0:
+			return DIRECTION_ROOM.SOUTH
+		else:
+			return DIRECTION_ROOM.NORTH
+	else:
+		if dir.x > 0:
+			return DIRECTION_ROOM.EAST
+		else:
+			return DIRECTION_ROOM.WEST
+			
 	
 func _minigame_not_started() -> void:
 	_unlock_doors()

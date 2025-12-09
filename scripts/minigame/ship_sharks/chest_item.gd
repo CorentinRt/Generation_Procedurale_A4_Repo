@@ -18,6 +18,8 @@ func _ready() -> void:
 	interaction_sprite.hide()
 
 func _process(delta: float) -> void:
+	if !visible:
+		return
 	if player_is_near && Input.is_action_just_pressed("Interact"):
 		_interact()
 		
