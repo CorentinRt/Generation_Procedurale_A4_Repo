@@ -13,7 +13,7 @@ tile_map_data = PackedByteArray("AAAEAAEAAQAGAAUAAAAEAAIAAQAGAAYAAAAIAAEAAQAGAAU
 tile_set = ExtResource("1_pmc26")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAAIAAQAQAAcAAAAGAAIAAQAQAAcAAAAHAAIAAQAQAAcAAAAGAAMAAQAFAAcAAAAGAPz/AgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAFAAIAAQAQAAcAAAAGAAIAAQAQAAcAAAAHAAIAAQAQAAcAAAAGAAMAAwAAAAAAAwAGAPz/AgAAAAAAAQA=")
 tile_set = ExtResource("1_pmc26")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
@@ -26,3 +26,6 @@ polygon = PackedVector2Array(122, -32, 125, -64, 74, -65, 73, 33, 90, 33, 93, -3
 [node name="Sea_Shape3" type="CollisionPolygon2D" parent="Sea_Body"]
 position = Vector2(51, 17)
 polygon = PackedVector2Array(124, 33, 125, -64, 75, -65, 75, -30, 106, -30, 108, 34)
+
+[connection signal="body_entered" from="Props/Shop" to="Props/Shop" method="_on_shop_body_entered"]
+[connection signal="body_exited" from="Props/Shop" to="Props/Shop" method="_on_shop_body_exited"]
