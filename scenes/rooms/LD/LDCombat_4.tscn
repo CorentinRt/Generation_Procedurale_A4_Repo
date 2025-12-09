@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://but1nh7uf8m36"]
+[gd_scene load_steps=8 format=4 uid="uid://but1nh7uf8m36"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_kdu1w"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_a7oqj"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_uqyje"]
 [ext_resource type="PackedScene" uid="uid://diyfld2lowmbu" path="res://scenes/minigame/minigame_battle.tscn" id="4_dsy88"]
 [ext_resource type="PackedScene" uid="uid://6qmuxs06irmp" path="res://scenes/dialogs/letter.tscn" id="5_dsy88"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="6_bpw8n"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="7_ls2om"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_kdu1w")
@@ -33,3 +35,7 @@ _room_zone_detector = NodePath("../RoomZoneDetector")
 
 [node name="Letter" parent="." instance=ExtResource("5_dsy88")]
 position = Vector2(137, -119)
+
+[node name="NpcContainer" parent="." instance=ExtResource("6_bpw8n")]
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("7_ls2om")]
