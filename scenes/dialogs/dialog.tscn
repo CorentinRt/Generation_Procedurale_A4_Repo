@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=24 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -8,6 +8,7 @@
 [ext_resource type="JSON" path="res://resources/dialogs/d_taunt.json" id="3_kyx3p"]
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_pr53c"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_item.json" id="5_mgb4h"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_treasure.json" id="6_mbybk"]
 [ext_resource type="Resource" uid="uid://odqciikpmnpx" path="res://resources/dialogs/questions/q_current_money.tres" id="6_ufbtj"]
 [ext_resource type="Resource" uid="uid://3a0mddbpd1yp" path="res://resources/dialogs/questions/q_lost_money.tres" id="7_kyx3p"]
 [ext_resource type="Resource" uid="uid://bkm5nvkrjqod0" path="res://resources/dialogs/questions/q_player_age.tres" id="9_nef8f"]
@@ -40,6 +41,7 @@ start_json = ExtResource("2_136k0")
 taunt_json = ExtResource("3_kyx3p")
 questions_answers_json = ExtResource("3_2fuk2")
 item_json = ExtResource("5_mgb4h")
+treasure_json = ExtResource("6_mbybk")
 text_label = NodePath("Dialog/Text")
 name_label = NodePath("Dialog/NamePanel/Name")
 name_panel = NodePath("Dialog/NamePanel")
