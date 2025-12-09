@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://bxdyc8lnc3ti5"]
+[gd_scene load_steps=7 format=4 uid="uid://bxdyc8lnc3ti5"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_bnv3j"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_hr2f8"]
 [ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="3_4wvsj"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="4_bqyee"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="5_0to8f"]
+[ext_resource type="PackedScene" uid="uid://diyfld2lowmbu" path="res://scenes/minigame/minigame_battle.tscn" id="6_6ue8n"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_bnv3j")
@@ -31,3 +33,9 @@ polygon = PackedVector2Array(219, -107, 217, -141, 169, -140, 168, -116, 123, -1
 [node name="NpcContainer" parent="." instance=ExtResource("3_4wvsj")]
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("4_bqyee")]
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("5_0to8f")]
+position = Vector2(86, -71)
+
+[node name="MinigameBattle" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("6_6ue8n")]
+_room_zone_detector = NodePath("../RoomZoneDetector")

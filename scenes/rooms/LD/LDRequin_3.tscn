@@ -39,8 +39,6 @@ tile_set = ExtResource("1_k60jg")
 tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQA=")
 tile_set = ExtResource("1_k60jg")
 
-[node name="MinigameShipSharks" parent="." instance=ExtResource("3_fe2kv")]
-
 [node name="Ship" parent="." instance=ExtResource("4_g83mn")]
 position = Vector2(54.27, -86)
 rotation = 1.5707964
@@ -69,11 +67,12 @@ position = Vector2(122.225, -59.83)
 rotation = 3.1415927
 curve = SubResource("Curve2D_g83mn")
 
-[node name="RoomZoneDetector" parent="." instance=ExtResource("6_g83mn")]
-position = Vector2(87.145, -73.315)
-rotation = 1.5707964
-scale = Vector2(5.18, 6.805)
-
 [node name="NpcContainer" parent="." instance=ExtResource("7_tg4fk")]
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("8_xyldh")]
+
+[node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_fe2kv")]
+_room_zone_detector = NodePath("../RoomZoneDetector")
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("6_g83mn")]
+position = Vector2(86, -71)
