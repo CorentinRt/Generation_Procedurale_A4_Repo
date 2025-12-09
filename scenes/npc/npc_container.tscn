@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8e5ubfvlqdtt"]
+
+[ext_resource type="Script" uid="uid://v8mk1yl57ab6" path="res://scripts/quests/npc_container.gd" id="1_mwdfb"]
+
+[node name="NpcContainer" type="Node2D" groups=["npc_container"]]
+script = ExtResource("1_mwdfb")
+metadata/_custom_type_script = "uid://v8mk1yl57ab6"

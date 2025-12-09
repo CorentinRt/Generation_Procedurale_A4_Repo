@@ -1,0 +1,1 @@
+class_name NpcContainer extends Node2D
