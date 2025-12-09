@@ -63,6 +63,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_f01sv")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_cex6b")
 max_value = 10.0
 step = 0.01
+value = 5.0
 editable = false
 scrollable = false
 
