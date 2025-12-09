@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyvmtp3mbta3t"]
+
+[ext_resource type="PackedScene" uid="uid://b0ahenmxn2ain" path="res://scenes/enemy.tscn" id="1_ano7a"]
+
+[node name="Enemy_Easy" instance=ExtResource("1_ano7a")]
+life = 2
+
+[node name="BodySprite" parent="." index="1"]
+self_modulate = Color(0.8614382, 0.35881054, 0, 1)

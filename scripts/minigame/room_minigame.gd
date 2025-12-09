@@ -18,7 +18,10 @@ var _doors : Array[Door]
 
 @onready var propsTileMapLayer : TileMapLayer = $"../Props"
 
+var _score : int
+
 func _ready() -> void:
+	_score = _scores_datas._minigame_completed_default
 	call_deferred("_setup_minigame")
 
 func _process(delta: float) -> void:
@@ -27,6 +30,8 @@ func _process(delta: float) -> void:
 		
 	if _check_completed_condition():
 		_set_state(MINIGAME_STATE.COMPLETED)
+	elif Input.is_key_pressed(KEY_L):
+		_set_state(MINIGAME_STATE.COMPLETED)
 	
 func _check_completed_condition() -> bool:
 	if _state == MINIGAME_STATE.COMPLETED:
@@ -34,7 +39,7 @@ func _check_completed_condition() -> bool:
 	return false
 
 func _setup_minigame() -> void:
-	for i in get_parent().get_tree().get_nodes_in_group("doors"):
+	for i in propsTileMapLayer.get_children():
 		if i is Door:
 			_doors.append(i)
 			
@@ -57,7 +62,7 @@ func _minigame_running() -> void:
 	
 func _minigame_completed() -> void:
 	_unlock_doors()
-	ScoreManager._add_score(_scores_datas._minigame_completed)
+	ScoreManager._add_score(_score)
 	
 func _set_state(state: MINIGAME_STATE) -> void:
 	if _state == state:

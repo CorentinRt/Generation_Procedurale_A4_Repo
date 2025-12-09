@@ -21,6 +21,7 @@ ScoreManager="*res://scripts/score/score_manager.gd"
 GameManager="*res://scripts/managers/game_manager.gd"
 QuestionManager="*res://scripts/dialogs/question_manager.gd"
 UtilsManager="*res://scripts/utils.gd"
+ItemSpawnManager="*res://scripts/quests/item_spawn_manager.gd"
 
 [dotnet]
 
@@ -29,15 +30,26 @@ project/assembly_name="Procedural"
 [file_customization]
 
 folder_colors={
+"res://resources/audio/": "red",
 "res://resources/dialogs/": "pink",
+"res://resources/minigame/": "orange",
+"res://resources/quests/": "pink",
 "res://resources/score/": "yellow",
+"res://scenes/audio/": "red",
+"res://scenes/debug/": "green",
 "res://scenes/dialogs/": "pink",
+"res://scenes/enemies/": "purple",
 "res://scenes/minigame/": "orange",
+"res://scenes/quests/": "pink",
 "res://scenes/rooms/LD/": "red",
 "res://scenes/score/": "yellow",
+"res://scenes/swords/": "teal",
+"res://scripts/audio/": "red",
 "res://scripts/dialogs/": "pink",
 "res://scripts/minigame/": "orange",
-"res://scripts/score/": "yellow"
+"res://scripts/quests/": "pink",
+"res://scripts/score/": "yellow",
+"res://scripts/swords/": "teal"
 }
 
 [global_group]
@@ -45,6 +57,10 @@ folder_colors={
 dialog_manager=""
 item_minigame=""
 doors=""
+simple_dialog=""
+enemy=""
+item_quest=""
+item_quest_container=""
 
 [input]
 
@@ -96,6 +112,9 @@ NextDialog={
 2d_physics/layer_4="room_zone"
 2d_physics/layer_5="box_item"
 2d_physics/layer_6="sharks"
+2d_physics/layer_7="ship"
+2d_physics/layer_8="sea_limits"
+2d_physics/layer_9="sea_interior"
 
 [physics]
 

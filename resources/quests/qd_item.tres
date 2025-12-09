@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3 uid="uid://8d5md53h8bxp"]
+
+[ext_resource type="Script" uid="uid://ddk16xl4yiq88" path="res://scripts/quests/quest_data.gd" id="1_7pxgw"]
+
+[resource]
+script = ExtResource("1_7pxgw")
+quest_type = 1
+quest_name = "Trouver <target>"
+quest_name_after_target = "Ramener l'item à la cabine"
+remove_score_on_failed = 0
+metadata/_custom_type_script = "uid://ddk16xl4yiq88"

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg45dxuyn2nc1"]
+
+[ext_resource type="Script" uid="uid://bo2e12q5wpi3m" path="res://scripts/dialogs/simple_dialog.gd" id="1_xaviv"]
+[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="2_av4c0"]
+[ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="3_p1sr1"]
+
+[node name="Skull" type="Node2D" node_paths=PackedStringArray("interact_icon") groups=["simple_dialog"]]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_xaviv")
+interact_icon = NodePath("InteractionIcon")
+metadata/_custom_type_script = "uid://bo2e12q5wpi3m"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_av4c0")
+region_enabled = true
+region_rect = Rect2(48, 112, 16, 16)
+
+[node name="InteractionIcon" parent="." instance=ExtResource("3_p1sr1")]
+position = Vector2(3.3881318e-21, -8.750002)

@@ -1,0 +1,33 @@
+{
+	"name": [
+		"Téléspectateur"
+	],
+	"color":[
+		"gray",
+		"black"
+	],
+	"setupSaves": [
+		"[savedName:#name#][savedColor:#color#][savedQuest:Combat]"
+	],
+	"firstInteraction": [
+    	"Salut ça va ?"
+	],
+	"questCantStart": [
+		"Finis ta quete en cours et reviens."
+	],
+	"questStart":[
+		"Va taper des ennemis de ma part stp."
+	],
+	"questInProgress": [
+		"T'as encore des ennemis à taper."
+	],
+	"questCompleted": [
+		"GG t'as bien tapé."
+	],
+	"questFailed": [
+		"Je suis déçu t'aurais pu faire mieux."
+	],
+	"completed": [
+		"T'as déjà fini ma quête."
+	]
+}

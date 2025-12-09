@@ -1,8 +1,18 @@
 {
 	"wrongAnswer": [
-		"C'est pas bon déso"
+		"Et c'est une mauvaise réponse !",
+		"Loupé ! mauvaise réponse !",
+		"Perdu !"
 	],
 	"rightAnswer": [
-		"GG c'est bien ça"
+		"Et c'est une bonne réponse !",
+		"Bravo ! Bonne réponse",
+		"Gagné ! tu as donné la bonne réponse",
+		"Bonne réponse !"
+	],
+	"timerAnswer": [
+		"Trop long c'est perdu",
+		"Tu as mis trop de temps, perdu !",
+		"Trop tard ! ton temps est écoulé !"
 	]
 }

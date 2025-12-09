@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://diyfld2lowmbu"]
+
+[ext_resource type="Script" uid="uid://vmemha8tibn" path="res://scripts/minigame/minigame_battle.gd" id="1_ml167"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_10gmx"]
+
+[node name="MinigameBattle" type="Node"]
+script = ExtResource("1_ml167")
+_scores_datas = ExtResource("2_10gmx")
+metadata/_custom_type_script = "uid://vmemha8tibn"

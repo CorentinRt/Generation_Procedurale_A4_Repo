@@ -1,0 +1,33 @@
+{
+	"name": [
+		"Téléspectateur"
+	],
+	"color":[
+		"gray",
+		"black"
+	],
+	"setupSaves": [
+		"[savedName:#name#][savedColor:#color#][savedQuest:Item]"
+	],
+	"firstInteraction": [
+    	"j'ai besoin que tu trouves quelque chose."
+	],
+	"questCantStart": [
+		"Finis ta quete en cours et reviens."
+	],
+	"questStart":[
+		"Peux-tu me le ramener ?"
+	],
+	"questInProgress": [
+		"J'attends toujours mon objet."
+	],
+	"questCompleted": [
+		"Tu l'as retrouvé !"
+	],
+	"questFailed": [
+		"Je suis déçu t'aurais pu faire mieux."
+	],
+	"completed": [
+		"T'as déjà fini ma quête."
+	]
+}

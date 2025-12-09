@@ -1,6 +1,7 @@
 extends Node
 
 signal _on_change_score(new_score : int)
+signal _on_add_score(added_score : int)
 signal _on_request_show(is_shown : bool)
 
 var _score :int = 0
@@ -18,7 +19,8 @@ func _add_score(value:int) -> void:
 	if value < 0:
 		_remove_score(value * -1)
 		return
-		
+	
+	_on_add_score.emit(value)
 	_change_score(_score + value)		
 	
 func _remove_score(value:int) -> void:

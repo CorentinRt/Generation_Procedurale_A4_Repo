@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7a3grtr4nexr"]
+
+[ext_resource type="PackedScene" uid="uid://b3ki8rg606xtc" path="res://scenes/swords/sword_enemy.tscn" id="1_ur6h0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur6h0"]
+resource_local_to_scene = true
+size = Vector2(100, 96.66667)
+
+[node name="Sword_Player" instance=ExtResource("1_ur6h0")]
+collision_layer = 2
+
+[node name="Attack_Shape" parent="." index="0"]
+position = Vector2(0, -6.5000005)
+shape = SubResource("RectangleShape2D_ur6h0")
+
+[node name="Sword_Sprite" parent="." index="1"]
+z_as_relative = false

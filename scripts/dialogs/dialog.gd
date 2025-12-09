@@ -6,10 +6,12 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var start_json: JSON
 @export var taunt_json: JSON
 @export var questions_answers_json: JSON 
+@export var item_json: JSON 
 
 @export_group("UI")
 @export var text_label: RichTextLabel
 @export var name_label: RichTextLabel
+@export var name_panel: Panel
 @export var dialog_btn: Button
 @export var button_style: StyleBoxFlat
 @export var type_speed:float = 0.02
@@ -21,10 +23,13 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var questions_pos: Vector2
 @export var add_score_right_answer: int = 100000
 @export var remove_score_wrong_answer: int = 100000
+@export var custom_timer: CustomTimer
+@export var question_time: float = 5.0
 
 var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
 var taunt_grammar: TraceryScript.Grammar
+var item_grammar: TraceryScript.Grammar
 
 var is_in_dialog: bool = false
 
@@ -43,12 +48,19 @@ var revealed_characters: int = 0
 # Questions
 var is_in_questions: bool = false
 
+# Quest
+var quest_started = false
+
 func _ready():
 	hide_dialog()
 	_setup_grammars()
 	show_start_dialog()
-	#show_taunt_dialog()
 	
+	# Timer
+	custom_timer.timer_finished.connect(_on_timer_end)
+	custom_timer.hide_timer()
+
+#region Setup
 func _setup_grammars():
 	# Questions
 	var questions_rules = questions_answers_json.data
@@ -68,13 +80,19 @@ func _setup_grammars():
 	taunt_grammar = TraceryScript.Grammar.new(taunt_rules)
 	taunt_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
+	# Item
+	var item_rules = item_json.data
+	
+	item_grammar = TraceryScript.Grammar.new(item_rules)
+	item_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+#endregion
+	
+#region Show dialog JSON
 func show_start_dialog():
 	show_dialog_json(start_json, start_grammar)
 	
 func show_taunt_dialog():
-	print("show taunt dialog")
 	if is_in_dialog:
-		print("already in dialog")
 		return
 		
 	show_dialog_json(taunt_json, taunt_grammar)
@@ -97,17 +115,24 @@ func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
 	var saved_color = grammar.get_variable("savedColor")
 	var color : Color = _get_color_from_string(saved_color)
 	set_button_color(dialog_btn, color)
-	
+#endregion	
+
+#region Setup Name
 func _set_name(grammar : TraceryScript.Grammar):
+	name_label.show()
 	var saved_name = grammar.get_variable("savedName")
 	name_label.text = saved_name
 		
 func _hide_name():
+	name_label.show()
 	name_label.text = "???"
+#endregion
 	
 #region Get Sentences
 func _get_and_show_current_state_text():
 	# Get origin
+	_check_quest_progress()
+	
 	var origin : String = ""
 	match current_npc.current_dialog_state:
 		current_npc.DialogState.FIRST_INTERACTION:
@@ -115,14 +140,24 @@ func _get_and_show_current_state_text():
 		current_npc.DialogState.QUEST_PROGRESS:
 			origin = "#questInProgress#"
 		current_npc.DialogState.QUEST_COMPLETED:
-			origin = "#questJustCompleted#"
+			origin = "#questCompleted#"
+		current_npc.DialogState.QUEST_FAILED:
+			origin = "#questFailed#"
 		current_npc.DialogState.COMPLETED:
 			origin = "#completed#"
 			
-	print("Current state origin : ", origin)
-	
 	# Get sentences
 	var sentences = current_npc.grammar.flatten(origin, current_npc.json)
+	
+	# Quest
+	if current_npc.has_quest && current_npc.current_dialog_state == current_npc.DialogState.FIRST_INTERACTION:
+		sentences += "<next>"
+		if QuestManager.Instance.has_already_a_quest():
+			sentences += current_npc.grammar.flatten("#questCantStart#", current_npc.json)
+		else:
+			sentences += current_npc.grammar.flatten("#questStart#", current_npc.json)
+			quest_started = true
+		
 	_get_array_sentences(sentences)
 	
 	_show_current_sentence_text()
@@ -130,7 +165,6 @@ func _get_and_show_current_state_text():
 	_set_name(current_npc.grammar)
 
 func _get_array_sentences(sentences : String):
-	print("Get array sentences")
 	# Cut at next
 	sentences_cut = sentences.split("<next>", false)
 	
@@ -166,8 +200,6 @@ func set_button_color(btn: Button, color: Color) -> void:
 		btn.add_theme_stylebox_override(state, style)
 
 func set_saved_color():
-	print("Set saved color")
-	
 	var saved_color = current_npc.grammar.get_variable("savedColor")
 	var color : Color = _get_color_from_string(saved_color)
 	set_button_color(dialog_btn, color)
@@ -177,10 +209,8 @@ func set_saved_color():
 #region Show text
 func _show_current_sentence_text():
 	full_sentence = sentences_cut[current_sentence_id]
-	print("full sentence : ", full_sentence)
 	
 	if full_sentence == "<question>":
-		print("start question")
 		full_sentence = _get_and_setup_random_question()
 		if (!is_in_questions):
 			is_in_questions = true
@@ -206,6 +236,10 @@ func _start_typing():
 	# Add character
 	revealed_characters += 1
 	text_label.text = full_sentence.substr(0, revealed_characters)
+	
+	# ----- AUDIO ----- #
+	AudioManager.Instance.play_dialog_beep()
+	# ----- AUDIO ----- #
 
 	# Wait & recursive
 	await get_tree().create_timer(type_speed).timeout
@@ -228,18 +262,40 @@ func _get_current_state():
 		
 		current_npc.DialogState.FIRST_INTERACTION:
 			if (current_npc.has_quest):
-				current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
+				# Start quest
+				if quest_started:
+					current_npc.start_quest()
+					current_npc.current_dialog_state = current_npc.DialogState.QUEST_PROGRESS
+					quest_started = false
+				else:
+					current_npc.current_dialog_state = current_npc.DialogState.FIRST_INTERACTION
 			else:
 				current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
 
-		# voir pour check quest progress et potentiellement mettre completed direct
+		current_npc.DialogState.QUEST_PROGRESS:
+			if current_npc.is_quest_completed():
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_COMPLETED
+			elif current_npc.is_quest_failed():
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_FAILED
 		
+		current_npc.DialogState.QUEST_COMPLETED:
+			current_npc.end_quest()
+			current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
+			
+		current_npc.DialogState.QUEST_FAILED:
+			current_npc.current_dialog_state = current_npc.DialogState.COMPLETED
+
 		# Completed : don't change
 	
 	current_npc.on_state_changed()
 		
 func _check_quest_progress():
-	pass
+	if current_npc:
+		if current_npc.current_dialog_state == current_npc.DialogState.QUEST_PROGRESS:
+			if current_npc.is_quest_completed():
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_COMPLETED
+			elif current_npc.is_quest_failed():
+				current_npc.current_dialog_state = current_npc.DialogState.QUEST_FAILED
 #endregion
 
 #region Show / Hide & Pressed
@@ -256,6 +312,7 @@ func _on_dialog_pressed() -> void:
 		
 func _on_answer_pressed(is_right_answer : bool):
 	_end_questions_ui()
+	stop_question_timer()
 	is_in_questions = false
 	if (is_right_answer):
 		full_sentence = questions_grammar.flatten("#rightAnswer#", questions_answers_json)
@@ -263,6 +320,8 @@ func _on_answer_pressed(is_right_answer : bool):
 		full_sentence = questions_grammar.flatten("#wrongAnswer#", questions_answers_json)
 	revealed_characters = 0
 	text_label.text = ""
+	
+	current_npc.on_question_answered.emit(is_right_answer)
 	
 	_set_name(current_npc.grammar) # Reset if name = "???"
 	ScoreManager._show(true) # Reset if score hidden
@@ -299,13 +358,11 @@ func hide_questions_btn():
 		btn.hide()
 #endregion
 
-#region Questions
-func _start_questions():
-	pass
-	
+#region Questions	
 func _start_questions_ui():
 	dialog_btn.set_global_position(questions_pos)
 	show_questions_btn()
+	start_question_timer()
 	pass
 	
 func _end_questions_ui():
@@ -317,15 +374,13 @@ func _get_and_setup_random_question() -> String:
 	# Question title
 	var random_question = questions_data.pick_random()
 	questions_data.erase(random_question)
-	print("Random question : ", random_question.title)
-	
+
 	var random_answers: Array[String]
 	
 	# i = 0 : Right 
 	var right_answerText: String = ""
 	right_answerText = QuestionManager.get_text_answer_from_type(random_question.right_answer_type, random_question.static_answer_for_type_not_saved)
 	random_answers.append(right_answerText)
-	print(random_answers[0])
 	
 	# i = 1, 2, 3 : Wrong answer
 	var temp = random_question.wrong_answers_text.duplicate()
@@ -335,7 +390,6 @@ func _get_and_setup_random_question() -> String:
 			break # pas assez de réponses différentes
 		var index = randi() % temp.size()
 		if temp[index] == random_answers[0]:
-			print("same answer wrong & right, retrying")
 			temp.remove_at(index) # on l'enlève pour éviter de boucler infiniment
 			continue
 		random_answers.append(temp[index])
@@ -356,4 +410,60 @@ func first_letter_upper(s: String) -> String:
 		return s
 	var first = s.substr(0, 1).to_upper()
 	return first + s.substr(1, s.length() - 1)
+#endregion
+
+#region Timer
+func start_question_timer():
+	custom_timer.show_and_start_timer(question_time)
+	
+func stop_question_timer():
+	custom_timer.hide_and_stop_timer()
+	
+func _on_timer_end():
+	ScoreManager._remove_score(remove_score_wrong_answer)
+	_end_questions_ui()
+	is_in_questions = false
+	
+	full_sentence = questions_grammar.flatten("#timerAnswer#", questions_answers_json)
+	revealed_characters = 0
+	text_label.text = ""
+	
+	_set_name(current_npc.grammar) # Reset if name = "???"
+	ScoreManager._show(true) # Reset if score hidden
+	is_typing = true
+	_start_typing()
+#endregion
+
+#region Simple Dialog (only text, no tracery except <next> + no name)
+func start_simple_dialog(dialog_text: String, color : Color):
+	is_in_dialog = true
+	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
+	var sentences = dialog_text
+	_get_array_sentences(sentences)
+	
+	_show_current_sentence_text()
+	
+	name_label.hide()
+	name_panel.hide()
+	
+	dialog_btn.show()
+	hide_questions_btn()
+
+	set_button_color(dialog_btn, color)
+	pass
+#endregion
+
+#region Item simple dialog
+func start_item_dialog(can_get_item : bool):
+	var dialog_text: String = ""
+	
+	if (can_get_item):
+		dialog_text = item_grammar.flatten("#getItem#", item_json)
+	else:
+		dialog_text = item_grammar.flatten("#cantGetItem#", item_json)
+		
+	print(dialog_text)
+	
+	start_simple_dialog(dialog_text, Color(0.65, 0.22, 0.436, 1.0))
 #endregion

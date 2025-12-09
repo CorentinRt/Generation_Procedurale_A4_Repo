@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://0sto3gfi2y6x"]
+
+[ext_resource type="Script" uid="uid://bgo226obencyl" path="res://scripts/quests/quest_manager.gd" id="1_4a2l1"]
+[ext_resource type="StyleBox" uid="uid://b10agfp4q6set" path="res://style/slider_style.tres" id="2_7i4vb"]
+[ext_resource type="Script" uid="uid://837rr3cklplf" path="res://scripts/dialogs/custom_timer.gd" id="3_wmh3v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f01sv"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cex6b"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="QuestManager" type="Control" node_paths=PackedStringArray("quest_text", "custom_timer")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4a2l1")
+quest_text = NodePath("Panel/QuestText")
+custom_timer = NodePath("CustomTimer")
+metadata/_custom_type_script = "uid://bgo226obencyl"
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0.321)
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 112.0
+
+[node name="QuestText" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quest Name"
+
+[node name="TimerSlider" type="HSlider" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -17.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/slider = ExtResource("2_7i4vb")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_f01sv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_cex6b")
+max_value = 10.0
+step = 0.01
+editable = false
+scrollable = false
+
+[node name="CustomTimer" type="Node" parent="." node_paths=PackedStringArray("timer_slider", "timer")]
+script = ExtResource("3_wmh3v")
+timer_slider = NodePath("../Panel/TimerSlider")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="CustomTimer"]
