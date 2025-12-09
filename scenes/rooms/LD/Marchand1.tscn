@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="5_mq5ti"]
 
 [node name="Marchand1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
+scale = Vector2(1.0032467, 1)
 script = ExtResource("1_xq8ox")
 tilemap_layers = [NodePath("Floor"), NodePath("Décors"), NodePath("Props")]
 
