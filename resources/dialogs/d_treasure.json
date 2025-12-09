@@ -1,12 +1,5 @@
 {
-	"color": [
-		"gray",
-		"black"
-	],
-	"setupSaves": [
-		"[savedName:Mike Harrison][savedColor:#color#]"
-	],
-	"firstInteraction": [
+	"foundTreasure": [
 		"trésor trouvé youpiiiiiiiiiii"
 	]
 }
