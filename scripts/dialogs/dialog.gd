@@ -7,6 +7,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var taunt_json: JSON
 @export var questions_answers_json: JSON 
 @export var item_json: JSON 
+@export var treasure_json: JSON
 
 @export_group("UI")
 @export var text_label: RichTextLabel
@@ -30,6 +31,7 @@ var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
 var taunt_grammar: TraceryScript.Grammar
 var item_grammar: TraceryScript.Grammar
+var treasure_grammar: TraceryScript.Grammar
 
 var is_in_dialog: bool = false
 
@@ -59,6 +61,9 @@ func _ready():
 	# Timer
 	custom_timer.timer_finished.connect(_on_timer_end)
 	custom_timer.hide_timer()
+	
+	# Treasure
+	GameManager.on_open_final_chest.connect(show_treasure_dialog)
 
 #region Setup
 func _setup_grammars():
@@ -85,6 +90,12 @@ func _setup_grammars():
 	
 	item_grammar = TraceryScript.Grammar.new(item_rules)
 	item_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Item
+	var treasure_rules = treasure_json.data
+	
+	treasure_grammar = TraceryScript.Grammar.new(treasure_rules)
+	treasure_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 #endregion
 	
 #region Show dialog JSON
@@ -96,6 +107,9 @@ func show_taunt_dialog():
 		return
 		
 	show_dialog_json(taunt_json, taunt_grammar)
+	
+func show_treasure_dialog():
+	show_dialog_json(treasure_json, treasure_grammar)
 	
 func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
 	current_sentence_id = 0
