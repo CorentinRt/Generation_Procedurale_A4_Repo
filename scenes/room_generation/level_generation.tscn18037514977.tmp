@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cktu31engex65"]
+
+[ext_resource type="Script" uid="uid://d2gepobba4qmc" path="res://scripts/level_generation/level_generation.gd" id="1_hmi2g"]
+[ext_resource type="PackedScene" uid="uid://qyvmsd7x48rr" path="res://scenes/room_generation/starting_room.tscn" id="2_wubsp"]
+[ext_resource type="PackedScene" uid="uid://cpsyx0go5ucvu" path="res://scenes/room_generation/rooms_interiors/interior_test_1.tscn" id="3_ercgs"]
+[ext_resource type="PackedScene" uid="uid://cxgc6uao76c46" path="res://scenes/room_generation/rooms_interiors/interior_test_2.tscn" id="4_wxedu"]
+[ext_resource type="PackedScene" uid="uid://cdult7ivh2o31" path="res://scenes/room_generation/rooms_interiors/interior_test_3.tscn" id="5_nfuga"]
+
+[node name="LevelGeneration" type="Node2D"]
+script = ExtResource("1_hmi2g")
+_startingRoom = ExtResource("2_wubsp")
+_possibleStartingRoomDirections = Array[int]([2, 3])
+_roomsList = Dictionary[PackedScene, int]({
+ExtResource("3_ercgs"): 1,
+ExtResource("4_wxedu"): 1,
+ExtResource("5_nfuga"): 1
+})
+_roomsMaxCount = 10
+_maxLevelHeight = null
+_maxLevelWidth = null
+_roomSize = Vector2i(128, 128)
