@@ -21,7 +21,7 @@ tile_set = ExtResource("2_2ir2c")
 
 [node name="Props" type="TileMapLayer" parent="."]
 position = Vector2(0, 144.00002)
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQADAPz/AQAEAAYAAAADAPv/AQAEAAUAAAADAPr/AQAEAAYAAAADAPn/AQAEAAUAAAAHAPv/AQAEAAUAAAAHAPn/AQAEAAUAAAAHAPz/AQAEAAYAAAAHAPr/AQAEAAYAAAA=")
+tile_map_data = PackedByteArray("AAADAPz/AQAEAAYAAAADAPv/AQAEAAUAAAADAPr/AQAEAAYAAAADAPn/AQAEAAUAAAAHAPv/AQAEAAUAAAAHAPn/AQAEAAUAAAAHAPz/AQAEAAYAAAAHAPr/AQAEAAYAAAA=")
 tile_set = ExtResource("2_2ir2c")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]

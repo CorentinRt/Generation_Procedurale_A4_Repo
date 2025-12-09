@@ -21,7 +21,7 @@ tile_set = ExtResource("1_mfxf4")
 
 [node name="Props" type="TileMapLayer" parent="."]
 position = Vector2(-16, 64)
-tile_map_data = PackedByteArray("AAAJAP//AQAQAAcAAAAJAAAAAQAQAAcAAAAJAAEAAQAQAAcAAAAKAAAAAwAAAAAAAwABAAAAAgAAAAAAAQAGAAQAAgAAAAAAAQAGAPz/AgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAJAP//AQAQAAcAAAAJAAAAAQAQAAcAAAAJAAEAAQAQAAcAAAAKAAAAAwAAAAAAAwA=")
 tile_set = ExtResource("1_mfxf4")
 
 [node name="NpcContainer" parent="." instance=ExtResource("2_p56u7")]

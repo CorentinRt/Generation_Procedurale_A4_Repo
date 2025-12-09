@@ -22,7 +22,7 @@ tile_set = ExtResource("1_mpere")
 
 [node name="Props" type="TileMapLayer" parent="."]
 position = Vector2(-16, 64)
-tile_map_data = PackedByteArray("AAAGAP3/AwAAAAAAAwAFAP7/AQAQAAcAAAAGAP7/AQAQAAcAAAAHAP7/AQAQAAcAAAABAAAAAgAAAAAAAQALAAAAAgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAGAP3/AwAAAAAAAwAFAP7/AQAQAAcAAAAGAP7/AQAQAAcAAAAHAP7/AQAQAAcAAAA=")
 tile_set = ExtResource("1_mpere")
 
 [node name="Skull" parent="." instance=ExtResource("2_2rlr5")]
