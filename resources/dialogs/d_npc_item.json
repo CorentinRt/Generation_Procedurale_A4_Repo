@@ -10,24 +10,78 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:Item]"
 	],
 	"firstInteraction": [
-    	"j'ai besoin que tu trouves quelque chose."
+    	"#Présentation# #introQuête#<next>#demandeQuête#<next>#Remerciment# #Fin#"
 	],
-	"questCantStart": [
-		"Finis ta quete en cours et reviens."
+	"Présentation":[
+		"Salut !",
+		"Hello !",
+		"Bonjour"
 	],
+	"introQuête":[
+		"J'aurais une demande.",
+		"J'aurais quelque chose a te demander.",
+		"Est ce que tu pourrais faire quelque chose pour moi ?",
+		"J'ai besoin que tu fasses quelque chose pour moi.",
+		"Je peux te demander quelque chose ?"
+	],
+	"demandeQuête":[
+		"Tu pourrais me rapporter des objets ?"
+	],
+	"Remerciment":[
+		"Merci à toi l'ami !",
+		"Merci !",
+		"Bon courage à toi !",
+		"Courage"
+	],
+	"Fin":[
+		"Reviens me voir quand tu auras tout ça !",
+		"Ne reviens pas avant d'avoir tout trouvé !",
+		"J'attendrais que tu trouves tout ça !"
+	],
+	"questCantStart":[
+		"#alreadyInQuest#"
+	],
+	"alreadyInQuest":[
+		"Finis ta quete en cours et reviens.",
+		"Tu as déjà une quête en cours, reviens après.",
+		"T'es déjà occupé, reviens plus tard."
+	],
+	
 	"questStart":[
 		"Peux-tu me le ramener ?"
 	],
 	"questInProgress": [
-		"J'attends toujours mon objet."
+		"#DuringQuest"
 	],
-	"questCompleted": [
-		"Tu l'as retrouvé !"
+	"DuringQuest":[
+		"J'attends que tu récupères ce que je t'ai demandé",
+		"T'as toujours pas ce qu'il faut",
+		"Reviens quand tu as tout ce que je t'ai demandé"
 	],
-	"questFailed": [
-		"Je suis déçu t'aurais pu faire mieux."
+	"questCompleted":[
+		"#questCompleted#"
+	],
+	"questCompleted":[
+		"Tu l'as retrouvé !",
+		"T'as tout ce qu'il faut ! bravo !",
+		"OUI tu as tout trouvé !",
+		"Merci d'avoir tout récupéré !"
+	],
+	"questFailed":[
+		"#questNotCompleted#"
+	],
+	"questNotCompleted":[
+		"Je suis déçu t'aurais pu faire mieux.",
+		"T'aurais pu me retrouver tout ça quand même...",
+		"Tu as échoué !"
 	],
 	"completed": [
-		"T'as déjà fini ma quête."
+		"#alreadyDone#"
+	],
+	"alreadyDone":[
+		"T'as déjà fini ma quête.",
+		"Tu as déjà réaliser mon rêve !",
+		"Merci encore pour ton aide",
+		"Bon courage pour la suite !"
 	]
 }
