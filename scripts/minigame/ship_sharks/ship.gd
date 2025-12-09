@@ -11,6 +11,8 @@ var player_is_in : bool = false
 var associated_player : Player
 
 func _process(delta: float) -> void:
+	if !visible:
+		return
 	_update_inputs_interact()
 	_update_clamp_player_to_anchor()
 	

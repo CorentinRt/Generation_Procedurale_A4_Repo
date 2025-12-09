@@ -15,7 +15,7 @@ height = 46.95
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jf0su"]
 radius = 7.4
 
-[node name="Ship" type="CharacterBody2D" node_paths=PackedStringArray("ship_player_anchor")]
+[node name="Ship" type="CharacterBody2D" node_paths=PackedStringArray("ship_player_anchor") groups=["item_minigame"]]
 z_index = 1
 collision_layer = 64
 collision_mask = 161
