@@ -18,5 +18,5 @@ ExtResource("5_afbqx"): 2,
 ExtResource("6_7qdmq"): 3
 })
 _door = ExtResource("6_wxedu")
-_roomsMaxCount = 10
+_roomsMaxCount = 40
 _roomSize = Vector2i(128, 128)
