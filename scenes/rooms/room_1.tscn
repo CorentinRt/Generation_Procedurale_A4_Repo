@@ -1,16 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://wx1d3cdd6ci2"]
+[gd_scene load_steps=8 format=4 uid="uid://wx1d3cdd6ci2"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_cips2"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_hnbyo"]
-[ext_resource type="PackedScene" uid="uid://ctjhhqfodba6g" path="res://scenes/dialogs/npc.tscn" id="3_fbq1s"]
-[ext_resource type="JSON" path="res://resources/dialogs/d_npc_combat.json" id="4_ow1e4"]
-[ext_resource type="JSON" path="res://resources/dialogs/d_npc_item.json" id="5_ow1e4"]
 [ext_resource type="PackedScene" uid="uid://ht1ish66k7o6" path="res://scenes/minigame/minigame_box_interruptor.tscn" id="5_p8nu4"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="5_v1x83"]
 [ext_resource type="PackedScene" uid="uid://bg45dxuyn2nc1" path="res://scenes/dialogs/skull.tscn" id="7_aq8op"]
 [ext_resource type="PackedScene" uid="uid://6qmuxs06irmp" path="res://scenes/dialogs/letter.tscn" id="8_y5lrh"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="10_wtcj1"]
-[ext_resource type="JSON" path="res://resources/dialogs/d_npc_add_score.json" id="11_38fm3"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_cips2")
@@ -24,18 +20,6 @@ tile_set = ExtResource("2_hnbyo")
 tile_map_data = PackedByteArray("AAACAPn/AgAAAAAAAwAIAPn/AgAAAAAAAwAIAP3/AgAAAAAAAwAJAPj/AAAAAAAAAgAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAGAPv/AwAAAAAABgADAPz/AwAAAAAABwA=")
 tile_set = ExtResource("2_hnbyo")
 
-[node name="NpcCombat" parent="." instance=ExtResource("3_fbq1s")]
-position = Vector2(22, -122)
-json = ExtResource("4_ow1e4")
-
-[node name="NpcQuestion" parent="." instance=ExtResource("3_fbq1s")]
-position = Vector2(155, -24)
-has_quest = false
-
-[node name="NpcItem" parent="." instance=ExtResource("3_fbq1s")]
-position = Vector2(40, -78)
-json = ExtResource("5_ow1e4")
-
 [node name="RoomZoneDetector" parent="." instance=ExtResource("5_v1x83")]
 position = Vector2(88, -72)
 
@@ -46,18 +30,14 @@ _room_zone_detector = NodePath("../RoomZoneDetector")
 position = Vector2(115, -121)
 
 [node name="Letter" parent="." instance=ExtResource("8_y5lrh")]
-position = Vector2(63.000004, -117.99999)
+position = Vector2(66, -118.99999)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("10_wtcj1")]
 position = Vector2(95, -30)
 
-[node name="NpcAddScore" parent="." instance=ExtResource("3_fbq1s")]
-position = Vector2(87, -24)
-json = ExtResource("11_38fm3")
-
 [connection signal="body_entered" from="Props/Spikes" to="Props/Spikes" method="_on_body_entered"]
-[connection signal="body_entered" from="Props/@Area2D@31027" to="Props/@Area2D@31027" method="_on_body_entered"]
-[connection signal="body_entered" from="Props/@Area2D@31028" to="Props/@Area2D@31028" method="_on_body_entered"]
+[connection signal="body_entered" from="Props/@Area2D@34457" to="Props/@Area2D@34457" method="_on_body_entered"]
+[connection signal="body_entered" from="Props/@Area2D@34458" to="Props/@Area2D@34458" method="_on_body_entered"]
 [connection signal="body_entered" from="Props/KeyCollectible" to="Props/KeyCollectible" method="_on_body_entered"]
 [connection signal="body_entered" from="Props/InterruptorItem" to="Props/InterruptorItem" method="_on_body_entered"]
 [connection signal="body_exited" from="Props/InterruptorItem" to="Props/InterruptorItem" method="_on_body_exited"]
