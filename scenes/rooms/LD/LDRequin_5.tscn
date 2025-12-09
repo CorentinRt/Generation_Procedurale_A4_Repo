@@ -50,13 +50,6 @@ tile_set = ExtResource("1_03yx0")
 position = Vector2(143.35, 0.02)
 rotation = 1.5707964
 
-[node name="RoomZoneDetector" parent="." instance=ExtResource("3_x7usg")]
-position = Vector2(103.85, 8.26)
-rotation = 1.5707964
-scale = Vector2(5.18, 6.805)
-
-[node name="MinigameShipSharks" parent="." instance=ExtResource("4_wolkw")]
-
 [node name="Shark_Path" parent="." instance=ExtResource("5_67sqx")]
 position = Vector2(56, 7)
 curve = SubResource("Curve2D_glihq")
@@ -88,3 +81,9 @@ polygon = PackedVector2Array(136.94453, 71.317566, 149.04047, -1.7145405, 177.70
 [node name="NpcContainer" parent="." instance=ExtResource("6_x7usg")]
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("7_wolkw")]
+
+[node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("4_wolkw")]
+_room_zone_detector = NodePath("../RoomZoneDetector")
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("3_x7usg")]
+position = Vector2(105, 8)

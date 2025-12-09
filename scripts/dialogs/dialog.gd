@@ -7,6 +7,8 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var taunt_json: JSON
 @export var questions_answers_json: JSON 
 @export var item_json: JSON 
+@export var treasure_json: JSON
+@export var end_json: JSON
 
 @export_group("UI")
 @export var text_label: RichTextLabel
@@ -30,6 +32,8 @@ var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
 var taunt_grammar: TraceryScript.Grammar
 var item_grammar: TraceryScript.Grammar
+var treasure_grammar: TraceryScript.Grammar
+var end_grammar: TraceryScript.Grammar
 
 var is_in_dialog: bool = false
 
@@ -51,6 +55,9 @@ var is_in_questions: bool = false
 # Quest
 var quest_started = false
 
+# End
+var can_end: bool = false
+
 func _ready():
 	hide_dialog()
 	_setup_grammars()
@@ -59,6 +66,9 @@ func _ready():
 	# Timer
 	custom_timer.timer_finished.connect(_on_timer_end)
 	custom_timer.hide_timer()
+	
+	# Treasure
+	GameManager.on_open_final_chest.connect(show_treasure_dialog)
 
 #region Setup
 func _setup_grammars():
@@ -85,6 +95,18 @@ func _setup_grammars():
 	
 	item_grammar = TraceryScript.Grammar.new(item_rules)
 	item_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Item
+	var treasure_rules = treasure_json.data
+	
+	treasure_grammar = TraceryScript.Grammar.new(treasure_rules)
+	treasure_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# End
+	var end_rules = end_json.data
+	
+	end_grammar = TraceryScript.Grammar.new(end_rules)
+	end_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 #endregion
 	
 #region Show dialog JSON
@@ -461,9 +483,7 @@ func start_simple_dialog(dialog_text: String, color : Color):
 
 	set_button_color(dialog_btn, color)
 	pass
-#endregion
-
-#region Item simple dialog
+	
 func start_item_dialog(can_get_item : bool):
 	var dialog_text: String = ""
 	
@@ -471,8 +491,22 @@ func start_item_dialog(can_get_item : bool):
 		dialog_text = item_grammar.flatten("#getItem#", item_json)
 	else:
 		dialog_text = item_grammar.flatten("#cantGetItem#", item_json)
-		
-	print(dialog_text)
 	
 	start_simple_dialog(dialog_text, Color(0.65, 0.22, 0.436, 1.0))
+
+func show_treasure_dialog():
+	var dialog_text: String = treasure_grammar.flatten("#foundTreasure#", item_json)
+
+	start_simple_dialog(dialog_text, Color(0.282, 0.454, 0.297, 1.0))
+	can_end = true
+	
+func show_end_dialog():
+	var dialog_text: String = ""
+	
+	if (can_end):
+		dialog_text = end_grammar.flatten("#canEnd#", end_json)
+	else:
+		dialog_text = end_grammar.flatten("#cantEnd#", end_json)
+	
+	start_simple_dialog(dialog_text, Color(0.544, 0.176, 0.115, 1.0))
 #endregion
