@@ -1,8 +1,18 @@
 {
 	"canEnd": [
-		"tu veux sortir ?"	
+		"Je t'attendais.<next><end_question><next>"	
 	],
-	"cantEnd":[
-		"tu peux pas sortir..."
+	"cantEnd": [
+		"Tu ne peux pas encore sortir...<next>Trouve le trésor et reviens !"
+	],
+	"titleEndQuestion": [
+		"Veux-tu partir ?",
+		"Veux-tu t'en aller ?"
+	],
+	"leaveAnswer": [
+		"Vole petit oiseau !"
+	],
+	"stayAnswer": [
+		"Reste ici."
 	]
 }

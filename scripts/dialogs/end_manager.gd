@@ -12,3 +12,21 @@ enum EndType{
 
 func get_random_answers() -> Array[String]:
 	return ["Non", "Oui", "Peut-être", "Je sais pas"]
+
+func on_click_on_end_type(end_type : EndType):
+	print("click on end type : ", end_type)
+	
+	var leave: bool = false
+	
+	match(end_type):
+		EndType.NO:
+			leave = false
+		EndType.YES:
+			leave = true
+		EndType.MAYBE:
+			leave = randi() % 2 == 0 # une chance sur 2 de leave
+	
+	print("Leave : ", leave)
+	
+	UtilsManager.get_dialog_manager().on_end_answer_pressed(leave)
+	

@@ -14,7 +14,7 @@ func on_btn_clicked():
 	if dialog_manager:
 		if is_end_type != EndManager.EndType.NONE:
 			# End answer
-			print("click on end question")
+			EndManager.on_click_on_end_type(is_end_type)
 		else:
 			# Question answer
 			if is_right_answer:
