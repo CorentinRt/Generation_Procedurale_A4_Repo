@@ -31,7 +31,8 @@ collision_layer = 256
 [node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
 polygon = PackedVector2Array(216, -91, 216, -141, 169, -140, 167, -90)
 
-[node name="MinigameCasino" parent="." instance=ExtResource("3_k2kv3")]
+[node name="MinigameCasino" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_k2kv3")]
+_room_zone_detector = NodePath("../RoomZoneDetector")
 _scores_datas = ExtResource("4_cs5k1")
 
 [node name="RoomZoneDetector" parent="." instance=ExtResource("5_uqaby")]

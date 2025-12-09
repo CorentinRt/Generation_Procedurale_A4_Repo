@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cwhypfupuiff4"]
+[gd_scene load_steps=11 format=4 uid="uid://cwhypfupuiff4"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_owahx"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_wglu6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="4_owahx"]
 [ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="5_achre"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="6_owahx"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="8_y56eg"]
 
 [sub_resource type="Curve2D" id="Curve2D_glihq"]
 resource_local_to_scene = true
@@ -58,8 +59,6 @@ polygon = PackedVector2Array(160, -17, 159, -127, 129, -127, 127, -102, 35, -99,
 [node name="Ship" parent="." instance=ExtResource("2_ungx6")]
 position = Vector2(99, -11)
 
-[node name="MinigameShipSharks" parent="." instance=ExtResource("3_achre")]
-
 [node name="Shark_Path" parent="." instance=ExtResource("4_owahx")]
 position = Vector2(56, 7)
 curve = SubResource("Curve2D_glihq")
@@ -71,3 +70,9 @@ curve = SubResource("Curve2D_j6iub")
 [node name="NpcContainer" parent="." instance=ExtResource("5_achre")]
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("6_owahx")]
+
+[node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_achre")]
+_room_zone_detector = NodePath("../RoomZoneDetector")
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("8_y56eg")]
+position = Vector2(105, 8)
