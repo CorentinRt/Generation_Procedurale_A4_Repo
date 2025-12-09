@@ -1,4 +1,4 @@
-extends Node2D
+class_name NPC extends Node2D
 
 enum DialogState {
 	NONE,
