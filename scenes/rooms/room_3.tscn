@@ -25,4 +25,4 @@ position = Vector2(20, -105)
 
 [connection signal="body_entered" from="Props/HeartCollectible" to="Props/HeartCollectible" method="_on_body_entered"]
 [connection signal="body_entered" from="Props/KeyCollectible" to="Props/KeyCollectible" method="_on_body_entered"]
-[connection signal="body_entered" from="Props/@Area2D@40711" to="Props/@Area2D@40711" method="_on_body_entered"]
+[connection signal="body_entered" from="Props/@Area2D@40256" to="Props/@Area2D@40256" method="_on_body_entered"]

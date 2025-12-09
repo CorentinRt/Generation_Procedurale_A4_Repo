@@ -34,8 +34,8 @@ position = Vector2(352, -144)
 room_pos = Vector2i(2, 1)
 
 [node name="Room5" parent="Dungeon" instance=ExtResource("6_jg4hf")]
-position = Vector2(176, -288)
-room_pos = Vector2i(1, 2)
+position = Vector2(352, 144)
+room_pos = Vector2i(2, -1)
 
 [node name="Room6" parent="Dungeon" instance=ExtResource("6_mngbo")]
 position = Vector2(352, 0)
