@@ -57,6 +57,7 @@ var quest_started = false
 
 # End
 var can_end: bool = false
+var end_game_on_hide: bool = false
 
 func _ready():
 	hide_dialog()
@@ -240,6 +241,11 @@ func _show_current_sentence_text():
 		if (!is_in_questions):
 			is_in_questions = true
 			_start_questions_ui()
+	elif full_sentence == "<end_question>":
+		full_sentence = _get_and_setup_end_question()
+		if (!is_in_questions):
+			is_in_questions = true
+			_start_questions_ui(false) # no timer
 	else:
 		if (is_in_questions):
 			is_in_questions = false
@@ -353,6 +359,22 @@ func _on_answer_pressed(is_right_answer : bool):
 	is_typing = true
 	_start_typing()
 		
+func on_end_answer_pressed(leave : bool):
+	_end_questions_ui()
+	stop_question_timer()
+	is_in_questions = false
+	
+	if (leave):
+		full_sentence = end_grammar.flatten("#leaveAnswer#", end_json)
+		end_game_on_hide = true
+	else:
+		full_sentence = end_grammar.flatten("#stayAnswer#", end_json)
+	revealed_characters = 0
+	text_label.text = ""
+	
+	is_typing = true
+	_start_typing()
+		
 func show_dialog(npc : Node) -> void:
 	if is_in_dialog:
 		return
@@ -375,6 +397,10 @@ func hide_dialog() -> void:
 		
 	is_in_dialog = false
 	Player.Instance.set_is_in_dialog(is_in_dialog)
+	
+	# End
+	if end_game_on_hide:
+		EndManager.end_game()
 		
 func show_questions_btn():
 	for btn in questions_btn:
@@ -386,10 +412,11 @@ func hide_questions_btn():
 #endregion
 
 #region Questions	
-func _start_questions_ui():
+func _start_questions_ui(timer : bool = true):
 	dialog_btn.set_global_position(questions_pos)
 	show_questions_btn()
-	start_question_timer()
+	if timer:
+		start_question_timer()
 	pass
 	
 func _end_questions_ui():
@@ -431,6 +458,24 @@ func _get_and_setup_random_question() -> String:
 			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), false);
 	
 	return random_question.title
+	
+func _get_and_setup_end_question() -> String:
+	# Question title
+	var random_question = end_grammar.flatten("#titleEndQuestion#", end_json)
+
+	var random_answers: Array[String]
+	random_answers = ["Non", "Oui", "Peut-être", "Je sais pas"]
+	# Question answers
+	questions_btn.shuffle()
+	for i in questions_btn.size():
+		if i == 0: # No
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), true, EndManager.EndType.NO);
+		elif i == 1: # Yes
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), true, EndManager.EndType.YES);
+		else: # Maybe
+			questions_btn[i].setup_btn(first_letter_upper(random_answers[i]), true, EndManager.EndType.MAYBE);
+	
+	return random_question
 	
 func first_letter_upper(s: String) -> String:
 	if s == "":

@@ -1,5 +1,40 @@
 {
 	"foundTreasure": [
-		"trésor trouvé youpiiiiiiiiiii"
+		"#warning#<next>#perso# #action# #tresor#<next>#sortir#<next>#ou_rester#<next>#comment#"
+	],
+	"warning": [
+		"Attention !",
+		"Votre attention chère audience !",
+		"Victoire !"
+	],
+	"perso": [
+		"Le candidat",
+		"Le joueur",
+		"Notre invité",
+		"Notre ami"
+	],
+	"action": [
+		"vient de trouver le",
+		"vient de découvrir le",
+		"vient de rentrer en possession du"
+	],
+	"tresor": [
+		"butin !",
+		"trésor !"
+	],
+	"sortir": [
+		"Il peut donc désormais sortir du jeu !",
+		"Il a la possibilité de quitter le jeu dès maintenant !",
+		"Il a le choix de garder sa somme d’argent et de sortir du jeu !"
+	],
+	"ou_rester": [
+		"Mais il peut aussi décider de continuer d’amasser le plus de pièces d’or possible.",
+		"Mais il peut rester et tenter de faire grossir son trésor !",
+		"Il a également le choix de rester dans le jeu pour gagner plus de pièces !"
+	],
+	"comment": [
+		"Si il veut sortir, il doit venir me voir, devant la grande sortie au début des studios !",
+		"Si tu désires sortir maintenant, reviens au début de ton périple !",
+		"Pour sortir, reviens dans la première salle de ton aventure !"
 	]
 }

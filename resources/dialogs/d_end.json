@@ -1,8 +1,18 @@
 {
 	"canEnd": [
-		"tu veux sortir ?"	
+		"Te voilà désormais en possession du trésor !<next><end_question><next>"	
 	],
-	"cantEnd":[
-		"tu peux pas sortir..."
+	"cantEnd": [
+		"Vous devez avoir récupéré le trésor avant de pouvoir sortir !"
+	],
+	"titleEndQuestion": [
+		"Souhaites tu quitter le jeu ?",
+		"Veux-tu t'en aller ?"
+	],
+	"leaveAnswer": [
+		"Vole petit oiseau !"
+	],
+	"stayAnswer": [
+		"Reste ici."
 	]
 }
