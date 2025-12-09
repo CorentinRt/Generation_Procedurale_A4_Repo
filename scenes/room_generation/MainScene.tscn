@@ -36,24 +36,24 @@ dialog_beep = ExtResource("3_grgwt")
 [node name="LevelGeneration2" parent="." instance=ExtResource("5_hb5b0")]
 _playerScene = ExtResource("24_uy8ax")
 _roomsList = Dictionary[ExtResource("5_h6qk4"), float]({
-ExtResource("23_rblo1"): 1.0,
-ExtResource("22_l8rqq"): 1.0,
-ExtResource("21_4pnk0"): 1.0,
-ExtResource("20_qki2v"): 1.0,
-ExtResource("19_mb1wu"): 1.0,
-ExtResource("18_o2whb"): 1.0,
-ExtResource("17_367ae"): 1.0,
-ExtResource("16_npl4f"): 1.0,
-ExtResource("15_2i2my"): 1.0,
-ExtResource("14_fcgcf"): 1.0,
-ExtResource("13_tectq"): 1.0,
-ExtResource("12_nro1g"): 1.0,
-ExtResource("11_nron4"): 1.0,
-ExtResource("10_fo2lf"): 1.0,
-ExtResource("9_2bj3j"): 1.0,
-ExtResource("8_cekof"): 1.0,
+ExtResource("6_uy8ax"): 1.0,
 ExtResource("7_ql38n"): 1.0,
-ExtResource("6_uy8ax"): 1.0
+ExtResource("8_cekof"): 1.0,
+ExtResource("9_2bj3j"): 1.0,
+ExtResource("10_fo2lf"): 1.0,
+ExtResource("11_nron4"): 1.0,
+ExtResource("12_nro1g"): 1.0,
+ExtResource("13_tectq"): 1.0,
+ExtResource("14_fcgcf"): 1.0,
+ExtResource("15_2i2my"): 1.0,
+ExtResource("16_npl4f"): 1.0,
+ExtResource("17_367ae"): 1.0,
+ExtResource("18_o2whb"): 1.0,
+ExtResource("19_mb1wu"): 1.0,
+ExtResource("20_qki2v"): 1.0,
+ExtResource("21_4pnk0"): 1.0,
+ExtResource("22_l8rqq"): 1.0,
+ExtResource("23_rblo1"): 1.0
 })
 
 [node name="Camera2D" type="Camera2D" parent="."]

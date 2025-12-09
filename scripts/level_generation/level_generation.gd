@@ -116,9 +116,10 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.EAST)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.WEST)
 	
-	selectedRoomData.mergedTilemap.position = Vector2(selectedRoomData.coordinates.x * _roomSize.x, selectedRoomData.coordinates.y * _roomSize.y)
+	selectedRoomData.roomNode.position = Vector2(selectedRoomData.coordinates.x * _roomSize.x, selectedRoomData.coordinates.y * _roomSize.y)
 	_roomMap[selectedRoomData.coordinates] = selectedRoomData
 	_update_available_rooms(selectedRoomData)
+	
 	_update_available_rooms(_currentRoom)
 	add_child(selectedRoomData.roomNode)
 

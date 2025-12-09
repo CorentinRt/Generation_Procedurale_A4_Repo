@@ -10,6 +10,7 @@ size = Vector2(32, 32)
 size = Vector2(32, 32)
 
 [node name="Door" type="StaticBody2D" node_paths=PackedStringArray("closedNode", "openNode", "wallNode", "secretNode") groups=["doors"]]
+z_index = 1
 script = ExtResource("1_3eldu")
 closedNode = NodePath("Closed")
 openNode = NodePath("Open")
