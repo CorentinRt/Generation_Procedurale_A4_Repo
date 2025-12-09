@@ -425,6 +425,8 @@ func stop_question_timer():
 	custom_timer.hide_and_stop_timer()
 	
 func _on_timer_end():
+	current_npc.on_question_answered.emit(false)
+	
 	ScoreManager._remove_score(remove_score_wrong_answer)
 	_end_questions_ui()
 	is_in_questions = false
