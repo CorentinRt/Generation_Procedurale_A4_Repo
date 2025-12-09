@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://b184gvtoxulcq"]
+[gd_scene load_steps=4 format=4 uid="uid://b184gvtoxulcq"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_dhu7y"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_oi33x"]
-[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="3_m8hj2"]
-[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="4_gxq8a"]
+[ext_resource type="PackedScene" uid="uid://bg45dxuyn2nc1" path="res://scenes/dialogs/skull.tscn" id="3_oi33x"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_dhu7y")
@@ -14,7 +13,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("2_oi33x")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAHAPz/AQAEAAYAAAAGAP3/AQAEAAYAAAAEAP3/AQAEAAYAAAADAPz/AQAEAAYAAAADAPr/AQAEAAYAAAAEAPn/AQAEAAYAAAAGAPn/AQAEAAYAAAAHAPr/AQAEAAYAAAADAPv/AQAEAAUAAAADAPn/AQAEAAUAAAAEAPj/AQAEAAUAAAAGAPz/AQAEAAUAAAAEAPz/AQAEAAUAAAAHAPv/AQAEAAUAAAAHAPn/AQAEAAUAAAAGAPj/AQAEAAUAAAAFAPv/AwAAAAAAAQACAPz/AQADAAcAAAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQAHAPz/AQAEAAYAAAAGAP3/AQAEAAYAAAAEAP3/AQAEAAYAAAADAPz/AQAEAAYAAAADAPr/AQAEAAYAAAAEAPn/AQAEAAYAAAAGAPn/AQAEAAYAAAAHAPr/AQAEAAYAAAADAPv/AQAEAAUAAAADAPn/AQAEAAUAAAAEAPj/AQAEAAUAAAAGAPz/AQAEAAUAAAAEAPz/AQAEAAUAAAAHAPv/AQAEAAUAAAAHAPn/AQAEAAUAAAAGAPj/AQAEAAUAAAAFAPv/AwAAAAAAAQA=")
 tile_set = ExtResource("2_oi33x")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
@@ -36,6 +35,5 @@ polygon = PackedVector2Array(125, -31, 125, -64, 75, -64, 75, -48, 91, -47, 92, 
 position = Vector2(-59, -62)
 polygon = PackedVector2Array(109, -46, 125, -47, 125, -66, 75, -66, 75, -32, 109, -31)
 
-[node name="NpcContainer" parent="." instance=ExtResource("3_m8hj2")]
-
-[node name="QuestItemContainer" parent="." instance=ExtResource("4_gxq8a")]
+[node name="Skull" parent="." instance=ExtResource("3_oi33x")]
+position = Vector2(41, -60)
