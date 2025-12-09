@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=4 uid="uid://bxdyc8lnc3ti5"]
+[gd_scene load_steps=6 format=4 uid="uid://bxdyc8lnc3ti5"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_bnv3j"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_hr2f8"]
+[ext_resource type="PackedScene" uid="uid://b6p5hoir7gifh" path="res://scenes/minigame/minigame_casino.tscn" id="3_k2kv3"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="4_cs5k1"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="5_uqaby"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_bnv3j")
@@ -25,6 +28,13 @@ collision_layer = 256
 
 [node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
 polygon = PackedVector2Array(216, -91, 216, -141, 169, -140, 167, -90)
+
+[node name="MinigameCasino" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_k2kv3")]
+_room_zone_detector = NodePath("")
+_scores_datas = ExtResource("4_cs5k1")
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("5_uqaby")]
+position = Vector2(88, -73)
 
 [connection signal="body_entered" from="Props/CasinoMachine" to="Props/CasinoMachine" method="_on_body_entered"]
 [connection signal="body_exited" from="Props/CasinoMachine" to="Props/CasinoMachine" method="_on_body_exited"]
