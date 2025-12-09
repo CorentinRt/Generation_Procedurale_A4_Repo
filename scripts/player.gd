@@ -13,6 +13,12 @@ static var Instance : Player
 @export var running_animation_player : AnimationPlayer
 @export var hit_animation_player : AnimationPlayer
 
+var coins_count : int = 0
+var bonus_attack_count : int = 0
+var bonus_defense_count : int = 0
+var potion_attack_count : int = 0
+var potion_defense_count : int = 0
+
 # Collectible
 var key_count : int
 
