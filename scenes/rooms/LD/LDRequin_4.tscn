@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://djqilmpjchpgu"]
+[gd_scene load_steps=11 format=4 uid="uid://djqilmpjchpgu"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_bfejt"]
 [ext_resource type="PackedScene" uid="uid://jti3mgir6w1b" path="res://scenes/minigame/ship_sharks/ship.tscn" id="2_5o7kh"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_5o7kh"]
 [ext_resource type="PackedScene" uid="uid://dtw8kdvabfniw" path="res://scenes/minigame/minigame_ship_sharks.tscn" id="3_66bo4"]
 [ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="4_np8o5"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="6_np8o5"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="7_uqi7v"]
 
 [sub_resource type="Curve2D" id="Curve2D_glihq"]
 resource_local_to_scene = true
@@ -79,3 +81,7 @@ collision_mask = 64
 rotation = -0.19115531
 build_mode = 1
 polygon = PackedVector2Array(136.94453, 71.317566, 149.04047, -1.7145405, 177.70224, 2.8134766, 180.74214, -12.895088, 41.3286, -39.874134, 37.116932, -23.373775, 65.588715, -17.863972, 50.16743, 56.561726, 23.659225, 51.431908, 20.239347, 69.10404, 159.65288, 96.08309, 163.45274, 76.44739)
+
+[node name="NpcContainer" parent="." instance=ExtResource("6_np8o5")]
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("7_uqi7v")]

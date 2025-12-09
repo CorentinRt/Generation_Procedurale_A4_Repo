@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://cktxlbs1o1j2i"]
+[gd_scene load_steps=3 format=4 uid="uid://cktxlbs1o1j2i"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_mpere"]
 [ext_resource type="PackedScene" uid="uid://bg45dxuyn2nc1" path="res://scenes/dialogs/skull.tscn" id="2_2rlr5"]
-[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_xq8ox"]
 
 [node name="Marchand1" type="Node2D"]
 
@@ -20,9 +19,6 @@ tile_set = ExtResource("1_mpere")
 
 [node name="Skull" parent="." instance=ExtResource("2_2rlr5")]
 position = Vector2(47, 43)
-
-[node name="RoomZoneDetector" parent="." instance=ExtResource("3_xq8ox")]
-position = Vector2(88, -73)
 
 [connection signal="body_entered" from="Props/Shop" to="Props/Shop" method="_on_shop_body_entered"]
 [connection signal="body_exited" from="Props/Shop" to="Props/Shop" method="_on_shop_body_exited"]
