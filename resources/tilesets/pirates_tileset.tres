@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://dhfsea6pvn6a2"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://dhfsea6pvn6a2"]
 
 [ext_resource type="PackedScene" uid="uid://dov4nkfsf27hs" path="res://scenes/heart_collectible.tscn" id="1_0yx2v"]
 [ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="1_wqfka"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bani648rw8o4j" path="res://scenes/enemies/enemy_medium.tscn" id="8_p5s73"]
 [ext_resource type="PackedScene" uid="uid://cjpu7udfde6xb" path="res://scenes/minigame/box_interruptor/interruptor_item.tscn" id="9_iaxjm"]
 [ext_resource type="PackedScene" uid="uid://cs1annrxf1kda" path="res://scenes/minigame/casino_machine/casino_machine.tscn" id="10_vula1"]
+[ext_resource type="PackedScene" uid="uid://citxp311u0vli" path="res://scenes/minigame/shop/shop.tscn" id="11_p5s73"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7xntj"]
 resource_name = "Collectibles"
@@ -187,6 +188,7 @@ scenes/6/scene = ExtResource("8_p5s73")
 resource_name = "Minigame_Item"
 scenes/1/scene = ExtResource("7_1dum8")
 scenes/2/scene = ExtResource("10_vula1")
+scenes/3/scene = ExtResource("11_p5s73")
 scenes/6/scene = ExtResource("9_iaxjm")
 scenes/7/scene = ExtResource("8_fspi8")
 

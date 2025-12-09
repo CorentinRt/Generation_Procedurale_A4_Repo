@@ -13,10 +13,10 @@ script = ExtResource("1_hmi2g")
 _startingRoom = ExtResource("2_nfuga")
 _possibleStartingRoomDirections = Array[int]([2, 3])
 _roomsList = Dictionary[ExtResource("3_nfuga"), int]({
-ExtResource("4_d15f6"): 0,
+ExtResource("4_d15f6"): 2,
 ExtResource("5_afbqx"): 2,
 ExtResource("6_7qdmq"): 3
 })
 _door = ExtResource("6_wxedu")
-_roomsMaxCount = 40
+_roomsMaxCount = 500
 _roomSize = Vector2i(128, 128)
