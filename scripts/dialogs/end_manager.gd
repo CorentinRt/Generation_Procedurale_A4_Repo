@@ -30,3 +30,7 @@ func on_click_on_end_type(end_type : EndType):
 	
 	UtilsManager.get_dialog_manager().on_end_answer_pressed(leave)
 	
+func end_game(): 
+	# load scene ended_game
+	var scene := load("res://scenes/ended_game.tscn")
+	get_tree().change_scene_to_packed(scene)

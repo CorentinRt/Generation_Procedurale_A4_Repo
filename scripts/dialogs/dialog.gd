@@ -400,7 +400,7 @@ func hide_dialog() -> void:
 	
 	# End
 	if end_game_on_hide:
-		print("END GAME")
+		EndManager.end_game()
 		
 func show_questions_btn():
 	for btn in questions_btn:

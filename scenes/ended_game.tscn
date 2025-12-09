@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlneuko6hcyc2"]
+
+[ext_resource type="Script" uid="uid://cxxfso7i087vu" path="res://scripts/dialogs/end_ui.gd" id="1_0q4s0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("score_txt")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0q4s0")
+score_txt = NodePath("Panel/ScoreTxt")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/EndUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreTxt" type="RichTextLabel" parent="CanvasLayer/EndUI/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 105.0
+grow_horizontal = 2
+text = "Score : XXXXXX"
+horizontal_alignment = 1
+vertical_alignment = 1
