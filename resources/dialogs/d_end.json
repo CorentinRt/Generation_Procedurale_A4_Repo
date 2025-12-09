@@ -1,12 +1,12 @@
 {
 	"canEnd": [
-		"Je t'attendais.<next><end_question><next>"	
+		"Te voilà désormais en possession du trésor !<next><end_question><next>"	
 	],
 	"cantEnd": [
-		"Tu ne peux pas encore sortir...<next>Trouve le trésor et reviens !"
+		"Vous devez avoir récupéré le trésor avant de pouvoir sortir !"
 	],
 	"titleEndQuestion": [
-		"Veux-tu partir ?",
+		"Souhaites tu quitter le jeu ?",
 		"Veux-tu t'en aller ?"
 	],
 	"leaveAnswer": [
