@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ahenmxn2ain" path="res://scenes/enemy.tscn" id="1_3flg4"]
 
 [node name="Enemy_Hard" instance=ExtResource("1_3flg4")]
+enemy_difficulty = 3
 
 [node name="BodySprite" parent="." index="1"]
 self_modulate = Color(0.4406631, 0.4524806, 1, 1)

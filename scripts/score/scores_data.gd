@@ -1,11 +1,19 @@
 class_name Scores_Datas extends Resource
 
-@export var _enemy_death : int
+@export_group("Enemy deaths")
+@export var _enemy_death_easy : int
+@export var _enemy_death_medium : int
+@export var _enemy_death_hard : int
+@export var _enemy_death_bonus_attack_multiplier : float
+
+@export_group("Collectables")
 @export var _heart_collect :int
 @export var _gold_collect : int
 @export var _key_collect : int
 
+@export_group("Player hit")
 @export var _player_hit : int
+@export var _player_hit_with_bonus_defense : int
 
 @export_group("Minigame")
 @export var _minigame_completed_default : int

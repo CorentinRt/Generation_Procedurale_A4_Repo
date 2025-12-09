@@ -118,7 +118,10 @@ func apply_hit(attack : Attack) -> void:
 		life -= attack.damages if attack != null else 1
 	
 	if hit_decrease_score:
-		ScoreManager._remove_score(_scores_datas._player_hit)
+		if Player.Instance._has_bonus_attack_effect():
+			ScoreManager._remove_score(_scores_datas._player_hit_with_bonus_defense)
+		else:
+			ScoreManager._remove_score(_scores_datas._player_hit)
 		
 	if life <= 0 and _state != STATE.DEAD:
 		if !cannot_die:

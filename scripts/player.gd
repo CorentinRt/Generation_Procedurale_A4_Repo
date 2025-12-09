@@ -13,11 +13,16 @@ static var Instance : Player
 @export var running_animation_player : AnimationPlayer
 @export var hit_animation_player : AnimationPlayer
 
+@export_group("Particles bonus effects")
+@export var attack_bonus_particles : CPUParticles2D
+@export var defense_bonus_particles : CPUParticles2D
+
 var coins_count : int = 0
 var has_bonus_attack : bool = false
 var has_bonus_defense : bool = false
-var has_potion_attack : bool = false
-var has_potion_defense_count : bool = false
+
+var current_potion_attack_timer : float = 0
+var current_potion_defense_timer : float = 0
 
 # Collectible
 var key_count : int
@@ -37,6 +42,7 @@ func _process(delta: float) -> void:
 	_update_inputs()
 	_update_room()
 	_update_anim()
+	_update_potion_effects(delta)
 
 func _update_anim() -> void:
 	if velocity.length() <= 0.3:
@@ -46,6 +52,34 @@ func _update_anim() -> void:
 		if running_animation_player.current_animation != "run":
 			running_animation_player.play("run")
 		
+func _update_potion_effects(delta : float) -> void:
+	if current_potion_attack_timer > 0:
+		current_potion_attack_timer -= delta
+		
+	if current_potion_defense_timer > 0:
+		current_potion_defense_timer -= delta
+		
+	if attack_bonus_particles.visible != _has_bonus_attack_effect():
+		attack_bonus_particles.visible = _has_bonus_attack_effect()
+		
+	if defense_bonus_particles.visible != _has_bonus_defense_effect():
+		defense_bonus_particles.visible = _has_bonus_defense_effect()
+
+func _give_potion_attack_effects(duration : float) -> void:
+	current_potion_attack_timer = duration
+	
+func _give_potion_defense_effects(duration : float) -> void:
+	current_potion_defense_timer = duration
+
+func _has_bonus_attack_effect() -> bool:
+	if current_potion_attack_timer > 0 || has_bonus_attack:
+		return true
+	return false
+	
+func _has_bonus_defense_effect() -> bool:
+	if current_potion_defense_timer > 0 || has_bonus_defense:
+		return true
+	return false
 
 func _physics_process(_delta: float) -> void:
 	super(_delta)

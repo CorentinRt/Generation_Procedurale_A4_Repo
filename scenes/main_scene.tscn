@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://wx1d3cdd6ci2" path="res://scenes/rooms/room_1.tscn" id="1_fekva"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="1_qspk8"]
 [ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="2_liovv"]
-[ext_resource type="PackedScene" uid="uid://cghgb0asb5h8k" path="res://scenes/rooms/room_7.tscn" id="4_e1cbu"]
 [ext_resource type="PackedScene" uid="uid://buuwp4chbvml5" path="res://scenes/rooms/room_2.tscn" id="4_m4k51"]
+[ext_resource type="PackedScene" uid="uid://brxxqw3c42gr6" path="res://scenes/rooms/room_8.tscn" id="4_mngbo"]
 [ext_resource type="PackedScene" uid="uid://s6ah3dc0wqxd" path="res://scenes/rooms/room_3.tscn" id="5_8ykb7"]
 [ext_resource type="PackedScene" uid="uid://d2bd4nrdruls4" path="res://scenes/rooms/room_4.tscn" id="6_jg4hf"]
 [ext_resource type="PackedScene" uid="uid://b2j0n48glap00" path="res://scenes/rooms/room_6.tscn" id="6_mngbo"]
@@ -29,7 +29,7 @@ position = Vector2(176, 0)
 room_pos = Vector2i(1, 0)
 room_size = Vector2i(1, 2)
 
-[node name="Room4" parent="Dungeon" instance=ExtResource("4_e1cbu")]
+[node name="Room4" parent="Dungeon" instance=ExtResource("4_mngbo")]
 position = Vector2(352, -144)
 room_pos = Vector2i(2, 1)
 

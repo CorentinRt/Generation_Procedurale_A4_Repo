@@ -2,7 +2,16 @@ class_name Enemy extends CharacterBase
 
 static var all_enemies : Array[Enemy]
 
+enum ENEMY_DIFFICULTY
+{
+	EASY = 0,
+	MEDIUM = 1,
+	HARD = 3
+}
+
 signal on_killed();
+
+@export var enemy_difficulty : ENEMY_DIFFICULTY = ENEMY_DIFFICULTY.EASY
 
 @export var attack_warm_up : float = 0.5
 @export var attack_distance : float = 0.5
@@ -82,7 +91,19 @@ func _set_state(state : STATE) -> void:
 		_direction = Vector2.ZERO
 
 func _give_score() -> void:
-	ScoreManager._add_score(_scores_datas._enemy_death)
+	@warning_ignore("incompatible_ternary")
+	var score_multiplier : float = 1 if Player.Instance._has_bonus_attack_effect() else _scores_datas._enemy_death_bonus_attack_multiplier
+	
+	match (enemy_difficulty):
+		ENEMY_DIFFICULTY.EASY:
+			@warning_ignore("narrowing_conversion")
+			ScoreManager._add_score(_scores_datas._enemy_death_easy * score_multiplier)
+		ENEMY_DIFFICULTY.MEDIUM:
+			@warning_ignore("narrowing_conversion")
+			ScoreManager._add_score(_scores_datas._enemy_death_medium * score_multiplier)
+		ENEMY_DIFFICULTY.HARD:
+			@warning_ignore("narrowing_conversion")
+			ScoreManager._add_score(_scores_datas._enemy_death_hard * score_multiplier)
 
 func _update_state(delta : float) -> void:
 	_state_timer += delta

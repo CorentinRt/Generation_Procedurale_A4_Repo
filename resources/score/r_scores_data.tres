@@ -4,11 +4,15 @@
 
 [resource]
 script = ExtResource("1_58ku6")
-_enemy_death = 200
+_enemy_death_easy = 5000
+_enemy_death_medium = 10000
+_enemy_death_hard = 15000
+_enemy_death_bonus_attack_multiplier = 1.5
 _heart_collect = 100
 _gold_collect = 300
 _key_collect = 200
 _player_hit = 10000
+_player_hit_with_bonus_defense = 5000
 _minigame_completed_default = 25000
 _minigame_completed_ship_sharks = 20000
 _minigame_completed_battle = 20000

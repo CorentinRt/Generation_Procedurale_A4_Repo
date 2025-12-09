@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bib07te5reau7"]
+[gd_scene load_steps=16 format=3 uid="uid://bib07te5reau7"]
 
 [ext_resource type="Script" uid="uid://c0tc77spyevjo" path="res://scripts/player.gd" id="1_ups2j"]
 [ext_resource type="Resource" uid="uid://b3nexs1nbtrff" path="res://resources/player_default_movement.tres" id="2_ay78m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7a3grtr4nexr" path="res://scenes/swords/sword_player.tscn" id="4_qlg0r"]
 [ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="5_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bwl6vwug2r0ve" path="res://sprites/imports/kenney_monochrome-pirates/Dot Matrix/Tilemap/tilemap_packed.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://coomnanjg4knk" path="res://sprites/placeholder.png" id="7_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidcf"]
 
@@ -200,7 +201,7 @@ _data = {
 &"hit": SubResource("Animation_ur7pv")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape", "running_animation_player", "hit_animation_player", "sprites", "attack_spawn_point")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape", "running_animation_player", "hit_animation_player", "attack_bonus_particles", "defense_bonus_particles", "sprites", "attack_spawn_point")]
 collision_mask = 413
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -209,6 +210,8 @@ impulse_force = 1.0
 collision_shape = NodePath("CollisionShape2D")
 running_animation_player = NodePath("AnimationPlayer_Running")
 hit_animation_player = NodePath("AnimationPlayer_Hit")
+attack_bonus_particles = NodePath("Bonus_Attack_CPUParticles")
+defense_bonus_particles = NodePath("Bonus_Defense_CPUParticles2")
 dead_color = Color(0.413595, 0.399579, 0.385991, 1)
 sprites = [NodePath("BodySprite")]
 invincibility_alpha = 0.3
@@ -245,3 +248,31 @@ libraries = {
 }
 
 [node name="Attack_Spawn_Point" type="Node2D" parent="."]
+
+[node name="Bonus_Attack_CPUParticles" type="CPUParticles2D" parent="."]
+visible = false
+amount = 5
+texture = ExtResource("7_fjrip")
+lifetime = 0.5
+direction = Vector2(22.55, 15.825)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.9
+color = Color(1, 0.44705883, 0, 1)
+
+[node name="Bonus_Defense_CPUParticles2" type="CPUParticles2D" parent="."]
+visible = false
+amount = 5
+texture = ExtResource("7_fjrip")
+lifetime = 0.5
+direction = Vector2(22.55, 15.825)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.9
+color = Color(0.12941177, 0.44705883, 0.6745098, 1)
