@@ -55,10 +55,12 @@ func _check_and_spend_coin() -> bool:
 	
 func _open_casino_display() -> void:
 	UI_Casino.Instance._show_casino_ui(self)
+	Player.Instance.is_in_casino = true
 	
 func _close_casino_display() -> void:
 	UI_Casino.Instance._hide_casino_ui()
-	
+	Player.Instance.is_in_casino = false
+		
 func _trigger_casino_result(result : CASINO_RESULT) -> void:
 	var score : int = 0
 	
