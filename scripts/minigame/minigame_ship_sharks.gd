@@ -52,8 +52,8 @@ func _setup_potentials_items(potentials : Array[Node2D]) -> void:
 			continue
 		if chest == null && i is Chest_Item:
 			chest = i
+			chest.on_chest_opened.connect(receive_chest_opened_callback)
 	
-	chest.on_chest_opened.connect(receive_chest_opened_callback)
 			
 func receive_chest_opened_callback() -> void:
 	_set_state(MINIGAME_STATE.COMPLETED)

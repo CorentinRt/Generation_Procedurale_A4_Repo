@@ -14,10 +14,10 @@ static var Instance : Player
 @export var hit_animation_player : AnimationPlayer
 
 var coins_count : int = 0
-var bonus_attack_count : int = 0
-var bonus_defense_count : int = 0
-var potion_attack_count : int = 0
-var potion_defense_count : int = 0
+var has_bonus_attack : bool = false
+var has_bonus_defense : bool = false
+var has_potion_attack : bool = false
+var has_potion_defense_count : bool = false
 
 # Collectible
 var key_count : int

@@ -35,27 +35,39 @@ func _bind_btns() -> void:
 	btn_exit.pressed.connect(_exit_shop_ui)
 	
 func _buy_bonus_attack() -> void:
+	if Player.Instance.has_bonus_attack:
+		return
 	if ScoreManager._score > data_shop.bonus_attack_price:
 		ScoreManager._remove_score(data_shop.bonus_attack_price)
-		Player.Instance.bonus_attack_count += 1
+		Player.Instance.has_bonus_attack = true
+		btn_bonus_attack.visible = false
 		print("buy bonus attack")
 	
 func _buy_bonus_defense() -> void:
+	if Player.Instance.has_bonus_defense:
+		return
 	if ScoreManager._score > data_shop.bonus_defense_price:
 		ScoreManager._remove_score(data_shop.bonus_defense_price)
-		Player.Instance.bonus_defense_count += 1
+		Player.Instance.has_bonus_defense = true
+		btn_bonus_defense.visible = false
 		print("buy bonus defense")
 	
 func _buy_potion_attack() -> void:
+	if Player.Instance.has_potion_attack:
+		return
 	if ScoreManager._score > data_shop.potion_attack_price:
 		ScoreManager._remove_score(data_shop.potion_attack_price)
-		Player.Instance.potion_attack_count += 1
+		Player.Instance.has_potion_attack = true
+		btn_potion_attack.visible = false
 		print("buy potion attack")
 	
 func _buy_potion_defense() -> void:
+	if Player.Instance.has_potion_defense:
+		return
 	if ScoreManager._score > data_shop.potion_defense_price:
 		ScoreManager._remove_score(data_shop.potion_defense_price)
-		Player.Instance.potion_defense_count += 1
+		Player.Instance.has_potion_defense = true
+		btn_potion_defense.visible = false
 		print("buy potion defense")
 	
 func _buy_coin() -> void:
@@ -68,6 +80,10 @@ func _show_shop_ui(shop : Shop) -> void:
 	associated_shop = shop
 	for i in to_hide:
 		i.visible = true
+		
+	btn_potion_attack.visible = false if Player.Instance.has_potion_attack else true
+	btn_potion_defense.visible = false if Player.Instance.has_potion_defense else true
+	
 	
 func _hide_shop_ui() -> void:
 	for i in to_hide:
