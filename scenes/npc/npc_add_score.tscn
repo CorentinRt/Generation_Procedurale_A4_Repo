@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgn61f2furk62"]
+
+[ext_resource type="PackedScene" uid="uid://ctjhhqfodba6g" path="res://scenes/npc/npc.tscn" id="1_7eyag"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_npc_add_score.json" id="2_lc7r2"]
+
+[node name="Npc" instance=ExtResource("1_7eyag")]
+json = ExtResource("2_lc7r2")

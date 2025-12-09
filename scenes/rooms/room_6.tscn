@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_tw5gm"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_al061"]
 [ext_resource type="PackedScene" uid="uid://cc6jjn8xbje6n" path="res://scenes/minigame/minigame_question.tscn" id="4_7u5fy"]
-[ext_resource type="PackedScene" uid="uid://ctjhhqfodba6g" path="res://scenes/dialogs/npc.tscn" id="5_tw5gm"]
+[ext_resource type="PackedScene" uid="uid://ctjhhqfodba6g" path="res://scenes/npc/npc.tscn" id="5_tw5gm"]
 
 [node name="Room6" type="Node2D"]
 script = ExtResource("1_7u5fy")

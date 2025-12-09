@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NpcSpawnData" load_steps=3 format=3 uid="uid://c3sw7ry7ksujg"]
+
+[ext_resource type="Script" uid="uid://7gvr4i8qpkdr" path="res://scripts/quests/npc_spawn_data.gd" id="1_avjpk"]
+[ext_resource type="PackedScene" uid="uid://cgn61f2furk62" path="res://scenes/npc/npc_add_score.tscn" id="1_h0xxf"]
+
+[resource]
+script = ExtResource("1_avjpk")
+npc_type = 2
+prefab = ExtResource("1_h0xxf")
+spawn_proba = 0.1
+max_spawn = 2
+metadata/_custom_type_script = "uid://7gvr4i8qpkdr"
