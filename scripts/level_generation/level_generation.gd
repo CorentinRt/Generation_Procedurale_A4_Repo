@@ -25,7 +25,7 @@ func _ready() -> void:
 		var startingRoomDataInstance:RoomData = RoomData.new()
 		startingRoomDataInstance.roomNode = _startingRoom.roomScene.instantiate() as Room
 		startingRoomDataInstance.tilemaps = startingRoomDataInstance.roomNode.tilemap_layers
-		startingRoomDataInstance.mergedTilemap = _merge_tilemaps(startingRoomDataInstance.tilemaps)
+		startingRoomDataInstance.mergedTilemapsRect = _merge_tilemaps(startingRoomDataInstance.tilemaps)
 		add_child(startingRoomDataInstance.roomNode)
 		
 		var startingRoomDirections:Array[LevelGenerationUtils.Directions] = _selectRandomDirFromArray(_possibleStartingRoomDirections)
@@ -85,7 +85,7 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	var selectedRoomData:RoomData = _pickRandomElementFromDict(_roomsList).duplicate()
 	selectedRoomData.roomNode = selectedRoomData.roomScene.instantiate() as Room
 	selectedRoomData.tilemaps = selectedRoomData.roomNode.tilemap_layers
-	selectedRoomData.mergedTilemap = _merge_tilemaps(selectedRoomData.tilemaps)
+	selectedRoomData.mergedTilemapsRect = _merge_tilemaps(selectedRoomData.tilemaps)
 	selectedRoomData.directions.clear()
 	match creationDir:
 		LevelGenerationUtils.Directions.NORTH:
@@ -126,7 +126,8 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 func _add_doors() -> void:
 	for i in _roomMap:
 		for dir in _roomMap[i].directions:
-			var roomBounds:Rect2 = _roomMap[i].mergedTilemap.get_used_rect()
+			var roomBounds:Rect2 = _roomMap[i].mergedTilemapsRect
+			print(roomBounds)
 			var tileSize:Vector2i = _roomMap[i].tilemaps[0].tile_set.tile_size
 			var isWidthEven:bool = false
 			var isHeightEven:bool = false
@@ -220,8 +221,8 @@ func _update_available_rooms(room:RoomData) -> void:
 		if(_availableRooms[i].directions.size() >= 4 || (roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.NORTH) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.SOUTH) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.EAST) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.WEST))):
 			_availableRooms.erase(i)
 
-func _merge_tilemaps(tilemapArray:Array[TileMapLayer]) -> TileMapLayer:
-	var tilemap:TileMapLayer = TileMapLayer.new()
+func _merge_tilemaps(tilemapArray:Array[TileMapLayer]) -> Rect2:
+	var rect:Rect2
 	for i in tilemapArray.size():
-		tilemap.get_used_rect().merge(tilemapArray[i].get_used_rect())
-	return tilemap
+		rect.merge(tilemapArray[i].get_used_rect())
+	return rect

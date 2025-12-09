@@ -4,5 +4,5 @@ class_name RoomData extends Resource
 var directions:Array[LevelGenerationUtils.Directions]
 var tilemaps:Array[TileMapLayer]
 var coordinates:Vector2i
-var mergedTilemap:TileMapLayer
+var mergedTilemapsRect:Rect2
 var roomNode:Room
