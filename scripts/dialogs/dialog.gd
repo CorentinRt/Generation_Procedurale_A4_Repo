@@ -166,6 +166,7 @@ func _get_and_show_current_state_text():
 
 func _get_array_sentences(sentences : String):
 	# Cut at next
+	
 	sentences_cut = sentences.split("<next>", false)
 	
 	for i in range(sentences_cut.size()):
@@ -332,13 +333,14 @@ func show_dialog(npc : Node) -> void:
 	if is_in_dialog:
 		return
 	
+	current_sentence_id = 0
 	is_in_dialog = true
 	Player.Instance.set_is_in_dialog(is_in_dialog)
 	
 	current_npc = npc
-	_get_and_show_current_state_text()
 	dialog_btn.show()
 	hide_questions_btn()
+	_get_and_show_current_state_text()
 	set_saved_color()
 	
 func hide_dialog() -> void:

@@ -10,24 +10,77 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:Combat]"
 	],
 	"firstInteraction": [
-    	"Salut ça va ?"
+    	"#Présentation# #introQuête#<next>#demandeQuête#<next>#Remerciment# #Fin#"
 	],
+	"Présentation":[
+		"Salut !",
+		"Hello !",
+		"Bonjour"
+	],
+	"introQuête":[
+		"J'aurais une demande.",
+		"J'aurais quelque chose a te demander.",
+		"Est ce que tu pourrais faire quelque chose pour moi ?",
+		"J'ai besoin que tu fasses quelque chose pour moi.",
+		"Je peux te demander quelque chose ?"
+	],
+	"demandeQuête":[
+		"Tu pourrais aller tuer des pirates pour moi ?"
+	],
+	"Remerciment":[
+		"Merci à toi l'ami !",
+		"Merci !",
+		"Bon courage à toi !",
+		"Courage"
+	],
+	"Fin":[
+		"Reviens quand tu les auras tous tué !",
+		"J'attendrais que tu ai finis !",
+		"Reviens me parler quand c'est fait"
+	],
+	
 	"questCantStart": [
-		"Finis ta quete en cours et reviens."
+		"#alreadyInQuest#"
+	],
+	"alreadyInQuest":[
+		"Finis ta quete en cours et reviens.",
+		"Tu as déjà une quête en cours, reviens après.",
+		"T'es déjà occupé, reviens plus tard."
 	],
 	"questStart":[
 		"Va taper des ennemis de ma part stp."
 	],
 	"questInProgress": [
-		"T'as encore des ennemis à taper."
+		"#DuringQuest"
+	],
+	"DuringQuest":[
+		"J'attends que tu les tues tous !",
+		"Reviens quans tu auras terminé !",
+		"Reviens quand tu as terminé !"
 	],
 	"questCompleted": [
-		"GG t'as bien tapé."
+		"#questCompleted#"
+	],
+	"questCompleted":[
+		"Tu les as vaincus !",
+		"Merci de les avoir tués !",
+		"OUI tu as terminé !"
 	],
 	"questFailed": [
-		"Je suis déçu t'aurais pu faire mieux."
+		"#questNotCompleted#"
+	],
+	"questNotCompleted":[
+		"Je suis déçu t'aurais pu faire mieux.",
+		"T'aurais pu aller les tuer quand même...",
+		"Tu as échoué !"
 	],
 	"completed": [
-		"T'as déjà fini ma quête."
+		"#alreadyDone#"
+	],
+	"alreadyDone":[
+		"T'as déjà fini ma quête.",
+		"Tu as déjà réaliser mon rêve !",
+		"Merci encore pour ton aide",
+		"Bon courage pour la suite !"
 	]
 }
