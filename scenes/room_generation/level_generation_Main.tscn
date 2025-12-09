@@ -33,31 +33,31 @@
 script = ExtResource("1_dvui6")
 _startingRoom = ExtResource("2_dvui6")
 _possibleStartingRoomDirections = Array[int]([2, 3])
-_roomsList = Dictionary[ExtResource("3_o5xyv"), int]({
-ExtResource("27_vfr1o"): 0,
-ExtResource("26_miug1"): 0,
-ExtResource("25_mbwel"): 0,
-ExtResource("24_1k4mp"): 0,
-ExtResource("23_0xy7b"): 0,
-ExtResource("22_ejcta"): 0,
-ExtResource("21_0mq21"): 0,
-ExtResource("20_6ptva"): 0,
-ExtResource("19_1ghrv"): 0,
-ExtResource("18_lj3qs"): 0,
-ExtResource("17_k50yq"): 0,
-ExtResource("16_udyo4"): 0,
-ExtResource("15_7agfo"): 0,
-ExtResource("14_kpdmk"): 0,
-ExtResource("13_dpmwm"): 0,
-ExtResource("12_phwuq"): 0,
-ExtResource("11_utmb2"): 0,
-ExtResource("10_qwhfw"): 0,
-ExtResource("9_xewqf"): 0,
-ExtResource("8_7rv3m"): 0,
-ExtResource("7_hkipd"): 0,
-ExtResource("6_14pfu"): 0,
-ExtResource("5_if6pg"): 0,
-ExtResource("4_5efro"): 0
+_roomsList = Dictionary[ExtResource("3_o5xyv"), float]({
+ExtResource("4_5efro"): 0.0,
+ExtResource("5_if6pg"): 0.0,
+ExtResource("6_14pfu"): 0.0,
+ExtResource("7_hkipd"): 0.0,
+ExtResource("8_7rv3m"): 0.0,
+ExtResource("9_xewqf"): 0.0,
+ExtResource("10_qwhfw"): 0.0,
+ExtResource("11_utmb2"): 0.0,
+ExtResource("12_phwuq"): 0.0,
+ExtResource("13_dpmwm"): 0.0,
+ExtResource("14_kpdmk"): 0.0,
+ExtResource("15_7agfo"): 0.0,
+ExtResource("16_udyo4"): 0.0,
+ExtResource("17_k50yq"): 0.0,
+ExtResource("18_lj3qs"): 0.0,
+ExtResource("19_1ghrv"): 0.0,
+ExtResource("20_6ptva"): 0.0,
+ExtResource("21_0mq21"): 0.0,
+ExtResource("22_ejcta"): 0.0,
+ExtResource("23_0xy7b"): 0.0,
+ExtResource("24_1k4mp"): 0.0,
+ExtResource("25_mbwel"): 0.0,
+ExtResource("26_miug1"): 0.0,
+ExtResource("27_vfr1o"): 0.0
 })
 _door = ExtResource("7_wf3qw")
 _roomsMaxCount = 40

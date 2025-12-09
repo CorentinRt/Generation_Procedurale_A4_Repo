@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://cwhypfupuiff4"]
+[gd_scene load_steps=9 format=4 uid="uid://cwhypfupuiff4"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_wglu6"]
 [ext_resource type="PackedScene" uid="uid://jti3mgir6w1b" path="res://scenes/minigame/ship_sharks/ship.tscn" id="2_ungx6"]
 [ext_resource type="PackedScene" uid="uid://dtw8kdvabfniw" path="res://scenes/minigame/minigame_ship_sharks.tscn" id="3_achre"]
 [ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="4_owahx"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="5_achre"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="6_owahx"]
 
 [sub_resource type="Curve2D" id="Curve2D_glihq"]
 resource_local_to_scene = true
@@ -62,3 +64,7 @@ curve = SubResource("Curve2D_glihq")
 [node name="Shark_Path2" parent="." instance=ExtResource("4_owahx")]
 position = Vector2(127, 22)
 curve = SubResource("Curve2D_j6iub")
+
+[node name="NpcContainer" parent="." instance=ExtResource("5_achre")]
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("6_owahx")]

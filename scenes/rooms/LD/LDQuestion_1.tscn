@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://cyq45ab6nhmei"]
+[gd_scene load_steps=5 format=4 uid="uid://cyq45ab6nhmei"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_hxn7a"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_2ue5m"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="3_sqb36"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="4_m4d5e"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_hxn7a")
@@ -21,3 +23,7 @@ collision_layer = 256
 [node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
 position = Vector2(2, -17)
 polygon = PackedVector2Array(112, -45, 112, -66, 61, -65, 61, -44)
+
+[node name="NpcContainer" parent="." instance=ExtResource("3_sqb36")]
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("4_m4d5e")]
