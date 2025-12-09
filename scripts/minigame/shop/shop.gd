@@ -24,11 +24,12 @@ func _on_shop_body_exited(body: Node2D) -> void:
 		
 func _interact() -> void:
 	if Player.Instance.is_in_shop:
+		_close_shop_display()
 		return
 	_open_shop_display()
 
 func _open_shop_display() -> void:
-	Shop_UI.Instance._show_shop_ui()
+	Shop_UI.Instance._show_shop_ui(self)
 	Player.Instance.is_in_shop = true
 	
 func _close_shop_display() -> void:

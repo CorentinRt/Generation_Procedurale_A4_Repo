@@ -6,29 +6,39 @@
 [ext_resource type="StyleBox" uid="uid://cvsitowu1g7a4" path="res://style/shop_borders.tres" id="3_gb0wm"]
 [ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="6_uuaod"]
 
-[node name="ShopUi" type="Control" node_paths=PackedStringArray("btn_bonus_attack", "btn_bonus_defense", "btn_potion_attack", "btn_potion_defense", "btn_coin")]
+[node name="ShopUi" type="Control" node_paths=PackedStringArray("to_hide", "btn_bonus_attack", "btn_bonus_defense", "btn_potion_attack", "btn_potion_defense", "btn_coin", "btn_exit")]
 layout_mode = 3
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_41qv1")
 data_shop = ExtResource("2_l7q7t")
+to_hide = [NodePath("Container"), NodePath("ExitButton")]
 btn_bonus_attack = NodePath("Container/Panel/Button_BAttack")
 btn_bonus_defense = NodePath("Container/Panel/Button2_BDefense")
 btn_potion_attack = NodePath("Container/Panel/Button3_PAttack")
 btn_potion_defense = NodePath("Container/Panel/Button4_PDefense")
 btn_coin = NodePath("Container/Panel/Button5_Coin")
+btn_exit = NodePath("ExitButton")
 metadata/_custom_type_script = "uid://bnca8tyxnni35"
 
-[node name="Container" type="Control" parent="."]
+[node name="ExitButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
