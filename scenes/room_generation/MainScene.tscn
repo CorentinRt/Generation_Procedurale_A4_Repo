@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqjnuthhfsvnt"]
+
+[ext_resource type="PackedScene" uid="uid://cktu31engex65" path="res://scenes/room_generation/level_generation.tscn" id="1_u2rfa"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="2_grgwt"]
+[ext_resource type="PackedScene" uid="uid://cpsyx0go5ucvu" path="res://scenes/room_generation/rooms_interiors/interior_test_1.tscn" id="3_f102n"]
+[ext_resource type="PackedScene" uid="uid://cxgc6uao76c46" path="res://scenes/room_generation/rooms_interiors/interior_test_2.tscn" id="4_hb5b0"]
+[ext_resource type="PackedScene" uid="uid://cdult7ivh2o31" path="res://scenes/room_generation/rooms_interiors/interior_test_3.tscn" id="5_g60s1"]
+[ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="6_grgwt"]
+
+[sub_resource type="Resource" id="Resource_grgwt"]
+resource_local_to_scene = true
+script = ExtResource("2_grgwt")
+roomScene = ExtResource("3_f102n")
+
+[sub_resource type="Resource" id="Resource_f102n"]
+resource_local_to_scene = true
+script = ExtResource("2_grgwt")
+roomScene = ExtResource("4_hb5b0")
+
+[sub_resource type="Resource" id="Resource_hb5b0"]
+resource_local_to_scene = true
+script = ExtResource("2_grgwt")
+roomScene = ExtResource("5_g60s1")
+
+[node name="MainScene" type="Node2D"]
+
+[node name="LevelGeneration" parent="." instance=ExtResource("1_u2rfa")]
+_roomsList = Dictionary[ExtResource("2_grgwt"), int]({
+SubResource("Resource_grgwt"): 0,
+SubResource("Resource_f102n"): 2,
+SubResource("Resource_hb5b0"): 3
+})
+_roomsMaxCount = 2000
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("6_grgwt")

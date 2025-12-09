@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs1annrxf1kda"]
+[gd_scene load_steps=6 format=3 uid="uid://cs1annrxf1kda"]
 
+[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="1_53p0f"]
 [ext_resource type="Script" uid="uid://co3285gq8dm31" path="res://scripts/minigame/casino_machine/casino_machine.gd" id="1_wt8r8"]
-[ext_resource type="Texture2D" uid="uid://kqt0g6i7xqyg" path="res://sprites/Casino_Sprite/Tile slot machine.png" id="2_6cf17"]
+[ext_resource type="Resource" uid="uid://c16osk335tkqt" path="res://resources/score/r_scores_data.tres" id="2_23end"]
 [ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="3_6cf17"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53p0f"]
@@ -9,17 +10,17 @@
 [node name="CasinoMachine" type="Area2D" node_paths=PackedStringArray("interaction_sprite") groups=["item_minigame"]]
 script = ExtResource("1_wt8r8")
 interaction_sprite = NodePath("InteractionIcon")
+_scores_datas = ExtResource("2_23end")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.85, 0.85)
 shape = SubResource("CapsuleShape2D_53p0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(1.1920929e-07, -2.3841858e-07)
-scale = Vector2(0.58529407, 0.58529407)
-texture = ExtResource("2_6cf17")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_53p0f")
 region_enabled = true
-region_rect = Rect2(591.16003, 127.85617, 20.144226, 43.166092)
+region_rect = Rect2(224, 1, 16, 32)
 
 [node name="InteractionIcon" parent="." instance=ExtResource("3_6cf17")]
 position = Vector2(3.9999998, -2.9999998)

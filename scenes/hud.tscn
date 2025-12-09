@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b20085rng87fk"]
+[gd_scene load_steps=8 format=3 uid="uid://b20085rng87fk"]
 
 [ext_resource type="Script" uid="uid://bet45gulqsrwk" path="res://scripts/hud.gd" id="1_ftoh2"]
 [ext_resource type="PackedScene" uid="uid://bxb3sh2rsgn4j" path="res://scenes/heart.tscn" id="2_fymyw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3wiadcor1x1w" path="res://scenes/score/ui_score.tscn" id="4_6fi6k"]
 [ext_resource type="PackedScene" uid="uid://0sto3gfi2y6x" path="res://scenes/quests/quest_manager.tscn" id="5_uo2fv"]
 [ext_resource type="PackedScene" uid="uid://psvhqqirckxe" path="res://scenes/minigame/casino_machine/ui_casino.tscn" id="6_047uy"]
+[ext_resource type="PackedScene" uid="uid://s7cxh3fadvn5" path="res://scenes/minigame/shop/shop_ui.tscn" id="7_5pdws"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_ftoh2")
@@ -18,6 +19,8 @@ offset_bottom = 50.0
 theme_override_constants/separation = 10
 
 [node name="Dialog" parent="." instance=ExtResource("3_5ysmq")]
+
+[node name="ShopUi" parent="." instance=ExtResource("7_5pdws")]
 
 [node name="UiScore" parent="." instance=ExtResource("4_6fi6k")]
 
