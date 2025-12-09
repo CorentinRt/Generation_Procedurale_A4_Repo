@@ -39,10 +39,14 @@
 		"J'attendrais que tu trouves tout ça !"
 	],
 	"questCantStart":[
+		"#alreadyInQuest#"
+	],
+	"alreadyInQuest":[
 		"Finis ta quete en cours et reviens.",
 		"Tu as déjà une quête en cours, reviens après.",
 		"T'es déjà occupé, reviens plus tard."
 	],
+	
 	"questStart":[
 		"Peux-tu me le ramener ?"
 	],
