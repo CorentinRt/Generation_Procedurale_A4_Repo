@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://c8ns0gym6l5pp"]
+
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="1_lali2"]
+[ext_resource type="AudioStream" uid="uid://yjrwcp2td3wd" path="res://resources/audio/s_beep.wav" id="1_qacoq"]
+
+[resource]
+script = ExtResource("1_lali2")
+audiostream = ExtResource("1_qacoq")
+metadata/_custom_type_script = "uid://7eoho5edu8ro"
