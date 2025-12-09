@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://cyq45ab6nhmei"]
+[gd_scene load_steps=5 format=4 uid="uid://cyq45ab6nhmei"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_2qc8u"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_2ir2c"]
+[ext_resource type="PackedScene" uid="uid://bg45dxuyn2nc1" path="res://scenes/dialogs/skull.tscn" id="3_wt3dh"]
+[ext_resource type="PackedScene" uid="uid://6qmuxs06irmp" path="res://scenes/dialogs/letter.tscn" id="4_f3apr"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_2qc8u")
@@ -12,7 +14,7 @@ tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAE
 tile_set = ExtResource("2_2ir2c")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQADAPz/AQAEAAYAAAADAPv/AQAEAAUAAAADAPr/AQAEAAYAAAADAPn/AQAEAAUAAAAHAPv/AQAEAAUAAAAHAPn/AQAEAAUAAAAHAPz/AQAEAAYAAAAHAPr/AQAEAAYAAAAGAPz/AQADAAcAAAAEAPr/AQAAAAUAAAA=")
+tile_map_data = PackedByteArray("AAAFAPf/AgAAAAAAAQAKAPv/AgAAAAAAAQADAPz/AQAEAAYAAAADAPv/AQAEAAUAAAADAPr/AQAEAAYAAAADAPn/AQAEAAUAAAAHAPv/AQAEAAUAAAAHAPn/AQAEAAUAAAAHAPz/AQAEAAYAAAAHAPr/AQAEAAYAAAA=")
 tile_set = ExtResource("2_2ir2c")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
@@ -21,3 +23,9 @@ collision_layer = 256
 [node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
 position = Vector2(2, -17)
 polygon = PackedVector2Array(112, -45, 112, -66, 61, -65, 61, -44)
+
+[node name="Skull" parent="." instance=ExtResource("3_wt3dh")]
+position = Vector2(103, -55)
+
+[node name="Letter" parent="." instance=ExtResource("4_f3apr")]
+position = Vector2(68, -91)
