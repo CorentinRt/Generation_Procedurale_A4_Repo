@@ -34,6 +34,7 @@ func _open_chest() -> void:
 	on_chest_opened.emit()
 	can_interact = false
 	interaction_sprite.hide()
+	AudioManager.Instance.play_sound("open_chest")
 		
 func _close_chest() -> void:
 	if !is_open:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://cjv2p8iromxtk"]
+
+[ext_resource type="AudioStream" uid="uid://d0oku5c5ohu8u" path="res://resources/audio/Open_Chest.wav" id="1_ev2vc"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_6233d"]
+
+[resource]
+script = ExtResource("2_6233d")
+sound_name = "open_chest"
+audiostream = ExtResource("1_ev2vc")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"
