@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://s7cxh3fadvn5"]
+[gd_scene load_steps=8 format=3 uid="uid://s7cxh3fadvn5"]
 
 [ext_resource type="Script" uid="uid://bnca8tyxnni35" path="res://scripts/minigame/shop/shop_ui.gd" id="1_41qv1"]
 [ext_resource type="StyleBox" uid="uid://0lsd245m20ox" path="res://style/shop.tres" id="2_ih36i"]
 [ext_resource type="Resource" uid="uid://cyp3dvhmmq7yx" path="res://resources/minigame/shop/shop_data.tres" id="2_l7q7t"]
 [ext_resource type="StyleBox" uid="uid://cvsitowu1g7a4" path="res://style/shop_borders.tres" id="3_gb0wm"]
+[ext_resource type="Texture2D" uid="uid://dx7kqv45d7e5u" path="res://sprites/shop_items/Potion_Attack.png" id="5_agige"]
+[ext_resource type="Texture2D" uid="uid://clfkoirnfq8h5" path="res://sprites/shop_items/Potion_Vie.png" id="6_743qq"]
 [ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="6_uuaod"]
 
 [node name="ShopUi" type="Control" node_paths=PackedStringArray("to_hide", "btn_bonus_attack", "btn_bonus_defense", "btn_potion_attack", "btn_potion_defense", "btn_coin", "btn_exit")]
@@ -73,7 +75,8 @@ offset_left = 647.8
 offset_top = 66.2
 offset_right = 783.8
 offset_bottom = 202.2
-icon = ExtResource("6_uuaod")
+icon = ExtResource("5_agige")
+expand_icon = true
 
 [node name="Button4_PDefense" type="Button" parent="Container/Panel"]
 layout_mode = 0
@@ -81,7 +84,8 @@ offset_left = 233.79999
 offset_top = 304.2
 offset_right = 369.8
 offset_bottom = 440.2
-icon = ExtResource("6_uuaod")
+icon = ExtResource("6_743qq")
+expand_icon = true
 
 [node name="Button5_Coin" type="Button" parent="Container/Panel"]
 layout_mode = 0

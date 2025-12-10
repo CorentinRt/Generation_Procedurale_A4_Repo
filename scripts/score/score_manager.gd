@@ -9,7 +9,7 @@ var _total_lost_score = 0
 var _last_lost_score = 0
 
 func _reset_score() -> void:
-	_score = 0
+	_score = 25000
 	
 func _change_score(value:int) -> void:
 	_score = value
