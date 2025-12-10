@@ -28,7 +28,8 @@ var spawn_probability: float = .5
 func _ready() -> void:
 	init_npcs() # a mettre apres la gen du monde
 	
-func init_npcs():
+func init_npcs():	# appelé lors du load de la scene de jeu dans GameManager
+	containers.clear()
 	get_spawn_containers()
 	spawn_npcs()
 	

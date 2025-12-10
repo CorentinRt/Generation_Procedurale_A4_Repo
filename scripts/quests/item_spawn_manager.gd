@@ -15,6 +15,12 @@ func _ready():
 	_init_created_items()
 	_find_all_containers()
 
+func init_quest_items() -> void:
+	created_items.clear()
+	containers.clear()
+	_init_created_items()
+	_find_all_containers()
+
 func _init_created_items():
 	for key in ItemType.keys():
 		created_items[ItemType[key]] = false

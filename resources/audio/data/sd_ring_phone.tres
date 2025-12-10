@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://cqyjapxoc5erj"]
+
+[ext_resource type="AudioStream" uid="uid://cw2b7kffae0fv" path="res://resources/audio/Phone_Ringing.wav" id="1_i7q1n"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_cnknt"]
+
+[resource]
+script = ExtResource("2_cnknt")
+sound_name = "ring_phone"
+audiostream = ExtResource("1_i7q1n")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"

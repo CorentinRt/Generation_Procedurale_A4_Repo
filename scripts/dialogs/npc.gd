@@ -27,6 +27,10 @@ var current_dialog_state: DialogState = DialogState.FIRST_INTERACTION
 @export var sprite_animation_player : AnimationPlayer
 @export var notif_animation_player : AnimationPlayer
 
+@export_group("Ring Audio")
+@export var ring_cooldown : float = 3
+var _last_ring_time : float
+
 signal on_question_answered(right_answer : bool)
 
 func _ready():
@@ -149,3 +153,19 @@ func _set_marker_color():
 			marker_animation.modulate = Color(0.813, 2.249, 0.477) # Green
 		DialogState.COMPLETED:
 			marker_animation.modulate = Color(0.682, 0.687, 0.734) # Gray
+
+
+func _on_area_player_ring_phone_body_entered(body: Node2D) -> void:
+	# phone ring if player near only if has non interacted quest
+	if current_dialog_state != DialogState.FIRST_INTERACTION:
+		return
+	if quest == null:
+		return
+	# check cooldown
+	if Time.get_unix_time_from_system() - _last_ring_time < ring_cooldown:
+		return
+	# check player entered
+	if body is not Player:
+		return
+	
+	AudioManager.Instance.play_sound("ring_phone")

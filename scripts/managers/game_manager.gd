@@ -17,6 +17,8 @@ func _init_game() -> void:
 	has_lost = false
 	await get_tree().create_timer(0.1).timeout
 	_player_init_sound()
+	NpcSpawnManager.init_npcs()
+	ItemSpawnManager.init_quest_items()
 	
 func _player_init_sound():
 	AudioManager.Instance.play_sound("main_theme")

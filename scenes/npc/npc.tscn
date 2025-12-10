@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctjhhqfodba6g"]
+[gd_scene load_steps=20 format=3 uid="uid://ctjhhqfodba6g"]
 
 [ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_npc_question.json" id="2_c01eb"]
@@ -131,6 +131,9 @@ _data = {
 &"idle": SubResource("Animation_w5rv1")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_woxlu"]
+radius = 33.55
+
 [node name="Npc" type="Node2D" node_paths=PackedStringArray("interact_icon", "marker_animation", "sprite_animation_player", "notif_animation_player") groups=["NPC"]]
 script = ExtResource("1_yk1oq")
 json = ExtResource("2_c01eb")
@@ -164,3 +167,11 @@ libraries = {
 
 [node name="InteractionIcon" parent="." instance=ExtResource("5_w5rv1")]
 position = Vector2(3.3881318e-21, 2.9999998)
+
+[node name="Area_PlayerRingPhone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_PlayerRingPhone"]
+shape = SubResource("CircleShape2D_woxlu")
+
+[connection signal="body_entered" from="Area_PlayerRingPhone" to="." method="_on_area_player_ring_phone_body_entered"]
