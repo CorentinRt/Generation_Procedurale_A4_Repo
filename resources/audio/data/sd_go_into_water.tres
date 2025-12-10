@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://cnhbar67jaon4"]
+
+[ext_resource type="AudioStream" uid="uid://dim8e6wyu0jcy" path="res://resources/audio/Go_Into_Water.wav" id="1_rssxn"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_cvmhm"]
+
+[resource]
+script = ExtResource("2_cvmhm")
+sound_name = "water"
+audiostream = ExtResource("1_rssxn")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"

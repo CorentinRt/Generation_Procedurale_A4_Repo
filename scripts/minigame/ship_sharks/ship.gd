@@ -54,6 +54,7 @@ func _update_clamp_player_to_anchor() -> void:
 func _set_player_in(player: Player) -> void:
 	player_is_in = true
 	associated_player = player
+	AudioManager.Instance.play_sound("water")
 	
 func _set_player_out(player : Player) -> void:
 	player_is_in = false
