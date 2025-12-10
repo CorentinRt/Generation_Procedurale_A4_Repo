@@ -11,6 +11,7 @@ class_name LevelGeneration extends Node2D
 
 @export_group("Generation parameters")
 @export var _door:PackedScene
+@export var _wall:PackedScene
 @export var _roomsMaxCount:int
 @export var _maxLevelHeight:int
 @export var _maxLevelWidth:int
@@ -56,7 +57,7 @@ func _ready() -> void:
 				t = 0
 				await get_tree().create_timer(0.1).timeout
 		
-		_add_doors()
+		_add_doors_and_walls()
 		
 		_player.enter_room(_roomMap[Vector2i(0, 0)].roomNode)
 
@@ -121,61 +122,108 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	_update_available_rooms(_currentRoom)
 	add_child(selectedRoomData.roomNode)
 
-func _add_doors() -> void:
+func _add_doors_and_walls() -> void:
 	for i in _roomMap:
+		var unusedDirections:Array[LevelGenerationUtils.Directions] = [LevelGenerationUtils.Directions.NORTH, LevelGenerationUtils.Directions.SOUTH, LevelGenerationUtils.Directions.EAST, LevelGenerationUtils.Directions.WEST]
+		
+		var roomBounds:Rect2 = _roomMap[i].roomNode.get_world_bounds()
+		print(roomBounds)
+		var tileSize:Vector2i = _roomMap[i].roomNode.tilemap_layers[0].tile_set.tile_size
+		var isWidthEven:bool = false
+		var isHeightEven:bool = false
+		
+		if(int(roomBounds.size.x / tileSize.x) % 2 == 0): isWidthEven = true
+		if(int(roomBounds.size.y / tileSize.y) % 2 == 0): isHeightEven = true
+		
+		print("\n")
+		print("Room name : " + _roomMap[i].roomNode.name)
+		print("Room bounds size : {" + str(roomBounds.size.x) + ";" + str(roomBounds.size.y) + "}")
+		print("is Width even : " + str(isWidthEven))
+		print("Width size : " + str(roomBounds.size.x/ tileSize.x))
+		print("is Height even : " + str(isHeightEven))
+		print("Height size : " + str(roomBounds.size.y/ tileSize.y))
+		
+		var offset:Vector2 = Vector2.ZERO
+		offset = tileSize / 2
+		
+		#Put doors in desired directions
 		for dir in _roomMap[i].directions:
-			var roomBounds:Rect2 = _roomMap[i].roomNode.get_world_bounds()
-			print(roomBounds)
-			var tileSize:Vector2i = _roomMap[i].roomNode.tilemap_layers[0].tile_set.tile_size
-			var isWidthEven:bool = false
-			var isHeightEven:bool = false
-			
-			if(int(roomBounds.size.x / tileSize.x) % 2 == 0): isWidthEven = true
-			if(int(roomBounds.size.y / tileSize.y) % 2 == 0): isHeightEven = true
-			
-			print("\n")
-			print("Room name : " + _roomMap[i].roomNode.name)
-			print("Room bounds size : {" + str(roomBounds.size.x) + ";" + str(roomBounds.size.y) + "}")
-			print("is Width even : " + str(isWidthEven))
-			print("Width size : " + str(roomBounds.size.x/ tileSize.x))
-			print("is Height even : " + str(isHeightEven))
-			print("Height size : " + str(roomBounds.size.y/ tileSize.y))
-			
-			#roomBounds.size *= tileSize.x
-			var offset:Vector2 = Vector2.ZERO
-			offset = tileSize / 2
 			match dir:
 				LevelGenerationUtils.Directions.NORTH:
-					#var yCoord:float = roomBounds.position.y - roomBounds.size.y / 2 + offset.y
 					if(isWidthEven):
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x / 2 + offset.x, offset.y))
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x / 2 - offset.x, offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x / 2 + offset.x, offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x / 2 - offset.x, offset.y))
 					else:
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x / 2, offset.y))
+						_create_object_in_room(_door ,_roomMap[i], Vector2(roomBounds.size.x / 2, offset.y))
+					
+					unusedDirections.erase(LevelGenerationUtils.Directions.NORTH)
 					
 				LevelGenerationUtils.Directions.SOUTH:
-					#var yCoord:float = roomBounds.position.y + roomBounds.size.y / 2 - offset.y
 					if(isWidthEven):
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x / 2 + offset.x, roomBounds.size.y - offset.y))
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x / 2 - offset.x, roomBounds.size.y - offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x / 2 + offset.x, roomBounds.size.y - offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x / 2 - offset.x, roomBounds.size.y - offset.y))
 					else:
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x / 2, roomBounds.size.y - offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x / 2, roomBounds.size.y - offset.y))
+					
+					unusedDirections.erase(LevelGenerationUtils.Directions.SOUTH)
 						
 				LevelGenerationUtils.Directions.EAST:
-					#var xCoord:float = roomBounds.position.x + roomBounds.size.x / 2 - offset.x
 					if(isHeightEven):
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2 - offset.y))
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2 + offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2 - offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2 + offset.y))
 					else:
-						_create_door(_roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2))
+						_create_object_in_room(_door, _roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2))
+						
+					unusedDirections.erase(LevelGenerationUtils.Directions.EAST)
 						
 				LevelGenerationUtils.Directions.WEST:
-					#var xCoord:float = roomBounds.position.x - roomBounds.size.x / 2 + offset.x
 					if(isHeightEven):
-						_create_door(_roomMap[i], Vector2(offset.x, roomBounds.size.y / 2 - offset.y))
-						_create_door(_roomMap[i], Vector2(offset.x, roomBounds.size.y / 2 + offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(offset.x, roomBounds.size.y / 2 - offset.y))
+						_create_object_in_room(_door, _roomMap[i], Vector2(offset.x, roomBounds.size.y / 2 + offset.y))
 					else:
-						_create_door(_roomMap[i], Vector2(offset.x, roomBounds.size.y / 2))
+						_create_object_in_room(_door, _roomMap[i], Vector2(offset.x, roomBounds.size.y / 2))
+						
+					unusedDirections.erase(LevelGenerationUtils.Directions.WEST)
+		
+		#Put walls in unsed directions
+		for dir in unusedDirections:
+			match dir:
+				LevelGenerationUtils.Directions.NORTH:
+					if(isWidthEven):
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x / 2 + offset.x, offset.y))
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x / 2 - offset.x, offset.y))
+					else:
+						_create_object_in_room(_wall ,_roomMap[i], Vector2(roomBounds.size.x / 2, offset.y))
+					
+					#unusedDirections.erase(LevelGenerationUtils.Directions.NORTH)
+					
+				LevelGenerationUtils.Directions.SOUTH:
+					if(isWidthEven):
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x / 2 + offset.x, roomBounds.size.y - offset.y))
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x / 2 - offset.x, roomBounds.size.y - offset.y))
+					else:
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x / 2, roomBounds.size.y - offset.y))
+					
+					#unusedDirections.erase(LevelGenerationUtils.Directions.SOUTH)
+						
+				LevelGenerationUtils.Directions.EAST:
+					if(isHeightEven):
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2 - offset.y)).rotation = deg_to_rad(90.0)
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2 + offset.y)).rotation = deg_to_rad(90.0)
+					else:
+						_create_object_in_room(_wall, _roomMap[i], Vector2(roomBounds.size.x - offset.x, roomBounds.size.y / 2)).rotation = deg_to_rad(90.0)
+						
+					#unusedDirections.erase(LevelGenerationUtils.Directions.EAST)
+						
+				LevelGenerationUtils.Directions.WEST:
+					if(isHeightEven):
+						_create_object_in_room(_wall, _roomMap[i], Vector2(offset.x, roomBounds.size.y / 2 - offset.y)).rotation = deg_to_rad(90.0)
+						_create_object_in_room(_wall, _roomMap[i], Vector2(offset.x, roomBounds.size.y / 2 + offset.y)).rotation = deg_to_rad(90.0)
+					else:
+						_create_object_in_room(_wall, _roomMap[i], Vector2(offset.x, roomBounds.size.y / 2)).rotation = deg_to_rad(90.0)
+						
+					#unusedDirections.erase(LevelGenerationUtils.Directions.WEST)
+		
 
 func roomHasNeighboorInDir(coordinates:Vector2i, dir:LevelGenerationUtils.Directions) -> bool:
 	match dir:
@@ -193,10 +241,11 @@ func roomHasNeighboorInDir(coordinates:Vector2i, dir:LevelGenerationUtils.Direct
 				return true;
 	return false
 
-func _create_door(roomData:RoomData, coord:Vector2) -> void:
-	var createdDoor:Node2D = _door.instantiate()
-	createdDoor.global_position = coord
-	roomData.roomNode.add_child(createdDoor)
+func _create_object_in_room(object:PackedScene, roomData:RoomData, coord:Vector2) -> Node2D:
+	var createdObject:Node2D = object.instantiate()
+	createdObject.global_position = coord
+	roomData.roomNode.add_child(createdObject)
+	return createdObject
 
 func _pickRandomElementFromDict(dictionary: Dictionary[RoomData, float]) -> RoomData:
 	var totalWeight:float = 0
