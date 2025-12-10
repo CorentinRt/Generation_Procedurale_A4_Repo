@@ -20,7 +20,7 @@ shape = SubResource("CapsuleShape2D_53p0f")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_23end")
 region_enabled = true
-region_rect = Rect2(589.1367, 128.37445, 22.633423, 42.872925)
+region_rect = Rect2(591.3501, 128.37445, 20.420044, 42.872925)
 
 [node name="InteractionIcon" parent="." instance=ExtResource("3_6cf17")]
 position = Vector2(3.9999998, -2.9999998)

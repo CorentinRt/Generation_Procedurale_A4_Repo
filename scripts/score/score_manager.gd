@@ -9,11 +9,12 @@ var _total_lost_score = 0
 var _last_lost_score = 0
 
 func _reset_score() -> void:
-	_score = 0
+	_change_score(25000)
 	
 func _change_score(value:int) -> void:
 	_score = value
 	_on_change_score.emit(_score)
+	_check_lose()
 
 func _add_score(value:int) -> void:
 	if value < 0:
@@ -37,3 +38,8 @@ func _remove_score(value:int) -> void:
 func _show(is_shown : bool):
 	print("show score : ", is_shown)
 	_on_request_show.emit(is_shown)
+	
+func _check_lose() -> void:
+	if _score <= 0:
+		GameManager._loose_game()
+	

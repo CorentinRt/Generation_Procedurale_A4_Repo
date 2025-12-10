@@ -6,7 +6,7 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="EndUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("score_txt")]
+[node name="EndUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("score_txt", "btn_play")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0q4s0")
 score_txt = NodePath("Panel/ScoreTxt")
+btn_play = NodePath("Panel/BtnPlay")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/EndUI"]
 layout_mode = 1
@@ -28,8 +29,19 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 105.0
+offset_bottom = 140.0
 grow_horizontal = 2
 text = "Score : XXXXXX"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BtnPlay" type="Button" parent="CanvasLayer/EndUI/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 0.8
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play"
