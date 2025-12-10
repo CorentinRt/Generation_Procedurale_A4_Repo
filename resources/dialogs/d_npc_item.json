@@ -51,7 +51,7 @@
 		"Peux-tu me le ramener ?"
 	],
 	"questInProgress": [
-		"#DuringQuest"
+		"#DuringQuest#"
 	],
 	"DuringQuest":[
 		"J'attends que tu récupères ce que je t'ai demandé",

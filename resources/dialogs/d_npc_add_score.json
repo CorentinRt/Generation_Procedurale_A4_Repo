@@ -10,7 +10,7 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:AddScore]"
 	],
 	"firstInteraction": [
-    	"Coucou !"
+		"Coucou !"a
 	],
 	"questCantStart": [
 		"Finis ta quete en cours et reviens."
