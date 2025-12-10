@@ -7,7 +7,7 @@
 		"[savedName:Mike Harrison][savedColor:#color#]"
 	],
 	"firstInteraction": [
-		"#stop# #sujet# #defaite# #jeu#<next>#phrase_finale#<next><end_loose>"
+		"#stop# #sujet# #defaite# #jeu#<next>#phrase_finale#<end_loose><next>"
 	],
 	"stop": [
 		"STOP !",

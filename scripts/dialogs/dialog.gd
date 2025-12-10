@@ -260,9 +260,10 @@ func _show_current_sentence_text():
 		if (!is_in_questions):
 			is_in_questions = true
 			_start_questions_ui(false) # no timer
-	elif full_sentence == "<end_loose>":
-		hide_dialog()
+	elif full_sentence.contains("<end_loose>"):
 		GameManager._notify_player_loose_dialog_ended()
+		full_sentence = full_sentence.replace("<end_loose>", "")
+		
 	else:
 		if (is_in_questions):
 			is_in_questions = false

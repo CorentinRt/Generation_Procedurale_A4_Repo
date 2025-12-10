@@ -23,6 +23,10 @@ func _player_init_sound():
 	AudioManager.Instance.play_sound("reading")
 	AudioManager.Instance.set_volume_with_name("reading", -80)
 	
+func _load_menu_scene() -> void:
+	print("load menu")
+	get_tree().change_scene_to_file("res://scenes/ended_game.tscn")
+	
 func _reload_game_scene(delay:float) -> void:
 	await get_tree().create_timer(delay).timeout
 	print("reload")
@@ -42,6 +46,9 @@ func _loose_game() -> void:
 func _notify_player_loose_dialog_ended() -> void:
 	print("player loose dialog ended")
 	on_player_loose_dialog_ended.emit()
+	await get_tree().create_timer(3).timeout
+	_load_menu_scene()
+	
 	
 func _notify_kill_enemy() -> void:
 	print("kill enemy")

@@ -28,5 +28,4 @@ func on_click_on_end_type(end_type : EndType):
 	
 func end_game(): 
 	# load scene ended_game
-	var scene := load("res://scenes/ended_game.tscn")
-	get_tree().change_scene_to_packed(scene)
+	GameManager._load_menu_scene()
