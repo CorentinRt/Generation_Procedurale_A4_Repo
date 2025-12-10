@@ -68,6 +68,7 @@ func _receive_on_enter_room_zone_callback(player_pos : Vector2) -> void:
 	
 	if _state == MINIGAME_STATE.NOT_STARTED:
 		_set_state(MINIGAME_STATE.RUNNING)
+		AudioManager.Instance.play_sound("door_closing")
 		
 func _receive_on_exit_room_zone_callback(player_pos : Vector2) -> void:
 	pass

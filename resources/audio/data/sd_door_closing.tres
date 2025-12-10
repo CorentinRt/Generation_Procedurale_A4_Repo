@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://d0f5tjxiv0748"]
+
+[ext_resource type="AudioStream" uid="uid://cq6tsphftylug" path="res://resources/audio/Door_closing.wav" id="1_pqog8"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_f8sti"]
+
+[resource]
+script = ExtResource("2_f8sti")
+sound_name = "door_closing"
+audiostream = ExtResource("1_pqog8")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"
