@@ -46,7 +46,8 @@ func _loose_game() -> void:
 func _notify_player_loose_dialog_ended() -> void:
 	print("player loose dialog ended")
 	on_player_loose_dialog_ended.emit()
-	await get_tree().create_timer(3).timeout
+	AudioManager.Instance.play_sound("end_pirate_attack")
+	await get_tree().create_timer(4).timeout
 	_load_menu_scene()
 	
 	

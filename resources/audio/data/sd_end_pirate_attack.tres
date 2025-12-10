@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://dg770vggcrwhe"]
+
+[ext_resource type="AudioStream" uid="uid://b72vm1r82ouqm" path="res://resources/audio/End_PirateAttack.wav" id="1_wnflr"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_d6jce"]
+
+[resource]
+script = ExtResource("2_d6jce")
+sound_name = "end_pirate_attack"
+audiostream = ExtResource("1_wnflr")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"

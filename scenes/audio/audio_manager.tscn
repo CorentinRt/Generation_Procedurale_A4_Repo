@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1srv4ih406nr"]
+[gd_scene load_steps=7 format=3 uid="uid://d1srv4ih406nr"]
 
 [ext_resource type="Script" uid="uid://der5gta77d6dn" path="res://scripts/audio/audio_manager.gd" id="1_iognr"]
 [ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_oarm6"]
 [ext_resource type="Resource" uid="uid://c8ns0gym6l5pp" path="res://resources/audio/data/sd_beep.tres" id="3_2ccwd"]
 [ext_resource type="Resource" uid="uid://c818qjdaji0qy" path="res://resources/audio/data/main_theme.tres" id="4_2ccwd"]
 [ext_resource type="Resource" uid="uid://0k3p7pob7ete" path="res://resources/audio/data/reading.tres" id="5_cfl81"]
+[ext_resource type="Resource" uid="uid://dg770vggcrwhe" path="res://resources/audio/data/sd_end_pirate_attack.tres" id="6_85pnb"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("beep_player")]
 script = ExtResource("1_iognr")
-sounds = Array[ExtResource("2_oarm6")]([ExtResource("3_2ccwd"), ExtResource("4_2ccwd"), ExtResource("5_cfl81")])
+sounds = Array[ExtResource("2_oarm6")]([ExtResource("3_2ccwd"), ExtResource("4_2ccwd"), ExtResource("5_cfl81"), ExtResource("6_85pnb")])
 dialog_beep = ExtResource("3_2ccwd")
 beep_player = NodePath("DialogPlayer")
 beep_interval = 0.05
