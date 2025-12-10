@@ -5,6 +5,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export_group("JSON")
 @export var start_json: JSON
 @export var taunt_json: JSON
+@export var loose_json : JSON
 @export var questions_answers_json: JSON 
 @export var item_json: JSON 
 @export var treasure_json: JSON
@@ -31,6 +32,7 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 var start_grammar: TraceryScript.Grammar
 var questions_grammar: TraceryScript.Grammar
 var taunt_grammar: TraceryScript.Grammar
+var loose_grammar : TraceryScript.Grammar
 var item_grammar: TraceryScript.Grammar
 var treasure_grammar: TraceryScript.Grammar
 var end_grammar: TraceryScript.Grammar
@@ -71,6 +73,9 @@ func _ready():
 	# Treasure
 	GameManager.on_open_final_chest.connect(show_treasure_dialog)
 
+	# Loose player
+	GameManager.on_player_has_lost.connect(show_loose_dialog)
+
 #region Setup
 func _setup_grammars():
 	# Questions
@@ -90,6 +95,12 @@ func _setup_grammars():
 	
 	taunt_grammar = TraceryScript.Grammar.new(taunt_rules)
 	taunt_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+	# Loose
+	var loose_rules = loose_json.data
+	
+	loose_grammar = TraceryScript.Grammar.new(loose_rules)
+	loose_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
 	
 	# Item
 	var item_rules = item_json.data
@@ -119,6 +130,9 @@ func show_taunt_dialog():
 		return
 		
 	show_dialog_json(taunt_json, taunt_grammar)
+	
+func show_loose_dialog():
+	show_dialog_json(taunt_json, loose_grammar)
 	
 func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
 	current_sentence_id = 0
@@ -246,6 +260,9 @@ func _show_current_sentence_text():
 		if (!is_in_questions):
 			is_in_questions = true
 			_start_questions_ui(false) # no timer
+	elif full_sentence == "<end_loose>":
+		hide_dialog()
+		GameManager._notify_player_loose_dialog_ended()
 	else:
 		if (is_in_questions):
 			is_in_questions = false

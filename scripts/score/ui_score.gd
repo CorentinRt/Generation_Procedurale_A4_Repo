@@ -12,7 +12,7 @@ var _tween_scale_bobbing : Tween
 func _ready() -> void:
 	ScoreManager._on_change_score.connect(_set_score_text)
 	ScoreManager._on_request_show.connect(_show)
-	_set_score_text(0)
+	_set_score_text(ScoreManager._score)
 	
 func _bobbing_position() -> void:
 	if _tween_position_bobbing != null:

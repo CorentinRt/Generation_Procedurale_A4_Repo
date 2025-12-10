@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://jet2rkf41p0a"]
+[gd_scene load_steps=13 format=4 uid="uid://jet2rkf41p0a"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_4ngjw"]
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_xwyhf"]
@@ -8,18 +8,26 @@
 [ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="5_flcw6"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="6_xwyhf"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="8_byrpi"]
-
-[sub_resource type="Curve2D" id="Curve2D_glihq"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 73, 1)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://catoqx6ha1nl1" path="res://scenes/minigame/ship_sharks/chest_item.tscn" id="9_a1clf"]
 
 [sub_resource type="Curve2D" id="Curve2D_j6iub"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -85, 2, 0, 0, 0, 0, 3, 1)
+"points": PackedVector2Array(0, 0, 0, 0, -28, -2.8550034, 0, 0, 0, 0, -70, -2.8550034)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_a1clf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -9, -64, 0, 0, 0, 0, -9, 6)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_f5ium"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 24, 70)
 }
 point_count = 2
 
@@ -28,15 +36,14 @@ script = ExtResource("1_xwyhf")
 tilemap_layers = [NodePath("Floor"), NodePath("Décors"), NodePath("Props")]
 
 [node name="Floor" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAABAAEAAQAAAAEAAAABAAIAAQACAAIAAAABAAMAAQABAAEAAAABAAQAAQAAAAIAAAACAAAAAQAHAAAAAAACAAEAAQADAAEAAAACAAIAAQADAAIAAAACAAMAAQAAAAIAAAACAAQAAQABAAEAAAADAAAAAQAHAAAAAAADAAEAAQAEAAEAAAADAAIAAQAEAAIAAAADAAMAAQABAAEAAAADAAQAAQABAAEAAAAEAAAAAQAHAAAAAAAEAAEAAQAEAAEAAAAEAAIAAQAEAAIAAAAEAAMAAQAAAAEAAAAEAAQAAQABAAEAAAAFAAEAAQAEAAEAAAAFAAIAAQAEAAIAAAAFAAMAAQABAAEAAAAFAAQAAQAAAAEAAAAGAAAAAQAHAAAAAAAGAAEAAQAEAAEAAAAGAAIAAQAEAAIAAAAGAAMAAQACAAQAAAAHAAAAAQAHAAAAAAAHAAEAAQAFAAEAAAAHAAIAAQAFAAIAAAAHAAMAAQAAAAEAAAAHAAQAAQABAAEAAAAIAAAAAQAHAAAAAAAIAAEAAQAAAAMAAAAIAAIAAQAAAAQAAAAIAAMAAQABAAIAAAAIAAQAAQAAAAIAAAAJAAAAAQAHAAAAAAAJAAEAAQABAAMAAAAJAAIAAQABAAQAAAAJAAMAAQAAAAEAAAAJAAQAAQABAAEAAAAKAAAAAQAIAAAAAAAKAAEAAQAIAAEAAAAKAAIAAQAIAAEAAAAKAAMAAQAIAAEAAAAAAAAAAQAGAAAAAAAAAAEAAQAGAAEAAAAAAAIAAQAGAAEAAAAAAAMAAQAGAAEAAAAAAAUAAQAGAAEAAAAAAAYAAQAGAAEAAAAAAAcAAQAGAAEAAAAAAAgAAQAGAAIAAAABAAAAAQAHAAAAAAABAAUAAQAAAAEAAAABAAYAAQABAAIAAAABAAcAAQABAAEAAAABAAgAAQAHAAIAAAACAAUAAQABAAEAAAACAAYAAQADAAAAAAACAAcAAQADAAEAAAACAAgAAQAHAAIAAAADAAUAAQABAAEAAAADAAYAAQAEAAAAAAADAAcAAQAEAAEAAAADAAgAAQAHAAIAAAAEAAUAAQABAAEAAAAEAAYAAQAEAAAAAAAEAAcAAQAEAAEAAAAEAAgAAQAHAAIAAAAFAAUAAQABAAEAAAAFAAYAAQAEAAAAAAAFAAcAAQAEAAEAAAAGAAQAAQABAAEAAAAGAAUAAQABAAEAAAAGAAYAAQAEAAAAAAAGAAcAAQAEAAEAAAAGAAgAAQAHAAIAAAAHAAUAAQABAAEAAAAHAAYAAQAEAAAAAAAHAAcAAQAEAAEAAAAHAAgAAQAHAAIAAAAIAAUAAQAAAAEAAAAIAAYAAQAFAAAAAAAIAAcAAQAFAAEAAAAIAAgAAQAHAAIAAAAJAAUAAQABAAIAAAAJAAYAAQACAAQAAAAJAAcAAQAAAAEAAAAJAAgAAQAHAAIAAAAKAAUAAQAIAAEAAAAKAAYAAQAIAAEAAAAKAAcAAQAIAAEAAAAKAAgAAQAIAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAEAAQAAAAEAAAABAAIAAQABAAEAAAABAAMAAQAFAAAAAAACAAAAAQAHAAAAAAACAAEAAQABAAEAAAACAAIAAQABAAEAAAACAAQAAQABAAEAAAADAAAAAQAHAAAAAAADAAEAAQABAAEAAAADAAIAAQABAAEAAAADAAMAAQABAAEAAAADAAQAAQABAAEAAAAEAAAAAQAHAAAAAAAEAAEAAQADAAEAAAAEAAIAAQADAAIAAAAEAAMAAQAAAAEAAAAEAAQAAQABAAEAAAAFAAEAAQAEAAEAAAAFAAIAAQAEAAIAAAAFAAMAAQABAAEAAAAFAAQAAQAAAAEAAAAGAAAAAQAHAAAAAAAGAAEAAQAFAAEAAAAGAAIAAQAFAAIAAAAGAAMAAQABAAEAAAAHAAAAAQAHAAAAAAAHAAEAAQABAAEAAAAHAAIAAQABAAEAAAAHAAMAAQAAAAEAAAAHAAQAAQABAAEAAAAIAAAAAQAHAAAAAAAJAAAAAQAHAAAAAAAJAAMAAQADAAAAAAAJAAQAAQADAAEAAAAKAAAAAQAIAAAAAAAKAAEAAQAIAAEAAAAKAAIAAQAIAAEAAAAKAAMAAQAIAAEAAAAAAAAAAQAGAAAAAAAAAAEAAQAGAAEAAAAAAAIAAQAGAAEAAAAAAAMAAQAGAAEAAAAAAAUAAQAGAAEAAAAAAAYAAQAGAAEAAAAAAAcAAQAGAAEAAAAAAAgAAQAGAAIAAAABAAAAAQAHAAAAAAABAAUAAQAFAAIAAAABAAcAAQABAAEAAAABAAgAAQAHAAIAAAACAAUAAQABAAEAAAACAAYAAQABAAEAAAACAAcAAQABAAEAAAACAAgAAQAHAAIAAAADAAUAAQABAAEAAAADAAYAAQACAAEAAAADAAcAAQACAAEAAAADAAgAAQAHAAIAAAAEAAUAAQABAAEAAAAEAAYAAQADAAAAAAAEAAcAAQADAAEAAAAEAAgAAQAHAAIAAAAFAAUAAQABAAEAAAAFAAYAAQAEAAAAAAAFAAcAAQAEAAEAAAAGAAQAAQABAAEAAAAGAAUAAQABAAEAAAAGAAYAAQAFAAAAAAAGAAcAAQAFAAEAAAAGAAgAAQAHAAIAAAAHAAUAAQABAAEAAAAHAAYAAQACAAEAAAAHAAcAAQACAAEAAAAHAAgAAQAHAAIAAAAIAAUAAQABAAEAAAAIAAYAAQABAAEAAAAIAAcAAQABAAEAAAAIAAgAAQAHAAIAAAAJAAYAAQABAAEAAAAJAAcAAQABAAEAAAAJAAgAAQAHAAIAAAAKAAUAAQAIAAEAAAAKAAYAAQAIAAEAAAAKAAcAAQAIAAEAAAAKAAgAAQAIAAIAAAABAAYAAQABAAEAAAABAAQAAQAFAAEAAAACAAMAAQABAAEAAAAJAAUAAQADAAIAAAAIAAIAAQABAAEAAAAIAAEAAQABAAEAAAAJAAEAAQABAAEAAAAJAAIAAQABAAEAAAAIAAMAAQABAAEAAAAIAAQAAQABAAEAAAAAAAQAAQAGAAEAAAAKAAQAAQAGAAEAAAAFAAAAAQAHAAIAAAAFAAgAAQAHAAIAAAA=")
 tile_set = ExtResource("1_4ngjw")
 
 [node name="Décors" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAQAAQAIAAQAAGADAAUAAQAEAAUAAAADAAYAAQAEAAYAAAAFAAAAAQAIAAQAAAAFAAgAAQAIAAQAADAGAAEAAQAEAAUAAAAGAAIAAQAEAAYAAAAKAAQAAQAIAAQAAFA=")
+tile_map_data = PackedByteArray("AAAEAAcAAQAEAAYAAAAEAAYAAQAEAAUAAAAJAAMAAQAEAAYAAAAJAAIAAQAEAAUAAAAGAAEAAQAGAAYAAAAGAAAAAQAGAAUAAAA=")
 tile_set = ExtResource("1_4ngjw")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAQAAgAAAAAAAQAFAAAAAgAAAAAAAQAFAAgAAgAAAAAAAQAKAAQAAgAAAAAAAQA=")
 tile_set = ExtResource("1_4ngjw")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
@@ -45,7 +52,7 @@ collision_layer = 256
 
 [node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
 position = Vector2(-16, 64)
-polygon = PackedVector2Array(335, 73, 335, -37, 303, -37, 303, -11, 211, -8, 210, -37, 193, -37, 193, 74, 211, 73, 213, 43, 317, 44, 318, 73)
+polygon = PackedVector2Array(335, 73, 335, 40, 323, 40, 323, -3, 336, -3, 335, -37, 287, -37, 287, -13, 243, -12, 243, -37, 193, -37, 193, -4, 207, -4, 207, 40, 193, 40, 193, 74, 241, 73, 241, 43, 286, 43, 286, 73)
 
 [node name="Borders_Body" type="StaticBody2D" parent="."]
 position = Vector2(-160, -10)
@@ -55,17 +62,17 @@ collision_mask = 64
 [node name="Borders_Shape" type="CollisionPolygon2D" parent="Borders_Body"]
 position = Vector2(-16, 64)
 build_mode = 1
-polygon = PackedVector2Array(335, 73, 335, -37, 303, -37, 303, -11, 211, -8, 210, -37, 193, -37, 193, 74, 211, 73, 213, 43, 317, 44, 318, 73)
+polygon = PackedVector2Array(335, 73, 335, 40, 323, 40, 323, -3, 336, -3, 335, -37, 287, -37, 287, -13, 243, -12, 243, -37, 193, -37, 193, -4, 207, -4, 207, 40, 193, 40, 193, 74, 241, 73, 241, 43, 286, 43, 286, 73)
 
-[node name="Ship" parent="." instance=ExtResource("2_vstnd")]
+[node name="ShipSouth" parent="." instance=ExtResource("2_vstnd")]
 position = Vector2(100.16, 88.985)
 
-[node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("3_ybp4r")]
+[node name="MinigameShipSharks" parent="." node_paths=PackedStringArray("north_potentials", "south_potentials", "west_potentials", "east_potentials", "_room_zone_detector") instance=ExtResource("3_ybp4r")]
+north_potentials = [NodePath("../ShipNord"), NodePath("../ChestItemNorth")]
+south_potentials = [NodePath("../ShipSouth"), NodePath("../ChestItemSouth")]
+west_potentials = [NodePath("../ShipOuest"), NodePath("../ChestItemSouth")]
+east_potentials = [NodePath("../ShipEst"), NodePath("../ChestItemSouth")]
 _room_zone_detector = NodePath("../RoomZoneDetector")
-
-[node name="Shark_Path" parent="." instance=ExtResource("4_b6drx")]
-position = Vector2(67.6, 51.055)
-curve = SubResource("Curve2D_glihq")
 
 [node name="Shark_Path2" parent="." instance=ExtResource("4_b6drx")]
 position = Vector2(138, 73.855)
@@ -76,4 +83,31 @@ curve = SubResource("Curve2D_j6iub")
 [node name="QuestItemContainer" parent="." instance=ExtResource("6_xwyhf")]
 
 [node name="RoomZoneDetector" parent="." instance=ExtResource("8_byrpi")]
-position = Vector2(85, 74)
+position = Vector2(88, 71)
+scale = Vector2(6.89, 5.19)
+
+[node name="ChestItemSouth" parent="." instance=ExtResource("9_a1clf")]
+position = Vector2(77, 33)
+
+[node name="Shark_Path3" parent="." instance=ExtResource("4_b6drx")]
+position = Vector2(132, 101)
+curve = SubResource("Curve2D_a1clf")
+
+[node name="Shark_Path4" parent="." instance=ExtResource("4_b6drx")]
+position = Vector2(33, 39)
+curve = SubResource("Curve2D_f5ium")
+
+[node name="ShipOuest" parent="." instance=ExtResource("2_vstnd")]
+position = Vector2(38, 71)
+rotation = 1.5707964
+
+[node name="ShipNord" parent="." instance=ExtResource("2_vstnd")]
+position = Vector2(90, 50)
+rotation = -3.1415925
+
+[node name="ShipEst" parent="." instance=ExtResource("2_vstnd")]
+position = Vector2(140, 74)
+rotation = 1.5707964
+
+[node name="ChestItemNorth" parent="." instance=ExtResource("9_a1clf")]
+position = Vector2(102, 108)

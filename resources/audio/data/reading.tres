@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://0k3p7pob7ete"]
+
+[ext_resource type="AudioStream" uid="uid://bqo5tyr623rn4" path="res://resources/audio/When_Reading.wav" id="1_g0vca"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_i7wrw"]
+
+[resource]
+script = ExtResource("2_i7wrw")
+sound_name = "reading"
+audiostream = ExtResource("1_g0vca")
+volume_db = 0.0
+looping = true
+metadata/_custom_type_script = "uid://7eoho5edu8ro"

@@ -56,7 +56,7 @@ func _select_outcome() -> Casino_Machine.CASINO_RESULT:
 	if result_proba == 0:
 		return Casino_Machine.CASINO_RESULT.BINGO
 		
-	if result_proba < 4:
+	if result_proba < 3:
 		return Casino_Machine.CASINO_RESULT.LITTLE_WIN
 		
 	return Casino_Machine.CASINO_RESULT.FAILED

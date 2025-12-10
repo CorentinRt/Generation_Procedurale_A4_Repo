@@ -10,19 +10,24 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:Item]"
 	],
 	"firstInteraction": [
-    	"#Présentation# #introQuête#<next>#demandeQuête#<next>#Remerciment# #Fin#"
+    	"#Présentation# #introQuête#<next>#demandeQuête#<next>#Remerciment#"
 	],
 	"Présentation":[
 		"Salut !",
 		"Hello !",
-		"Bonjour"
+		"Bonjour !",
+		"Allô ?",
+		"Aaaah Bien le bonjour !"
 	],
 	"introQuête":[
-		"J'aurais une demande.",
+		"J'aurais une demande pour toi.",
 		"J'aurais quelque chose a te demander.",
 		"Est ce que tu pourrais faire quelque chose pour moi ?",
 		"J'ai besoin que tu fasses quelque chose pour moi.",
-		"Je peux te demander quelque chose ?"
+		"Je peux te demander quelque chose ?",
+		"J’ai un défis à te lancer",
+		"J’aurais une mission a te propose",
+		"J’ai quelque chose pour toi"
 	],
 	"demandeQuête":[
 		"Tu pourrais me rapporter des objets ?"
@@ -32,11 +37,6 @@
 		"Merci !",
 		"Bon courage à toi !",
 		"Courage"
-	],
-	"Fin":[
-		"Reviens me voir quand tu auras tout ça !",
-		"Ne reviens pas avant d'avoir tout trouvé !",
-		"J'attendrais que tu trouves tout ça !"
 	],
 	"questCantStart":[
 		"#alreadyInQuest#"
@@ -48,10 +48,12 @@
 	],
 	
 	"questStart":[
-		"Peux-tu me le ramener ?"
+		"Reviens me voir quand tu auras tout ça !",
+		"Ne reviens pas avant d'avoir tout trouvé !",
+		"J'attendrais que tu trouves tout ça !"
 	],
 	"questInProgress": [
-		"#DuringQuest"
+		"#DuringQuest#"
 	],
 	"DuringQuest":[
 		"J'attends que tu récupères ce que je t'ai demandé",

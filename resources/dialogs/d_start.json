@@ -93,11 +93,11 @@
 		"et je serais votre présentateur pour cette soirée de Pirate Attack"
 	],
 	"regles": [
-		"#introRegles#, un rappel s'impose.<next>#sujet# #objectif# #adjTresor# #tresor# #capitaine# #couleurBarbe#.<next>#sortie# le #tresor# #action#.<next>#warning#, #danger# #attente#.<next>#reussite#.<next>#regleAttention#, #regleFinale#, #menace#."
+		"#introRegles#, un rappel s'impose.<next>#sujet# #objectif# #adjTresor# #tresor# #capitaine# #couleurBarbe#.<next>#sortie# #tresor# #action#.<next>#warning#, #danger# #attente#.<next>#reussite#.<next>#regleAttention#, #regleFinale#, #menace#."
 	],
 	"introRegles": [
 		"Avant de lancer le jeu",
-		"Avant que notre candidat ne s'élancer",
+		"Avant que notre candidat ne s'élance",
 		"Avant le début du jeu",
 		"Mais d'abord",
 		"Avant tout"
