@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://buuwp4chbvml5"]
+[gd_scene load_steps=13 format=4 uid="uid://buuwp4chbvml5"]
 
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_hqrnj"]
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_3e1ps"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jti3mgir6w1b" path="res://scenes/minigame/ship_sharks/ship.tscn" id="5_km8ef"]
 [ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="6_0hwry"]
 [ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="6_nu3hr"]
+[ext_resource type="PackedScene" uid="uid://dh0jjvqkgi5bf" path="res://scenes/minigame/ship_sharks/shark_path_loop.tscn" id="6_sbn3u"]
 [ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="7_nu3hr"]
 [ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="8_tjvhs"]
 [ext_resource type="PackedScene" uid="uid://catoqx6ha1nl1" path="res://scenes/minigame/ship_sharks/chest_item.tscn" id="9_np14n"]
@@ -17,12 +18,12 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_nu3hr"]
+[sub_resource type="Curve2D" id="Curve2D_q734l"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 1, 0, 0, 0, 0, 124, 47, 0, 0, 0, 0, 103, 49, 0, 0, 0, 0, 106, 7, 0, 0, 0, 0, 14, 9, 0, 0, 0, 0, 16, 52, 0, 0, 0, 0, -5, 52, 0, 0, 0, 0, 0, 0)
 }
-point_count = 2
+point_count = 9
 
 [node name="Room2" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_hqrnj")
@@ -64,9 +65,9 @@ _room_zone_detector = NodePath("../RoomZoneDetector")
 position = Vector2(30, -81)
 curve = SubResource("Curve2D_0hwry")
 
-[node name="Shark_Path2" parent="." instance=ExtResource("6_nu3hr")]
-position = Vector2(29, -67)
-curve = SubResource("Curve2D_nu3hr")
+[node name="Shark_Path_Loop" parent="." instance=ExtResource("6_sbn3u")]
+position = Vector2(29, -75)
+curve = SubResource("Curve2D_q734l")
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("7_nu3hr")]
 position = Vector2(60, -28)
