@@ -1,30 +1,30 @@
-[gd_scene load_steps=7 format=4 uid="uid://beb6scx7hyamy"]
+[gd_scene load_steps=8 format=4 uid="uid://c56hn6xjmlb7y"]
 
-[ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_cjk0v"]
-[ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_onqvk"]
-[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_j5a7x"]
-[ext_resource type="PackedScene" uid="uid://diyfld2lowmbu" path="res://scenes/minigame/minigame_battle.tscn" id="4_svyoc"]
-[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="5_j5a7x"]
-[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="6_svyoc"]
+[ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_dtj53"]
+[ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_duamk"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="3_it74k"]
+[ext_resource type="PackedScene" uid="uid://cc6jjn8xbje6n" path="res://scenes/minigame/minigame_question.tscn" id="5_duamk"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="5_r3kuw"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="6_6al4v"]
+[ext_resource type="PackedScene" uid="uid://dhkvh36n5bpjl" path="res://scenes/npc/npc_question.tscn" id="7_it74k"]
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
-script = ExtResource("1_cjk0v")
+script = ExtResource("1_dtj53")
 tilemap_layers = [NodePath("Floor"), NodePath("Props"), NodePath("Décor")]
 
 [node name="Floor" type="TileMapLayer" parent="."]
 position = Vector2(0, 144)
 tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAEAAAAAAPz/AQAGAAEAAAAAAPv/AQAGAAEAAAAAAPr/AQAGAAEAAAAAAPn/AQAGAAEAAAAAAPj/AQAGAAEAAAAAAPf/AQAGAAAAAAABAPf/AQAHAAAAAAACAPf/AQAHAAAAAAADAPf/AQAHAAAAAAAEAPf/AQAHAAAAAAAGAPf/AQAHAAAAAAAHAPf/AQAHAAAAAAAIAPf/AQAHAAAAAAAJAPf/AQAHAAAAAAAKAPf/AQAIAAAAAAAKAP//AQAIAAIAAAAKAPj/AQAIAAEAAAAKAPn/AQAIAAEAAAAKAPr/AQAIAAEAAAAKAP7/AQAIAAEAAAABAP//AQAHAAIAAAACAP//AQAHAAIAAAADAP//AQAHAAIAAAAEAP//AQAHAAIAAAAFAP//AQAHAAIAAAAGAP//AQAHAAIAAAAIAP//AQAHAAIAAAAJAP//AQAHAAIAAAABAPj/AQABAAEAAAABAPn/AQABAAEAAAABAPr/AQAEAAAAAAABAPv/AQAEAAEAAAABAPz/AQAEAAEAAAABAP3/AQAEAAEAAAABAP7/AQAEAAEAAAACAP7/AQAEAAEAAAACAPj/AQABAAEAAAACAPn/AQABAAEAAAACAPr/AQAEAAAAAAACAPv/AQAEAAEAAAACAPz/AQAEAAEAAAACAP3/AQAEAAEAAAADAPj/AQABAAEAAAADAPn/AQABAAEAAAADAP7/AQAEAAEAAAAEAPj/AQADAAEAAAAEAPn/AQADAAEAAAAEAP7/AQAEAAEAAAAFAPj/AQAEAAEAAAAFAPn/AQAEAAEAAAAFAP7/AQAEAAEAAAAGAPj/AQAEAAEAAAAGAPn/AQAEAAEAAAAGAP7/AQAFAAEAAAAHAPj/AQAEAAEAAAAHAPn/AQAEAAEAAAAIAPj/AQAEAAEAAAAIAPn/AQAEAAEAAAAIAPr/AQAEAAEAAAAIAPv/AQAEAAEAAAAIAPz/AQAEAAIAAAAIAP3/AQABAAEAAAAIAP7/AQABAAEAAAAJAPj/AQAEAAEAAAAJAPn/AQAEAAEAAAAJAPr/AQAEAAEAAAAJAPv/AQAEAAEAAAAJAPz/AQAEAAIAAAAJAP3/AQABAAEAAAAJAP7/AQABAAEAAAAKAPv/AQAGAAEAAAAFAPf/AQAHAAIAAAAKAPz/AQAIAAEAAAAKAP3/AQAIAAEAAAAHAPr/AQAEAAEAAAAHAPv/AQAEAAEAAAAHAPz/AQAEAAIAAAADAP3/AQAEAAEAAAADAPz/AQAEAAEAAAADAPr/AQAEAAAAAAAEAP3/AQAEAAEAAAAFAP3/AQAEAAEAAAAEAPv/AQAEAAEAAAAEAPz/AQAEAAEAAAAFAPz/AQAEAAEAAAAFAPv/AQAEAAEAAAAGAPv/AQAEAAEAAAAFAPr/AQAEAAEAAAAGAPz/AQAEAAMAAAAGAPr/AQAEAAEAAAADAPv/AQAEAAEAAAAEAPr/AQAFAAQAAAAHAP//AQAHAAIAAAAHAP7/AQABAAEAAAAHAP3/AQABAAEAAAAGAP3/AQAFAAEAAAA=")
-tile_set = ExtResource("2_onqvk")
+tile_set = ExtResource("2_duamk")
 
 [node name="Décor" type="TileMapLayer" parent="."]
 position = Vector2(0, 144)
 tile_map_data = PackedByteArray("AAAHAP3/AQACAAIAAAAJAP3/AQACAAIAAAAIAP7/AQACAAQAAAABAPj/AQAAAAMAAAABAPn/AQAAAAQAAAACAPj/AQABAAMAAAACAPn/AQABAAQAAAAJAP7/AQACAAMAAAADAPj/AQACAAIAAAAIAPv/AQAEAAUAAAAIAPz/AQAEAAYAAAADAPn/AQAEAAUAAAADAPr/AQAEAAYAAAACAPz/AQAEAAUAAAACAP3/AQAEAAYAAAABAP7/AQAHAAYAAAA=")
-tile_set = ExtResource("2_onqvk")
+tile_set = ExtResource("2_duamk")
 
 [node name="Props" type="TileMapLayer" parent="."]
 position = Vector2(0, 144)
-tile_map_data = PackedByteArray("AAAEAPj/AQADAAcAAAAFAPv/AgAAAAAABAAHAPn/AgAAAAAABQAFAP3/AgAAAAAABQADAPv/AgAAAAAABQA=")
-tile_set = ExtResource("2_onqvk")
+tile_set = ExtResource("2_duamk")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
 position = Vector2(0, 144)
@@ -38,14 +38,17 @@ polygon = PackedVector2Array(157, 1, 157, -34, 108, -34, 108, 1)
 position = Vector2(-91, -94)
 polygon = PackedVector2Array(157, 1, 157, -34, 108, -34, 108, 1)
 
-[node name="RoomZoneDetector" parent="." instance=ExtResource("3_j5a7x")]
+[node name="RoomZoneDetector" parent="." instance=ExtResource("3_it74k")]
 position = Vector2(88.125, 72)
 
-[node name="MinigameBattle" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("4_svyoc")]
-_room_zone_detector = NodePath("../RoomZoneDetector")
-
-[node name="NpcContainer" parent="." instance=ExtResource("5_j5a7x")]
+[node name="NpcContainer" parent="." instance=ExtResource("5_r3kuw")]
 position = Vector2(0, 144)
 
-[node name="QuestItemContainer" parent="." instance=ExtResource("6_svyoc")]
+[node name="MinigameQuestion" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("5_duamk")]
+_room_zone_detector = NodePath("")
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("6_6al4v")]
 position = Vector2(0, 144)
+
+[node name="Npc" parent="." instance=ExtResource("7_it74k")]
+position = Vector2(87, 66)

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=4 uid="uid://dfe408urxstdo"]
+
+[ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_lhis3"]
+[ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="2_0bro2"]
+[ext_resource type="PackedScene" uid="uid://cc6jjn8xbje6n" path="res://scenes/minigame/minigame_question.tscn" id="5_3gh47"]
+[ext_resource type="PackedScene" uid="uid://dv4byvi026kn3" path="res://scenes/rooms/zone_detector/room_zone_detector.tscn" id="6_hsfge"]
+[ext_resource type="PackedScene" uid="uid://dhkvh36n5bpjl" path="res://scenes/npc/npc_question.tscn" id="7_excwp"]
+[ext_resource type="PackedScene" uid="uid://8e5ubfvlqdtt" path="res://scenes/npc/npc_container.tscn" id="8_v2thh"]
+[ext_resource type="PackedScene" uid="uid://ydk4vq5wvxmd" path="res://scenes/quests/quest_item_container.tscn" id="9_dvyao"]
+
+[node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
+script = ExtResource("1_lhis3")
+tilemap_layers = [NodePath("Floor"), NodePath("Props")]
+
+[node name="Floor" type="TileMapLayer" parent="."]
+position = Vector2(0, 144.00002)
+tile_map_data = PackedByteArray("AAAAAP//AQAGAAIAAAAAAP7/AQAGAAEAAAAAAP3/AQAGAAEAAAAAAPz/AQAGAAEAAAAAAPv/AQAGAAEAAAAAAPr/AQAGAAEAAAAAAPn/AQAGAAEAAAAAAPj/AQAGAAEAAAAAAPf/AQAGAAAAAAABAPf/AQAHAAAAAAACAPf/AQAHAAAAAAADAPf/AQAHAAAAAAAEAPf/AQAHAAAAAAAGAPf/AQAHAAAAAAAHAPf/AQAHAAAAAAAIAPf/AQAHAAAAAAAJAPf/AQAHAAAAAAAKAPf/AQAIAAAAAAAKAP//AQAIAAIAAAAKAPj/AQAIAAEAAAAKAPn/AQAIAAEAAAAKAPr/AQAIAAEAAAAKAPz/AQAIAAEAAAAKAP3/AQAIAAEAAAAKAP7/AQAIAAEAAAABAP//AQAHAAIAAAACAP//AQAHAAIAAAADAP//AQAHAAIAAAAEAP//AQAHAAIAAAAFAP//AQAHAAIAAAAGAP//AQAHAAIAAAAHAP//AQAHAAIAAAAIAP//AQAHAAIAAAAJAP//AQAHAAIAAAAKAPv/AQAGAAEAAAAFAPf/AQAHAAIAAAABAPj/AQAEAAEAAAACAPj/AQAEAAEAAAADAPj/AQAEAAEAAAAEAPj/AQAEAAEAAAAFAPj/AQAEAAEAAAAGAPj/AQAEAAEAAAAHAPj/AQAEAAEAAAAIAPj/AQAEAAEAAAAJAPj/AQAEAAEAAAAJAPn/AQAEAAEAAAAJAPr/AQAEAAEAAAAJAPv/AQAEAAEAAAAJAPz/AQAEAAEAAAAJAP3/AQAEAAEAAAAJAP7/AQAEAAEAAAAIAP7/AQAFAAQAAAAHAP7/AQAEAAAAAAAGAP7/AQAEAAQAAAAFAP7/AQAFAAQAAAAEAP7/AQAEAAAAAAADAP7/AQAEAAAAAAACAP7/AQAEAAQAAAABAP7/AQAEAAEAAAABAP3/AQAEAAEAAAABAPz/AQAEAAEAAAABAPv/AQAEAAEAAAABAPr/AQAEAAEAAAABAPn/AQAEAAEAAAACAPn/AQAEAAMAAAADAPn/AQAEAAIAAAAEAPn/AQAEAAIAAAAFAPn/AQAEAAIAAAAGAPn/AQAEAAIAAAAHAPn/AQAEAAIAAAAIAPn/AQAFAAMAAAADAPr/AQABAAEAAAACAPr/AQAFAAEAAAAEAPr/AQABAAEAAAAFAPr/AQABAAEAAAAGAPr/AQABAAEAAAAHAPr/AQABAAEAAAAIAPr/AQADAAEAAAAIAPv/AQADAAEAAAAHAPv/AQAFAAAAAAAGAPv/AQAEAAAAAAAFAPv/AQAEAAAAAAAEAPv/AQAEAAAAAAADAPv/AQADAAAAAAACAPv/AQAFAAEAAAACAPz/AQAFAAEAAAADAPz/AQADAAIAAAAEAPz/AQAEAAIAAAAFAPz/AQAFAAMAAAAGAPz/AQAEAAMAAAAHAPz/AQAFAAIAAAAIAPz/AQADAAEAAAAHAP3/AQABAAEAAAAGAP3/AQAFAAEAAAAFAP3/AQADAAEAAAAEAP3/AQABAAEAAAADAP3/AQABAAEAAAACAP3/AQAFAAEAAAAIAP3/AQADAAEAAAA=")
+tile_set = ExtResource("2_0bro2")
+
+[node name="Props" type="TileMapLayer" parent="."]
+position = Vector2(0, 144.00002)
+tile_map_data = PackedByteArray("AAAHAPv/AQAEAAYAAAAHAPr/AQAEAAUAAAABAP7/AQAEAAYAAAABAP3/AQAEAAUAAAABAPj/AQAEAAYAAAABAPf/AQAEAAUAAAAJAPf/AQAEAAUAAAAJAPj/AQAEAAYAAAAJAP7/AQAEAAYAAAAJAP3/AQAEAAUAAAABAPz/AQADAAMAAAADAPj/AQAAAAYAAAAJAPz/AQAAAAYAAAA=")
+tile_set = ExtResource("2_0bro2")
+
+[node name="Sea_Body" type="StaticBody2D" parent="."]
+position = Vector2(0, 144.00002)
+collision_layer = 256
+
+[node name="Sea_Shape" type="CollisionPolygon2D" parent="Sea_Body"]
+position = Vector2(2, -17)
+polygon = PackedVector2Array(129, -62.000015, 129, -82.000015, 44, -82.000015, 44, -61.000015, 44, -13.000015, 79, -13.000015, 79, -34.000015, 49, -34.000015, 49, -61.000015, 123, -61.000015, 123, -33.000015, 109, -33.000015, 109, -14.000015, 128, -14.000015)
+
+[node name="Borders_Body" type="StaticBody2D" parent="."]
+position = Vector2(-160, -10)
+collision_layer = 128
+collision_mask = 64
+
+[node name="Borders_Shape" type="CollisionPolygon2D" parent="Borders_Body"]
+position = Vector2(161.855, 137)
+build_mode = 1
+polygon = PackedVector2Array(129, -62.000015, 129, -82.000015, 44, -82.000015, 44, -61.000015, 44, -13.000015, 79, -13.000015, 79, -34.000015, 49, -34.000015, 49, -61.000015, 123, -61.000015, 123, -33.000015, 109, -33.000015, 109, -14.000015, 128, -14.000015)
+
+[node name="MinigameQuestion" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("5_3gh47")]
+_room_zone_detector = NodePath("../RoomZoneDetector")
+
+[node name="RoomZoneDetector" parent="." instance=ExtResource("6_hsfge")]
+position = Vector2(88, 73)
+
+[node name="Npc" parent="." instance=ExtResource("7_excwp")]
+position = Vector2(63, 71)
+
+[node name="NpcContainer" parent="." instance=ExtResource("8_v2thh")]
+position = Vector2(0, 144.00002)
+
+[node name="QuestItemContainer" parent="." instance=ExtResource("9_dvyao")]
+position = Vector2(0, 144.00002)
