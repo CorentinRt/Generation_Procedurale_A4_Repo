@@ -24,7 +24,7 @@ tile_set = ExtResource("2_dwov4")
 
 [node name="Props" type="TileMapLayer" parent="."]
 position = Vector2(0, 144.00002)
-tile_map_data = PackedByteArray("AAADAP3/AgAAAAAABQAHAPz/AgAAAAAABQAFAPn/AgAAAAAABgA=")
+tile_map_data = PackedByteArray("AAADAP3/AgAAAAAABgAHAPz/AgAAAAAABgAFAPn/AgAAAAAABgA=")
 tile_set = ExtResource("2_dwov4")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
