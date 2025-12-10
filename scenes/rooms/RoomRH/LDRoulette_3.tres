@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://c2l8lt5sbvhia"]
+
+[ext_resource type="PackedScene" uid="uid://w5i2dwuitvjn" path="res://scenes/rooms/LD/LDRoulette_3.tscn" id="1_bme6a"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="2_hyc5r"]
+
+[resource]
+script = ExtResource("2_hyc5r")
+roomScene = ExtResource("1_bme6a")
+metadata/_custom_type_script = "uid://u1fkim7xb8ta"
