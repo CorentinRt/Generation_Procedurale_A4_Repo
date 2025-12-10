@@ -9,6 +9,9 @@
 
 [node name="Room1" type="Node2D" node_paths=PackedStringArray("tilemap_layers")]
 script = ExtResource("1_ihod3")
+is_start_room = null
+room_pos = null
+room_size = null
 tilemap_layers = [NodePath("Floor"), NodePath("Props")]
 
 [node name="Floor" type="TileMapLayer" parent="."]

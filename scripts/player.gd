@@ -100,7 +100,9 @@ func apply_hit(attack : Attack) -> void:
 
 func enter_room(room : Room) -> void:
 	var previous = _room
+	#print("previous room : " + previous.name)
 	_room = room
+	#print("entered room : " + _room.name)
 	_room.on_enter_room(previous)
 
 #region Ship Enter/Exit

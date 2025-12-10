@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bqjnuthhfsvnt"]
+[gd_scene load_steps=27 format=3 uid="uid://bqjnuthhfsvnt"]
 
 [ext_resource type="PackedScene" uid="uid://d1srv4ih406nr" path="res://scenes/audio/audio_manager.tscn" id="2_u2rfa"]
 [ext_resource type="AudioStream" uid="uid://yjrwcp2td3wd" path="res://resources/audio/s_beep.wav" id="3_grgwt"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://b8suqhyedh42e" path="res://scenes/rooms/RoomRH/LDCombat_1.tres" id="23_rblo1"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="24_uy8ax"]
 [ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="25_ql38n"]
+[ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="26_cekof"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -33,8 +34,8 @@ dialog_beep = ExtResource("3_grgwt")
 
 [node name="DebugJSON" parent="." instance=ExtResource("4_f102n")]
 
-[node name="LevelGeneration2" parent="." instance=ExtResource("5_hb5b0")]
-_playerScene = ExtResource("24_uy8ax")
+[node name="LevelGeneration2" parent="." node_paths=PackedStringArray("_player", "_spriteDebug") instance=ExtResource("5_hb5b0")]
+_player = NodePath("../Player")
 _roomsList = Dictionary[ExtResource("5_h6qk4"), float]({
 ExtResource("23_rblo1"): 1.0,
 ExtResource("22_l8rqq"): 1.0,
@@ -55,6 +56,16 @@ ExtResource("8_cekof"): 1.0,
 ExtResource("7_ql38n"): 1.0,
 ExtResource("6_uy8ax"): 1.0
 })
+_roomsMaxCount = 20
+_spriteDebug = NodePath("../Sprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 script = ExtResource("25_ql38n")
+
+[node name="Player" parent="." instance=ExtResource("24_uy8ax")]
+position = Vector2(66, 85)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("26_cekof")
