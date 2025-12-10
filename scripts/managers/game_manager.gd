@@ -12,6 +12,13 @@ func _ready() -> void:
 func _init_game() -> void:
 	ScoreManager._reset_score()
 	has_lost = false
+	await get_tree().create_timer(0.1).timeout
+	_player_init_sound()
+	
+func _player_init_sound():
+	AudioManager.Instance.play_sound("main_theme")
+	AudioManager.Instance.play_sound("reading")
+	AudioManager.Instance.set_volume_with_name("reading", -80)
 	
 func _reload_game_scene(delay:float) -> void:
 	await get_tree().create_timer(delay).timeout
@@ -32,4 +39,5 @@ func _loose_game() -> void:
 		return
 	has_lost = true
 	print("has lost")
+	
 	

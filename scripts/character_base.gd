@@ -270,5 +270,12 @@ func _can_move() -> bool:
 func set_is_in_dialog(in_dialog : bool):
 	is_in_dialog = in_dialog
 	
+	if is_in_dialog:
+		AudioManager.Instance.set_volume_with_name("main_theme", -80)
+		AudioManager.Instance.set_volume_with_name("reading", 0)
+	else:
+		AudioManager.Instance.set_volume_with_name("main_theme", 0)
+		AudioManager.Instance.set_volume_with_name("reading", -80)
+	
 func _nextDialog():
 	UtilsManager.get_dialog_manager()._on_dialog_pressed()
