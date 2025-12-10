@@ -1,11 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3wiadcor1x1w"]
+[gd_scene load_steps=6 format=3 uid="uid://c3wiadcor1x1w"]
 
 [ext_resource type="Script" uid="uid://n4ivtfj0u0vp" path="res://scripts/score/ui_score.gd" id="1_frnc1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_frnc1"]
 font_size = 60
 
-[node name="UiScore" type="Control"]
+[sub_resource type="Animation" id="Animation_frnc1"]
+resource_name = "bobbing"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2),
+"points": PackedFloat32Array(-31, 0, 0, 0.083333336, 17.5, 74, -0.083333336, -9.270834, 0.050000004, 5.5625005, 58, -0.050000004, 6.5625014, 0.08333333, -10.937501, -31, -0.08333333, 14.833334, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2),
+"points": PackedFloat32Array(126, 0, 0, 0.083333336, 15.666667, 220, -0.083333336, -8.854167, 0.050000004, 5.3125005, 211, -0.050000004, 5.875001, 0.08333333, -9.791667, 126, -0.08333333, 14.166667, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:label_settings:font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 2),
+"points": PackedFloat32Array(60, 0, 0, 0.083333336, 6.8333335, 101, -0.083333336, -4.2708335, 0.050000004, 2.5625002, 101, -0.050000004, 2.5625005, 0.08333333, -4.2708335, 60, -0.08333333, 6.8333335, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8, 1.3)
+}
+
+[sub_resource type="Animation" id="Animation_jvfcp"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(126, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:label_settings:font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvfcp"]
+_data = {
+&"RESET": SubResource("Animation_jvfcp"),
+&"bobbing": SubResource("Animation_frnc1")
+}
+
+[node name="UiScore" type="Control" node_paths=PackedStringArray("animation_player_score")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,16 +93,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_frnc1")
-_bobbing_duration = 0.35
+animation_player_score = NodePath("AnimationPlayer_Score")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 offset_left = 5.0
 offset_top = 126.0
-offset_right = 340.0
-offset_bottom = 209.0
+offset_right = 576.0
+offset_bottom = 266.0
 rotation = -0.30543262
 text = "1 000 000 !!!"
 label_settings = SubResource("LabelSettings_frnc1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer_Score" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jvfcp")
+}
+speed_scale = 1.5
