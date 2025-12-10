@@ -6,28 +6,85 @@
 		"gray",
 		"black"
 	],
-	"setupSaves": [
+	"setupSaves":[
 		"[savedName:#name#][savedColor:#color#][savedQuest:AddScore]"
 	],
-	"firstInteraction": [
-		"Coucou !"a
+	"firstInteraction":[
+		"#présentation# #introQuête#<next>#demandeQuête#<next>#remerciment#"
 	],
-	"questCantStart": [
-		"Finis ta quete en cours et reviens."
+	"présentation":[
+		"Salut !",
+		"Hello !",
+		"Bonjour !",
+		"Allô ?",
+		"Aaaah Bien le bonjour !"
+	],
+	"introQuête":[
+		"J'aurais une demande.",
+		"J'aurais quelque chose a te demander.",
+		"Est ce que tu pourrais faire quelque chose pour moi ?",
+		"J'ai besoin que tu fasses quelque chose pour moi.",
+		"Je peux te demander quelque chose ?",
+		"J’ai un défis à te lancer !",
+		"J’aurais une mission a te proposer.",
+		"J’ai quelque chose pour toi."
+	],
+	"demandeQuête":[
+		"Est ce que ca tu peux gagner de l'argent rapidement ?"
+	],
+	"remerciment":[
+		"Merci à toi l'ami !",
+		"Merci !",
+		"Bon courage à toi !",
+		"Courage"
+	],
+	"questCantStart":[
+		"#alreadyInQuest#"
+	],
+	"alreadyInQuest":[
+		"Finis ta quete en cours et reviens.",
+		"Tu as déjà une quête en cours, reviens après.",
+		"T'es déjà occupé, reviens plus tard."
 	],
 	"questStart":[
-		"Va gagner de l'argent et reviens !"
+		"#questStarting#"
+	],
+	"questStarting":[
+		"Reviens quand t'auras tout gagné !",
+		"J'attendrais que tu ai finis !",
+		"Reviens me parler quand c'est fait"
 	],
 	"questInProgress": [
-		"T'as encore des pièces d'or à gagner."
+		"#DuringQuest"
+	],
+	"DuringQuest":[
+		"J'attends que tu les tues tous !",
+		"Reviens quans tu auras terminé !",
+		"Reviens quand tu as terminé !"
 	],
 	"questCompleted": [
-		"T'es riche maintenant !"
+		"#questCompleted#"
+	],
+	"questCompleted":[
+		"Tu les as vaincus !",
+		"Merci de les avoir tués !",
+		"OUI tu as terminé !"
 	],
 	"questFailed": [
-		"Je suis déçu t'aurais pu faire mieux."
+		"#questNotCompleted#"
+	],
+	"questNotCompleted":[
+		"Je suis déçu t'aurais pu faire mieux.",
+		"T'aurais pu aller les tuer quand même...",
+		"Tu as échoué !"
 	],
 	"completed": [
-		"T'as déjà fini ma quête."
+		"#alreadyDone#"
+	],
+	"alreadyDone":[
+		"T'as déjà fini ma quête.",
+		"Tu as déjà réaliser mon rêve !",
+		"Merci encore pour ton aide",
+		"Bon courage pour la suite !"
 	]
 }

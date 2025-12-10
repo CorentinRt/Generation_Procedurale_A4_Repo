@@ -10,19 +10,24 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:Combat]"
 	],
 	"firstInteraction": [
-    	"#présentation# #introQuête#<next>#demandeQuête#<next>#remerciment# #fin#"
+    	"#présentation# #introQuête#<next>#demandeQuête#<next>#remerciment#s"
 	],
 	"présentation":[
 		"Salut !",
 		"Hello !",
-		"Bonjour"
+		"Bonjour !",
+		"Allô ?",
+		"Aaaah Bien le bonjour !"
 	],
 	"introQuête":[
 		"J'aurais une demande.",
 		"J'aurais quelque chose a te demander.",
 		"Est ce que tu pourrais faire quelque chose pour moi ?",
 		"J'ai besoin que tu fasses quelque chose pour moi.",
-		"Je peux te demander quelque chose ?"
+		"Je peux te demander quelque chose ?",
+		"J’ai un défis à te lancer",
+		"J’aurais une mission a te propose",
+		"J’ai quelque chose pour toi"
 	],
 	"demandeQuête":[
 		"Tu pourrais aller tuer des pirates pour moi ?"
@@ -33,12 +38,6 @@
 		"Bon courage à toi !",
 		"Courage"
 	],
-	"fin":[
-		"Reviens quand tu les auras tous tué !",
-		"J'attendrais que tu ai finis !",
-		"Reviens me parler quand c'est fait"
-	],
-	
 	"questCantStart": [
 		"#alreadyInQuest#"
 	],
@@ -48,7 +47,12 @@
 		"T'es déjà occupé, reviens plus tard."
 	],
 	"questStart":[
-		"Va taper des ennemis de ma part stp."
+		"#questStarting#"
+	],
+	"questStarting":[
+		"Reviens quand tu les auras tous tué !",
+		"J'attendrais que tu ai finis !",
+		"Reviens me parler quand c'est fait"
 	],
 	"questInProgress": [
 		"#DuringQuest"
