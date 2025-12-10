@@ -22,7 +22,10 @@ func _add_score(value:int) -> void:
 		return
 	
 	_on_add_score.emit(value)
-	_change_score(_score + value)		
+	_change_score(_score + value)
+	
+	if AudioManager.Instance != null:
+		AudioManager.Instance.play_sound("gold")
 	
 func _remove_score(value:int) -> void:
 	_change_score(_score - value)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://dhbvbv3tbidkt"]
+
+[ext_resource type="AudioStream" uid="uid://b4xbc0opa5o7v" path="res://resources/audio/Win_Gold.wav" id="1_12ote"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_vcp4r"]
+
+[resource]
+script = ExtResource("2_vcp4r")
+sound_name = "gold"
+audiostream = ExtResource("1_12ote")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"

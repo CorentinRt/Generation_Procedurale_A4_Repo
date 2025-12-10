@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1srv4ih406nr"]
+[gd_scene load_steps=12 format=3 uid="uid://d1srv4ih406nr"]
 
 [ext_resource type="Script" uid="uid://der5gta77d6dn" path="res://scripts/audio/audio_manager.gd" id="1_iognr"]
 [ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_oarm6"]
@@ -10,10 +10,11 @@
 [ext_resource type="Resource" uid="uid://blhjemohrr6ft" path="res://resources/audio/data/sd_getting_hit.tres" id="8_c3tep"]
 [ext_resource type="Resource" uid="uid://cnhbar67jaon4" path="res://resources/audio/data/sd_go_into_water.tres" id="9_xe7xr"]
 [ext_resource type="Resource" uid="uid://cjv2p8iromxtk" path="res://resources/audio/data/sd_open_chest.tres" id="10_2c6c2"]
+[ext_resource type="Resource" uid="uid://dhbvbv3tbidkt" path="res://resources/audio/data/sd_win_gold.tres" id="11_i0hgu"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("beep_player")]
 script = ExtResource("1_iognr")
-sounds = Array[ExtResource("2_oarm6")]([ExtResource("3_2ccwd"), ExtResource("4_2ccwd"), ExtResource("5_cfl81"), ExtResource("6_85pnb"), ExtResource("7_wp3eh"), ExtResource("8_c3tep"), ExtResource("9_xe7xr"), ExtResource("10_2c6c2")])
+sounds = Array[ExtResource("2_oarm6")]([ExtResource("3_2ccwd"), ExtResource("4_2ccwd"), ExtResource("5_cfl81"), ExtResource("6_85pnb"), ExtResource("7_wp3eh"), ExtResource("8_c3tep"), ExtResource("9_xe7xr"), ExtResource("10_2c6c2"), ExtResource("11_i0hgu")])
 dialog_beep = ExtResource("3_2ccwd")
 beep_player = NodePath("DialogPlayer")
 beep_interval = 0.05
