@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundData" load_steps=3 format=3 uid="uid://blhjemohrr6ft"]
+
+[ext_resource type="AudioStream" uid="uid://b1elmlmk8lb8s" path="res://resources/audio/Getting_Hit.wav" id="1_d278j"]
+[ext_resource type="Script" uid="uid://7eoho5edu8ro" path="res://scripts/audio/sound_data.gd" id="2_6o0en"]
+
+[resource]
+script = ExtResource("2_6o0en")
+sound_name = "hit"
+audiostream = ExtResource("1_d278j")
+volume_db = 0.0
+metadata/_custom_type_script = "uid://7eoho5edu8ro"

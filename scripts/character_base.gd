@@ -114,6 +114,8 @@ func apply_hit(attack : Attack) -> void:
 		return
 	_last_hit_time = Time.get_unix_time_from_system()
 
+	AudioManager.Instance.play_sound("hit")
+
 	if !cannot_die:
 		life -= attack.damages if attack != null else 1
 	
