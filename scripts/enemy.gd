@@ -54,6 +54,9 @@ func apply_hit(attack : Attack) -> void:
 	hit_animation_player.play("hit")
 
 func update_AI() -> void:
+	if Player.Instance.is_in_casino || Player.Instance.is_in_shop || Player.Instance.is_in_dialog:
+		_direction = Vector2.ZERO
+		return
 	_update_attack_direction()
 	if _can_move() && Player.Instance._room == _room:
 		var enemy_to_player = Player.Instance.global_position - global_position
