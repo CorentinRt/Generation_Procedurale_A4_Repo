@@ -1,16 +1,25 @@
 {
 	"wrongAnswer": [
+		"#lose#"
+	],
+	"lose":[
 		"Et c'est une mauvaise réponse !",
 		"Loupé ! mauvaise réponse !",
 		"Perdu !"
 	],
 	"rightAnswer": [
+		"#win#"
+	],
+	"win":[
 		"Et c'est une bonne réponse !",
 		"Bravo ! Bonne réponse",
 		"Gagné ! tu as donné la bonne réponse",
 		"Bonne réponse !"
 	],
 	"timerAnswer": [
+		"#toLate#"
+	],
+	"toLate":[
 		"Trop long c'est perdu",
 		"Tu as mis trop de temps, perdu !",
 		"Trop tard ! ton temps est écoulé !"

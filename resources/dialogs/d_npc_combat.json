@@ -10,9 +10,9 @@
 		"[savedName:#name#][savedColor:#color#][savedQuest:Combat]"
 	],
 	"firstInteraction": [
-    	"#Présentation# #introQuête#<next>#demandeQuête#<next>#Remerciment# #Fin#"
+    	"#présentation# #introQuête#<next>#demandeQuête#<next>#remerciment# #fin#"
 	],
-	"Présentation":[
+	"présentation":[
 		"Salut !",
 		"Hello !",
 		"Bonjour"
@@ -27,13 +27,13 @@
 	"demandeQuête":[
 		"Tu pourrais aller tuer des pirates pour moi ?"
 	],
-	"Remerciment":[
+	"remerciment":[
 		"Merci à toi l'ami !",
 		"Merci !",
 		"Bon courage à toi !",
 		"Courage"
 	],
-	"Fin":[
+	"fin":[
 		"Reviens quand tu les auras tous tué !",
 		"J'attendrais que tu ai finis !",
 		"Reviens me parler quand c'est fait"
