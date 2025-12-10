@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RoomData" load_steps=3 format=3 uid="uid://ds68i5e4co22p"]
 
-[ext_resource type="PackedScene" uid="uid://b5gp0o24y580g" path="res://scenes/rooms/LD/LDCombat_1.tscn" id="1_jhxyf"]
+[ext_resource type="PackedScene" uid="uid://djqilmpjchpgu" path="res://scenes/rooms/LD/LDRequin_3.tscn" id="1_jhxyf"]
 [ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="2_fhx8g"]
 
 [resource]

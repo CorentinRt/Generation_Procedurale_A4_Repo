@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7ilvyxagbmtm"]
+[gd_scene load_steps=2 format=3 uid="uid://c7ilvyxagbmtm"]
 
 [ext_resource type="Script" uid="uid://dhordui5ouqh1" path="res://scripts/level_generation/random_room.gd" id="1_tyftb"]
-[ext_resource type="PackedScene" uid="uid://caqkxr3u45dsp" path="res://scenes/door_closed.tscn" id="9_06ke4"]
 
 [node name="RandomRoom" type="Node2D"]
 script = ExtResource("1_tyftb")
-_door = ExtResource("9_06ke4")

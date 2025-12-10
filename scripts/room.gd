@@ -9,15 +9,20 @@ class_name Room extends Node2D
 
 static var all_rooms : Array[Room]
 
-signal on_enter_room_event()
-
 var doors : Array[Door]
 
 @onready var _cam : CameraFollow = $/root/MainScene/Camera2D
-
+@onready var temp = $Area2D/CollisionShape2D
 
 func _ready() -> void:
+	for i in tilemap_layers:
+		i.position = Vector2.ZERO
+	
 	all_rooms.push_back(self)
+	if (temp != null):
+		var bounds = get_world_bounds();
+		temp.shape.extents = bounds.size/2;
+		temp.global_position = bounds.position - bounds.size * Vector2(-0.5, -0.5)
 	if is_start_room:
 		Player.Instance.enter_room(self)
 
@@ -38,7 +43,7 @@ func get_local_bounds() -> Rect2:
 
 func get_world_bounds() -> Rect2:
 	var result = get_local_bounds()
-	result.position += position
+	result.position += global_position
 	return result
 
 
@@ -50,7 +55,7 @@ func contains(point : Vector2) -> bool:
 func on_enter_room(from : Room) -> void:
 	var camera_bounds = get_world_bounds()
 	_cam.set_bounds(camera_bounds)
-	print("on enter room")
+	print("on enter room : " + name)
 
 
 func get_adjacent_room(orientation : Utils.ORIENTATION, from : Vector2) -> Room:
