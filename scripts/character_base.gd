@@ -73,6 +73,7 @@ var knockback_time: float = 0.0
 
 func _ready() -> void:
 	# Get npcs & dialogs
+	await get_tree().create_timer(0.1).timeout
 	npcs = get_tree().get_nodes_in_group("NPC")
 	simple_dialogs = get_tree().get_nodes_in_group("simple_dialog")
 	call_deferred("get_item_quests")
@@ -238,6 +239,8 @@ func _spawn_attack_scene() -> void:
 func _interact() -> void:
 	if (is_in_dialog || is_in_ship || is_in_casino || is_in_shop): 
 		return
+	
+	print("player interact")
 	
 	var player_pos: Vector2 = global_position
 	
