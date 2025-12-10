@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdnj8i3gbpatj"]
+
+[ext_resource type="Script" uid="uid://dhm6qkgfoaf48" path="res://scripts/transition_screen/transition_screen.gd" id="1_1kmby"]
+[ext_resource type="Texture2D" uid="uid://c2iqxdc0qwio6" path="res://utils/white_square.png" id="2_u00d6"]
+
+[node name="TransitionScreenUi" type="Control" node_paths=PackedStringArray("block_inputs", "black_screen_fade")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1kmby")
+block_inputs = NodePath("Block_Inputs")
+black_screen_fade = NodePath("BlackScreenFade")
+black_screen_color = Color(0, 0, 0.13725491, 1)
+metadata/_custom_type_script = "uid://dhm6qkgfoaf48"
+
+[node name="Block_Inputs" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreenFade" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0.13725491, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_u00d6")

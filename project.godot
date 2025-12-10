@@ -48,12 +48,14 @@ folder_colors={
 "res://scenes/rooms/LD/": "red",
 "res://scenes/score/": "yellow",
 "res://scenes/swords/": "teal",
+"res://scenes/transition_screen/": "blue",
 "res://scripts/audio/": "red",
 "res://scripts/dialogs/": "pink",
 "res://scripts/minigame/": "orange",
 "res://scripts/quests/": "pink",
 "res://scripts/score/": "yellow",
-"res://scripts/swords/": "teal"
+"res://scripts/swords/": "teal",
+"res://scripts/transition_screen/": "blue"
 }
 
 [global_group]
