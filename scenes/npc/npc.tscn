@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://ctjhhqfodba6g"]
 
 [ext_resource type="Script" uid="uid://c2eihwfd7rs33" path="res://scripts/dialogs/npc.gd" id="1_yk1oq"]
-[ext_resource type="Texture2D" uid="uid://b7ef7glppoqoh" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0090.png" id="2_bw1ec"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_npc_question.json" id="2_c01eb"]
+[ext_resource type="Texture2D" uid="uid://bsxvyqioshqx4" path="res://sprites/imports/kenney_monochrome-pirates/Tile slot machine.png" id="3_woxlu"]
 [ext_resource type="Texture2D" uid="uid://re0eu1rvq2gy" path="res://sprites/dialogs/ExclamationMark_grayscale.png" id="4_7unyn"]
 [ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="5_w5rv1"]
 
@@ -140,7 +140,10 @@ sprite_animation_player = NodePath("NPCSprite/AnimationPlayer_Sprite")
 notif_animation_player = NodePath("AnimatedSprite2D/AnimationPlayer_Notif")
 
 [node name="NPCSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_bw1ec")
+scale = Vector2(0.6111111, 0.6111111)
+texture = ExtResource("3_woxlu")
+region_enabled = true
+region_rect = Rect2(613.26044, 128.5453, 18.883728, 43.954697)
 
 [node name="AnimationPlayer_Sprite" type="AnimationPlayer" parent="NPCSprite"]
 libraries = {
