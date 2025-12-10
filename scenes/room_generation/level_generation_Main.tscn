@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dafulph0ab8h3"]
+[gd_scene load_steps=29 format=3 uid="uid://dafulph0ab8h3"]
 
 [ext_resource type="Script" uid="uid://d2gepobba4qmc" path="res://scripts/level_generation/level_generation.gd" id="1_dvui6"]
 [ext_resource type="Resource" uid="uid://cxbysbfqrn2e7" path="res://scenes/rooms/RoomRH/LDSpawn.tres" id="2_dvui6"]
@@ -28,41 +28,37 @@
 [ext_resource type="Resource" uid="uid://bwffnu3fet4pl" path="res://scenes/rooms/RoomRH/LDRoulette_1.tres" id="25_mbwel"]
 [ext_resource type="Resource" uid="uid://cognhokolmpf7" path="res://scenes/rooms/RoomRH/LDRoulette_2.tres" id="26_miug1"]
 [ext_resource type="Resource" uid="uid://7iiqn7kfxjux" path="res://scenes/rooms/RoomRH/LDTrésors.tres" id="27_vfr1o"]
-[ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="29_if6pg"]
 
 [node name="LevelGeneration" type="Node2D"]
 script = ExtResource("1_dvui6")
 _startingRoom = ExtResource("2_dvui6")
 _possibleStartingRoomDirections = Array[int]([2, 3])
 _roomsList = Dictionary[ExtResource("3_o5xyv"), float]({
-ExtResource("27_vfr1o"): 1.0,
-ExtResource("26_miug1"): 1.0,
-ExtResource("25_mbwel"): 1.0,
-ExtResource("24_1k4mp"): 1.0,
-ExtResource("23_0xy7b"): 1.0,
-ExtResource("22_ejcta"): 1.0,
-ExtResource("21_0mq21"): 1.0,
-ExtResource("20_6ptva"): 1.0,
-ExtResource("19_1ghrv"): 1.0,
-ExtResource("18_lj3qs"): 1.0,
-ExtResource("17_k50yq"): 1.0,
-ExtResource("16_udyo4"): 1.0,
-ExtResource("15_7agfo"): 1.0,
-ExtResource("14_kpdmk"): 1.0,
-ExtResource("13_dpmwm"): 1.0,
-ExtResource("12_phwuq"): 1.0,
-ExtResource("11_utmb2"): 1.0,
-ExtResource("10_qwhfw"): 1.0,
-ExtResource("9_xewqf"): 1.0,
-ExtResource("8_7rv3m"): 1.0,
-ExtResource("7_hkipd"): 1.0,
-ExtResource("6_14pfu"): 1.0,
+ExtResource("4_5efro"): 1.0,
 ExtResource("5_if6pg"): 1.0,
-ExtResource("4_5efro"): 1.0
+ExtResource("6_14pfu"): 1.0,
+ExtResource("7_hkipd"): 1.0,
+ExtResource("8_7rv3m"): 1.0,
+ExtResource("9_xewqf"): 1.0,
+ExtResource("10_qwhfw"): 1.0,
+ExtResource("11_utmb2"): 1.0,
+ExtResource("12_phwuq"): 1.0,
+ExtResource("13_dpmwm"): 1.0,
+ExtResource("14_kpdmk"): 1.0,
+ExtResource("15_7agfo"): 1.0,
+ExtResource("16_udyo4"): 1.0,
+ExtResource("17_k50yq"): 1.0,
+ExtResource("18_lj3qs"): 1.0,
+ExtResource("19_1ghrv"): 1.0,
+ExtResource("20_6ptva"): 1.0,
+ExtResource("21_0mq21"): 1.0,
+ExtResource("22_ejcta"): 1.0,
+ExtResource("23_0xy7b"): 1.0,
+ExtResource("24_1k4mp"): 1.0,
+ExtResource("25_mbwel"): 1.0,
+ExtResource("26_miug1"): 1.0,
+ExtResource("27_vfr1o"): 1.0
 })
 _door = ExtResource("7_wf3qw")
 _roomsMaxCount = 40
 _roomSize = Vector2i(176, 144)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("29_if6pg")
