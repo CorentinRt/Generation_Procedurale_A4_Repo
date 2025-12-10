@@ -50,6 +50,9 @@ func _check_completed_condition() -> bool:
 	return false
 
 func _setup_minigame() -> void:
+	for i in get_parent().get_children():
+		if i is Door:
+			_doors.append(i)
 	for i in propsTileMapLayer.get_children():
 		if i is Door:
 			_doors.append(i)

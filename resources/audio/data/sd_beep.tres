@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_lali2")
+sound_name = "beep"
 audiostream = ExtResource("1_qacoq")
+volume_db = 0.0
 metadata/_custom_type_script = "uid://7eoho5edu8ro"

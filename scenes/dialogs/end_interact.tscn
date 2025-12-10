@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://owpq0jv5253s"]
+[gd_scene load_steps=5 format=3 uid="uid://owpq0jv5253s"]
 
 [ext_resource type="Script" uid="uid://dusbw0bxblji8" path="res://scripts/dialogs/end_interact.gd" id="1_o1vid"]
-[ext_resource type="Texture2D" uid="uid://h0iwcsu4ia7c" path="res://sprites/Casino_Sprite/Tile Png/Milieu 2.png" id="2_x6ema"]
+[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="2_x6ema"]
 [ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="3_x6ema"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6ema"]
+size = Vector2(32, 15)
 
 [node name="EndInteract" type="Node2D" node_paths=PackedStringArray("interact_icon")]
 script = ExtResource("1_o1vid")
@@ -11,6 +14,14 @@ metadata/_custom_type_script = "uid://dusbw0bxblji8"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_x6ema")
+region_enabled = true
+region_rect = Rect2(96, 64, 32, 16)
 
 [node name="InteractionIcon" parent="." instance=ExtResource("3_x6ema")]
 position = Vector2(2.019484e-28, -16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_x6ema")
