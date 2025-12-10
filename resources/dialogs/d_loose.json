@@ -7,7 +7,12 @@
 		"[savedName:Mike Harrison][savedColor:#color#]"
 	],
 	"firstInteraction": [
-		"#sujet# #perte# #PO#"
+		"#stop# #sujet# #defaite# #jeu#<next>#phrase_finale#<next><end_loose>"
+	],
+	"stop": [
+		"STOP !",
+		"ARRÊTEZ TOUT !",
+		"C'EST FINI !"
 	],
 	"sujet": [
 		"Le candidat",
@@ -15,17 +20,18 @@
 		"Notre invité",
 		"Notre ami"
 	],
-	"perte": [
+	"defaite": [
 		"vient de perdre",
-		"vient de se séparer de",
-		"vient d'égarer",
 		"vient tout juste de perdre",
-		"vient tout juste de se séparer de",
-		"vient tout juste d'égarer",
 		"vient de lamentablement perdre"
 	],
-	"PO": [
-		"200 000 Pièces !",
-		"200 000 Pièces de son trésor !"
+	"jeu": [
+		"l'émission !",
+		"la partie !",
+		"le jeu !",
+		"Pirate Attack !"
+	],
+	"phrase_finale": [
+		"Viens me voir..."
 	]
 }
