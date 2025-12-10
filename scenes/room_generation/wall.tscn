@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lrcsyg43xxgd"]
+
+[ext_resource type="Texture2D" uid="uid://lmafwulymvh8" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0041.png" id="1_hq8t5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3rwk"]
+size = Vector2(16, 16)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o3rwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hq8t5")
