@@ -1,4 +1,4 @@
-#class_name RandomRoom extends Node2D
+#class_name RandomRoom xtends Node2D
 #
 #@export var _isStartingRoom:bool
 #

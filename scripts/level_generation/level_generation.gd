@@ -1,5 +1,7 @@
 class_name LevelGeneration extends Node2D
 
+@export var _playerScene:PackedScene
+
 @export_group("Starting room")
 @export var _startingRoom:RoomData
 @export var _possibleStartingRoomDirections:Array[LevelGenerationUtils.Directions]
@@ -21,8 +23,10 @@ var _currentRoom:RoomData
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 		var startingRoomDataInstance:RoomData = RoomData.new()
-		startingRoomDataInstance.tilemap = _startingRoom.roomScene.instantiate() as TileMapLayer
-		add_child(startingRoomDataInstance.tilemap)
+		startingRoomDataInstance.roomNode = _startingRoom.roomScene.instantiate() as Room
+		startingRoomDataInstance.tilemaps = startingRoomDataInstance.roomNode.tilemap_layers
+		startingRoomDataInstance.mergedTilemapsRect = _merge_tilemaps(startingRoomDataInstance.tilemaps)
+		add_child(startingRoomDataInstance.roomNode)
 		
 		var startingRoomDirections:Array[LevelGenerationUtils.Directions] = _selectRandomDirFromArray(_possibleStartingRoomDirections)
 		_currentRoom = startingRoomDataInstance
@@ -52,6 +56,9 @@ func _ready() -> void:
 				await get_tree().create_timer(0.1).timeout
 		
 		_add_doors()
+		var player:Player = _playerScene.instantiate() as Player
+		add_child(player)
+		player._room = _roomMap[Vector2i(0, 0)].roomNode
 
 func _random_dir(room:RoomData) -> LevelGenerationUtils.Directions:
 	var dir:LevelGenerationUtils.Directions = LevelGenerationUtils.Directions.values()[randi() % LevelGenerationUtils.Directions.size()] as LevelGenerationUtils.Directions
@@ -76,44 +83,52 @@ func _selectRandomDirFromArray(dirs:Array[LevelGenerationUtils.Directions]) -> A
 
 func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	var selectedRoomData:RoomData = _pickRandomElementFromDict(_roomsList).duplicate()
-	selectedRoomData.tilemap = selectedRoomData.roomScene.instantiate()
+	selectedRoomData.roomNode = selectedRoomData.roomScene.instantiate() as Room
+	selectedRoomData.tilemaps = selectedRoomData.roomNode.tilemap_layers
+	selectedRoomData.mergedTilemapsRect = _merge_tilemaps(selectedRoomData.tilemaps)
 	selectedRoomData.directions.clear()
 	match creationDir:
 		LevelGenerationUtils.Directions.NORTH:
 			print("North")
 			selectedRoomData.coordinates = Vector2(_currentRoom.coordinates.x, _currentRoom.coordinates.y - 1)
+			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.SOUTH)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.NORTH)
 			
 		LevelGenerationUtils.Directions.SOUTH:
 			print("South")
 			selectedRoomData.coordinates = Vector2(_currentRoom.coordinates.x, _currentRoom.coordinates.y + 1)
+			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.NORTH)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.SOUTH)
 			
 		LevelGenerationUtils.Directions.EAST:
 			print("East")
 			selectedRoomData.coordinates = Vector2(_currentRoom.coordinates.x + 1, _currentRoom.coordinates.y)
+			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.WEST)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.EAST)
 	
 		LevelGenerationUtils.Directions.WEST:
 			print("West")
 			selectedRoomData.coordinates = Vector2( _currentRoom.coordinates.x - 1, _currentRoom.coordinates.y)
+			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.EAST)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.WEST)
 	
-	selectedRoomData.tilemap.position = Vector2(selectedRoomData.coordinates.x * _roomSize.x, selectedRoomData.coordinates.y * _roomSize.y)
+	selectedRoomData.roomNode.position = Vector2(selectedRoomData.coordinates.x * _roomSize.x, selectedRoomData.coordinates.y * _roomSize.y)
 	_roomMap[selectedRoomData.coordinates] = selectedRoomData
 	_update_available_rooms(selectedRoomData)
+	
 	_update_available_rooms(_currentRoom)
-	add_child(selectedRoomData.tilemap)
+	add_child(selectedRoomData.roomNode)
 
 func _add_doors() -> void:
 	for i in _roomMap:
 		for dir in _roomMap[i].directions:
-			var roomBounds:Rect2 = _roomMap[i].tilemap.get_used_rect()
-			var tileSize:Vector2i = _roomMap[i].tilemap.tile_set.tile_size
+			var roomBounds:Rect2 = _roomMap[i].mergedTilemapsRect
+			print(roomBounds)
+			var tileSize:Vector2i = _roomMap[i].tilemaps[0].tile_set.tile_size
 			var isWidthEven:bool = false
 			var isHeightEven:bool = false
 			
@@ -175,7 +190,7 @@ func roomHasNeighboorInDir(coordinates:Vector2i, dir:LevelGenerationUtils.Direct
 func _create_door(roomData:RoomData, coord:Vector2) -> void:
 	var createdDoor:Node2D = _door.instantiate()
 	createdDoor.global_position = coord
-	roomData.tilemap.add_child(createdDoor)
+	roomData.roomNode.add_child(createdDoor)
 
 func _pickRandomElementFromDict(dictionary: Dictionary[RoomData, float]) -> RoomData:
 	var totalWeight:float = 0
@@ -205,3 +220,9 @@ func _update_available_rooms(room:RoomData) -> void:
 	for i in temp:
 		if(_availableRooms[i].directions.size() >= 4 || (roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.NORTH) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.SOUTH) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.EAST) && roomHasNeighboorInDir(_availableRooms[i].coordinates, LevelGenerationUtils.Directions.WEST))):
 			_availableRooms.erase(i)
+
+func _merge_tilemaps(tilemapArray:Array[TileMapLayer]) -> Rect2:
+	var rect:Rect2
+	for i in tilemapArray.size():
+		rect.merge(tilemapArray[i].get_used_rect())
+	return rect
