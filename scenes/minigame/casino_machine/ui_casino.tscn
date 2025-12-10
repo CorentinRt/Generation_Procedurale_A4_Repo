@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://eldfhh8vm7fk" path="res://scripts/minigame/casino_machine/casino/ui_casino.gd" id="1_pilwi"]
 [ext_resource type="Script" uid="uid://cpkfk2jm3i1qh" path="res://scripts/minigame/casino_machine/casino_reel.gd" id="2_5iqkj"]
-[ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="2_ubwra"]
-[ext_resource type="Texture2D" uid="uid://b05sq5d5ukqij" path="res://sprites/heart.png" id="3_oib7k"]
-[ext_resource type="Texture2D" uid="uid://by6021h45yirf" path="res://sprites/inputs/keyboard_e_outline.png" id="4_5iqkj"]
-[ext_resource type="Texture2D" uid="uid://mo1eyyar2d7f" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tiles/tile_0031.png" id="5_rv4m6"]
+[ext_resource type="Texture2D" uid="uid://b4vm3cjxbde7s" path="res://sprites/Casino_Sprite/casino_symbols/coffre_pirate.png" id="3_mye5g"]
+[ext_resource type="Texture2D" uid="uid://cscjrwkyvko62" path="res://sprites/Casino_Sprite/casino_symbols/crane.png" id="4_mbn3i"]
+[ext_resource type="Texture2D" uid="uid://btsmt08tragsw" path="res://sprites/Casino_Sprite/casino_symbols/crochet_pirate.png" id="5_pgdbk"]
+[ext_resource type="Texture2D" uid="uid://fhto8ycjbbvl" path="res://sprites/Casino_Sprite/casino_symbols/perroquet.png" id="6_4dhvq"]
 [ext_resource type="StyleBox" uid="uid://bt1741yjvj68t" path="res://style/casino_style.tres" id="7_thdb8"]
 [ext_resource type="StyleBox" uid="uid://bng7y551ncjy2" path="res://style/casino_style_borders.tres" id="8_ap1v6"]
 
@@ -232,7 +232,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5iqkj")
-symbols = Array[Texture2D]([ExtResource("3_oib7k"), ExtResource("4_5iqkj"), ExtResource("5_rv4m6"), ExtResource("2_ubwra")])
+symbols = Array[Texture2D]([ExtResource("3_mye5g"), ExtResource("4_mbn3i"), ExtResource("5_pgdbk"), ExtResource("6_4dhvq")])
 reel_speed = 4000.0
 
 [node name="Panel" type="Panel" parent="Container/Reel1"]
@@ -271,7 +271,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5iqkj")
-symbols = Array[Texture2D]([ExtResource("3_oib7k"), ExtResource("4_5iqkj"), ExtResource("5_rv4m6"), ExtResource("2_ubwra")])
+symbols = Array[Texture2D]([ExtResource("3_mye5g"), ExtResource("4_mbn3i"), ExtResource("5_pgdbk"), ExtResource("6_4dhvq")])
 reel_speed = 4000.0
 
 [node name="Panel" type="Panel" parent="Container/Reel2"]
@@ -310,7 +310,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5iqkj")
-symbols = Array[Texture2D]([ExtResource("3_oib7k"), ExtResource("4_5iqkj"), ExtResource("5_rv4m6"), ExtResource("2_ubwra")])
+symbols = Array[Texture2D]([ExtResource("3_mye5g"), ExtResource("4_mbn3i"), ExtResource("5_pgdbk"), ExtResource("6_4dhvq")])
 reel_speed = 4000.0
 
 [node name="Panel" type="Panel" parent="Container/Reel3"]
