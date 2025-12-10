@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btsmt08tragsw"
-path="res://.godot/imported/crochet_pirate.png-decbfa43f07f9ae4be88a9d01ba8e5fd.ctex"
+uid="uid://blt8tctgtxa67"
+path="res://.godot/imported/Asset_Crane_Machine_Sous.png-c82e6be48243c8d81d551d08cf5c1112.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Casino_Sprite/casino_symbols/crochet_pirate.png"
-dest_files=["res://.godot/imported/crochet_pirate.png-decbfa43f07f9ae4be88a9d01ba8e5fd.ctex"]
+source_file="res://sprites/Casino_Sprite/casino_symbols/Asset_Crane_Machine_Sous.png"
+dest_files=["res://.godot/imported/Asset_Crane_Machine_Sous.png-c82e6be48243c8d81d551d08cf5c1112.ctex"]
 
 [params]
 

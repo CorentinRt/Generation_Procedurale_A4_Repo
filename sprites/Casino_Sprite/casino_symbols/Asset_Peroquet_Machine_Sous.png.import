@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscjrwkyvko62"
-path="res://.godot/imported/crane.png-e8589bfef70e944225362fa9cad47f09.ctex"
+uid="uid://qyvgakg0neod"
+path="res://.godot/imported/Asset_Peroquet_Machine_Sous.png-e9c03b40f65fc622ae930f77112fcfec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Casino_Sprite/casino_symbols/crane.png"
-dest_files=["res://.godot/imported/crane.png-e8589bfef70e944225362fa9cad47f09.ctex"]
+source_file="res://sprites/Casino_Sprite/casino_symbols/Asset_Peroquet_Machine_Sous.png"
+dest_files=["res://.godot/imported/Asset_Peroquet_Machine_Sous.png-e9c03b40f65fc622ae930f77112fcfec.ctex"]
 
 [params]
 
