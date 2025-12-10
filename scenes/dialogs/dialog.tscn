@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=26 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d2bqj7ke2sq5r" path="res://scripts/dialogs/question.gd" id="3_g2gxm"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_taunt.json" id="3_kyx3p"]
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="3_pr53c"]
+[ext_resource type="JSON" path="res://resources/dialogs/d_loose.json" id="4_0s3e1"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_item.json" id="5_mgb4h"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_treasure.json" id="6_mbybk"]
 [ext_resource type="Resource" uid="uid://odqciikpmnpx" path="res://resources/dialogs/questions/q_current_money.tres" id="6_ufbtj"]
@@ -40,6 +41,7 @@ grow_vertical = 2
 script = ExtResource("1_7uu03")
 start_json = ExtResource("2_136k0")
 taunt_json = ExtResource("3_kyx3p")
+loose_json = ExtResource("4_0s3e1")
 questions_answers_json = ExtResource("3_2fuk2")
 item_json = ExtResource("5_mgb4h")
 treasure_json = ExtResource("6_mbybk")

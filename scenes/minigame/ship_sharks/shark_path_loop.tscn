@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh0jjvqkgi5bf"]
+
+[ext_resource type="PackedScene" uid="uid://bf72cnu7fr5md" path="res://scenes/minigame/ship_sharks/shark_path.tscn" id="1_td8sm"]
+
+[sub_resource type="Curve2D" id="Curve2D_ldk1c"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 0, 88, 40)
+}
+point_count = 3
+
+[node name="Shark_Path_Loop" instance=ExtResource("1_td8sm")]
+curve = SubResource("Curve2D_ldk1c")
+
+[node name="PathFollow2D" parent="." index="0"]
+loop = true

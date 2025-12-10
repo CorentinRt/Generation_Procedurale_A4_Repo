@@ -4,6 +4,9 @@ signal on_open_final_chest()
 
 signal on_kill_enemy()
 
+signal on_player_has_lost()
+signal on_player_loose_dialog_ended()
+
 var has_lost : bool = false
 
 func _ready() -> void:
@@ -26,18 +29,20 @@ func _reload_game_scene(delay:float) -> void:
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 	_init_game()
 	
-	
 func _notify_open_final_chest() -> void:
 	on_open_final_chest.emit()
-	
-func _notify_kill_enemy() -> void:
-	print("kill enemy")
-	on_kill_enemy.emit()
 	
 func _loose_game() -> void:
 	if has_lost:
 		return
 	has_lost = true
 	print("has lost")
+	on_player_has_lost.emit()
 	
+func _notify_player_loose_dialog_ended() -> void:
+	print("player loose dialog ended")
+	on_player_loose_dialog_ended.emit()
 	
+func _notify_kill_enemy() -> void:
+	print("kill enemy")
+	on_kill_enemy.emit()
