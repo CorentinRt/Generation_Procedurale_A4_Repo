@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=32 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -25,13 +25,83 @@
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_skulls.json" id="14_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_letters.json" id="15_7cf0w"]
 
+[sub_resource type="Animation" id="Animation_fh6uf"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(920, 0, 0, 0.083333336, -1.6666667, 910, -0.083333336, 0, 0.083333336, 0, 920, -0.083333336, -1.6666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_pq4f6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(920, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pq4f6"]
+_data = {
+&"RESET": SubResource("Animation_pq4f6"),
+&"idle": SubResource("Animation_fh6uf")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgb4h"]
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label", "name_panel", "dialog_btn", "questions_btn", "custom_timer") groups=["dialog_manager"]]
+[sub_resource type="Animation" id="Animation_ds7yp"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wxq1j"]
+resource_name = "dialog_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(220, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ds7yp"]
+_data = {
+&"RESET": SubResource("Animation_ds7yp"),
+&"dialog_in": SubResource("Animation_wxq1j")
+}
+
+[node name="Dialog" type="Control" node_paths=PackedStringArray("text_label", "name_label", "name_panel", "dialog_btn", "animation_player_dialog", "animation_player_arrow_indicator", "questions_btn", "custom_timer") groups=["dialog_manager"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,18 +116,28 @@ questions_answers_json = ExtResource("3_2fuk2")
 item_json = ExtResource("5_mgb4h")
 treasure_json = ExtResource("6_mbybk")
 end_json = ExtResource("7_5xytx")
-text_label = NodePath("Dialog/Text")
-name_label = NodePath("Dialog/NamePanel/Name")
-name_panel = NodePath("Dialog/NamePanel")
-dialog_btn = NodePath("Dialog")
+text_label = NodePath("Container/Dialog/Text")
+name_label = NodePath("Container/Dialog/NamePanel/Name")
+name_panel = NodePath("Container/Dialog/NamePanel")
+dialog_btn = NodePath("Container/Dialog")
 button_style = ExtResource("3_pr53c")
-questions_btn = [NodePath("Dialog/Button"), NodePath("Dialog/Button2"), NodePath("Dialog/Button3"), NodePath("Dialog/Button4")]
+animation_player_dialog = NodePath("AnimationPlayer_Dialog_InOut")
+animation_player_arrow_indicator = NodePath("Container/Dialog/Arrow/AnimationPlayer_Arrow")
+questions_btn = [NodePath("Container/Dialog/Button"), NodePath("Container/Dialog/Button2"), NodePath("Container/Dialog/Button3"), NodePath("Container/Dialog/Button4")]
 questions_data = Array[ExtResource("3_g2gxm")]([ExtResource("6_ufbtj"), ExtResource("7_kyx3p"), ExtResource("9_nef8f"), ExtResource("10_mgb4h"), ExtResource("11_mbybk"), ExtResource("12_5xytx"), ExtResource("13_0s3e1")])
 no_question_pos = Vector2(100, 530)
 questions_pos = Vector2(100, 380)
 custom_timer = NodePath("CustomTimer")
 
-[node name="Dialog" type="Button" parent="."]
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialog" type="Button" parent="Container"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -76,7 +156,7 @@ theme_override_styles/hover = ExtResource("3_pr53c")
 theme_override_styles/disabled = ExtResource("3_pr53c")
 theme_override_styles/focus = ExtResource("3_pr53c")
 
-[node name="Text" type="RichTextLabel" parent="Dialog"]
+[node name="Text" type="RichTextLabel" parent="Container/Dialog"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -92,7 +172,7 @@ text = "Sentence text ----------------------------------------------------------
 scroll_active = false
 autowrap_mode = 2
 
-[node name="NamePanel" type="Panel" parent="Dialog"]
+[node name="NamePanel" type="Panel" parent="Container/Dialog"]
 layout_mode = 0
 offset_left = 34.0
 offset_top = -26.0
@@ -101,7 +181,7 @@ offset_bottom = 24.0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_pr53c")
 
-[node name="Name" type="RichTextLabel" parent="Dialog/NamePanel"]
+[node name="Name" type="RichTextLabel" parent="Container/Dialog/NamePanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -119,7 +199,7 @@ scroll_following_visible_characters = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="Button" parent="Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
+[node name="Button" parent="Container/Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -132,7 +212,7 @@ text = Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":f
 
 text = NodePath("Answer")
 
-[node name="Button2" parent="Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
+[node name="Button2" parent="Container/Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -149,7 +229,7 @@ text = Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":f
 
 text = NodePath("Answer")
 
-[node name="Button3" parent="Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
+[node name="Button3" parent="Container/Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -162,7 +242,7 @@ text = Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":f
 
 text = NodePath("Answer")
 
-[node name="Button4" parent="Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
+[node name="Button4" parent="Container/Dialog" node_paths=PackedStringArray("text") instance=ExtResource("3_7uu03")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -179,7 +259,7 @@ text = Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":f
 
 text = NodePath("Answer")
 
-[node name="Arrow" type="TextureRect" parent="Dialog"]
+[node name="Arrow" type="TextureRect" parent="Container/Dialog"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -195,7 +275,12 @@ grow_vertical = 0
 texture = ExtResource("9_ufbtj")
 expand_mode = 1
 
-[node name="TimerSlider" type="HSlider" parent="Dialog"]
+[node name="AnimationPlayer_Arrow" type="AnimationPlayer" parent="Container/Dialog/Arrow"]
+libraries = {
+&"": SubResource("AnimationLibrary_pq4f6")
+}
+
+[node name="TimerSlider" type="HSlider" parent="Container/Dialog"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -211,7 +296,7 @@ editable = false
 
 [node name="CustomTimer" type="Node" parent="." node_paths=PackedStringArray("timer_slider", "timer")]
 script = ExtResource("11_sbcri")
-timer_slider = NodePath("../Dialog/TimerSlider")
+timer_slider = NodePath("../Container/Dialog/TimerSlider")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="CustomTimer"]
@@ -224,4 +309,9 @@ letters_json = ExtResource("15_7cf0w")
 letters_color = Color(0.11250638, 0.28216064, 0.29371014, 1)
 metadata/_custom_type_script = "uid://c7i14ajf5k0es"
 
-[connection signal="pressed" from="Dialog" to="." method="_on_dialog_pressed"]
+[node name="AnimationPlayer_Dialog_InOut" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ds7yp")
+}
+
+[connection signal="pressed" from="Container/Dialog" to="." method="_on_dialog_pressed"]

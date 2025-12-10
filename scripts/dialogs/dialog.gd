@@ -18,6 +18,8 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var dialog_btn: Button
 @export var button_style: StyleBoxFlat
 @export var type_speed:float = 0.02
+@export var animation_player_dialog : AnimationPlayer
+@export var animation_player_arrow_indicator : AnimationPlayer
 
 @export_group("Questions")
 @export var questions_btn: Array[DialogButton]
@@ -65,6 +67,7 @@ func _ready():
 	hide_dialog()
 	_setup_grammars()
 	show_start_dialog()
+	_setup_animation_arrow()
 	
 	# Timer
 	custom_timer.timer_finished.connect(_on_timer_end)
@@ -119,6 +122,10 @@ func _setup_grammars():
 	
 	end_grammar = TraceryScript.Grammar.new(end_rules)
 	end_grammar.add_modifiers(TraceryScript.UniversalModifiers.get_modifiers())
+	
+func _setup_animation_arrow() -> void:
+	animation_player_arrow_indicator.play("idle")
+	
 #endregion
 	
 #region Show dialog JSON
@@ -135,6 +142,8 @@ func show_loose_dialog():
 	show_dialog_json(taunt_json, loose_grammar)
 	
 func show_dialog_json(json : JSON, grammar : TraceryScript.Grammar):
+	animation_player_dialog.play("dialog_in")
+	
 	current_sentence_id = 0
 	
 	is_in_dialog = true
@@ -397,6 +406,8 @@ func show_dialog(npc : Node) -> void:
 	if is_in_dialog:
 		return
 	
+	animation_player_dialog.play("dialog_in")
+	
 	current_sentence_id = 0
 	
 	is_in_dialog = true
@@ -528,6 +539,8 @@ func _on_timer_end():
 
 #region Simple Dialog (only text, no tracery except <next> + no name)
 func start_simple_dialog(dialog_text: String, color : Color):
+	animation_player_dialog.play("dialog_in")
+	
 	current_sentence_id = 0
 	
 	is_in_dialog = true
