@@ -48,12 +48,16 @@ func _setup_dialogs():
 	for dialog in simple_dialogs:
 		match dialog.dialog_type:
 			SimpleDialog.SimpleDialogType.SKULL:
+				if(skulls_text.size() <= 0): #Pour pouvoir générer meme si on a plus de textes de skulls
+					continue
 				skulls_text.shuffle()
 				var random = skulls_text[0]
 				dialog.setup(random, skulls_color)
 				skulls_text.erase(random)
 				
 			SimpleDialog.SimpleDialogType.LETTER:
+				if(letters_text.size() <= 0): #Pour pouvoir générer meme si on a plus de textes de skulls
+					continue
 				letters_text.shuffle()
 				var random = letters_text[0]
 				dialog.setup(letters_text[0], letters_color)

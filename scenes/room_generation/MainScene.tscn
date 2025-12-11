@@ -40,27 +40,27 @@ dialog_beep = ExtResource("3_grgwt")
 _player = NodePath("../Player")
 _treasureRoom = ExtResource("5_fo2lf")
 _roomsList = Dictionary[ExtResource("5_2bj3j"), float]({
-ExtResource("24_e6wjg"): 1.0,
-ExtResource("23_gua0t"): 1.0,
-ExtResource("22_8ndew"): 1.0,
-ExtResource("21_m3sc7"): 1.0,
-ExtResource("20_0stpo"): 1.0,
-ExtResource("19_rblo1"): 1.0,
-ExtResource("18_l8rqq"): 1.0,
-ExtResource("17_4pnk0"): 1.0,
-ExtResource("16_qki2v"): 1.0,
-ExtResource("15_mb1wu"): 1.0,
-ExtResource("14_o2whb"): 1.0,
-ExtResource("13_367ae"): 1.0,
-ExtResource("12_npl4f"): 1.0,
-ExtResource("11_2i2my"): 1.0,
-ExtResource("10_fcgcf"): 1.0,
-ExtResource("9_tectq"): 1.0,
-ExtResource("8_nro1g"): 1.0,
+ExtResource("6_fo2lf"): 1.0,
 ExtResource("7_nron4"): 1.0,
-ExtResource("6_fo2lf"): 1.0
+ExtResource("8_nro1g"): 1.0,
+ExtResource("9_tectq"): 1.0,
+ExtResource("10_fcgcf"): 1.0,
+ExtResource("11_2i2my"): 1.0,
+ExtResource("12_npl4f"): 1.0,
+ExtResource("13_367ae"): 1.0,
+ExtResource("14_o2whb"): 1.0,
+ExtResource("15_mb1wu"): 1.0,
+ExtResource("16_qki2v"): 1.0,
+ExtResource("17_4pnk0"): 1.0,
+ExtResource("18_l8rqq"): 1.0,
+ExtResource("19_rblo1"): 1.0,
+ExtResource("20_0stpo"): 1.0,
+ExtResource("21_m3sc7"): 1.0,
+ExtResource("22_8ndew"): 1.0,
+ExtResource("23_gua0t"): 1.0,
+ExtResource("24_e6wjg"): 1.0
 })
-_roomsMaxCount = 20
+_roomsMaxCount = 1000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
