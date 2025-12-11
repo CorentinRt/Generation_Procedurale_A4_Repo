@@ -14,9 +14,7 @@ class_name LevelGeneration extends Node2D
 @export var _wall:PackedScene
 @export var _possibleStartingRoomDirections:Array[LevelGenerationUtils.Directions]
 @export var _roomsMaxCount:int
-@export var _maxLevelHeight:int
-@export var _maxLevelWidth:int
-@export var _roomSize:Vector2i
+@export var _roomSize:Vector2i 
 
 @export_group("Debug")
 @export var _spriteDebug:Sprite2D
@@ -93,28 +91,28 @@ func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	selectedRoomData.directions.clear()
 	match creationDir:
 		LevelGenerationUtils.Directions.NORTH:
-			print("North")
+			#print("North")
 			selectedRoomData.coordinates = Vector2(_currentRoom.coordinates.x, _currentRoom.coordinates.y - 1)
 			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.SOUTH)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.NORTH)
 			
 		LevelGenerationUtils.Directions.SOUTH:
-			print("South")
+			#print("South")
 			selectedRoomData.coordinates = Vector2(_currentRoom.coordinates.x, _currentRoom.coordinates.y + 1)
 			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.NORTH)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.SOUTH)
 			
 		LevelGenerationUtils.Directions.EAST:
-			print("East")
+			#print("East")
 			selectedRoomData.coordinates = Vector2(_currentRoom.coordinates.x + 1, _currentRoom.coordinates.y)
 			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.WEST)
 			_currentRoom.directions.append(LevelGenerationUtils.Directions.EAST)
 	
 		LevelGenerationUtils.Directions.WEST:
-			print("West")
+			#print("West")
 			selectedRoomData.coordinates = Vector2( _currentRoom.coordinates.x - 1, _currentRoom.coordinates.y)
 			selectedRoomData.roomNode.room_pos = selectedRoomData.coordinates
 			selectedRoomData.directions.append(LevelGenerationUtils.Directions.EAST)
