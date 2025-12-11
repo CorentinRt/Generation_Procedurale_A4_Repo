@@ -58,16 +58,16 @@
 		"#DuringQuest"
 	],
 	"DuringQuest":[
-		"J'attends que tu les tues tous !",
+		"J'attends que t'ai la somme !",
 		"Reviens quans tu auras terminé !",
-		"Reviens quand tu as terminé !"
+		"Reviens quand tu as réussis !"
 	],
 	"questCompleted": [
 		"#questCompleted#"
 	],
 	"questCompleted":[
-		"Tu les as vaincus !",
-		"Merci de les avoir tués !",
+		"Tu as toutes les pièces !",
+		"Tu as réussis !",
 		"OUI tu as terminé !"
 	],
 	"questFailed": [
@@ -75,7 +75,7 @@
 	],
 	"questNotCompleted":[
 		"Je suis déçu t'aurais pu faire mieux.",
-		"T'aurais pu aller les tuer quand même...",
+		"T'aurais pu gagner plus d'argent quand même...",
 		"Tu as échoué !"
 	],
 	"completed": [
