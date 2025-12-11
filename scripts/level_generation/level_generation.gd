@@ -2,9 +2,9 @@ class_name LevelGeneration extends Node2D
 
 @export var _player:Player
 
-@export_group("Starting room")
+@export_group("Unique rooms")
 @export var _startingRoom:RoomData
-@export var _possibleStartingRoomDirections:Array[LevelGenerationUtils.Directions]
+@export var _treasureRoom:RoomData
 
 @export_group("Other rooms base")
 @export var _roomsList:Dictionary[RoomData, float]
@@ -12,6 +12,7 @@ class_name LevelGeneration extends Node2D
 @export_group("Generation parameters")
 @export var _door:PackedScene
 @export var _wall:PackedScene
+@export var _possibleStartingRoomDirections:Array[LevelGenerationUtils.Directions]
 @export var _roomsMaxCount:int
 @export var _maxLevelHeight:int
 @export var _maxLevelWidth:int
@@ -45,12 +46,12 @@ func _ready() -> void:
 			var randDir:LevelGenerationUtils.Directions = _random_dir(_currentRoom)
 			
 			while(_currentRoom.directions.size() >= 4 || _currentRoom.coordinates == Vector2i.ZERO || roomHasNeighboorInDir(_currentRoom.coordinates, randDir)):
-				print("Rolling room : ")
+				#print("Rolling room : ")
 				_currentRoom = _get_random_room_from_Availables()
-				print("Rolling Dir = ")
+				#print("Rolling Dir = ")
 				randDir = _random_dir(_currentRoom)
 				
-			print("Spawning Room =")
+			#print("Spawning Room =")
 			_spawn_room(randDir)
 			t+=1;
 			if t > 100:
@@ -84,7 +85,11 @@ func _selectRandomDirFromArray(dirs:Array[LevelGenerationUtils.Directions]) -> A
 
 func _spawn_room(creationDir:LevelGenerationUtils.Directions) -> void:
 	var selectedRoomData:RoomData = _pickRandomElementFromDict(_roomsList).duplicate()
+	if(_roomsMaxCount - _roomMap.size() == 2):
+		selectedRoomData = _treasureRoom
+
 	selectedRoomData.roomNode = selectedRoomData.roomScene.instantiate() as Room
+	
 	selectedRoomData.directions.clear()
 	match creationDir:
 		LevelGenerationUtils.Directions.NORTH:
@@ -135,13 +140,13 @@ func _add_doors_and_walls() -> void:
 		if(int(roomBounds.size.x / tileSize.x) % 2 == 0): isWidthEven = true
 		if(int(roomBounds.size.y / tileSize.y) % 2 == 0): isHeightEven = true
 		
-		print("\n")
-		print("Room name : " + _roomMap[i].roomNode.name)
-		print("Room bounds size : {" + str(roomBounds.size.x) + ";" + str(roomBounds.size.y) + "}")
-		print("is Width even : " + str(isWidthEven))
-		print("Width size : " + str(roomBounds.size.x/ tileSize.x))
-		print("is Height even : " + str(isHeightEven))
-		print("Height size : " + str(roomBounds.size.y/ tileSize.y))
+		#print("\n")
+		#print("Room name : " + _roomMap[i].roomNode.name)
+		#print("Room bounds size : {" + str(roomBounds.size.x) + ";" + str(roomBounds.size.y) + "}")
+		#print("is Width even : " + str(isWidthEven))
+		#print("Width size : " + str(roomBounds.size.x/ tileSize.x))
+		#print("is Height even : " + str(isHeightEven))
+		#print("Height size : " + str(roomBounds.size.y/ tileSize.y))
 		
 		var offset:Vector2 = Vector2.ZERO
 		offset = tileSize / 2

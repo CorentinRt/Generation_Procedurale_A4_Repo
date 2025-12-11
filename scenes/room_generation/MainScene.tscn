@@ -1,10 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqjnuthhfsvnt"]
+[gd_scene load_steps=29 format=3 uid="uid://bqjnuthhfsvnt"]
 
 [ext_resource type="PackedScene" uid="uid://d1srv4ih406nr" path="res://scenes/audio/audio_manager.tscn" id="2_u2rfa"]
 [ext_resource type="AudioStream" uid="uid://yjrwcp2td3wd" path="res://resources/audio/s_beep.wav" id="3_grgwt"]
 [ext_resource type="PackedScene" uid="uid://dt2baiqo8huyi" path="res://scenes/dialogs/debug_json.tscn" id="4_f102n"]
+[ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="5_2bj3j"]
+[ext_resource type="Resource" uid="uid://7iiqn7kfxjux" path="res://scenes/rooms/RoomRH/LDTrésors.tres" id="5_fo2lf"]
 [ext_resource type="PackedScene" uid="uid://dafulph0ab8h3" path="res://scenes/room_generation/level_generation_Main.tscn" id="5_hb5b0"]
+[ext_resource type="Resource" uid="uid://b8suqhyedh42e" path="res://scenes/rooms/RoomRH/LDCombat_1.tres" id="6_fo2lf"]
 [ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/hud.tscn" id="7_f102n"]
+[ext_resource type="Resource" uid="uid://bt4i0xs015oh0" path="res://scenes/rooms/RoomRH/LDCombat_2.tres" id="7_nron4"]
+[ext_resource type="Resource" uid="uid://d2oldcag3cks8" path="res://scenes/rooms/RoomRH/LDCombat_3.tres" id="8_nro1g"]
+[ext_resource type="Resource" uid="uid://celgpffsr0f3c" path="res://scenes/rooms/RoomRH/LDCombat_4.tres" id="9_tectq"]
+[ext_resource type="Resource" uid="uid://cgsg4i83rx34r" path="res://scenes/rooms/RoomRH/LDCombat_5.tres" id="10_fcgcf"]
+[ext_resource type="Resource" uid="uid://bgn80dlkhyouu" path="res://scenes/rooms/RoomRH/LDCombat_6.tres" id="11_2i2my"]
+[ext_resource type="Resource" uid="uid://m55imu4k0s0d" path="res://scenes/rooms/RoomRH/LDCombat_7.tres" id="12_npl4f"]
+[ext_resource type="Resource" uid="uid://b5pbd05g0eyl6" path="res://scenes/rooms/RoomRH/LDMarchand_1.tres" id="13_367ae"]
+[ext_resource type="Resource" uid="uid://7b4mwigi4pkj" path="res://scenes/rooms/RoomRH/LDMarchand_2.tres" id="14_o2whb"]
+[ext_resource type="Resource" uid="uid://dgi4g4ro7rcy7" path="res://scenes/rooms/RoomRH/LDMarchand_3.tres" id="15_mb1wu"]
+[ext_resource type="Resource" uid="uid://ct8q8xqbtkihe" path="res://scenes/rooms/RoomRH/LDQuestion_1.tres" id="16_qki2v"]
+[ext_resource type="Resource" uid="uid://dugdg16ijgq4n" path="res://scenes/rooms/RoomRH/LDQuestion_2.tres" id="17_4pnk0"]
+[ext_resource type="Resource" uid="uid://03gv3eir82kl" path="res://scenes/rooms/RoomRH/LDQuestion_3.tres" id="18_l8rqq"]
+[ext_resource type="Resource" uid="uid://bkhma5w6sypun" path="res://scenes/rooms/RoomRH/LDRequin_1.tres" id="19_rblo1"]
+[ext_resource type="Resource" uid="uid://dtieoi4hwe44u" path="res://scenes/rooms/RoomRH/LDRequin_2.tres" id="20_0stpo"]
+[ext_resource type="Resource" uid="uid://ds68i5e4co22p" path="res://scenes/rooms/RoomRH/LDRequin_3.tres" id="21_m3sc7"]
+[ext_resource type="Resource" uid="uid://bwffnu3fet4pl" path="res://scenes/rooms/RoomRH/LDRoulette_1.tres" id="22_8ndew"]
+[ext_resource type="Resource" uid="uid://cognhokolmpf7" path="res://scenes/rooms/RoomRH/LDRoulette_2.tres" id="23_gua0t"]
+[ext_resource type="Resource" uid="uid://c2l8lt5sbvhia" path="res://scenes/rooms/RoomRH/LDRoulette_3.tres" id="24_e6wjg"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="24_uy8ax"]
 [ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="25_ql38n"]
 
@@ -17,6 +38,28 @@ dialog_beep = ExtResource("3_grgwt")
 
 [node name="LevelGeneration2" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("5_hb5b0")]
 _player = NodePath("../Player")
+_treasureRoom = ExtResource("5_fo2lf")
+_roomsList = Dictionary[ExtResource("5_2bj3j"), float]({
+ExtResource("24_e6wjg"): 1.0,
+ExtResource("23_gua0t"): 1.0,
+ExtResource("22_8ndew"): 1.0,
+ExtResource("21_m3sc7"): 1.0,
+ExtResource("20_0stpo"): 1.0,
+ExtResource("19_rblo1"): 1.0,
+ExtResource("18_l8rqq"): 1.0,
+ExtResource("17_4pnk0"): 1.0,
+ExtResource("16_qki2v"): 1.0,
+ExtResource("15_mb1wu"): 1.0,
+ExtResource("14_o2whb"): 1.0,
+ExtResource("13_367ae"): 1.0,
+ExtResource("12_npl4f"): 1.0,
+ExtResource("11_2i2my"): 1.0,
+ExtResource("10_fcgcf"): 1.0,
+ExtResource("9_tectq"): 1.0,
+ExtResource("8_nro1g"): 1.0,
+ExtResource("7_nron4"): 1.0,
+ExtResource("6_fo2lf"): 1.0
+})
 _roomsMaxCount = 20
 
 [node name="Camera2D" type="Camera2D" parent="."]
