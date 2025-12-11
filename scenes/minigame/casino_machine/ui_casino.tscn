@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://psvhqqirckxe"]
+[gd_scene load_steps=18 format=3 uid="uid://psvhqqirckxe"]
 
 [ext_resource type="Script" uid="uid://eldfhh8vm7fk" path="res://scripts/minigame/casino_machine/casino/ui_casino.gd" id="1_pilwi"]
 [ext_resource type="Script" uid="uid://cpkfk2jm3i1qh" path="res://scripts/minigame/casino_machine/casino_reel.gd" id="2_5iqkj"]
@@ -8,20 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://qyvgakg0neod" path="res://sprites/Casino_Sprite/casino_symbols/Asset_Peroquet_Machine_Sous.png" id="6_mye5g"]
 [ext_resource type="StyleBox" uid="uid://bt1741yjvj68t" path="res://style/casino_style.tres" id="7_thdb8"]
 [ext_resource type="StyleBox" uid="uid://bng7y551ncjy2" path="res://style/casino_style_borders.tres" id="8_ap1v6"]
+[ext_resource type="FontFile" uid="uid://bxq16fsms2xab" path="res://fonts/ARCADECLASSIC.TTF" id="9_l6ntl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_thdb8"]
+font = ExtResource("9_l6ntl")
 font_size = 80
 font_color = Color(1, 0, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rv4m6"]
+font = ExtResource("9_l6ntl")
 font_size = 61
 font_color = Color(7.0544744, 0.55269754, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ap1v6"]
+font = ExtResource("9_l6ntl")
 font_size = 101
 font_color = Color(0, 0, 0.5294118, 1)
 outline_size = 3
