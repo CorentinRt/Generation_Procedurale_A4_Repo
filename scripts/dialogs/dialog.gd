@@ -26,8 +26,6 @@ const TraceryScript = preload("res://scripts/dialogs/tracery.gd")
 @export var questions_data: Array[Question]
 @export var no_question_pos: Vector2
 @export var questions_pos: Vector2
-@export var add_score_right_answer: int = 100000
-@export var remove_score_wrong_answer: int = 100000
 @export var custom_timer: CustomTimer
 @export var question_time: float = 5.0
 
@@ -523,7 +521,7 @@ func stop_question_timer():
 func _on_timer_end():
 	current_npc.on_question_answered.emit(false)
 	
-	ScoreManager._remove_score(remove_score_wrong_answer)
+	print("wrong answer cause timer end")
 	_end_questions_ui()
 	is_in_questions = false
 	

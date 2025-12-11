@@ -18,9 +18,9 @@ func on_btn_clicked():
 		else:
 			# Question answer
 			if is_right_answer:
-				ScoreManager._add_score(dialog_manager.add_score_right_answer)
+				print("right answer")
 			else:
-				ScoreManager._remove_score(dialog_manager.remove_score_wrong_answer)
+				print("wrong answer")
 				
 			dialog_manager._on_answer_pressed(is_right_answer)
 	else:
