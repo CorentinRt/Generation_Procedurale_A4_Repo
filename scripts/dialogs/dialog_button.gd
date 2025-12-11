@@ -1,11 +1,10 @@
-class_name DialogButton extends Control
+class_name DialogButton extends Button
 
-@export var text: RichTextLabel
 var is_right_answer: bool = false
 var is_end_type: EndManager.EndType = EndManager.EndType.NONE 
 
 func setup_btn(answerText : String, right_answer : bool, end_type : EndManager.EndType = EndManager.EndType.NONE):
-	text.text = answerText
+	text = answerText
 	is_right_answer = right_answer
 	is_end_type = end_type
 	

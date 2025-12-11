@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://brk7klpb6owh6" path="res://style/dialog_style.tres" id="1_d45eb"]
 [ext_resource type="Script" uid="uid://uhnd5jmfdj4t" path="res://scripts/dialogs/dialog_button.gd" id="2_qnr6r"]
 
-[node name="Button" type="Button" node_paths=PackedStringArray("text")]
+[node name="Button" type="Button"]
 offset_top = 120.0
 offset_right = 400.0
 offset_bottom = 170.0
@@ -12,27 +12,16 @@ theme_override_styles/pressed = ExtResource("1_d45eb")
 theme_override_styles/hover = ExtResource("1_d45eb")
 theme_override_styles/disabled = ExtResource("1_d45eb")
 theme_override_styles/focus = ExtResource("1_d45eb")
-text = Object(RichTextLabel,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":true,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":1,"anchors_preset":-1,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":1.0,"anchor_bottom":1.0,"offset_left":15.0,"offset_top":15.0,"offset_right":-15.0,"offset_bottom":-15.0,"grow_horizontal":2,"grow_vertical":2,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":3,"focus_behavior_recursive":0,"mouse_filter":2,"mouse_behavior_recursive":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"accessibility_name":"","accessibility_description":"","accessibility_live":0,"accessibility_controls_nodes":Array[NodePath]([]),"accessibility_described_by_nodes":Array[NodePath]([]),"accessibility_labeled_by_nodes":Array[NodePath]([]),"accessibility_flow_to_nodes":Array[NodePath]([]),"theme":null,"theme_type_variation":&"","bbcode_enabled":false,"text":"Answer","fit_content":false,"scroll_active":false,"scroll_following":false,"scroll_following_visible_characters":true,"autowrap_mode":0,"autowrap_trim_flags":192,"tab_size":4,"context_menu_enabled":false,"shortcut_keys_enabled":true,"horizontal_alignment":1,"vertical_alignment":1,"justification_flags":163,"tab_stops":PackedFloat32Array(),"custom_effects":[],"meta_underlined":true,"hint_underlined":true,"threaded":false,"progress_bar_delay":1000,"selection_enabled":false,"deselect_on_focus_loss_enabled":true,"drag_and_drop_selection_enabled":true,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
-
 script = ExtResource("2_qnr6r")
-text = NodePath("Answer")
 
-[node name="Answer" type="RichTextLabel" parent="."]
+[node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 15.0
-offset_right = -15.0
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-text = "Answer"
-scroll_active = false
-scroll_following_visible_characters = true
-autowrap_mode = 0
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.9
 horizontal_alignment = 1
 vertical_alignment = 1
 
