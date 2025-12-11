@@ -17,7 +17,8 @@ texture = ExtResource("2_x6ema")
 region_rect = Rect2(96, 64, 32, 16)
 
 [node name="InteractionIcon" parent="." instance=ExtResource("3_x6ema")]
-position = Vector2(2.019484e-28, -16)
+z_index = 2
+position = Vector2(2.019484e-28, -11)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

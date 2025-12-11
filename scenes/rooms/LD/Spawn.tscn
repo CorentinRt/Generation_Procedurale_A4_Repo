@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://djy8g1p55lq22"]
+[gd_scene load_steps=5 format=4 uid="uid://djy8g1p55lq22"]
 
 [ext_resource type="TileSet" uid="uid://dhfsea6pvn6a2" path="res://resources/tilesets/pirates_tileset.tres" id="1_3j7wr"]
 [ext_resource type="Script" uid="uid://du4m66ihgjwbx" path="res://scripts/room.gd" id="1_a8es6"]
+[ext_resource type="PackedScene" uid="uid://owpq0jv5253s" path="res://scenes/dialogs/end_interact.tscn" id="3_qb0d6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8es6"]
 
@@ -41,3 +42,6 @@ polygon = PackedVector2Array(110, -37, 110, -58, 90, -59, 90, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_a8es6")
+
+[node name="EndInteract" parent="." instance=ExtResource("3_qb0d6")]
+position = Vector2(88, 26)

@@ -39,7 +39,7 @@ position = Vector2(-1, -0.99999994)
 rotation = -1.5707964
 texture = ExtResource("2_hdjuf")
 region_enabled = true
-region_rect = Rect2(240, 80, 32, 16)
+region_rect = Rect2(240, 80, 31.8, 15.8)
 
 [node name="Enter_Area" type="Area2D" parent="CollisionShape2D"]
 
