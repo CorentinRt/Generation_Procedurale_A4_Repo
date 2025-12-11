@@ -129,9 +129,9 @@ func _update_room() -> void:
 	elif position.x < room_bounds.position.x:
 		next_room = _room.get_adjacent_room(Utils.ORIENTATION.WEST, position)
 	elif position.y < room_bounds.position.y:
-		next_room = _room.get_adjacent_room(Utils.ORIENTATION.NORTH, position)
-	elif position.y > room_bounds.end.y:
 		next_room = _room.get_adjacent_room(Utils.ORIENTATION.SOUTH, position)
+	elif position.y > room_bounds.end.y:
+		next_room = _room.get_adjacent_room(Utils.ORIENTATION.NORTH, position)
 
 	if next_room != null:
 		enter_room(next_room)

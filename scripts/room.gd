@@ -55,7 +55,7 @@ func contains(point : Vector2) -> bool:
 func on_enter_room(from : Room) -> void:
 	var camera_bounds = get_world_bounds()
 	_cam.set_bounds(camera_bounds)
-	print("on enter room : " + name)
+	print("on enter room : x :" + str(room_pos.x) + " / y : " + str(room_pos.y))
 
 
 func get_adjacent_room(orientation : Utils.ORIENTATION, from : Vector2) -> Room:
