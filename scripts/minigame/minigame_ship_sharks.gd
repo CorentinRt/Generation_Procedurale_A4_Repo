@@ -19,14 +19,24 @@ func _setup_minigame() -> void:
 			sharks_paths.append(i)
 		
 func _disable_all_potentials() -> void:
+	var potentials_disabled : Array[Node2D]
+	
 	for i in north_potentials:
 		i.visible = false
+		potentials_disabled.append(i)
 	for i in south_potentials:
 		i.visible = false
+		potentials_disabled.append(i)
 	for i in west_potentials:
 		i.visible = false
+		potentials_disabled.append(i)
 	for i in east_potentials:
 		i.visible = false
+		potentials_disabled.append(i)
+		
+	for i in potentials_disabled:
+		if i is Chest_Item:
+			i._set_enable_collision(false)
 			
 func _receive_on_enter_room_zone_callback(player_pos : Vector2) -> void:
 	super(player_pos)
@@ -52,6 +62,7 @@ func _setup_potentials_items(potentials : Array[Node2D]) -> void:
 			continue
 		if chest == null && i is Chest_Item:
 			chest = i
+			chest._set_enable_collision(true)
 			chest.on_chest_opened.connect(receive_chest_opened_callback)
 	
 			

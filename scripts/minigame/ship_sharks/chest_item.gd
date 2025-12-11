@@ -5,6 +5,9 @@ class_name Chest_Item extends StaticBody2D
 @export var open_sprite : Sprite2D
 @export var interaction_sprite : Sprite2D
 
+@export_group("Collision")
+@export var collision_shape : CollisionShape2D
+
 var is_open : bool = false
 
 var player_is_near : bool = false
@@ -64,3 +67,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		interaction_sprite.hide()
 		player_is_near = false
+		
+func _set_enable_collision(enabled : bool) -> void:
+	collision_shape.disabled = !enabled

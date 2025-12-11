@@ -9,11 +9,12 @@ size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omcyj"]
 
-[node name="ChestItem" type="StaticBody2D" node_paths=PackedStringArray("closed_sprite", "open_sprite", "interaction_sprite") groups=["item_minigame"]]
+[node name="ChestItem" type="StaticBody2D" node_paths=PackedStringArray("closed_sprite", "open_sprite", "interaction_sprite", "collision_shape") groups=["item_minigame"]]
 script = ExtResource("1_emw3s")
 closed_sprite = NodePath("closed")
 open_sprite = NodePath("open")
 interaction_sprite = NodePath("InteractionIcon")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="InteractionIcon" parent="." instance=ExtResource("2_i8pgd")]
 z_index = 11
