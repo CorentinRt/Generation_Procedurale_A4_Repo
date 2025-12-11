@@ -6,6 +6,8 @@ static var Instance : Player
 
 @export var collision_shape : CollisionShape2D
 
+@export var collision_shape_exit_ship : CollisionShape2D
+
 @export_group("Input")
 @export_range (0.0, 1.0) var controller_dead_zone : float = 0.3
 
@@ -94,6 +96,10 @@ func _physics_process(_delta: float) -> void:
 func _get_shape() -> CollisionShape2D:
 	return collision_shape
 			
+# use another shape for ships -> better tolerence for collision check when exiting ship
+func _get_shape_ship_exit() -> CollisionShape2D:
+	return collision_shape_exit_ship
+			
 func apply_hit(attack : Attack) -> void:
 	super(attack)
 	hit_animation_player.play("hit")
@@ -112,6 +118,7 @@ func enter_ship(ship : Ship) -> void:
 	is_in_ship = true
 	ship._set_player_in(self)
 	collision_shape.disabled = true
+	collision_shape_exit_ship.disabled = true
 	
 func exit_ship(ship : Ship) -> void:
 	if _state == STATE.DEAD || ship == null:
@@ -119,6 +126,7 @@ func exit_ship(ship : Ship) -> void:
 	is_in_ship = false
 	ship._set_player_out(self)
 	collision_shape.disabled = false
+	collision_shape_exit_ship.disabled = false
 #endregion
 
 func _update_room() -> void:
