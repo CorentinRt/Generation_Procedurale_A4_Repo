@@ -22,10 +22,10 @@ tile_map_data = PackedByteArray("AAABAAYAAQAAAAYAAAABAAcAAQAIAAUAAAACAAEAAQAEAAU
 tile_set = ExtResource("1_pmc26")
 
 [node name="NpcContainer" parent="." instance=ExtResource("2_cq2cc")]
-position = Vector2(0, 64)
+position = Vector2(63, 44)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("3_6icwg")]
-position = Vector2(0, 64)
+position = Vector2(46, 87)
 
 [connection signal="body_entered" from="Props/Shop" to="Props/Shop" method="_on_shop_body_entered"]
 [connection signal="body_exited" from="Props/Shop" to="Props/Shop" method="_on_shop_body_exited"]

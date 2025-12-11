@@ -45,10 +45,10 @@ _scores_datas = ExtResource("4_ux4u5")
 position = Vector2(88, 71)
 
 [node name="NpcContainer" parent="." instance=ExtResource("6_wcy6x")]
-position = Vector2(0, 144)
+position = Vector2(98, 33)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("7_3bbqs")]
-position = Vector2(0, 144)
+position = Vector2(49, 91)
 
 [connection signal="body_entered" from="Props/CasinoMachine" to="Props/CasinoMachine" method="_on_body_entered"]
 [connection signal="body_exited" from="Props/CasinoMachine" to="Props/CasinoMachine" method="_on_body_exited"]
