@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bwrb4to2yfdrg"]
+[gd_scene load_steps=33 format=3 uid="uid://bwrb4to2yfdrg"]
 
 [ext_resource type="Script" uid="uid://df6vl11s5nrg4" path="res://scripts/dialogs/dialog.gd" id="1_7uu03"]
 [ext_resource type="JSON" path="res://resources/dialogs/d_start.json" id="2_136k0"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://c7i14ajf5k0es" path="res://scripts/dialogs/simple_dialog_manager.gd" id="13_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_skulls.json" id="14_adovd"]
 [ext_resource type="JSON" path="res://resources/dialogs/simple/d_letters.json" id="15_7cf0w"]
+[ext_resource type="FontFile" uid="uid://bxq16fsms2xab" path="res://fonts/ARCADECLASSIC.TTF" id="18_ds7yp"]
 
 [sub_resource type="Animation" id="Animation_pq4f6"]
 length = 0.001
@@ -168,6 +169,11 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("18_ds7yp")
+theme_override_fonts/bold_font = ExtResource("18_ds7yp")
+theme_override_fonts/bold_italics_font = ExtResource("18_ds7yp")
+theme_override_fonts/italics_font = ExtResource("18_ds7yp")
+theme_override_fonts/mono_font = ExtResource("18_ds7yp")
 text = "Sentence text ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 scroll_active = false
 autowrap_mode = 2
@@ -193,6 +199,11 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("18_ds7yp")
+theme_override_fonts/bold_font = ExtResource("18_ds7yp")
+theme_override_fonts/bold_italics_font = ExtResource("18_ds7yp")
+theme_override_fonts/italics_font = ExtResource("18_ds7yp")
+theme_override_fonts/mono_font = ExtResource("18_ds7yp")
 text = "Name"
 scroll_active = false
 scroll_following_visible_characters = true

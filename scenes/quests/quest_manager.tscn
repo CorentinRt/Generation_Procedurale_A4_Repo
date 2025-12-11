@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://0sto3gfi2y6x"]
+[gd_scene load_steps=7 format=3 uid="uid://0sto3gfi2y6x"]
 
 [ext_resource type="Script" uid="uid://bgo226obencyl" path="res://scripts/quests/quest_manager.gd" id="1_4a2l1"]
 [ext_resource type="StyleBox" uid="uid://b10agfp4q6set" path="res://style/slider_style.tres" id="2_7i4vb"]
+[ext_resource type="FontFile" uid="uid://bxq16fsms2xab" path="res://fonts/ARCADECLASSIC.TTF" id="2_wmh3v"]
 [ext_resource type="Script" uid="uid://837rr3cklplf" path="res://scripts/dialogs/custom_timer.gd" id="3_wmh3v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f01sv"]
@@ -44,6 +45,11 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_wmh3v")
+theme_override_fonts/bold_font = ExtResource("2_wmh3v")
+theme_override_fonts/bold_italics_font = ExtResource("2_wmh3v")
+theme_override_fonts/italics_font = ExtResource("2_wmh3v")
+theme_override_fonts/mono_font = ExtResource("2_wmh3v")
 text = "Quest Name"
 
 [node name="TimerSlider" type="HSlider" parent="Panel"]
