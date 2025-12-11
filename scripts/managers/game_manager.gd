@@ -32,7 +32,7 @@ func _load_menu_scene() -> void:
 func _reload_game_scene(delay:float) -> void:
 	await get_tree().create_timer(delay).timeout
 	print("reload")
-	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/room_generation/MainScene.tscn")
 	_init_game()
 	
 func _notify_open_final_chest() -> void:

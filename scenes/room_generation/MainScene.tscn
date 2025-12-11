@@ -4,9 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://yjrwcp2td3wd" path="res://resources/audio/s_beep.wav" id="3_grgwt"]
 [ext_resource type="PackedScene" uid="uid://dt2baiqo8huyi" path="res://scenes/dialogs/debug_json.tscn" id="4_f102n"]
 [ext_resource type="PackedScene" uid="uid://dafulph0ab8h3" path="res://scenes/room_generation/level_generation_Main.tscn" id="5_hb5b0"]
+[ext_resource type="PackedScene" uid="uid://b20085rng87fk" path="res://scenes/hud.tscn" id="7_f102n"]
 [ext_resource type="PackedScene" uid="uid://bib07te5reau7" path="res://scenes/player.tscn" id="24_uy8ax"]
 [ext_resource type="Script" uid="uid://4eq20em80d1w" path="res://scripts/camera_follow.gd" id="25_ql38n"]
-[ext_resource type="Texture2D" uid="uid://dgfig18kthiid" path="res://icon.svg" id="26_cekof"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -18,15 +18,13 @@ dialog_beep = ExtResource("3_grgwt")
 [node name="LevelGeneration2" parent="." node_paths=PackedStringArray("_player", "_spriteDebug") instance=ExtResource("5_hb5b0")]
 _player = NodePath("../Player")
 _roomsMaxCount = 20
-_spriteDebug = NodePath("../Sprite2D")
+_spriteDebug = NodePath("")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(4.5, 4.5)
 script = ExtResource("25_ql38n")
 
 [node name="Player" parent="." instance=ExtResource("24_uy8ax")]
 position = Vector2(66, 85)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("26_cekof")
+[node name="hud" parent="." instance=ExtResource("7_f102n")]
