@@ -33,7 +33,7 @@ func _remove_score(value:int) -> void:
 	
 	# Taunt every 200k lost
 	_last_lost_score += value
-	if _last_lost_score >= 200000:
+	if _last_lost_score >= 50000:
 		_last_lost_score = 0
 		UtilsManager.get_dialog_manager().show_taunt_dialog()
 	

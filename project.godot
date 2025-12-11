@@ -13,6 +13,8 @@ config_version=5
 config/name="Pirate Attack"
 run/main_scene="uid://dlneuko6hcyc2"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0.13725491, 1)
+boot_splash/image="uid://dbutig0k2w3ut"
 config/icon="uid://dbutig0k2w3ut"
 
 [autoload]
@@ -27,6 +29,7 @@ EndManager="*res://scripts/dialogs/end_manager.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -137,3 +140,4 @@ NextDialog={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0.13725491, 1)
