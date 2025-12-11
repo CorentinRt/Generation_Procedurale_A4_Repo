@@ -5,7 +5,10 @@ extends Control
 @export var btn_play : Button
 @export var btn_quit : Button
 
+@export var animation_player_menu : AnimationPlayer
+
 func _ready() -> void:
+	animation_player_menu.play("idle")
 	score_txt.text = "Score : " + str(ScoreManager._score)
 	btn_play.pressed.connect(_on_button_play_pressed)
 	btn_quit.pressed.connect(_on_button_quit_pressed)
