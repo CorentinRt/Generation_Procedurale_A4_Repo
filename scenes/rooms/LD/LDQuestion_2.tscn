@@ -39,13 +39,13 @@ polygon = PackedVector2Array(157, 1, 157, -34, 108, -34, 108, 1)
 position = Vector2(88.125, 72)
 
 [node name="NpcContainer" parent="." instance=ExtResource("5_r3kuw")]
-position = Vector2(0, 144)
+position = Vector2(111, 43)
 
 [node name="MinigameQuestion" parent="." node_paths=PackedStringArray("_room_zone_detector") instance=ExtResource("5_duamk")]
 _room_zone_detector = NodePath("../RoomZoneDetector")
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("6_6al4v")]
-position = Vector2(0, 144)
+position = Vector2(37, 69)
 
 [node name="Npc" parent="." instance=ExtResource("7_it74k")]
 position = Vector2(87, 66)

@@ -22,10 +22,10 @@ tile_map_data = PackedByteArray("AAAEAAMAAQAQAAcAAAAFAAIAAwAAAAAAAwAFAAMAAQAQAAc
 tile_set = ExtResource("1_mfxf4")
 
 [node name="NpcContainer" parent="." instance=ExtResource("2_p56u7")]
-position = Vector2(0, 64)
+position = Vector2(58, 64)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("3_jdab1")]
-position = Vector2(0, 64)
+position = Vector2(44, 44)
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
 position = Vector2(0, 64)

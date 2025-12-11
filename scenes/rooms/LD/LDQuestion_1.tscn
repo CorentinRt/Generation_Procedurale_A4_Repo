@@ -46,7 +46,7 @@ position = Vector2(85, 73.000015)
 position = Vector2(76, 93.000015)
 
 [node name="NpcContainer" parent="." instance=ExtResource("8_nn8t2")]
-position = Vector2(0, 144.00002)
+position = Vector2(138, 34)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("9_su445")]
-position = Vector2(0, 144.00002)
+position = Vector2(80, 36)

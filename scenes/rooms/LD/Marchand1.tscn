@@ -28,10 +28,10 @@ tile_set = ExtResource("1_mpere")
 position = Vector2(47, 106.99999)
 
 [node name="NpcContainer" parent="." instance=ExtResource("4_eau6m")]
-position = Vector2(0, 64)
+position = Vector2(56.815536, 64)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("5_mq5ti")]
-position = Vector2(0, 64)
+position = Vector2(44.854374, 70)
 
 [connection signal="body_entered" from="Props/Shop" to="Props/Shop" method="_on_shop_body_entered"]
 [connection signal="body_exited" from="Props/Shop" to="Props/Shop" method="_on_shop_body_exited"]

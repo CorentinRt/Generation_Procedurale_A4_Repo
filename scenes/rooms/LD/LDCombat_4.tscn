@@ -38,7 +38,7 @@ _room_zone_detector = NodePath("../RoomZoneDetector")
 position = Vector2(137, 25)
 
 [node name="NpcContainer" parent="." instance=ExtResource("6_bpw8n")]
-position = Vector2(0, 144.00002)
+position = Vector2(97, 91)
 
 [node name="QuestItemContainer" parent="." instance=ExtResource("7_ls2om")]
-position = Vector2(0, 144.00002)
+position = Vector2(52, 76)
