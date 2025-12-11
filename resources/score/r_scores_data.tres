@@ -19,6 +19,6 @@ _minigame_completed_battle = 20000
 _minigame_completed_final_chest = 100000
 _minigame_completed_question_right_answer = 5000
 _minigame_completed_question_wrong_answer = -5000
-_minigame_completed_casino_jackpot = 50000
+_minigame_completed_casino_jackpot = 100000
 _minigame_completed_casino_little = 5000
 metadata/_custom_type_script = "uid://dqvmh6c3ux65d"
