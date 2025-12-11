@@ -68,5 +68,19 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		interaction_sprite.hide()
 		player_is_near = false
 		
-func _set_enable_collision(enabled : bool) -> void:
-	collision_shape.disabled = !enabled
+func _set_enable_collision(enabled : bool, defered : bool = false) -> void:
+	# handle defered cause disable collision onReady will cause error in Debugger if not defered
+	if defered:
+		if enabled:
+			call_deferred("_enable_collision")
+		else:
+			call_deferred("_disable_collision")
+	else:
+		collision_shape.disabled = !enabled
+		
+	
+func _enable_collision() -> void:
+	collision_shape.disabled = false
+	
+func _disable_collision() -> void:
+	collision_shape.disabled = true

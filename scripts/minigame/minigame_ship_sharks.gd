@@ -36,7 +36,7 @@ func _disable_all_potentials() -> void:
 		
 	for i in potentials_disabled:
 		if i is Chest_Item:
-			i._set_enable_collision(false)
+			i._set_enable_collision(false, true)
 			
 func _receive_on_enter_room_zone_callback(player_pos : Vector2) -> void:
 	super(player_pos)
@@ -62,7 +62,7 @@ func _setup_potentials_items(potentials : Array[Node2D]) -> void:
 			continue
 		if chest == null && i is Chest_Item:
 			chest = i
-			chest._set_enable_collision(true)
+			chest._set_enable_collision(true, true)
 			chest.on_chest_opened.connect(receive_chest_opened_callback)
 	
 			

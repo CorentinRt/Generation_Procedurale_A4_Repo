@@ -15,7 +15,7 @@ func _change_score(value:int) -> void:
 	_score = value
 	_on_change_score.emit(_score)
 	_check_lose()
-	push_warning("change score " + str(_score))
+	print("change score " + str(_score))
 
 func _add_score(value:int) -> void:
 	if value < 0:
