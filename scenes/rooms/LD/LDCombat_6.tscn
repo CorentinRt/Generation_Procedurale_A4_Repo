@@ -20,7 +20,7 @@ tile_map_data = PackedByteArray("AAABAAEAAQAAAAMAAAABAAIAAQAAAAQAAAABAAcAAQAHAAY
 tile_set = ExtResource("2_onqvk")
 
 [node name="Props" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAADAAQAAgAAAAAABQAEAAEAAQADAAcAAAAFAAQAAgAAAAAABQAFAAYAAgAAAAAABQAHAAIAAgAAAAAABQA=")
+tile_map_data = PackedByteArray("AAADAAQAAgAAAAAABQAFAAQAAgAAAAAABQAFAAYAAgAAAAAABQAHAAIAAgAAAAAABQA=")
 tile_set = ExtResource("2_onqvk")
 
 [node name="Sea_Body" type="StaticBody2D" parent="."]
