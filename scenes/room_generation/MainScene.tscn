@@ -15,10 +15,9 @@ dialog_beep = ExtResource("3_grgwt")
 
 [node name="DebugJSON" parent="." instance=ExtResource("4_f102n")]
 
-[node name="LevelGeneration2" parent="." node_paths=PackedStringArray("_player", "_spriteDebug") instance=ExtResource("5_hb5b0")]
+[node name="LevelGeneration2" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("5_hb5b0")]
 _player = NodePath("../Player")
 _roomsMaxCount = 20
-_spriteDebug = NodePath("")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)

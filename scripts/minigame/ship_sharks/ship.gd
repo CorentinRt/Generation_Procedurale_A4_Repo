@@ -64,7 +64,7 @@ func _set_player_out(player : Player) -> void:
 func place_player_outside_collision(start_pos: Vector2, radius : int = 22.0, steps : int = 30) -> bool:
 	var space_state = get_world_2d().direct_space_state
 
-	var collision_shape : CollisionShape2D = associated_player._get_shape()
+	var collision_shape : CollisionShape2D = associated_player._get_shape_ship_exit()
 
 	var params : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
 	params.shape = collision_shape.shape

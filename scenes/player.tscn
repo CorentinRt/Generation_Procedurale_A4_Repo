@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bib07te5reau7"]
+[gd_scene load_steps=17 format=3 uid="uid://bib07te5reau7"]
 
 [ext_resource type="Script" uid="uid://c0tc77spyevjo" path="res://scripts/player.gd" id="1_ups2j"]
 [ext_resource type="Resource" uid="uid://b3nexs1nbtrff" path="res://resources/player_default_movement.tres" id="2_ay78m"]
@@ -201,13 +201,17 @@ _data = {
 &"hit": SubResource("Animation_ur7pv")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape", "running_animation_player", "hit_animation_player", "attack_bonus_particles", "defense_bonus_particles", "sprites", "attack_spawn_point")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
+radius = 3.75
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape", "collision_shape_exit_ship", "running_animation_player", "hit_animation_player", "attack_bonus_particles", "defense_bonus_particles", "sprites", "attack_spawn_point")]
 collision_mask = 413
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ups2j")
 impulse_force = 1.0
 collision_shape = NodePath("CollisionShape2D")
+collision_shape_exit_ship = NodePath("Ship_Exit_Shape")
 running_animation_player = NodePath("AnimationPlayer_Running")
 hit_animation_player = NodePath("AnimationPlayer_Hit")
 attack_bonus_particles = NodePath("Bonus_Attack_CPUParticles")
@@ -276,3 +280,8 @@ initial_velocity_max = 50.0
 scale_amount_min = 0.5
 scale_amount_max = 0.9
 color = Color(0.12941177, 0.44705883, 0.6745098, 1)
+
+[node name="Ship_Exit_Shape" type="CollisionShape2D" parent="."]
+z_index = 1335
+shape = SubResource("CircleShape2D_fjrip")
+debug_color = Color(0.96357936, 6.738305e-07, 0.50072265, 0.41960785)
