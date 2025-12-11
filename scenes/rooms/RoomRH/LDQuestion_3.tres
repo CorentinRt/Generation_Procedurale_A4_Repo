@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://u1fkim7xb8ta" path="res://scripts/level_generation/room_data.gd" id="2_h26xq"]
 
 [resource]
+resource_name = "question"
 script = ExtResource("2_h26xq")
 roomScene = ExtResource("1_sb0xb")
 metadata/_custom_type_script = "uid://u1fkim7xb8ta"

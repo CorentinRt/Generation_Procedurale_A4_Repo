@@ -61,6 +61,7 @@ ExtResource("23_gua0t"): 1.0,
 ExtResource("24_e6wjg"): 1.0
 })
 _roomsMaxCount = 25
+_numberOfQuestions = 7
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
