@@ -12,17 +12,15 @@ static var all_rooms : Array[Room]
 var doors : Array[Door]
 
 @onready var _cam : CameraFollow = $/root/MainScene/Camera2D
-@onready var temp = $Area2D/CollisionShape2D
+
 
 func _ready() -> void:
 	for i in tilemap_layers:
 		i.position = Vector2.ZERO
 	
 	all_rooms.push_back(self)
-	if (temp != null):
-		var bounds = get_world_bounds();
-		temp.shape.extents = bounds.size/2;
-		temp.global_position = bounds.position - bounds.size * Vector2(-0.5, -0.5)
+	var bounds = get_world_bounds();
+
 	if is_start_room:
 		Player.Instance.enter_room(self)
 

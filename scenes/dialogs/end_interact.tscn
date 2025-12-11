@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://owpq0jv5253s"]
 
 [ext_resource type="Script" uid="uid://dusbw0bxblji8" path="res://scripts/dialogs/end_interact.gd" id="1_o1vid"]
-[ext_resource type="Texture2D" uid="uid://h0elxv76gkw3" path="res://sprites/imports/kenney_monochrome-pirates/Default/Tilemap/tilemap_packed.png" id="2_x6ema"]
+[ext_resource type="Texture2D" uid="uid://52qvukxw8xug" path="res://sprites/start_room/buzzer.png" id="2_x6ema"]
 [ext_resource type="PackedScene" uid="uid://bdud0ra8kii2c" path="res://scenes/dialogs/interaction_icon.tscn" id="3_x6ema"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6ema"]
-size = Vector2(32, 15)
+size = Vector2(14, 15)
 
 [node name="EndInteract" type="Node2D" node_paths=PackedStringArray("interact_icon")]
 script = ExtResource("1_o1vid")
@@ -14,7 +14,6 @@ metadata/_custom_type_script = "uid://dusbw0bxblji8"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_x6ema")
-region_enabled = true
 region_rect = Rect2(96, 64, 32, 16)
 
 [node name="InteractionIcon" parent="." instance=ExtResource("3_x6ema")]
